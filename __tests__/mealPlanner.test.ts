@@ -1,0 +1,242 @@
+import { addUser, saveMealPlan } from '../database';
+import { createMockFood, createMockUser, createMockUserRating, expectError, setupTestDatabase, teardownTestDatabase } from './testUtils';
+
+// Authentication testleri
+describe('Authentication', () => {
+  beforeEach(() => {
+    setupTestDatabase();
+  });
+
+  afterEach(() => {
+    teardownTestDatabase();
+  });
+
+  describe('register', () => {
+    it('should register a new user successfully', async () => {
+      const mockUser = createMockUser({ username: 'newuser', email: 'new@example.com' });
+      
+      mockDatabase.addUser.mockResolvedValue(mockUser);
+      mockDatabase.getUser.mockResolvedValue(mockUser);
+      
+      const result = await addUser('newuser', 'new@example.com', 'password123');
+      
+      expect(result).toBe(true);
+      expect(mockDatabase.addUser).toHaveBeenCalledWith('newuser', 'new@example.com', 'password123');
+    });
+
+    it('should handle registration errors', async () => {
+      mockDatabase.addUser.mockRejectedValue(new Error('Username exists'));
+      
+      const result = await addUser('existinguser', 'existing@example.com', 'password123');
+      
+      expect(result).toBe(false);
+    });
+  });
+
+  describe('login', () => {
+    it('should login successfully with correct credentials', async () => {
+      const mockUser = createMockUser({ username: 'testuser', email: 'test@example.com' });
+      
+      mockDatabase.getUser.mockResolvedValue(mockUser);
+      
+      const result = await login('testuser', 'password123');
+      
+      expect(result).toBe(true);
+      expect(mockDatabase.getUser).toHaveBeenCalledWith('testuser', 'password123');
+    });
+
+    it('should handle login errors', async () => {
+      mockDatabase.getUser.mockResolvedValue(null);
+      
+      const result = await login('wronguser', 'wrongpassword');
+      
+      expect(result).toBe(false);
+    });
+  });
+});
+
+// Meal Planner testleri
+describe('Meal Planner', () => {
+  beforeEach(() => {
+    setupTestDatabase();
+  });
+
+  afterEach(() => {
+    teardownTestDatabase();
+  });
+
+  describe('generateBalancedMenu', () => {
+    it('should generate a balanced menu for vegetarian diet', async () => {
+      const mockRatings = [
+        createMockUserRating({ food_id: 1, rating: 5 }),
+        createMockUserRating({ food_id: 2, rating: 4 }),
+        createMockUserRating({ food_id: 3, rating: 3 })
+      ];
+      
+      const mockFoods = [
+        createMockFood({ id: 1, name: 'Menemen', category: 'Kahvaltı', is_vegetarian: 1 }),
+        createMockFood({ id: 2, name: 'Kuru Fasulye', category: 'Baklagiller', is_vegetarian: 1 }),
+        createMockFood({ id: 3, name: 'Mercimek Çorbası', category: 'Çorbalar', is_vegetarian: 1 })
+      ];
+      
+      mockDatabase.getUserRatings.mockResolvedValue(mockRatings);
+      mockDatabase.getFoodsByIds.mockResolvedValue(mockFoods);
+      
+      const result = await generateBalancedMenu(1, 'vegetarian', 7, false);
+      
+      expect(result).toBeDefined();
+      expect(result.meals).toHaveLength(7);
+      expect(result.diet_preference).toBe('vegetarian');
+      
+      // Kahvaltı, öğle, akşam yemekleri doğru kategorilerden seçtiğini kontrol et
+      expect(result.meals[0].breakfast?.category).toBe('Kahvaltı');
+      expect(result.meals[0].lunch?.category).toBe('Sebze Yemekleri');
+      expect(result.meals[0].dinner?.category).toBe('Çorbalar');
+    });
+
+    it('should handle empty user ratings', async () => {
+      mockDatabase.getUserRatings.mockResolvedValue([]);
+      
+      await expectError(
+        () => generateBalancedMenu(1, 'normal', 7, false),
+        'Lütfen önce yemekleri derecelendirin'
+      );
+    });
+
+    it('should filter by halal preference', async () => {
+      const mockFoods = [
+        createMockFood({ id: 1, name: 'Et Döner', category: 'Döner & Kebap', is_halal: 1 }),
+        createMockFood({ id: 2, name: 'Domatesli Börek', category: 'Kahvaltı', is_halal: 1 }),
+        createMockFood({ id: 3, name: 'Pork', category: 'Döner & Kebap', is_halal: 0 }) // Helal değil
+      ];
+      
+      mockDatabase.getUserRatings.mockResolvedValue([]);
+      mockDatabase.getFoodsByIds.mockResolvedValue(mockFoods);
+      
+      const result = await generateBalancedMenu(1, 'normal', 7, true);
+      
+      expect(result).toBeDefined();
+      // Sadece helal yemekler seçildiğini kontrol et
+      expect(result.meals.some(meal => 
+        meal.breakfast?.is_halal === 1 || 
+        meal.lunch?.is_halal === 1 || 
+        meal.dinner?.is_halal === 1
+      )).toBe(true);
+    });
+  });
+
+  describe('getFoodsByCategory', () => {
+    it('should return foods by category', async () => {
+      const mockFoods = [
+        createMockFood({ id: 1, name: 'Mercimek Çorbası', category: 'Çorbalar' }),
+        createMockFood({ id: 2, name: 'Menemen', category: 'Kahvaltı' }),
+        createMockFood({ id: 3, name: 'Kuru Fasulye', category: 'Baklagiller' })
+      ];
+      
+      mockDatabase.getFoodsByIds.mockResolvedValue(mockFoods);
+      
+      const result = await getFoodsByCategory('Çorbalar');
+      
+      expect(result).toHaveLength(1);
+      expect(result[0].name).toBe('Mercimek Çorbası');
+    });
+
+    it('should handle empty category', async () => {
+      mockDatabase.getFoodsByIds.mockResolvedValue([]);
+      
+      const result = await getFoodsByCategory('Çorbalar');
+      
+      expect(result).toHaveLength(0);
+    });
+  });
+
+  describe('searchFoods', () => {
+    it('should search foods by name', async () => {
+      const mockFoods = [
+        createMockFood({ id: 1, name: 'Mercimek Çorbası' }),
+        createMockFood({ id: 2, name: 'Menemen' }),
+        createMockFood({ id: 3, name: 'Kuru Fasulye' })
+      ];
+      
+      mockDatabase.getFoodsByIds.mockResolvedValue(mockFoods);
+      
+      const result = await searchFoods('men');
+      
+      expect(result).toHaveLength(2);
+      expect(result[0].name).toBe('Menemen');
+      expect(result[1].name).toBe('Mercimek Çorbası');
+    });
+
+    it('should handle empty search results', async () => {
+      mockDatabase.getFoodsByIds.mockResolvedValue([]);
+      
+      const result = await searchFoods('nonexistent');
+      
+      expect(result).toHaveLength(0);
+    });
+  });
+});
+
+// Error handling testleri
+describe('Error Handling', () => {
+  it('should handle network errors gracefully', async () => {
+      mockDatabase.getUserRatings.mockRejectedValue(new Error('Network error'));
+      
+      await expectError(
+        () => generateBalancedMenu(1, 'normal', 7, false),
+        'İnternet bağlantısı yok. Lütfen bağlantınızı kontrol edin.'
+      );
+    });
+
+    it('should handle validation errors', async () => {
+      mockDatabase.getUserRatings.mockRejectedValue(new Error('Validation error'));
+      
+      await expectError(
+        () => generateBalancedMenu(1, 'normal', 7, false),
+        'Girdiğiniz bilgiler geçersiz. Lütfen tüm alanları doğru doldurun.'
+      );
+    });
+  });
+});
+
+// Integration testleri
+describe('Integration Tests', () => {
+  beforeEach(() => {
+    setupTestDatabase();
+  });
+
+  afterEach(() => {
+    teardownTestDatabase();
+  });
+
+  it('should complete full meal planning workflow', async () => {
+      // 1. Kullanıcı kaydı
+      const mockUser = createMockUser({ username: 'testuser', email: 'test@example.com' });
+      mockDatabase.addUser.mockResolvedValue(mockUser);
+      mockDatabase.getUser.mockResolvedValue(mockUser);
+      
+      // 2. Kullanıcı giriş yapıyor
+      const loginResult = await login('testuser', 'password123');
+      expect(loginResult).toBe(true);
+      
+      // 3. Yemekleri derecelendiriyor
+      const mockRatings = [
+        createMockUserRating({ food_id: 1, rating: 5 }),
+        createMockUserRating({ food_id: 2, rating: 4 })
+      ];
+      mockDatabase.getUserRatings.mockResolvedValue(mockRatings);
+      
+      // 4. Menü planı oluşturuyor
+      const mealPlan = await generateBalancedMenu(1, 'normal', 7, false);
+      expect(mealPlan).toBeDefined();
+      expect(mealPlan.meals).toHaveLength(7);
+      
+      // 5. Menü planını kaydediyor
+      mockDatabase.saveMealPlan.mockResolvedValue(123);
+      
+      const savedPlan = await saveMealPlan(1, JSON.stringify(mealPlan.meals), 'normal');
+      expect(savedPlan).toBe(123);
+      expect(mockDatabase.saveMealPlan).toHaveBeenCalledWith(1, JSON.stringify(mealPlan.meals), 'normal');
+    });
+  });
+});

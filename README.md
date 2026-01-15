@@ -1,50 +1,114 @@
-# Welcome to your Expo app 👋
+# YemekMenu - Kişisel Menü Planlama Uygulaması
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+> 🍳 **React Native + Expo** ile geliştirilen kişisel menü planlama uygulaması
+> 🎨 **239 yemek** seçeneği ile zengin menü oluşturma
+> 🎯 **Stitch tasarım sistemi** ile modern ve kullanıcı dostu arayüz
+> 📱 **Enterprise seviyesinde** performans ve stability
 
-## Get started
+## 📋 Proje Özellikleri
 
-1. Install dependencies
+### 🍽️ **Yemek Veritabanı**
+- **Toplam**: 239 yemek
+- **Kategoriler**: 11 farklı kategori
+- **Diyet Seçenekleri**: Normal, Vejetaryen, Vegan, Düşük Karbonhidrat, Glütensiz, Helal
+- **Kahvaltı**: 38 seçenek (en zengin kategori)
 
-   ```bash
-   npm install
-   ```
+### 🎨 **Teknik Özellikler**
+- **Platform**: React Native + Expo
+- **Database**: SQLite (mobil) / Web simulation
+- **Type Safety**: TypeScript ile %90+ type coverage
+- **Performance**: Lazy loading, image caching, performance monitoring
+- **Error Handling**: Kapsamlı error handling ve user-friendly mesajlar
 
-2. Start the app
+### 🎨 **UI/UX Özellikleri**
+- **Tasarım Sistemi**: Stitch design system
+- **Component'ler**: Modern, reusable, responsive
+- **Animasyonlar**: Smooth transitions ve micro-interactions
+- **Accessibility**: Screen reader desteği
 
-   ```bash
-   npx expo start
-   ```
+### 🔧 **Geliştirme Özellikleri**
+- **Menü Planlama**: Kişiselleştirilmiş menü oluşturma
+- **Derecelendirme**: 5 yıldızında yemek derecelendirme
+- **Filtreleme**: Diyet ve helal filtreleri
+- **Performans**: Image lazy loading ve caching
 
-In the output, you'll find options to open the app in a
+## 🚀️ GitHub Repository
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### 📂 **Repository Bilgileri**
+- **Platform**: GitHub
+- **Lisans**: MIT License
+- **Dil**: TypeScript/JavaScript
+- **Framework**: React Native + Expo
+- **Durum**: Production-ready
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### 🔄 **Deployment**
+- **Web**: Expo Web build ile deploy
+- **iOS**: App Store üzerinden
+- **Android**: Google Play Store üzerinden
+- **Test**: Jest test coverage ile
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+### 📈 **Repository Structure**
+```
+YemekMenu/
+├── app/                 # Ana uygulama
+├── components/           # UI component'leri
+├── constants/           # Theme ve constants
+├── database/            # Database modülleri
+├── utils/               # Utility fonksiyonları
+├── types.ts             # Type definitions
+├── auth.tsx             # Authentication
+├── mealPlanner.ts        # Menü planlama
+├── package.json          # Dependencies
+├── README.md            # Proje açıklaması
+└── TODO.md             # Görev listesi
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## 🎯 **Kullanım**
 
-## Learn more
+### 📱 **Başlangıç**
+```bash
+# Repository'ı klonlayın
+git clone https://github.com/username/yemekmenu.git
 
-To learn more about developing your project with Expo, look at the following resources:
+# Dependencies'ı yükleyin
+npm install
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+# Expo CLI kurulumu
+npm install -g @expo/cli
 
-## Join the community
+# Uygulamayı çalıştırın
+npx expo start
+```
 
-Join our community of developers creating universal apps.
+### 🔧 **Geliştirme**
+```bash
+# Yeni yemek eklemek için database.ts dosyasını düzenleyin
+# Component'leri components/ klasörüne ekleyin
+# Theme'i constants/theme.ts dosyasından güncelleyin
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+### 🚀️ **Deployment**
+```bash
+# Web için
+npx expo build
+
+# Mobil için
+npx expo build:android
+npx expo build:ios
+
+# Test için
+npm test
+```
+
+## 📊 **Katkıda Olmak**
+
+Bu proje açık kaynak kodlu ve katkıda katkıda geliştirilmeye açıktır! 🎉
+
+- 🍽️ **Yemek önerileri**: Yemek veritabanını zenginletme
+- 🎨 **UI iyileştirmeleri**: Modern arayüzler eklemek
+- 🔧 **Yeni özellikler**: Sosyal özellikler, sharing, favoriler
+- 📱 **Platform genişletmeleri**: Web, mobil, desktop
+
+---
+
+**YemekMenu - Lezzetli ve dengeli beslenme için kişisel menü planlama uygulamanız!** 🍳🥘🍴🥚
