@@ -1,184 +1,307 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Alert, FlatList } from 'react-native';
-import { generateBalancedMenu, DietType, generateMenuSuggestions } from '@/mealPlanner';
-import { useAuth } from '@/auth';
-import { getMealPlans } from '@/database';
+import { Ionicons } from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
+import React, { useState } from "react";
+import {
+    Alert,
+    Dimensions,
+    Image,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View
+} from "react-native";
+import { useAuth } from "../../auth";
+import { Colors } from "../../constants/Colors";
+import { useColorScheme } from "../../hooks/use-color-scheme";
+import { generateBalancedMenu } from "../../mealPlanner";
+import { DietType, Food, MealPlan } from "../../types";
 
-interface MealPlan {
-  id: number;
-  userId: number;
-  meals: any[];
-  dietPreference: DietType;
-  createdAt: string;
-}
+const { width } = Dimensions.get("window");
 
-export default function MenuScreen() {
+export default function ExploreScreen() {
   const { user } = useAuth();
-  const [selectedDiet, setSelectedDiet] = useState<DietType>('normal');
-  const [showHalalOnly, setShowHalalOnly] = useState(false);
-  const [generatedMenu, setGeneratedMenu] = useState<any>(null);
-  const [mealPlans, setMealPlans] = useState<MealPlan[]>([]);
-  const [suggestedFoods, setSuggestedFoods] = useState<any[]>([]);
+  const theme = useColorScheme() === "dark" ? Colors.dark : Colors.light;
+
   const [loading, setLoading] = useState(false);
+  const [currentPlan, setCurrentPlan] = useState<MealPlan | null>(null);
+  const [selectedDiet, setSelectedDiet] = useState<DietType>("normal");
+  const [showHalalOnly, setShowHalalOnly] = useState(false);
 
-  const dietOptions: { value: DietType; label: string }[] = [
-    { value: 'normal', label: 'Normal' },
-    { value: 'vegetarian', label: 'Vejetaryen' },
-    { value: 'vegan', label: 'Vegan' },
-    { value: 'lowcarb', label: 'Düşük Karbonhidrat' },
-    { value: 'glutenfree', label: 'Glutensiz' },
-  ];
-
-  useEffect(() => {
-    if (user) {
-      loadMealPlans();
-      loadSuggestions();
-    }
-  }, [user]);
-
-  const loadMealPlans = async () => {
-    try {
-      const plans: any = await getMealPlans(user?.id || 0);
-      setMealPlans(plans);
-    } catch (error) {
-      console.error('Menü planları yüklenirken hata:', error);
-    }
-  };
-
-  const loadSuggestions = async () => {
-    if (user) {
-      try {
-        const suggestions = await generateMenuSuggestions(user.id, selectedDiet, showHalalOnly);
-        setSuggestedFoods(suggestions);
-      } catch (error) {
-        console.error('Menü önerileri yüklenirken hata:', error);
-      }
-    }
-  };
+  const [viewMode, setViewMode] = useState<"daily" | "weekly" | "monthly">(
+    "weekly",
+  );
+  const [currentWeekIndex, setCurrentWeekIndex] = useState(0);
+  const [selectedDayIndex, setSelectedDayIndex] = useState(0);
 
   const generateMenu = async () => {
-    if (!user) {
-      Alert.alert('Hata', 'Lütfen önce giriş yapın.');
-      return;
-    }
-
+    if (!user) return;
     setLoading(true);
     try {
-      const menu = await generateBalancedMenu(user.id, selectedDiet, 7, showHalalOnly);
-      setGeneratedMenu(menu);
-      loadMealPlans(); // Yeni menüyü listelemek için planları yeniden yükle
-      Alert.alert('Başarılı', 'Menü başarıyla oluşturuldu!');
-    } catch (error) {
-      console.error('Menü oluşturma hatası:', error);
-      Alert.alert('Hata', 'Menü oluşturulurken bir hata oluştu.');
+      const plan = await generateBalancedMenu(
+        30,
+        selectedDiet,
+        showHalalOnly,
+        user.id,
+        showHalalOnly,
+      );
+      setCurrentPlan(plan);
+      setCurrentWeekIndex(0);
+      setSelectedDayIndex(0);
+      Alert.alert("Başarılı", "30 Günlük Akıllı Planınız Hazır!");
+    } catch (error: any) {
+      Alert.alert("Hata", error.message || "Mönü oluşturulamadı.");
     } finally {
       setLoading(false);
     }
   };
 
-  const renderDietOption = ({ item }: { item: { value: DietType; label: string } }) => (
-    <TouchableOpacity
-      style={[
-        styles.dietOption,
-        selectedDiet === item.value && styles.selectedDietOption
-      ]}
-      onPress={() => setSelectedDiet(item.value)}
-    >
-      <Text
+  const getBadgeColor = (type?: string) => {
+    switch (type) {
+      case "preference":
+        return "#FF7A00";
+      case "economy":
+        return "#4CAF50";
+      case "health":
+        return "#2196F3";
+      default:
+        return "#9E9E9E";
+    }
+  };
+
+  const renderBadge = (food: Food) => {
+    if (!food.reasonTag) return null;
+    return (
+      <View
         style={[
-          styles.dietOptionText,
-          selectedDiet === item.value && styles.selectedDietOptionText
+          styles.badge,
+          { backgroundColor: getBadgeColor(food.reasonType) },
         ]}
       >
-        {item.label}
-      </Text>
-    </TouchableOpacity>
-  );
-
-  if (!user) {
-    return (
-      <View style={styles.container}>
-        <Text>Lütfen önce giriş yapın.</Text>
+        <Text style={styles.badgeText}>{food.reasonTag}</Text>
       </View>
     );
-  }
+  };
+
+  const renderMealItem = (
+    meal: Food | null | undefined,
+    label: string,
+    icon: string,
+    showCompact = false,
+  ) => {
+    if (!meal) return null;
+    const priceIcons = "₺".repeat(meal.priceLevel || 2);
+    return (
+      <View
+        style={[
+          styles.mealItem,
+          { backgroundColor: theme.card },
+          showCompact && styles.compactMeal,
+        ]}
+      >
+        <Image
+          source={{ uri: meal.image_url }}
+          style={showCompact ? styles.compactMealImage : styles.mealImage}
+        />
+        {renderBadge(meal)}
+        <View style={styles.mealInfo}>
+          <View style={styles.mealTitleRow}>
+            {!showCompact && (
+              <Text style={styles.mealLabel}>
+                {icon} {label}
+              </Text>
+            )}
+            <Text style={[styles.priceTag, { color: theme.tint }]}>
+              {priceIcons}
+            </Text>
+          </View>
+          <Text
+            style={[
+              styles.mealName,
+              { color: theme.text },
+              showCompact && { fontSize: 14 },
+            ]}
+            numberOfLines={1}
+          >
+            {meal.name}
+          </Text>
+          <View style={styles.nutritionRow}>
+            <Text style={styles.nutritionValue}>
+              🔥 {meal.nutritionalInfo?.calories} kcal
+            </Text>
+            {!showCompact && (
+              <Text style={styles.nutritionValue}>
+                🥩 {meal.nutritionalInfo?.protein}g P
+              </Text>
+            )}
+          </View>
+        </View>
+      </View>
+    );
+  };
+
+  const renderSelectedDay = () => {
+    if (!currentPlan) return null;
+    const dayData =
+      currentPlan.plan_data[selectedDayIndex + currentWeekIndex * 7];
+    if (!dayData) return null;
+
+    return (
+      <View style={styles.dayDetails}>
+        <Text style={[styles.sectionTitle, { color: theme.text }]}>
+          Günlük Detay - Gün {selectedDayIndex + currentWeekIndex * 7 + 1}
+        </Text>
+        {renderMealItem(dayData.breakfast, "Kahvaltı", "🍳")}
+        {renderMealItem(dayData.lunch, "Öğle Yemeği", "🥗")}
+        {renderMealItem(dayData.dinner, "Akşam Yemeği", "🍖")}
+        {dayData.snack && renderMealItem(dayData.snack, "Ara Öğün", "🍎")}
+
+        <View style={[styles.descriptionCard, { backgroundColor: theme.card }]}>
+          <Ionicons name="bulb-outline" size={20} color={theme.tint} />
+          <Text style={[styles.descriptionText, { color: theme.text }]}>
+            {dayData.nutritionDescription}
+          </Text>
+        </View>
+      </View>
+    );
+  };
 
   return (
-    <ScrollView style={styles.container}>
-      <Text style={styles.header}>Menü Oluştur</Text>
-      
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Diyet Seçeneği</Text>
-        <View style={styles.checkboxContainer}>
-          <TouchableOpacity
-            style={styles.checkbox}
-            onPress={() => setShowHalalOnly(!showHalalOnly)}
-          >
-            <Text style={[styles.checkboxText, showHalalOnly && styles.checkboxTextChecked]}>
-              {showHalalOnly ? '☑' : '☐'}
-            </Text>
-          </TouchableOpacity>
-          <Text style={styles.checkboxLabel}>Sadece Helal Yemekler</Text>
-        </View>
-        <FlatList
-          horizontal
-          data={dietOptions}
-          renderItem={renderDietOption}
-          keyExtractor={item => item.value}
-          showsHorizontalScrollIndicator={false}
-          style={styles.dietOptionsList}
-        />
-      </View>
-      
-      <TouchableOpacity 
-        style={styles.generateButton} 
-        onPress={generateMenu}
-        disabled={loading}
-      >
-        <Text style={styles.generateButtonText}>
-          {loading ? 'Oluşturuluyor...' : 'Dengeli Menü Oluştur'}
-        </Text>
-      </TouchableOpacity>
-      
-      {generatedMenu && (
-        <View style={styles.menuPreview}>
-          <Text style={styles.sectionTitle}>Oluşturulan Menü</Text>
-          {generatedMenu.meals.map((day: any, index: number) => (
-            <View key={index} style={styles.dayContainer}>
-              <Text style={styles.dayTitle}>Gün {day.day}</Text>
-              <View style={styles.mealContainer}>
-                <Text style={styles.mealTitle}>Kahvaltı: {day.breakfast ? day.breakfast.name : 'Veri Yok'}</Text>
-                <Text style={styles.mealTitle}>Öğle: {day.lunch ? day.lunch.name : 'Veri Yok'}</Text>
-                <Text style={styles.mealTitle}>Akşam: {day.dinner ? day.dinner.name : 'Veri Yok'}</Text>
-              </View>
-            </View>
+    <ScrollView
+      style={[styles.container, { backgroundColor: theme.background }]}
+    >
+      <LinearGradient colors={["#FF7A00", "#FF4D00"]} style={styles.header}>
+        <Text style={styles.headerTitle}>Beslenme Uzmanı</Text>
+        <Text style={styles.headerSubtitle}>30 Günlük Kişisel Plan</Text>
+      </LinearGradient>
+
+      <View style={styles.configContainer}>
+        <View style={styles.tabBar}>
+          {(["daily", "weekly", "monthly"] as const).map((mode) => (
+            <TouchableOpacity
+              key={mode}
+              style={[
+                styles.tabItem,
+                viewMode === mode && {
+                  borderBottomColor: theme.tint,
+                  borderBottomWidth: 3,
+                },
+              ]}
+              onPress={() => setViewMode(mode)}
+            >
+              <Text
+                style={[
+                  styles.tabText,
+                  { color: viewMode === mode ? theme.tint : "#aaa" },
+                ]}
+              >
+                {mode === "daily"
+                  ? "Günlük"
+                  : mode === "weekly"
+                    ? "Haftalık"
+                    : "Aylık"}
+              </Text>
+            </TouchableOpacity>
           ))}
         </View>
-      )}
-      
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Önerilen Yemekler</Text>
-        <View style={styles.suggestedFoodsContainer}>
-          {suggestedFoods.slice(0, 5).map((food, index) => (
-            <View key={index} style={styles.foodSuggestion}>
-              <Text style={styles.foodName}>{food.name}</Text>
-              <Text style={styles.foodRating}>Puan: {food.userRating}/5</Text>
-            </View>
-          ))}
-        </View>
-      </View>
-      
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Geçmiş Menüler</Text>
-        {mealPlans.length > 0 ? (
-          mealPlans.map((plan, index) => (
-            <View key={plan.id} style={styles.planItem}>
-              <Text>Diyet: {plan.dietPreference}</Text>
-              <Text>Tarih: {new Date(plan.createdAt).toLocaleDateString('tr-TR')}</Text>
-            </View>
-          ))
+
+        {!currentPlan ? (
+          <View style={styles.emptyContainer}>
+            <Ionicons name="calendar-outline" size={64} color="#ccc" />
+            <Text style={styles.emptyText}>Henüz bir plan oluşturmadınız.</Text>
+            <TouchableOpacity
+              style={styles.generateButton}
+              onPress={generateMenu}
+            >
+              <Text style={styles.generateButtonText}>
+                30 Günlük Mönü Oluştur
+              </Text>
+            </TouchableOpacity>
+          </View>
         ) : (
-          <Text>Henüz menü oluşturulmamış.</Text>
+          <View style={styles.planContainer}>
+            {viewMode === "weekly" && (
+              <View>
+                <View style={styles.weekSelector}>
+                  {[0, 1, 2, 3].map((idx) => (
+                    <TouchableOpacity
+                      key={idx}
+                      style={[
+                        styles.weekBtn,
+                        currentWeekIndex === idx && {
+                          backgroundColor: theme.tint,
+                        },
+                      ]}
+                      onPress={() => setCurrentWeekIndex(idx)}
+                    >
+                      <Text
+                        style={[
+                          styles.weekBtnText,
+                          currentWeekIndex === idx && { color: "white" },
+                        ]}
+                      >
+                        {idx + 1}. Hafta
+                      </Text>
+                    </TouchableOpacity>
+                  ))}
+                </View>
+                <ScrollView
+                  horizontal
+                  showsHorizontalScrollIndicator={false}
+                  style={styles.dayScroll}
+                >
+                  {[0, 1, 2, 3, 4, 5, 6].map((idx) => (
+                    <TouchableOpacity
+                      key={idx}
+                      style={[
+                        styles.dayCard,
+                        { backgroundColor: theme.card },
+                        selectedDayIndex === idx && styles.activeDayCard,
+                      ]}
+                      onPress={() => setSelectedDayIndex(idx)}
+                    >
+                      <Text style={[styles.dayCardText, { color: theme.text }]}>
+                        Gün {idx + 1 + currentWeekIndex * 7}
+                      </Text>
+                      <Ionicons
+                        name="restaurant-outline"
+                        size={16}
+                        color={selectedDayIndex === idx ? "white" : theme.tint}
+                      />
+                    </TouchableOpacity>
+                  ))}
+                </ScrollView>
+                {renderSelectedDay()}
+              </View>
+            )}
+
+            {viewMode === "monthly" && (
+              <View style={styles.monthlyGrid}>
+                {currentPlan.plan_data.map((_, idx) => (
+                  <TouchableOpacity
+                    key={idx}
+                    style={[styles.gridItem, { backgroundColor: theme.card }]}
+                    onPress={() => {
+                      setViewMode("daily");
+                      setSelectedDayIndex(idx % 7);
+                      setCurrentWeekIndex(Math.floor(idx / 7));
+                    }}
+                  >
+                    <Text style={{ color: theme.text, fontSize: 10 }}>
+                      {idx + 1}
+                    </Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
+            )}
+
+            <TouchableOpacity
+              style={styles.reGenerateButton}
+              onPress={generateMenu}
+            >
+              <Text style={styles.reGenerateButtonText}>Planı Yenile</Text>
+            </TouchableOpacity>
+          </View>
         )}
       </View>
     </ScrollView>
@@ -186,133 +309,126 @@ export default function MenuScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#f8f9fa',
-  },
+  container: { flex: 1 },
   header: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    padding: 15,
-    backgroundColor: '#ffffff',
-    borderBottomWidth: 1,
-    borderBottomColor: '#e9ecef',
+    padding: 40,
+    borderBottomLeftRadius: 30,
+    borderBottomRightRadius: 30,
   },
-  section: {
-    padding: 15,
-    backgroundColor: '#ffffff',
-    margin: 10,
-    borderRadius: 8,
+  headerTitle: { fontSize: 24, fontWeight: "bold", color: "white" },
+  headerSubtitle: {
+    fontSize: 16,
+    color: "rgba(255,255,255,0.8)",
+    marginTop: 5,
   },
-  sectionTitle: {
-    fontSize: 18,
-    fontWeight: '600',
-    marginBottom: 10,
+  configContainer: { padding: 20 },
+  tabBar: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    marginBottom: 20,
   },
-  dietOptionsList: {
-    marginBottom: 10,
-  },
-  dietOption: {
-    paddingVertical: 8,
-    paddingHorizontal: 15,
-    marginRight: 10,
-    borderRadius: 20,
-    backgroundColor: '#e9ecef',
-  },
-  selectedDietOption: {
-    backgroundColor: '#0d6efd',
-  },
-  dietOptionText: {
-    color: '#495057',
-  },
-  selectedDietOptionText: {
-    color: 'white',
-  },
+  tabItem: { paddingVertical: 10, flex: 1, alignItems: "center" },
+  tabText: { fontWeight: "bold", fontSize: 14 },
+  emptyContainer: { alignItems: "center", marginTop: 50 },
+  emptyText: { color: "#999", marginTop: 15, marginBottom: 25 },
   generateButton: {
-    backgroundColor: '#20c997',
-    padding: 15,
-    margin: 15,
-    borderRadius: 8,
-    alignItems: 'center',
+    backgroundColor: "#FF7A00",
+    paddingHorizontal: 30,
+    paddingVertical: 15,
+    borderRadius: 25,
   },
-  generateButtonText: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: '600',
-  },
-  menuPreview: {
-    backgroundColor: '#ffffff',
-    margin: 10,
-    borderRadius: 8,
-    padding: 15,
-  },
-  dayContainer: {
+  generateButtonText: { color: "white", fontWeight: "bold" },
+  planContainer: { flex: 1 },
+  weekSelector: {
+    flexDirection: "row",
+    justifyContent: "space-between",
     marginBottom: 15,
-    borderBottomWidth: 1,
-    borderBottomColor: '#e9ecef',
-    paddingBottom: 10,
   },
-  dayTitle: {
-    fontSize: 16,
-    fontWeight: '600',
-    marginBottom: 5,
+  weekBtn: {
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    borderRadius: 15,
+    backgroundColor: "#f0f0f0",
   },
-  mealContainer: {
-    marginLeft: 10,
-  },
-  mealTitle: {
-    fontSize: 14,
-    marginBottom: 3,
-    color: '#6c757d',
-  },
-  suggestedFoodsContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-  },
-  foodSuggestion: {
-    backgroundColor: '#e7f5ff',
-    padding: 10,
+  weekBtnText: { fontSize: 12, fontWeight: "600", color: "#666" },
+  dayScroll: { marginBottom: 20 },
+  dayCard: {
+    width: 70,
+    height: 70,
+    borderRadius: 20,
+    justifyContent: "center",
+    alignItems: "center",
     marginRight: 10,
-    marginBottom: 10,
-    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: "#f0f0f0",
   },
-  foodName: {
-    fontWeight: '600',
+  activeDayCard: { backgroundColor: "#FF7A00", borderColor: "#FF7A00" },
+  dayCardText: { fontSize: 12, fontWeight: "bold", marginBottom: 5 },
+  dayDetails: { marginTop: 10 },
+  sectionTitle: { fontSize: 18, fontWeight: "bold", marginBottom: 15 },
+  mealItem: {
+    flexDirection: "row",
+    padding: 15,
+    borderRadius: 20,
+    marginBottom: 15,
+    alignItems: "center",
+    elevation: 2,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
   },
-  foodRating: {
-    fontSize: 12,
-    color: '#6c757d',
+  mealImage: { width: 70, height: 70, borderRadius: 15 },
+  mealInfo: { flex: 1, marginLeft: 15 },
+  mealTitleRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 2,
   },
-  planItem: {
-    padding: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#e9ecef',
+  mealLabel: { fontSize: 10, color: "#FF7A00", fontWeight: "bold" },
+  priceTag: { fontSize: 12, fontWeight: "bold", opacity: 0.8 },
+  mealName: { fontSize: 16, fontWeight: "700" },
+  nutritionRow: { flexDirection: "row", marginTop: 5 },
+  nutritionValue: { fontSize: 11, color: "#888", marginRight: 10 },
+  descriptionCard: {
+    flexDirection: "row",
+    padding: 15,
+    borderRadius: 15,
+    marginTop: 10,
+    alignItems: "center",
   },
-  checkboxContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    padding: 10,
-    backgroundColor: '#ffffff',
-    borderRadius: 8,
-    marginBottom: 10,
+  descriptionText: {
+    marginLeft: 10,
+    fontSize: 13,
+    flex: 1,
+    fontStyle: "italic",
   },
-  checkbox: {
-    padding: 8,
-    borderRadius: 8,
-    borderWidth: 2,
-    borderColor: '#dee2e6',
-    backgroundColor: '#f8f9fa',
+  monthlyGrid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
   },
-  checkboxText: {
-    fontSize: 18,
+  gridItem: {
+    width: (width - 60) / 7,
+    height: 40,
+    borderRadius: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 8,
   },
-  checkboxTextChecked: {
-    color: '#20c997',
+  reGenerateButton: { marginTop: 30, padding: 15, alignItems: "center" },
+  reGenerateButtonText: { color: "#FF7A00", fontWeight: "bold" },
+  badge: {
+    position: "absolute",
+    top: 10,
+    right: 10,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 10,
+    zIndex: 10,
   },
-  checkboxLabel: {
-    fontSize: 16,
-    fontWeight: '500',
-    color: '#495057',
-  },
+  badgeText: { color: "white", fontSize: 10, fontWeight: "bold" },
+  compactMeal: { padding: 10 },
+  compactMealImage: { width: 50, height: 50, borderRadius: 10 },
 });

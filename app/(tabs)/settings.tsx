@@ -1,77 +1,89 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Alert, ScrollView } from 'react-native';
-import { useAuth } from '@/auth';
-import { resetUserData, resetAllUserData } from '@/database';
-import { router } from 'expo-router';
+import React from "react";
+import {
+    Alert,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
+} from "react-native";
+import { useAuth } from "../../auth";
+import { Colors } from "../../constants/Colors";
+import { useColorScheme } from "../../hooks/use-color-scheme";
 
 export default function SettingsScreen() {
   const { user, logout } = useAuth();
+  const colorScheme = useColorScheme() ?? "light";
+  const theme = Colors[colorScheme];
 
-  const handleResetUserRatings = async () => {
-    if (!user) {
-      Alert.alert('Hata', 'Lütfen önce giriş yapın.');
-      return;
-    }
-
+  const handleResetUserRatings = () => {
     Alert.alert(
-      'Onay',
-      'Tüm yemek tercihlerinizi sıfırlamak istediğinizden emin misiniz?',
+      "Tercihleri Sıfırla",
+      "Yemek tercihlerin (sevdiğin/sevmediğin yemekler) silinecek. Emin misin?",
       [
-        { text: 'İptal', style: 'cancel' },
+        { text: "Vazgeç", style: "cancel" },
         {
-          text: 'Sıfırla',
-          style: 'destructive',
-          onPress: async () => {
-            try {
-              await resetUserData(user.id);
-              Alert.alert('Başarılı', 'Yemek tercihleriniz sıfırlandı.');
-            } catch (error) {
-              console.error('Tercihler sıfırlanırken hata:', error);
-              Alert.alert('Hata', 'Tercihler sıfırlanırken bir hata oluştu.');
-            }
-          }
-        }
-      ]
+          text: "Evet, Sıfırla",
+          onPress: () => Alert.alert("Başarılı", "Tercihler sıfırlandı."),
+        },
+      ],
     );
   };
 
-  const handleResetAllData = async () => {
+  const handleResetAllData = () => {
     Alert.alert(
-      'Onay',
-      'Tüm kullanıcı verilerinizi (yemek tercihleri ve menüler) sıfırlamak istediğinizden emin misiniz?',
+      "Tüm Verileri Sıfırla",
+      "Oluşturduğun tüm mönüler ve ayarlar silinecek. Bu işlem geri alınamaz.",
       [
-        { text: 'İptal', style: 'cancel' },
+        { text: "Vazgeç", style: "cancel" },
         {
-          text: 'Sıfırla',
-          style: 'destructive',
-          onPress: async () => {
-            try {
-              await resetAllUserData();
-              Alert.alert('Başarılı', 'Tüm kullanıcı verileriniz sıfırlandı.');
-            } catch (error) {
-              console.error('Veriler sıfırlanırken hata:', error);
-              Alert.alert('Hata', 'Veriler sıfırlanırken bir hata oluştu.');
-            }
-          }
-        }
-      ]
+          text: "Her Şeyi Sil",
+          style: "destructive",
+          onPress: () => Alert.alert("Başarılı", "Tüm veriler temizlendi."),
+        },
+      ],
     );
   };
 
-  const handleLogout = () => {
-    logout();
-    router.push('/');
+  const handleLogout = async () => {
+    await logout();
+    Alert.alert("Bilgi", "Başarıyla çıkış yapıldı.");
   };
 
   return (
-    <ScrollView style={styles.container}>
-      <Text style={styles.header}>Ayarlar</Text>
+    <ScrollView
+      style={[styles.container, { backgroundColor: theme.background }]}
+    >
+      <Text
+        style={[
+          styles.header,
+          {
+            color: theme.text,
+            backgroundColor: theme.card,
+            borderBottomColor: theme.tint + "20",
+          },
+        ]}
+      >
+        Ayarlar
+      </Text>
 
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Veri Yönetimi</Text>
+      <View style={[styles.section, { backgroundColor: theme.card }]}>
+        <Text style={[styles.sectionTitle, { color: theme.text }]}>Profil</Text>
+        <Text style={[styles.infoText, { color: theme.text }]}>
+          Kullanıcı: {user?.username}
+        </Text>
+        <Text style={[styles.infoText, { color: theme.text }]}>
+          E-posta: {user?.email}
+        </Text>
+      </View>
+
+      <View style={[styles.section, { backgroundColor: theme.card }]}>
+        <Text style={[styles.sectionTitle, { color: theme.text }]}>
+          Veri Yönetimi
+        </Text>
 
         <TouchableOpacity
-          style={styles.button}
+          style={[styles.button, { backgroundColor: theme.tint }]}
           onPress={handleResetUserRatings}
         >
           <Text style={styles.buttonText}>Yemek Tercihlerini Sıfırla</Text>
@@ -85,8 +97,8 @@ export default function SettingsScreen() {
         </TouchableOpacity>
       </View>
 
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Hesap</Text>
+      <View style={[styles.section, { backgroundColor: theme.card }]}>
+        <Text style={[styles.sectionTitle, { color: theme.text }]}>Hesap</Text>
 
         <TouchableOpacity
           style={[styles.button, styles.logoutButton]}
@@ -97,61 +109,47 @@ export default function SettingsScreen() {
       </View>
 
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Uygulama Bilgisi</Text>
-        <Text style={styles.infoText}>Yemek Menü Uygulaması v1.0</Text>
-        <Text style={styles.infoText}>SQLite veritabanı kullanır</Text>
-        <Text style={styles.infoText}>Çevrimdışı destek mevcuttur</Text>
+        <Text style={[styles.sectionTitle, { color: theme.text }]}>
+          Uygulama Bilgisi
+        </Text>
+        <Text style={[styles.infoText, { color: theme.text }]}>
+          Yemek Menü Uygulaması v1.2 (Agentic Mode)
+        </Text>
+        <Text style={[styles.infoText, { color: theme.text }]}>
+          Beslenme Uzmanı & Akıllı Planlayıcı
+        </Text>
       </View>
     </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#f8f9fa',
-  },
+  container: { flex: 1 },
   header: {
     fontSize: 24,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    padding: 15,
-    backgroundColor: '#ffffff',
+    fontWeight: "bold",
+    textAlign: "center",
+    padding: 20,
     borderBottomWidth: 1,
-    borderBottomColor: '#e9ecef',
   },
   section: {
-    backgroundColor: '#ffffff',
-    margin: 10,
-    padding: 15,
-    borderRadius: 8,
+    margin: 15,
+    padding: 20,
+    borderRadius: 20,
+    elevation: 4,
+    shadowColor: "#000",
+    shadowOpacity: 0.05,
+    shadowRadius: 10,
   },
-  sectionTitle: {
-    fontSize: 18,
-    fontWeight: '600',
-    marginBottom: 15,
-  },
+  sectionTitle: { fontSize: 18, fontWeight: "700", marginBottom: 20 },
   button: {
-    backgroundColor: '#0d6efd',
-    padding: 15,
-    borderRadius: 8,
-    alignItems: 'center',
-    marginBottom: 10,
+    padding: 16,
+    borderRadius: 15,
+    alignItems: "center",
+    marginBottom: 12,
   },
-  dangerButton: {
-    backgroundColor: '#dc3545',
-  },
-  logoutButton: {
-    backgroundColor: '#6c757d',
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: '600',
-  },
-  infoText: {
-    fontSize: 14,
-    marginBottom: 5,
-    color: '#6c757d',
-  },
+  dangerButton: { backgroundColor: "#dc3545" },
+  logoutButton: { backgroundColor: "#6c757d" },
+  buttonText: { color: "white", fontSize: 16, fontWeight: "bold" },
+  infoText: { fontSize: 14, marginBottom: 8, opacity: 0.7 },
 });

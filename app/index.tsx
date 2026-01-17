@@ -1,186 +1,307 @@
-import { router } from 'expo-router';
-import React, { useState } from 'react';
-import { Alert, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import { useAuth } from '../auth';
+import { Ionicons } from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
+import { useRouter } from "expo-router";
+import React, { useState } from "react";
+import {
+    ActivityIndicator,
+    Alert,
+    Dimensions,
+    ImageBackground,
+    KeyboardAvoidingView,
+    Platform,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
+} from "react-native";
+import { useAuth } from "../auth";
+import { useColorScheme } from "../hooks/use-color-scheme";
+
+const { width } = Dimensions.get("window");
 
 export default function LoginScreen() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
-  const [isRegisterMode, setIsRegisterMode] = useState(false);
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isRegister, setIsRegister] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const { login, register } = useAuth();
+  const router = useRouter();
+  const colorScheme = useColorScheme() ?? "light";
 
-  const handleLogin = async () => {
-    if (!username || !password) {
-      Alert.alert('Hata', 'Lütfen kullanıcı adı ve şifre girin.');
+  const handleAuth = async () => {
+    if (!username || !password || (isRegister && !email)) {
+      Alert.alert("Hata", "Lütfen tüm alanları doldurun.");
       return;
     }
 
+    setIsSubmitting(true);
     try {
-      const success = await login(username, password);
-      if (success) {
-        router.replace('/(tabs)');
-      } else {
-        Alert.alert('Hata', 'Geçersiz kullanıcı adı veya şifre.');
-      }
-    } catch (error) {
-      Alert.alert('Hata', 'Giriş yapılırken bir hata oluştu.');
-    }
-  };
+      const result = isRegister
+        ? await register(username, email, password)
+        : await login(username, password);
 
-  const handleRegister = async () => {
-    if (!username || !password || !email) {
-      Alert.alert('Hata', 'Lütfen tüm alanları doldurun.');
-      return;
-    }
-
-    try {
-      const success = await register(username, email, password);
-      if (success) {
-        Alert.alert('Başarılı', 'Kayıt başarılı! Giriş yapabilirsiniz.', [
-          { text: 'Tamam', onPress: () => router.replace('/(tabs)') }
-        ]);
+      if (result.success) {
+        router.replace("/(tabs)");
       } else {
-        Alert.alert('Hata', 'Bu kullanıcı adı veya e-posta zaten kullanılıyor.');
+        Alert.alert("Hata", result.error?.message || "Bir hata oluştu.");
       }
-    } catch (error) {
-      Alert.alert('Hata', 'Kayıt yapılırken bir hata oluştu.');
+    } catch (error: any) {
+      Alert.alert("Hata", error.message || "Bir hata oluştu.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   const handleDemoLogin = async () => {
-    console.log('Demo giriş butonu tıklandı!');
+    setIsSubmitting(true);
     try {
-      const success = await login('demokullanici', 'demoparola');
-      console.log('Login sonucu:', success);
-      if (success) {
-        console.log('Yönlendiriliyor...');
-        router.replace('/(tabs)');
+      const result = await login("demo", "demo123");
+      if (result.success) {
+        router.replace("/(tabs)");
       } else {
-        Alert.alert('Hata', 'Demo girişi başarısız.');
+        // Demo hesabı yoksa oluştur
+        const regResult = await register(
+          "demo",
+          "demo@yemekmenu.com",
+          "demo123",
+        );
+        if (regResult.success) {
+          router.replace("/(tabs)");
+        }
       }
-    } catch (error) {
-      console.error('Demo giriş hatası:', error);
-      Alert.alert('Hata', 'Demo girişi başarısız.');
+    } catch (e) {
+      router.replace("/(tabs)"); // Fallback
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>Yemek Menü Uygulaması</Text>
-      
-      <View style={styles.form}>
-        <TextInput
-          style={styles.input}
-          placeholder="Kullanıcı Adı"
-          value={username}
-          onChangeText={setUsername}
-        />
-        
-        {!isRegisterMode && (
-          <TextInput
-            style={styles.input}
-            placeholder="Şifre"
-            secureTextEntry
-            value={password}
-            onChangeText={setPassword}
-          />
-        )}
-        
-        {isRegisterMode && (
-          <>
-            <TextInput
-              style={styles.input}
-              placeholder="E-posta"
-              value={email}
-              onChangeText={setEmail}
-              keyboardType="email-address"
-            />
-            <TextInput
-              style={styles.input}
-              placeholder="Şifre"
-              secureTextEntry
-              value={password}
-              onChangeText={setPassword}
-            />
-          </>
-        )}
-        
-        {isRegisterMode ? (
-          <TouchableOpacity style={styles.button} onPress={handleRegister}>
-            <Text style={styles.buttonText}>Kayıt Ol</Text>
-          </TouchableOpacity>
-        ) : (
-          <TouchableOpacity style={styles.button} onPress={handleLogin}>
-            <Text style={styles.buttonText}>Giriş Yap</Text>
-          </TouchableOpacity>
-        )}
-        
-        <TouchableOpacity 
-          style={[styles.button, styles.secondaryButton]} 
-          onPress={() => setIsRegisterMode(!isRegisterMode)}
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={styles.container}
+    >
+      <ImageBackground
+        source={{
+          uri: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2070&auto=format&fit=crop",
+        }}
+        style={styles.background}
+      >
+        <LinearGradient
+          colors={["rgba(0,0,0,0.3)", "rgba(0,0,0,0.85)"]}
+          style={styles.overlay}
         >
-          <Text style={styles.buttonText}>
-            {isRegisterMode ? 'Giriş Yap' : 'Kayıt Ol'}
-          </Text>
-        </TouchableOpacity>
-        
-        <TouchableOpacity 
-          style={[styles.button, styles.demoButton]} 
-          onPress={handleDemoLogin}
-        >
-          <Text style={styles.buttonText}>Demo Hesapla Giriş Yap</Text>
-        </TouchableOpacity>
-      </View>
-    </ScrollView>
+          <View style={styles.content}>
+            <View style={styles.headerContainer}>
+              <View style={styles.logoContainer}>
+                <Ionicons name="restaurant" size={40} color="#FF7A00" />
+              </View>
+              <Text style={styles.title}>YemekMenü</Text>
+              <Text style={styles.subtitle}>Beslenme Uzmanınız</Text>
+            </View>
+
+            <View style={styles.formContainer}>
+              <View style={styles.inputWrapper}>
+                <Ionicons
+                  name="person-outline"
+                  size={20}
+                  color="#aaa"
+                  style={styles.inputIcon}
+                />
+                <TextInput
+                  placeholder="Kullanıcı Adı"
+                  placeholderTextColor="#aaa"
+                  style={styles.input}
+                  value={username}
+                  onChangeText={setUsername}
+                  autoCapitalize="none"
+                />
+              </View>
+
+              {isRegister && (
+                <View style={styles.inputWrapper}>
+                  <Ionicons
+                    name="mail-outline"
+                    size={20}
+                    color="#aaa"
+                    style={styles.inputIcon}
+                  />
+                  <TextInput
+                    placeholder="E-posta"
+                    placeholderTextColor="#aaa"
+                    style={styles.input}
+                    value={email}
+                    onChangeText={setEmail}
+                    autoCapitalize="none"
+                    keyboardType="email-address"
+                  />
+                </View>
+              )}
+
+              <View style={styles.inputWrapper}>
+                <Ionicons
+                  name="lock-closed-outline"
+                  size={20}
+                  color="#aaa"
+                  style={styles.inputIcon}
+                />
+                <TextInput
+                  placeholder="Şifre"
+                  placeholderTextColor="#aaa"
+                  style={styles.input}
+                  value={password}
+                  onChangeText={setPassword}
+                  secureTextEntry
+                />
+              </View>
+
+              <TouchableOpacity
+                style={styles.loginButton}
+                onPress={handleAuth}
+                disabled={isSubmitting}
+              >
+                <LinearGradient
+                  colors={["#FF7A00", "#FF4D00"]}
+                  start={{ x: 0, y: 0 }}
+                  end={{ x: 1, y: 0 }}
+                  style={styles.gradientButton}
+                >
+                  {isSubmitting ? (
+                    <ActivityIndicator color="white" />
+                  ) : (
+                    <Text style={styles.buttonText}>
+                      {isRegister ? "Kayıt Ol" : "Giriş Yap"}
+                    </Text>
+                  )}
+                </LinearGradient>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                style={styles.switchButton}
+                onPress={() => setIsRegister(!isRegister)}
+              >
+                <Text style={styles.switchText}>
+                  {isRegister
+                    ? "Zaten hesabınız var mı? Giriş yapın"
+                    : "Hesabınız yok mu? Hemen kayıt olun"}
+                </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                style={styles.demoButton}
+                onPress={handleDemoLogin}
+              >
+                <Text style={styles.demoButtonText}>Hızlı Demo Deneyimi</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </LinearGradient>
+      </ImageBackground>
+    </KeyboardAvoidingView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flexGrow: 1,
-    justifyContent: 'center',
-    padding: 20,
-    backgroundColor: '#f8f9fa',
+  container: { flex: 1 },
+  background: { flex: 1, width: "100%", height: "100%" },
+  overlay: {
+    flex: 1,
+    paddingHorizontal: 30,
+    justifyContent: "center",
   },
-  title: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    textAlign: 'center',
+  content: {
+    alignItems: "center",
+  },
+  headerContainer: {
+    alignItems: "center",
     marginBottom: 40,
-    color: '#343a40',
   },
-  form: {
-    width: '100%',
-    maxWidth: 400,
-    alignSelf: 'center',
-  },
-  input: {
-    backgroundColor: 'white',
-    paddingHorizontal: 15,
-    paddingVertical: 12,
-    borderRadius: 8,
+  logoContainer: {
+    width: 80,
+    height: 80,
+    borderRadius: 25,
+    backgroundColor: "rgba(255,255,255,0.15)",
+    alignItems: "center",
+    justifyContent: "center",
     marginBottom: 15,
     borderWidth: 1,
-    borderColor: '#dee2e6',
+    borderColor: "rgba(255,255,255,0.3)",
+  },
+  title: {
+    fontSize: 36,
+    fontWeight: "bold",
+    color: "white",
+    letterSpacing: 1,
+  },
+  subtitle: {
+    fontSize: 18,
+    color: "#aaa",
+    marginTop: 5,
+  },
+  formContainer: {
+    width: "100%",
+    maxWidth: 400,
+  },
+  inputWrapper: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "rgba(255,255,255,0.1)",
+    borderRadius: 15,
+    marginBottom: 15,
+    paddingHorizontal: 15,
+    height: 60,
+    borderWidth: 1,
+    borderColor: "rgba(255,255,255,0.1)",
+  },
+  inputIcon: {
+    marginRight: 10,
+  },
+  input: {
+    flex: 1,
+    color: "white",
     fontSize: 16,
   },
-  button: {
-    backgroundColor: '#0d6efd',
-    padding: 15,
-    borderRadius: 8,
-    alignItems: 'center',
-    marginBottom: 10,
+  loginButton: {
+    height: 60,
+    borderRadius: 15,
+    overflow: "hidden",
+    marginTop: 10,
+    elevation: 5,
   },
-  secondaryButton: {
-    backgroundColor: '#6c757d',
-  },
-  demoButton: {
-    backgroundColor: '#20c997',
+  gradientButton: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
   },
   buttonText: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: '600',
+    color: "white",
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+  switchButton: {
+    marginTop: 20,
+    alignItems: "center",
+  },
+  switchText: {
+    color: "#FF7A00",
+    fontSize: 14,
+    fontWeight: "500",
+  },
+  demoButton: {
+    marginTop: 24,
+    padding: 16,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: "rgba(255,255,255,0.2)",
+    alignItems: "center",
+    backgroundColor: "transparent",
+  },
+  demoButtonText: {
+    color: "#aaa",
+    fontSize: 14,
+    fontWeight: "600",
   },
 });

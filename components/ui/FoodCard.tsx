@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
     ActivityIndicator,
     Animated,
@@ -7,10 +7,15 @@ import {
     Text,
     TouchableOpacity,
     View,
-} from 'react-native';
-import { BorderRadius, Colors, Spacing, Typography } from '../../constants/theme';
-import { Food, UserRating } from '../../types';
-import { LazyImage } from './LazyImage';
+} from "react-native";
+import {
+    BorderRadius,
+    Colors,
+    Spacing,
+    Typography,
+} from "../../constants/theme";
+import { Food, UserRating } from "../../types";
+import { LazyImage } from "./LazyImage";
 
 interface FoodCardProps {
   food: Food;
@@ -18,10 +23,10 @@ interface FoodCardProps {
   onRatingChange?: (foodId: number, rating: number) => void;
   onPress?: (food: Food) => void;
   showRating?: boolean;
-  size?: 'small' | 'medium' | 'large';
+  size?: "small" | "medium" | "large";
 }
 
-const { width: screenWidth } = Dimensions.get('window');
+const { width: screenWidth } = Dimensions.get("window");
 
 export const FoodCard: React.FC<FoodCardProps> = ({
   food,
@@ -29,7 +34,7 @@ export const FoodCard: React.FC<FoodCardProps> = ({
   onRatingChange,
   onPress,
   showRating = true,
-  size = 'medium'
+  size = "medium",
 }) => {
   const [rating, setRating] = useState(userRating?.rating || 0);
   const [scaleAnim] = useState(new Animated.Value(1));
@@ -38,7 +43,11 @@ export const FoodCard: React.FC<FoodCardProps> = ({
   const cardSizes = {
     small: { width: 140, height: 180, imageHeight: 80 },
     medium: { width: 200, height: 250, imageHeight: 120 },
-    large: { width: screenWidth - Spacing.lg * 2, height: 320, imageHeight: 180 }
+    large: {
+      width: screenWidth - Spacing.lg * 2,
+      height: 320,
+      imageHeight: 180,
+    },
   };
 
   const cardSize = cardSizes[size];
@@ -65,7 +74,7 @@ export const FoodCard: React.FC<FoodCardProps> = ({
 
   const handleRatingPress = (newRating: number) => {
     setRating(newRating);
-    
+
     // Rating animasyonu
     Animated.sequence([
       Animated.timing(ratingAnim, {
@@ -77,7 +86,7 @@ export const FoodCard: React.FC<FoodCardProps> = ({
         toValue: 0,
         duration: 200,
         useNativeDriver: true,
-      })
+      }),
     ]).start();
 
     if (onRatingChange) {
@@ -103,14 +112,16 @@ export const FoodCard: React.FC<FoodCardProps> = ({
           activeOpacity={0.7}
         >
           <Animated.View style={{ transform: [{ scale: starScale }] }}>
-            <Text style={[
-              styles.star,
-              i <= rating ? styles.starFilled : styles.starEmpty
-            ]}>
-              {i <= rating ? '★' : '☆'}
+            <Text
+              style={[
+                styles.star,
+                i <= rating ? styles.starFilled : styles.starEmpty,
+              ]}
+            >
+              {i <= rating ? "★" : "☆"}
             </Text>
           </Animated.View>
-        </TouchableOpacity>
+        </TouchableOpacity>,
       );
     }
 
@@ -119,28 +130,28 @@ export const FoodCard: React.FC<FoodCardProps> = ({
 
   const renderDietaryInfo = () => {
     const badges = [];
-    
-    if (food.is_vegetarian === 1) {
+
+    if (food.is_vegetarian) {
       badges.push(
         <View key="vegetarian" style={[styles.badge, styles.vegetarianBadge]}>
           <Text style={styles.badgeText}>V</Text>
-        </View>
+        </View>,
       );
     }
-    
-    if (food.is_vegan === 1) {
+
+    if (food.is_vegan) {
       badges.push(
         <View key="vegan" style={[styles.badge, styles.veganBadge]}>
           <Text style={styles.badgeText}>VG</Text>
-        </View>
+        </View>,
       );
     }
-    
-    if (food.is_halal === 1) {
+
+    if (food.is_halal) {
       badges.push(
         <View key="halal" style={[styles.badge, styles.halalBadge]}>
           <Text style={styles.badgeText}>H</Text>
-        </View>
+        </View>,
       );
     }
 
@@ -150,14 +161,16 @@ export const FoodCard: React.FC<FoodCardProps> = ({
   };
 
   return (
-    <Animated.View style={[
-      styles.card,
-      {
-        width: cardSize.width,
-        height: cardSize.height,
-        transform: [{ scale: scaleAnim }]
-      }
-    ]}>
+    <Animated.View
+      style={[
+        styles.card,
+        {
+          width: cardSize.width,
+          height: cardSize.height,
+          transform: [{ scale: scaleAnim }],
+        },
+      ]}
+    >
       <TouchableOpacity
         style={styles.cardContent}
         onPress={handleCardPress}
@@ -180,7 +193,7 @@ export const FoodCard: React.FC<FoodCardProps> = ({
           <Text style={styles.foodName} numberOfLines={2}>
             {food.name}
           </Text>
-          
+
           <Text style={styles.category} numberOfLines={1}>
             {food.category}
           </Text>
@@ -189,9 +202,7 @@ export const FoodCard: React.FC<FoodCardProps> = ({
             <View style={styles.ratingSection}>
               {renderStars()}
               {rating > 0 && (
-                <Text style={styles.ratingText}>
-                  {rating.toFixed(1)}/5
-                </Text>
+                <Text style={styles.ratingText}>{rating.toFixed(1)}/5</Text>
               )}
             </View>
           )}
@@ -219,30 +230,30 @@ const styles = StyleSheet.create({
   cardContent: {
     flex: 1,
     borderRadius: BorderRadius.large,
-    overflow: 'hidden',
+    overflow: "hidden",
   },
   imageContainer: {
-    position: 'relative',
-    width: '100%',
+    position: "relative",
+    width: "100%",
     backgroundColor: Colors.light.background,
   },
   image: {
-    width: '100%',
-    height: '100%',
+    width: "100%",
+    height: "100%",
   },
   dietaryBadges: {
-    position: 'absolute',
+    position: "absolute",
     top: Spacing.sm,
     right: Spacing.sm,
-    flexDirection: 'row',
+    flexDirection: "row",
     gap: Spacing.xs,
   },
   badge: {
     width: 24,
     height: 24,
     borderRadius: BorderRadius.full,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: Colors.light.surface,
     shadowColor: Colors.light.textMain,
     shadowOffset: {
@@ -257,20 +268,20 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.light.success,
   },
   veganBadge: {
-    backgroundColor: '#2ecc71',
+    backgroundColor: "#2ecc71",
   },
   halalBadge: {
     backgroundColor: Colors.light.primary,
   },
   badgeText: {
     ...Typography.body.small,
-    fontWeight: 'bold' as const,
+    fontWeight: "bold" as const,
     color: Colors.light.surface,
   },
   content: {
     flex: 1,
     padding: Spacing.sm,
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
   },
   foodName: {
     ...Typography.heading.small,
@@ -282,14 +293,14 @@ const styles = StyleSheet.create({
     ...Typography.body.small,
     color: Colors.light.textSecondary,
     marginBottom: Spacing.sm,
-    textTransform: 'capitalize',
+    textTransform: "capitalize",
   },
   ratingSection: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   ratingContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginBottom: Spacing.xs,
   },
   starButton: {
@@ -308,6 +319,6 @@ const styles = StyleSheet.create({
   ratingText: {
     ...Typography.body.small,
     color: Colors.light.textSecondary,
-    fontWeight: '500' as const,
+    fontWeight: "500" as const,
   },
 });

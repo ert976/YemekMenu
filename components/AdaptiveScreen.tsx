@@ -1,5 +1,8 @@
-import React from 'react';
-import { StyleSheet, View, useWindowDimensions } from 'react-native';
+import React from "react";
+import { StyleSheet, View, useWindowDimensions } from "react-native";
+
+// Responsive text component
+import { Text, TextStyle } from "react-native";
 
 // Breakpoint constants
 export const BREAKPOINTS = {
@@ -12,7 +15,7 @@ export const BREAKPOINTS = {
 // Screen size detection hook
 export const useScreenSize = () => {
   const { width, height } = useWindowDimensions();
-  
+
   return {
     width,
     height,
@@ -20,7 +23,7 @@ export const useScreenSize = () => {
     isTablet: width >= BREAKPOINTS.TABLET && width < BREAKPOINTS.DESKTOP,
     isDesktop: width >= BREAKPOINTS.DESKTOP,
     isLargeDesktop: width >= BREAKPOINTS.LARGE_DESKTOP,
-    orientation: width > height ? 'landscape' : 'portrait',
+    orientation: width > height ? "landscape" : "portrait",
   };
 };
 
@@ -32,7 +35,7 @@ interface AdaptiveScreenProps {
 
 export const AdaptiveScreen: React.FC<AdaptiveScreenProps> = ({ children }) => {
   const { width } = useWindowDimensions();
-  
+
   const getContainerStyle = () => {
     if (width < BREAKPOINTS.TABLET) {
       return styles.mobileContainer;
@@ -66,7 +69,7 @@ export const ResponsiveGrid: React.FC<ResponsiveGridProps> = ({
   padding = 16,
 }) => {
   const { width } = useWindowDimensions();
-  
+
   const getColumns = () => {
     if (width < BREAKPOINTS.TABLET) return cols.mobile || 1;
     if (width < BREAKPOINTS.DESKTOP) return cols.tablet || 2;
@@ -81,8 +84,8 @@ export const ResponsiveGrid: React.FC<ResponsiveGridProps> = ({
   };
 
   const gridStyle = {
-    flexDirection: 'row' as const,
-    flexWrap: 'wrap' as const,
+    flexDirection: "row" as const,
+    flexWrap: "wrap" as const,
     paddingHorizontal: getPadding(),
     marginHorizontal: -gap / 2,
   };
@@ -94,9 +97,9 @@ export const ResponsiveGrid: React.FC<ResponsiveGridProps> = ({
   };
 
   return (
-    <View style={gridStyle}>
+    <View style={gridStyle as any}>
       {React.Children.map(children, (child, index) => (
-        <View key={index} style={itemStyle}>
+        <View key={`grid-item-${index}`} style={itemStyle as any}>
           {child}
         </View>
       ))}
@@ -106,16 +109,16 @@ export const ResponsiveGrid: React.FC<ResponsiveGridProps> = ({
 
 // Adaptive spacing component
 interface AdaptiveSpacingProps {
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  size?: "xs" | "sm" | "md" | "lg" | "xl";
   vertical?: boolean;
 }
 
 export const AdaptiveSpacing: React.FC<AdaptiveSpacingProps> = ({
-  size = 'md',
+  size = "md",
   vertical = true,
 }) => {
   const { width } = useWindowDimensions();
-  
+
   const getSpacing = () => {
     const baseSpacing = {
       xs: 4,
@@ -124,46 +127,43 @@ export const AdaptiveSpacing: React.FC<AdaptiveSpacingProps> = ({
       lg: 24,
       xl: 32,
     };
-    
+
     let spacing = baseSpacing[size];
-    
+
     // Scale spacing for larger screens
     if (width >= BREAKPOINTS.DESKTOP) {
       spacing *= 1.5;
     } else if (width >= BREAKPOINTS.TABLET) {
       spacing *= 1.25;
     }
-    
+
     return spacing;
   };
 
   const style = {
-    [vertical ? 'height' : 'width']: getSpacing(),
+    [vertical ? "height" : "width"]: getSpacing(),
   };
 
   return <View style={style} />;
 };
 
-// Responsive text component
-import { Text, TextStyle } from 'react-native';
-
 interface AdaptiveTextProps {
   children: React.ReactNode;
-  variant?: 'heading1' | 'heading2' | 'heading3' | 'body' | 'caption';
-  weight?: 'light' | 'normal' | 'medium' | 'bold';
+  variant?: "heading1" | "heading2" | "heading3" | "body" | "caption";
+  weight?: "light" | "normal" | "medium" | "bold";
   color?: string;
   style?: TextStyle;
 }
 
 export const AdaptiveText: React.FC<AdaptiveTextProps> = ({
   children,
-  variant = 'body',
-  weight = 'normal',
-  color = '#333',
+  variant = "body",
+  weight = "normal",
+  color = "#333",
   style,
 }) => {
   const { width } = useWindowDimensions();
-  
+
   const getTypography = () => {
     const baseTypography = {
       heading1: { fontSize: 32, lineHeight: 40 },
@@ -172,9 +172,9 @@ export const AdaptiveText: React.FC<AdaptiveTextProps> = ({
       body: { fontSize: 16, lineHeight: 24 },
       caption: { fontSize: 12, lineHeight: 16 },
     };
-    
+
     let typography = baseTypography[variant];
-    
+
     // Scale font sizes for different screen sizes
     if (width < BREAKPOINTS.TABLET) {
       typography = {
@@ -189,18 +189,18 @@ export const AdaptiveText: React.FC<AdaptiveTextProps> = ({
         lineHeight: typography.lineHeight * 1.125,
       };
     }
-    
+
     return typography;
   };
 
   const getFontWeight = () => {
     const weights = {
-      light: '300' as const,
-      normal: '400' as const,
-      medium: '500' as const,
-      bold: '700' as const,
+      light: "300" as const,
+      normal: "400" as const,
+      medium: "500" as const,
+      bold: "700" as const,
     };
-    
+
     return weights[weight];
   };
 
@@ -231,20 +231,20 @@ export const AdaptiveCard: React.FC<AdaptiveCardProps> = ({
   style,
 }) => {
   const { width } = useWindowDimensions();
-  
+
   const getCardStyle = () => {
     const baseStyle = {
-      backgroundColor: '#fff',
+      backgroundColor: "#fff",
       borderRadius,
       padding,
       marginVertical: 8,
-      shadowColor: '#000',
+      shadowColor: "#000",
       shadowOffset: { width: 0, height: 2 },
       shadowOpacity: 0.1,
       shadowRadius: 4,
       elevation,
     };
-    
+
     // Adjust for different screen sizes
     if (width < BREAKPOINTS.TABLET) {
       return {
@@ -264,7 +264,7 @@ export const AdaptiveCard: React.FC<AdaptiveCardProps> = ({
         shadowRadius: 8,
       };
     }
-    
+
     return baseStyle;
   };
 
@@ -275,7 +275,7 @@ export const AdaptiveCard: React.FC<AdaptiveCardProps> = ({
 export const useResponsive = () => {
   const { width, height } = useWindowDimensions();
   const screenSize = useScreenSize();
-  
+
   return {
     ...screenSize,
     // Spacing utilities
@@ -309,14 +309,14 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 24,
     maxWidth: 768,
-    alignSelf: 'center',
-    width: '100%',
+    alignSelf: "center",
+    width: "100%",
   },
   desktopContainer: {
     flex: 1,
     paddingHorizontal: 32,
     maxWidth: 1200,
-    alignSelf: 'center',
-    width: '100%',
+    alignSelf: "center",
+    width: "100%",
   },
 });

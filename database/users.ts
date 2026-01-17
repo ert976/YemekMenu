@@ -1,15 +1,14 @@
 import { User } from '../types';
 
-// Kullanıcı işlemleri
-export const getUser = async (username: string, password: string): Promise<User | null> => {
+const users = new Map<number, User>();
+let nextUserId = 1;
+
+export const getUser = async (username: string): Promise<User | null> => {
   try {
-    // Mock kullanıcı kontrolü
-    if (username === 'testuser' && password === 'password123') {
-      return {
-        id: 1,
-        username: 'testuser',
-        email: 'test@example.com'
-      };
+    for (const [id, user] of users) {
+      if (user.username === username) {
+        return user;
+      }
     }
     return null;
   } catch (error) {
@@ -18,14 +17,20 @@ export const getUser = async (username: string, password: string): Promise<User 
   }
 };
 
-export const addUser = async (username: string, email: string, password: string): Promise<boolean> => {
+export const addUser = async (username: string, email: string, passwordHash: string): Promise<number | null> => {
   try {
-    // Mock kullanıcı ekleme
-    console.log(`Kullanıcı eklendi: ${username}, ${email}`);
-    return true;
+    const id = nextUserId++;
+    const newUser: User = {
+      id,
+      username,
+      email,
+      passwordHash
+    };
+    users.set(id, newUser);
+    return id;
   } catch (error) {
     console.error('Kullanıcı ekleme hatası:', error);
-    return false;
+    return null;
   }
 };
 

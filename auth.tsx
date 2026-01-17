@@ -1,110 +1,117 @@
-import * as WebBrowser from 'expo-web-browser';
-import { createContext, useContext, useEffect, useState } from 'react';
-import { addUser, getUser, initializeDatabase } from './database';
-import { AuthContextType, User } from './types';
-import { hashPassword } from './utils/crypto-utils';
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { addUser, getUser } from "./database";
+import { ApiResponse, User } from "./types";
+import { storage } from "./utils/storage";
 
-WebBrowser.maybeCompleteAuthSession();
+interface AuthContextType {
+  user: User | null;
+  loading: boolean;
+  login: (username: string, passwordHash: string) => Promise<ApiResponse<User>>;
+  register: (
+    username: string,
+    email: string,
+    passwordHash: string,
+  ) => Promise<ApiResponse<User>>;
+  logout: () => Promise<void>;
+}
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export function AuthProvider({ children }: { children: React.ReactNode }) {
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [user, setUser] = useState<User | null>(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Uygulama başladığında veritabanını başlat
-    initializeDatabase();
-    
-    // Burada mevcut kullanıcı oturumunu kontrol edebiliriz
-    // Basit bir uygulama için localStorage veya async storage kullanabiliriz
-    // Ancak bu projede SQLite kullanarak kullanıcı durumunu yöneteceğiz
-    
-    // Demo kullanıcı oturumunu başlat
-    const demoLogin = async () => {
-      const demoUser = await getUser('demokullanici', 'demoparola');
-      if (demoUser) {
-        setUser(demoUser as User);
-        setIsAuthenticated(true);
-      }
-      setLoading(false);
-    };
-    
-    demoLogin();
+    loadUser();
   }, []);
 
-  const login = async (username: string, password: string): Promise<boolean> => {
+  const loadUser = async () => {
     try {
-      // Şifreleri hash'le ve karşılaştır
-      const hashedPassword = await hashPassword(password);
-      const userData = await getUser(username, hashedPassword);
-
-      if (userData) {
-        setUser(userData as User);
-        setIsAuthenticated(true);
-        return true;
+      const savedUser = await storage.getItem("@user");
+      if (savedUser) {
+        setUser(JSON.parse(savedUser));
       }
-      return false;
-    } catch (error) {
-      console.error('Giriş hatası:', error);
-      return false;
+    } catch (e) {
+      console.error("Yükleme hatası:", e);
+    } finally {
+      setLoading(false);
     }
   };
 
-  const register = async (username: string, email: string, password: string): Promise<boolean> => {
+  const login = async (
+    username: string,
+    passwordHash: string,
+  ): Promise<ApiResponse<User>> => {
     try {
-      // Kullanıcı adı veya e-posta zaten var mı kontrol et
-      const existingUser = await getUser(username, password);
-      if (existingUser) {
-        return false; // Kullanıcı zaten var
+      const foundUser = await getUser(username, passwordHash);
+      if (foundUser) {
+        const userToSave = {
+          id: foundUser.id,
+          username: foundUser.username,
+          email: foundUser.email,
+        };
+        await storage.setItem("@user", JSON.stringify(userToSave));
+        setUser(userToSave);
+        return { success: true, data: userToSave };
       }
-
-      // Şifreleri hash'le
-      const hashedPassword = await hashPassword(password);
-
-      const userId = await addUser(username, email, hashedPassword);
-      if (userId) {
-        // Kayıt sonrası hash'li şifre ile giriş yap
-        const userData = await getUser(username, hashedPassword);
-        if (userData) {
-          setUser(userData as User);
-          setIsAuthenticated(true);
-          return true;
-        }
-      }
-      return false;
-    } catch (error) {
-      console.error('Kayıt hatası:', error);
-      return false;
+      return {
+        success: false,
+        error: {
+          code: "AUTH_FAILED",
+          message: "Hatalı kullanıcı adı veya şifre.",
+        },
+      };
+    } catch (e: any) {
+      return {
+        success: false,
+        error: {
+          code: "AUTH_ERROR",
+          message: e.message || "Giriş yapılamadı.",
+        },
+      };
     }
   };
 
-  const logout = () => {
+  const register = async (
+    username: string,
+    email: string,
+    passwordHash: string,
+  ): Promise<ApiResponse<User>> => {
+    try {
+      const id = await addUser(username, email, passwordHash);
+      const newUser = { id, username, email };
+      await storage.setItem("@user", JSON.stringify(newUser));
+      setUser(newUser);
+      return { success: true, data: newUser };
+    } catch (e: any) {
+      return {
+        success: false,
+        error: {
+          code: "AUTH_ERROR",
+          message: e.message || "Kayıt yapılamadı.",
+        },
+      };
+    }
+  };
+
+  const logout = async () => {
+    await storage.removeItem("@user");
     setUser(null);
-    setIsAuthenticated(false);
-  };
-
-  const value = {
-    user,
-    isAuthenticated,
-    login,
-    register,
-    logout,
-    loading
   };
 
   return (
-    <AuthContext.Provider value={value}>
+    <AuthContext.Provider value={{ user, loading, login, register, logout }}>
       {children}
     </AuthContext.Provider>
   );
-}
+};
 
-export function useAuth() {
+export const useAuth = () => {
   const context = useContext(AuthContext);
   if (context === undefined) {
-    throw new Error('useAuth must be used within an AuthProvider');
+    throw new Error("useAuth must be used within an AuthProvider");
   }
   return context;
-}
+};

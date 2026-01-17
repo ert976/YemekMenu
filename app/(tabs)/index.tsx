@@ -1,28 +1,38 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import FoodRatingComponent from '@/components/FoodRatingComponent';
-import { useAuth } from '@/auth';
+import { useAuth } from "@/auth";
+import FoodRatingComponent from "@/components/FoodRatingComponent";
+import { Colors } from "@/constants/Colors";
+import { useColorScheme } from "@/hooks/use-color-scheme";
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
 
 export default function RateFoodScreen() {
+  const colorScheme = useColorScheme() ?? "light";
+  const theme = Colors[colorScheme];
   const { user } = useAuth();
 
   const handleRatingComplete = () => {
     // Derecelendirme tamamlandığında yapılacak işlemler
-    console.log('Derecelendirme tamamlandı');
+    console.log("Derecelendirme tamamlandı");
   };
 
   if (!user) {
     return (
-      <View style={styles.container}>
-        <Text>Lütfen önce giriş yapın.</Text>
+      <View style={[styles.container, { backgroundColor: theme.background }]}>
+        <Text style={{ color: theme.text }}>Lütfen önce giriş yapın.</Text>
       </View>
     );
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.header}>Yemek Derecelendirme</Text>
-      <Text style={styles.subHeader}>Yemekleri beğeninize göre derecelendirin</Text>
+    <View style={[styles.container, { backgroundColor: theme.background }]}>
+      <View style={styles.headerArea}>
+        <Text style={[styles.header, { color: theme.text }]}>
+          Yemekleri Keşfet
+        </Text>
+        <Text style={styles.subHeader}>
+          Zevkine göre puanla, sana özel menüler hazırlayalım
+        </Text>
+      </View>
       <FoodRatingComponent onRatingComplete={handleRatingComplete} />
     </View>
   );
@@ -31,22 +41,20 @@ export default function RateFoodScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f8f9fa',
+  },
+  headerArea: {
+    paddingTop: 60,
+    paddingHorizontal: 20,
+    paddingBottom: 10,
   },
   header: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    padding: 15,
-    backgroundColor: '#ffffff',
-    borderBottomWidth: 1,
-    borderBottomColor: '#e9ecef',
+    fontSize: 28,
+    fontWeight: "800",
+    letterSpacing: -0.5,
   },
   subHeader: {
-    fontSize: 16,
-    textAlign: 'center',
-    padding: 10,
-    backgroundColor: '#e9ecef',
-    color: '#6c757d',
+    fontSize: 15,
+    color: "#888",
+    marginTop: 4,
   },
 });

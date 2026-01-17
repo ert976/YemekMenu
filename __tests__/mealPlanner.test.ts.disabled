@@ -1,5 +1,7 @@
 import { addUser, saveMealPlan } from '../database';
-import { createMockFood, createMockUser, createMockUserRating, expectError, setupTestDatabase, teardownTestDatabase } from './testUtils';
+import { createMockFood, createMockUser, createMockUserRating, expectError, setupTestDatabase, teardownTestDatabase, mockDatabase } from './testUtils';
+import { login } from '../auth';
+import { generateBalancedMenu, getFoodsByCategory, searchFoods } from '../mealPlanner';
 
 // Authentication testleri
 describe('Authentication', () => {
