@@ -47,11 +47,12 @@ export const MenuPlanner: React.FC<MenuPlannerProps> = ({ onMenuCreated }) => {
         onMenuCreated(plan.id);
       }
       Alert.alert("Başarılı", "30 Günlük Planınız Oluşturuldu!");
-    } catch (error: any) {
-      Alert.alert(
-        "Hata",
-        error.message || "Menü oluşturulurken bir hata oluştu.",
-      );
+    } catch (error: unknown) {
+      const msg =
+        error instanceof Error
+          ? error.message
+          : "Menü oluşturulurken bir hata oluştu.";
+      Alert.alert("Hata", msg);
     } finally {
       setIsGenerating(false);
     }

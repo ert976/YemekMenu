@@ -1,7 +1,7 @@
 import { Database } from "../types";
 
 // Bellek içi depolama (Global state)
-const memoryStorage: any = {
+const memoryStorage: Record<string, unknown> = {
   users: [],
   foods: [],
   user_ratings: [],

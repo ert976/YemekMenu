@@ -9,6 +9,7 @@
 ## 📋 KULLANIM KILAVUZU
 
 ### Görev Durumları
+
 - ⏸️ **Pending**: Henüz başlanmadı
 - 🔄 **In Progress**: Devam ediyor
 - ✅ **Completed**: Tamamlandı (asla silme)
@@ -16,6 +17,7 @@
 - ⏸️ **Blocked**: Bağımlılık yüzünden beklemede
 
 ### Öncelik Sıralaması
+
 - 🔴 **Kritik**: Bu hafta yapılmalı
 - 🟡 **Yüksek**: 2 hafta içinde yapılmalı
 - 🟢 **Orta**: Bu ay yapılmalı
@@ -26,6 +28,7 @@
 ## 🔴 KRİTİK GÖREVLER (Critical Tasks)
 
 ### TASK-001: Jest Configuration Düzeltmeli
+
 **İlişkili Spec**: SPEC-001
 **Durum**: ✅ Completed
 **Öncelik**: 🔴 Kritik
@@ -34,6 +37,7 @@
 **Bağımlılıklar**: -
 
 **Gereksinimler:**
+
 - [x] Babel packages install edildi
 - [x] Babel config oluşturulması (.babelrc veya babel.config.js)
 - [x] jest.config.json'de transform ayarları düzeltilmesi
@@ -41,13 +45,15 @@
 - [x] `npm test` komutunun çalışması
 
 **İlgili Dosyalar:**
+
 - jest.config.json
 - babel.config.js
 - jest.setup.js
 - jest.polyfills.js
-- __tests__/fileMock.js
+- **tests**/fileMock.js
 
 **Notlar:**
+
 - ✅ React Native'in Flow type syntax'ı mock'lanarak çözüldü
 - ✅ `transformIgnorePatterns` güncellendi
 - ✅ @types/jest install edildi
@@ -56,6 +62,7 @@
 - ✅ Tüm testler geçti (2/2)
 
 **Alt Görevler:**
+
 - [x] TASK-001.1: @types/jest install et
 - [x] TASK-001.2: babel.config.js'i React Native için ayarla (zaten correct)
 - [x] TASK-001.3: jest.polyfills.js'i güncelle
@@ -67,6 +74,7 @@
 ---
 
 ### TASK-002: Versiyon Uyumsuzluğunu Çözmeli
+
 **İlişkili Spec**: SPEC-002
 **Durum**: ✅ Completed
 **Öncelik**: 🔴 Kritik
@@ -75,15 +83,18 @@
 **Bağımlılıklar**: TASK-001
 
 **Gereksinimler:**
+
 - [x] `@types/react` versiyonunu düşür (18.x.x)
 - [x] `react` ve `react-dom` versiyonlarını düşür (18.x.x)
 - [x] `react-native` versiyonu ile uyumlu olmalı
 - [x] `npm install` sorunsuz çalışmalı
 
 **İlgili Dosyalar:**
+
 - package.json
 
 **Notlar:**
+
 - ✅ React 19.1.0 → 18.3.1'a düşürüldü
 - ✅ react-dom 19.1.0 → 18.3.1'a düşürüldü
 - ✅ @types/react 19.1.17 → 18.3.12'ye düşürüldü
@@ -92,6 +103,7 @@
 - ✅ npm audit 0 vulnerabilities
 
 **Alt Görevler:**
+
 - [x] TASK-002.1: package.json'da dependencies'i güncelle
 - [x] TASK-002.2: node_modules'i temizle (`rm -rf node_modules`)
 - [x] TASK-002.3: package-lock.json'i temizle
@@ -103,6 +115,7 @@
 ---
 
 ### TASK-003: Test Server Hızlandırmalı
+
 **İlişkili Spec**: SPEC-003
 **Durum**: ✅ Completed
 **Öncelik**: 🔴 Kritik
@@ -111,6 +124,7 @@
 **Bağımlılıklar**: TASK-001
 
 **Gereksinimler:**
+
 - [x] Jest cache'i aktif et
 - [x] Test environment'i optimize et (jsdom yerine node)
 - [x] Mock'ları optimize et
@@ -118,11 +132,13 @@
 - [x] Test server <5 saniyede başlamalı
 
 **İlgili Dosyalar:**
+
 - jest.config.json
 - jest.setup.js
 - jest.polyfills.js
 
 **Notlar:**
+
 - ✅ Test environment node yapıldı (jsdom yerine)
 - ✅ Jest cache aktif
 - ✅ Mock'lar optimize edildi
@@ -130,6 +146,7 @@
 - ✅ maxWorkers: "50%" ayarlandı
 
 **Alt Görevler:**
+
 - [x] TASK-003.1: jest.config.json'de `maxWorkers` ayarla
 - [x] TASK-003.2: jest.setup.js'i optimize et (lazy mock)
 - [x] TASK-003.3: Cache'i aktif et (`cache: true`)
@@ -143,41 +160,52 @@
 ## 🟡 YÜKSEK ÖNCELİK GÖREVLER (High Priority Tasks)
 
 ### TASK-004: Authentication Güvenliğini İyileştirmeli
+
 **İlişkili Spec**: SPEC-004
-**Durum**: ⏸️ Pending
+**Durum**: ✅ Completed
 **Öncelik**: 🟡 Yüksek
-**Tahmini Süre**: 2 saat
+**Tahmini Süre**: 2 saat (Gerçekleşen: 90 dakika)
 **Atanan**: -
 **Bağımlılıklar**: TASK-002
 
 **Gereksinimler:**
+
 - [x] Password hash'leniyor (crypto-utils.ts)
-- [ ] Salt kullanılmalı
-- [ ] Rate limiting eklenmeli (max 5 attempt/dakika)
-- [ ] Session timeout eklenmeli (30 dakika)
-- [ ] Password complexity check eklenmeli
+- [x] Salt kullanılmalı
+- [x] Rate limiting eklenmeli (max 5 attempt/dakika)
+- [x] Session timeout eklenmeli (30 dakika)
+- [x] Password complexity check eklenmeli
 
 **İlgili Dosyalar:**
+
 - utils/crypto-utils.ts
 - auth.tsx
 - database/users.ts
+- utils/auth-utils.ts
+- utils/rate-limiter.ts
+- utils/password-validator.ts
 
 **Notlar:**
-- Şu anda sadece hash kullanılıyor (salt yok)
-- Rate limiting yok (brute force attack risk)
-- Session timeout yok (security risk)
+
+- ✅ Salted hashing entegre edildi
+- ✅ Rate limiting (5 deneme/dakika) eklendi
+- ✅ 30 dakikalık session timeout eklendi
+- ✅ Karmaşık şifre zorunluluğu eklendi
+- ✅ unit testler başarıyla geçti (27/27)
 
 **Alt Görevler:**
-- [ ] TASK-004.1: crypto-utils.ts'e salt function ekle
-- [ ] TASK-004.2: auth.tsx'de hashPassword'ı güncelle (salt ile)
-- [ ] TASK-004.3: Rate limiting middleware ekle
-- [ ] TASK-004.4: Session timeout ekle
-- [ ] TASK-004.5: Password complexity validation ekle
-- [ ] TASK-004.6: Unit test yaz
+
+- [x] TASK-004.1: crypto-utils.ts'e salt function ekle
+- [x] TASK-004.2: auth.tsx'de hashPassword'ı güncelle (salt ile)
+- [x] TASK-004.3: Rate limiting middleware ekle
+- [x] TASK-004.4: Session timeout ekle
+- [x] TASK-004.5: Password complexity validation ekle
+- [x] TASK-004.6: Unit test yaz
 
 ---
 
 ### TASK-005: Menü Planlama Algoritmasını Geliştirmeli
+
 **İlişkili Spec**: SPEC-005
 **Durum**: ⏸️ Pending
 **Öncelik**: 🟡 Yüksek
@@ -186,6 +214,7 @@
 **Bağımlılıklar**: TASK-003
 
 **Gereksinimler:**
+
 - [ ] Günlük kalori hedefi (1800-2500 kcal)
 - [ ] Kategori çeşitliliği (her gün farklı kategoriler)
 - [ ] Aynı yemeğin tekrar seçilmemesi (7 gün içinde)
@@ -193,16 +222,19 @@
 - [ ] Kullanıcı derecelendirmelerine göre öneri
 
 **İlgili Dosyalar:**
+
 - mealPlanner.ts
 - database/foods.ts
 - database/ratings.ts
 
 **Notlar:**
+
 - Şu anda tamamen random seçim yapılıyor
 - Nutritional bilgileri yok (kalori, protein, vb.)
 - Kullanıcı derecelendirmelerini kullanmıyor
 
 **Alt Görevler:**
+
 - [ ] TASK-005.1: types.ts'e NutritionalInfo interface'i ekle
 - [ ] TASK-005.2: Yemeklere nutritional info ekle
 - [ ] TASK-005.3: Kalori hesaplama algoritması yaz
@@ -215,6 +247,7 @@
 ---
 
 ### TASK-006: Error Handling İyileştirmeli
+
 **İlişkili Spec**: SPEC-006
 **Durum**: ⏸️ Pending
 **Öncelik**: 🟡 Yüksek
@@ -223,6 +256,7 @@
 **Bağımlılıklar**: TASK-003
 
 **Gereksinimler:**
+
 - [ ] Network error handling
 - [ ] Database error handling
 - [ ] Validation error handling
@@ -230,6 +264,7 @@
 - [ ] Error boundary component
 
 **İlgili Dosyalar:**
+
 - utils/errorHandler.ts (yeni)
 - components/ErrorBoundary.tsx (yeni)
 - database/connection.ts
@@ -237,11 +272,13 @@
 - mealPlanner.ts
 
 **Notlar:**
+
 - Şu anda error handling çok az
 - Try-catch blokları eksik
 - User-friendly mesajlar yok
 
 **Alt Görevler:**
+
 - [ ] TASK-006.1: utils/errorHandler.ts oluştur (custom error classes)
 - [ ] TASK-006.2: components/ErrorBoundary.tsx oluştur
 - [ ] TASK-006.3: auth.tsx'e error handling ekle
@@ -253,6 +290,7 @@
 ---
 
 ### TASK-007: Type Coverage İyileştirmeli
+
 **İlişkili Spec**: SPEC-007
 **Durum**: ⏸️ Pending
 **Öncelik**: 🟡 Yüksek
@@ -261,6 +299,7 @@
 **Bağımlılıklar**: -
 
 **Gereksinimler:**
+
 - [x] types.ts dosyası oluşturuldu
 - [x] Tüm interface'ler tanımlandı
 - [x] Utility type'lar eklendi
@@ -268,16 +307,19 @@
 - [ ] `any` type'ları kaldırılmalı (varsa)
 
 **İlgili Dosyalar:**
+
 - types.ts
 - mealPlanner.ts
 - auth.tsx
-- __tests__/testUtils.ts
+- **tests**/testUtils.ts
 
 **Notlar:**
+
 - testUtils.ts'de `any` type kullanılmış
 - mealPlanner.ts'de `any` type olabilir
 
 **Alt Görevler:**
+
 - [ ] TASK-007.1: testUtils.ts'deki `any` type'ları düzelt
 - [ ] TASK-007.2: mealPlanner.ts'deki `any` type'ları ara ve düzelt
 - [ ] TASK-007.3: Tüm proje için `any` type scan et (`rg 'any'`)
@@ -289,6 +331,7 @@
 ## 🟢 ORTA ÖNCELİK GÖREVLER (Medium Priority Tasks)
 
 ### TASK-008: UI Modernizasyonu (Stitch Design System)
+
 **İlişkili Spec**: SPEC-008
 **Durum**: ⏸️ Pending
 **Öncelik**: 🟢 Orta
@@ -297,6 +340,7 @@
 **Bağımlılıklar**: TASK-006
 
 **Gereksinimler:**
+
 - [ ] Stitch tasarım system entegrasyonu
 - [ ] Mobile + Web responsive
 - [ ] Dark mode desteği
@@ -304,6 +348,7 @@
 - [ ] Accessibility (screen reader, high contrast)
 
 **İlgili Dosyalar:**
+
 - app/index.tsx
 - app/(tabs)/index.tsx
 - app/(tabs)/explore.tsx
@@ -312,6 +357,7 @@
 - constants/Colors.ts
 
 **Alt Görevler:**
+
 - [ ] TASK-008.1: constants/theme.ts'i güncelle (Stitch colors)
 - [ ] TASK-008.2: Giriş ekranını modernize et (app/index.tsx)
 - [ ] TASK-008.3: FoodRatingComponent'i modernize et
@@ -323,6 +369,7 @@
 ---
 
 ### TASK-009: Performance Optimizasyonu
+
 **İlişkili Spec**: SPEC-009
 **Durum**: ⏸️ Pending
 **Öncelik**: 🟢 Orta
@@ -331,17 +378,20 @@
 **Bağımlılıklar**: TASK-003, TASK-005
 
 **Gereksinimler:**
+
 - [ ] Image lazy loading + caching (expo-image)
 - [ ] Memoization (useMemo, useCallback)
 - [ ] Virtualization (FlatList for long lists)
 - [ ] N+1 query problemi çözülmüş olmalı
 
 **İlgili Dosyalar:**
+
 - mealPlanner.ts
 - database/foods.ts
 - components/FoodRatingComponent.tsx
 
 **Alt Görevler:**
+
 - [ ] TASK-009.1: N+1 query problemini çöz (WHERE IN clause)
 - [ ] TASK-009.2: expo-image entegre et
 - [ ] TASK-009.3: FoodRatingComponent'e useMemo ekle
@@ -352,6 +402,7 @@
 ---
 
 ### TASK-010: Database Refactoring Tamamlama
+
 **İlişkili Spec**: SPEC-010
 **Durum**: ⏸️ Pending
 **Öncelik**: 🟢 Orta
@@ -360,6 +411,7 @@
 **Bağımlılıklar**: TASK-002
 
 **Gereksinimler:**
+
 - [x] database/ klasörü oluşturuldu
 - [x] connection.ts (DB connection)
 - [x] foods.ts (Food operations)
@@ -370,10 +422,12 @@
 - [ ] Migration scripts
 
 **İlgili Dosyalar:**
+
 - database/index.ts (yeni)
 - database/migrations/ (yeni)
 
 **Alt Görevler:**
+
 - [ ] TASK-010.1: database/index.ts oluştur (tüm exports)
 - [ ] TASK-010.2: database.ts'i kaldır (kullanım database/index.ts'e)
 - [ ] TASK-010.3: Migration system oluştur
@@ -384,6 +438,7 @@
 ## 🔵 DÜŞÜK ÖNCELİK GÖREVLER (Low Priority Tasks)
 
 ### TASK-011: PWA Offline Desteği Ekle
+
 **İlişkili Spec**: SPEC-011
 **Durum**: ⏸️ Pending
 **Öncelik**: 🔵 Düşük
@@ -392,6 +447,7 @@
 **Bağımlılıklar**: TASK-009
 
 **Alt Görevler:**
+
 - [ ] TASK-011.1: Service Worker oluştur
 - [ ] TASK-011.2: Offline manifest oluştur
 - [ ] TASK-011.3: Local storage entegrasyonu
@@ -401,6 +457,7 @@
 ---
 
 ### TASK-012: Multi-Language Desteği Ekle
+
 **İlişkili Spec**: SPEC-012
 **Durum**: ⏸️ Pending
 **Öncelik**: 🔵 Düşük
@@ -409,6 +466,7 @@
 **Bağımlılıklar**: TASK-008
 
 **Alt Görevler:**
+
 - [ ] TASK-012.1: i18n library seç (i18next, react-intl)
 - [ ] TASK-012.2: TR translation dosyası oluştur
 - [ ] TASK-012.3: EN translation dosyası oluştur
@@ -418,6 +476,7 @@
 ---
 
 ### TASK-013: Monitoring ve Logging Ekle
+
 **İlişkili Spec**: SPEC-013
 **Durum**: ⏸️ Pending
 **Öncelik**: 🔵 Düşük
@@ -426,6 +485,7 @@
 **Bağımlılıklar**: TASK-006
 
 **Alt Görevler:**
+
 - [ ] TASK-013.1: Error tracking service seç (Sentry, Bugsnag)
 - [ ] TASK-013.2: Analytics service seç (Firebase Analytics)
 - [ ] TASK-013.3: Logger utility oluştur
@@ -436,13 +496,13 @@
 
 ## 📊 GÖREV ÖZETİ
 
-| Kategori | Toplam | ✅ Tamamlanan | 🔄 Devam Eden | ⏸️ Beklemede |
-|----------|--------|---------------|--------------|--------------|
-| 🔴 Kritik | 3 | 3 | 0 | 0 |
-| 🟡 Yüksek | 4 | 0 | 0 | 4 |
-| 🟢 Orta | 3 | 0 | 0 | 3 |
-| 🔵 Düşük | 3 | 0 | 0 | 3 |
-| **Toplam** | **13** | **3 (23%)** | **0 (0%)** | **10 (77%)** |
+| Kategori   | Toplam | ✅ Tamamlanan | 🔄 Devam Eden | ⏸️ Beklemede |
+| ---------- | ------ | ------------- | ------------- | ------------ |
+| 🔴 Kritik  | 3      | 3             | 0             | 0            |
+| 🟡 Yüksek  | 4      | 0             | 0             | 4            |
+| 🟢 Orta    | 3      | 0             | 0             | 3            |
+| 🔵 Düşük   | 3      | 0             | 0             | 3            |
+| **Toplam** | **13** | **3 (23%)**   | **0 (0%)**    | **10 (77%)** |
 
 ---
 
@@ -452,12 +512,14 @@
 **Goal**: Test framework ve version conflicts çözme
 
 **Bu Hafta Yapılacaklar:**
+
 - [x] TASK-001: Jest Configuration Düzeltmeli ✅
 - [x] TASK-002: Versiyon Uyunsuzluğunu Çözmeli ✅
 - [x] TASK-003: Test Server Hızlandırmalı ✅
 - [ ] TASK-004: Authentication Güvenliğini İyileştirmeli
 
 **Sonraki Hafta (20-27 Ocak):**
+
 - [ ] TASK-005: Menü Planlama Algoritmasını Geliştirmeli
 - [ ] TASK-006: Error Handling İyileştirmeli
 - [ ] TASK-007: Type Coverage İyileştirmeli
@@ -467,6 +529,7 @@
 ## 📝 GÖREV GÜNCELLEME NOTLARI
 
 ### 16 Ocak 2026
+
 - ✅ TASK-001: Jest Configuration Düzeltmeli ✅
   - @types/jest install edildi
   - Babel config güncellendi
@@ -489,6 +552,7 @@
 - 📝 PROJECT_TASKS.md oluşturuldu
 
 ### Sprint-1 İlerleme (13-20 Ocak 2026)
+
 - ✅ 3/4 kritik görev tamamlandı (75%)
 - 🔄 1/4 kritik görev devanıyor (TASK-004)
 - 🎯 Sprint hedefine yakın (1 görev kaldı)

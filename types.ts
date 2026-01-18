@@ -23,6 +23,7 @@ export interface Food {
   nutritionalInfo?: NutritionalInfo;
   priceLevel?: 1 | 2 | 3;
   estimatedPrice?: number;
+  subCategory?: "main" | "side" | "drink" | "bakery"; // Kahvaltı detayları için
   reasonTag?: string; // Algoritma rozeti (örn: "Favoriniz")
   reasonType?: "preference" | "economy" | "health" | "variety";
 }
@@ -55,6 +56,7 @@ export interface User {
   email: string;
   passwordHash?: string;
   avatarUrl?: string;
+  lastActivity?: number;
 }
 
 export interface UserRating {
@@ -65,7 +67,7 @@ export interface UserRating {
 }
 
 export interface DailyMeal {
-  breakfast: Food | null;
+  breakfast: Food[]; // Artık serpme kahvaltı (dizi)
   lunch: Food | null;
   dinner: Food | null;
   snack?: Food | null;
