@@ -5,7 +5,7 @@ import { Platform } from "react-native";
  * Web'de localStorage, Native'de ise bellek içi (veya AsyncStorage) kullanımını soyutlar.
  */
 class UniversalStorage {
-  private memoryStore: { [key: string]: string } = {};
+  private memoryStore: Record<string, string> = {};
 
   async getItem(key: string): Promise<string | null> {
     if (Platform.OS === "web") {

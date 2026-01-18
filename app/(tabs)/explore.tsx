@@ -2,17 +2,17 @@ import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import React, { useState } from "react";
 import {
-    Alert,
     Dimensions,
     Image,
     ScrollView,
     StyleSheet,
     Text,
     TouchableOpacity,
-    View
+    View,
 } from "react-native";
 import { useAuth } from "../../auth";
 import { Colors } from "../../constants/Colors";
+import { useToast } from "../../context/ToastContext";
 import { useColorScheme } from "../../hooks/use-color-scheme";
 import { generateBalancedMenu } from "../../mealPlanner";
 import { DietType, Food, MealPlan } from "../../types";
@@ -22,6 +22,7 @@ const { width } = Dimensions.get("window");
 export default function ExploreScreen() {
   const { user } = useAuth();
   const theme = useColorScheme() === "dark" ? Colors.dark : Colors.light;
+  const { showSuccess, showError } = useToast();
 
   const [loading, setLoading] = useState(false);
   const [currentPlan, setCurrentPlan] = useState<MealPlan | null>(null);
@@ -48,9 +49,11 @@ export default function ExploreScreen() {
       setCurrentPlan(plan);
       setCurrentWeekIndex(0);
       setSelectedDayIndex(0);
-      Alert.alert("Başarılı", "30 Günlük Akıllı Planınız Hazır!");
-    } catch (error: any) {
-      Alert.alert("Hata", error.message || "Mönü oluşturulamadı.");
+      showSuccess("30 Günlük Akıllı Planınız Hazır!");
+    } catch (error: unknown) {
+      const msg =
+        error instanceof Error ? error.message : "Mönü oluşturulamadı.";
+      showError(msg);
     } finally {
       setLoading(false);
     }
@@ -84,12 +87,87 @@ export default function ExploreScreen() {
   };
 
   const renderMealItem = (
-    meal: Food | null | undefined,
+    meal: Food | Food[] | null | undefined,
     label: string,
     icon: string,
     showCompact = false,
   ) => {
     if (!meal) return null;
+
+    // --- SERPME KAHVALTI (DİZİ) GÖSTERİMİ ---
+    if (Array.isArray(meal)) {
+      const totalCalories = meal.reduce(
+        (acc, curr) => acc + (curr.nutritionalInfo?.calories || 0),
+        0,
+      );
+      return (
+        <View
+          style={[
+            styles.mealItem,
+            {
+              backgroundColor: theme.card,
+              flexDirection: "column",
+              alignItems: "flex-start",
+            },
+          ]}
+        >
+          <View
+            style={{
+              flexDirection: "row",
+              marginBottom: 10,
+              width: "100%",
+              justifyContent: "space-between",
+            }}
+          >
+            <Text style={styles.mealLabel}>
+              {icon} {label}
+            </Text>
+            <Text style={styles.nutritionValue}>🔥 ~{totalCalories} kcal</Text>
+          </View>
+
+          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            {meal.map((item) => (
+              <View
+                key={item.id}
+                style={{
+                  marginRight: 12,
+                  width: 80,
+                  alignItems: "center",
+                }}
+              >
+                <Image
+                  source={{ uri: item.image_url }}
+                  style={{
+                    width: 70,
+                    height: 70,
+                    borderRadius: 15,
+                    marginBottom: 5,
+                  }}
+                />
+                <Text
+                  numberOfLines={2}
+                  style={{
+                    fontSize: 10,
+                    textAlign: "center",
+                    color: theme.text,
+                    fontWeight: "600",
+                  }}
+                >
+                  {item.name}
+                </Text>
+                {item.subCategory === "main" && (
+                  <Text style={{ fontSize: 9, color: theme.tint }}>
+                    Ana Öğün
+                  </Text>
+                )}
+              </View>
+            ))}
+          </ScrollView>
+        </View>
+      );
+    }
+
+    // --- TEKİL YEMEK GÖSTERİMİ (ÖĞLE / AKŞAM) ---
     const priceIcons = "₺".repeat(meal.priceLevel || 2);
     return (
       <View

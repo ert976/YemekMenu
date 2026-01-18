@@ -10,13 +10,14 @@ import {
     Text,
     TouchableOpacity,
     View,
+    useWindowDimensions,
 } from "react-native";
 import { useAuth } from "../auth";
 import { Colors } from "../constants/Colors";
 import { getAllFoods, getUserRatings, rateFood } from "../database";
 import { useColorScheme } from "../hooks/use-color-scheme";
 
-const { width } = Dimensions.get("window");
+const { width: windowWidth } = Dimensions.get("window");
 
 interface Food {
   id: number;
@@ -36,6 +37,7 @@ const FoodRatingComponent: React.FC<FoodRatingComponentProps> = ({
 }) => {
   const colorScheme = useColorScheme() ?? "light";
   const theme = Colors[colorScheme];
+  const { width } = useWindowDimensions();
   const [foods, setFoods] = useState<Food[]>([]);
   const [currentFoodIndex, setCurrentFoodIndex] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -185,9 +187,15 @@ const FoodRatingComponent: React.FC<FoodRatingComponentProps> = ({
                 currentFood.image_url ||
                 "https://via.placeholder.com/400x300?text=Yemek+Resmi",
             }}
-            style={styles.foodImage}
+            style={[styles.foodImage, { height: width * 0.75 }]}
             contentFit="cover"
             transition={300}
+            onError={(e) =>
+              console.log(
+                `Image load error for ${currentFood.name}:`,
+                e.error || e,
+              )
+            }
           />
 
           <View style={styles.cardInfo}>
@@ -351,7 +359,8 @@ const styles = StyleSheet.create({
   },
   foodImage: {
     width: "100%",
-    height: width * 0.75,
+    // Height is set dynamically
+    backgroundColor: "#eee", // Placeholder color
   },
   cardInfo: {
     padding: 24,

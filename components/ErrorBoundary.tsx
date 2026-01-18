@@ -6,6 +6,7 @@ import {
     TouchableOpacity,
     View,
 } from "react-native";
+import { Colors } from "../constants/Colors";
 
 interface Props {
   children: ReactNode;
@@ -15,47 +16,51 @@ interface Props {
 interface State {
   hasError: boolean;
   error: Error | null;
+  errorInfo: ErrorInfo | null;
 }
 
 export class ErrorBoundary extends Component<Props, State> {
-  public state: State = {
-    hasError: false,
-    error: null,
-  };
-
-  public static getDerivedStateFromError(error: Error): State {
-    return { hasError: true, error };
+  constructor(props: Props) {
+    super(props);
+    this.state = { hasError: false, error: null, errorInfo: null };
   }
 
-  public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+  static getDerivedStateFromError(error: Error): State {
+    return { hasError: true, error, errorInfo: null };
+  }
+
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error("Uncaught error:", error, errorInfo);
+    this.setState({ errorInfo });
   }
 
-  private handleReset = () => {
-    this.setState({ hasError: false, error: null });
+  resetError = () => {
+    this.setState({ hasError: false, error: null, errorInfo: null });
   };
 
-  public render() {
+  render() {
     if (this.state.hasError) {
-      if (this.fallback) {
-        return this.fallback;
+      if (this.props.fallback) {
+        return this.props.fallback;
       }
 
       return (
         <View style={styles.container}>
-          <View style={styles.content}>
-            <Text style={styles.title}>Bir Şeyler Yanlış Gitti</Text>
+          <View style={styles.card}>
+            <Text style={styles.title}>⚠️ Hata Oluştu</Text>
             <Text style={styles.message}>
-              Uygulama beklenmedik bir hata ile karşılaştı.
+              Beklenmedik bir sorunla karşılaştık. Lütfen tekrar deneyin.
             </Text>
 
-            <ScrollView style={styles.errorContainer}>
-              <Text style={styles.errorText}>
-                {this.state.error?.toString()}
-              </Text>
-            </ScrollView>
+            {__DEV__ && this.state.error && (
+              <ScrollView style={styles.debugBox}>
+                <Text style={styles.debugText}>
+                  {this.state.error.toString()}
+                </Text>
+              </ScrollView>
+            )}
 
-            <TouchableOpacity style={styles.button} onPress={this.handleReset}>
+            <TouchableOpacity style={styles.button} onPress={this.resetError}>
               <Text style={styles.buttonText}>Tekrar Dene</Text>
             </TouchableOpacity>
           </View>
@@ -63,66 +68,64 @@ export class ErrorBoundary extends Component<Props, State> {
       );
     }
 
-    return this.children;
-  }
-
-  private get children() {
     return this.props.children;
-  }
-
-  private get fallback() {
-    return this.props.fallback;
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
+    backgroundColor: "#F3F4F6",
     justifyContent: "center",
+    alignItems: "center",
     padding: 20,
   },
-  content: {
+  card: {
+    backgroundColor: "white",
+    borderRadius: 16,
+    padding: 24,
     width: "100%",
-    maxWidth: 500,
+    maxWidth: 400,
     alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 3,
   },
   title: {
     fontSize: 24,
     fontWeight: "bold",
-    color: "#dc3545",
-    marginBottom: 10,
+    color: Colors.light.text,
+    marginBottom: 12,
   },
   message: {
     fontSize: 16,
-    color: "#6c757d",
+    color: "#6B7280",
     textAlign: "center",
-    marginBottom: 20,
+    marginBottom: 24,
   },
-  errorContainer: {
-    maxHeight: 200,
-    width: "100%",
-    backgroundColor: "#f8f9fa",
+  debugBox: {
+    backgroundColor: "#FEE2E2",
+    padding: 12,
     borderRadius: 8,
-    padding: 10,
-    marginBottom: 20,
-    borderWidth: 1,
-    borderColor: "#dee2e6",
+    width: "100%",
+    maxHeight: 150,
+    marginBottom: 24,
   },
-  errorText: {
-    fontFamily: "monospace",
+  debugText: {
+    color: "#991B1B",
     fontSize: 12,
-    color: "#343a40",
+    fontFamily: "monospace",
   },
   button: {
-    backgroundColor: "#0d6efd",
-    paddingHorizontal: 30,
+    backgroundColor: Colors.light.tint,
     paddingVertical: 12,
+    paddingHorizontal: 32,
     borderRadius: 8,
   },
   buttonText: {
-    color: "#fff",
+    color: "white",
     fontSize: 16,
     fontWeight: "600",
   },

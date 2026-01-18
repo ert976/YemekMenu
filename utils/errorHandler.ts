@@ -1,128 +1,77 @@
-import { Alert } from 'react-native';
-import { AppError } from '../types';
+import { Alert } from "react-native";
 
-// Error handling utility functions
-export const handleApiError = (error: any): AppError => {
-  // Network error'ları
-  if (error.code === 'NETWORK_ERROR' || error.message?.includes('network')) {
-    return {
-      code: 'NETWORK_ERROR',
-      message: 'İnternet bağlantısı yok. Lütfen bağlantınızı kontrol edin.',
-      details: error
-    };
+export enum ErrorType {
+  NETWORK = "NETWORK",
+  VALIDATION = "VALIDATION",
+  DATABASE = "DATABASE",
+  AUTH = "AUTH",
+  UNKNOWN = "UNKNOWN",
+}
+
+export class AppError extends Error {
+  public type: ErrorType;
+  public userMessage: string;
+
+  constructor(
+    message: string,
+    type: ErrorType = ErrorType.UNKNOWN,
+    userMessage?: string,
+  ) {
+    super(message);
+    this.name = "AppError";
+    this.type = type;
+    this.userMessage = userMessage || "Bir hata oluştu. Lütfen tekrar deneyin.";
   }
+}
 
-  // Authentication error'ları
-  if (error.code === 'AUTH_ERROR' || error.message?.includes('auth')) {
-    return {
-      code: 'AUTH_ERROR',
-      message: 'Giriş yapılamadı. Lütfen kullanıcı adınızı ve şifrenizi kontrol edin.',
-      details: error
-    };
-  }
+interface ErrorHandlerOptions {
+  showToast?: boolean;
+  log?: boolean;
+  toastFn?: (msg: string) => void;
+}
 
-  // Validation error'ları
-  if (error.code === 'VALIDATION_ERROR' || error.message?.includes('validation')) {
-    return {
-      code: 'VALIDATION_ERROR',
-      message: 'Girdiğiniz bilgiler geçersiz. Lütfen tüm alanları doğru doldurun.',
-      details: error
-    };
-  }
+export const handleError = (
+  error: unknown,
+  options: ErrorHandlerOptions = { showToast: true, log: true },
+) => {
+  let appError: AppError;
 
-  // Database error'ları
-  if (error.code === 'DATABASE_ERROR' || error.message?.includes('database')) {
-    return {
-      code: 'DATABASE_ERROR',
-      message: 'Veritabanı hatası oluştu. Lütfen daha sonra tekrar deneyin.',
-      details: error
-    };
-  }
-
-  // Not found error'ları
-  if (error.code === 'NOT_FOUND' || error.message?.includes('not found')) {
-    return {
-      code: 'NOT_FOUND',
-      message: 'Aradığınız bulunamadı.',
-      details: error
-    };
-  }
-
-  // Permission error'ları
-  if (error.code === 'PERMISSION_DENIED' || error.message?.includes('permission')) {
-    return {
-      code: 'PERMISSION_DENIED',
-      message: 'Bu işlem için yetkiniz bulunmuyor.',
-      details: error
-    };
-  }
-
-  // Genel error handling
-  return {
-    code: 'UNKNOWN_ERROR',
-    message: 'Beklenmedik bir hata oluştu. Lütfen tekrar deneyin.',
-    details: error
-  };
-};
-
-// User-friendly error message gösterimi
-export const showUserFriendlyError = (error: AppError) => {
-  console.error('App Error:', error);
-  
-  // React Native Alert kullanarak kullanıcıya göster
-  if (typeof Alert !== 'undefined') {
-    Alert.alert(
-      'Hata',
-      error.message,
-      [
-        {
-          text: 'Tamam',
-          onPress: () => console.log('Error acknowledged by user')
-        }
-      ]
+  if (error instanceof AppError) {
+    appError = error;
+  } else if (error instanceof Error) {
+    appError = new AppError(error.message, ErrorType.UNKNOWN);
+  } else {
+    appError = new AppError(
+      "Bilinmeyen bir hata oluştu",
+      ErrorType.UNKNOWN,
+      "Beklenmedik bir sorun oluştu.",
     );
   }
-};
 
-// Error logging fonksiyonu
-export const logError = (context: string, error: any, additionalInfo?: any) => {
-  const timestamp = new Date().toISOString();
-  const errorLog = {
-    timestamp,
-    context,
-    message: error.message || 'Unknown error',
-    code: error.code || 'UNKNOWN_ERROR',
-    additionalInfo
-  };
-  
-  console.error('Error Log:', JSON.stringify(errorLog, null, 2));
-  
-  // Gerçek uygulamada analytics servisine gönderilebilir
-  // Örnek: analytics.track('error', errorLog);
-};
-
-// Async error wrapper
-export const withErrorHandling = async <T>(
-  promise: Promise<T>,
-  context: string,
-  additionalInfo?: any
-): Promise<T> => {
-  try {
-    return await promise;
-  } catch (error) {
-    const appError = handleApiError(error);
-    logError(context, error, additionalInfo);
-    showUserFriendlyError(appError);
-    throw appError;
+  if (options.log) {
+    console.error(`[${appError.type}] ${appError.message}`, error);
   }
+
+  if (options.showToast && options.toastFn) {
+    options.toastFn(appError.userMessage);
+  } else if (options.showToast) {
+    // Fallback if no toast function provided (e.g. legacy Alert)
+    Alert.alert("Hata", appError.userMessage);
+  }
+
+  return appError;
 };
 
-// Error boundary için yardımcı fonksiyon
-export const getErrorDisplayInfo = (error: AppError) => {
-  return {
-    title: 'Hata Oluştu',
-    message: error.message,
-    canRetry: !['NETWORK_ERROR', 'DATABASE_ERROR'].includes(error.code),
-    retryText: error.code === 'NETWORK_ERROR' ? 'Bağlantıyı kontrol et' : 'Tekrar dene'
-  };
-};
+// Yardımcı Hata Oluşturucular
+export const createNetworkError = (msg: string) =>
+  new AppError(
+    msg,
+    ErrorType.NETWORK,
+    "Bağlantı sorunu. İnternetini kontrol et.",
+  );
+
+export const createValidationError = (msg: string) =>
+  new AppError(msg, ErrorType.VALIDATION, msg);
+
+export const createAuthError = (msg: string) =>
+  new AppError(msg, ErrorType.AUTH, "Oturum hatası. Lütfen tekrar giriş yap.");

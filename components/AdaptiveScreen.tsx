@@ -1,5 +1,11 @@
 import React from "react";
-import { StyleSheet, View, useWindowDimensions } from "react-native";
+import {
+    StyleProp,
+    StyleSheet,
+    View,
+    ViewStyle,
+    useWindowDimensions,
+} from "react-native";
 
 // Responsive text component
 import { Text, TextStyle } from "react-native";
@@ -220,7 +226,7 @@ interface AdaptiveCardProps {
   elevation?: number;
   padding?: number;
   borderRadius?: number;
-  style?: any;
+  style?: StyleProp<ViewStyle>;
 }
 
 export const AdaptiveCard: React.FC<AdaptiveCardProps> = ({

@@ -2,6 +2,7 @@ import { useAuth } from "@/auth";
 import FoodRatingComponent from "@/components/FoodRatingComponent";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/use-color-scheme";
+import { useRouter } from "expo-router";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
@@ -10,9 +11,11 @@ export default function RateFoodScreen() {
   const theme = Colors[colorScheme];
   const { user } = useAuth();
 
+  const router = useRouter();
+
   const handleRatingComplete = () => {
-    // Derecelendirme tamamlandığında yapılacak işlemler
-    console.log("Derecelendirme tamamlandı");
+    // Derecelendirme tamamlandığında Menü Oluştur (Explore) ekranına yönlendir
+    router.replace("/explore");
   };
 
   if (!user) {

@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
-import { ActivityIndicator, Image, View } from 'react-native';
-import { Colors } from '../../constants/theme';
+import React, { useState } from "react";
+import { ActivityIndicator, Image, View } from "react-native";
+import { Colors } from "../../constants/theme";
+
+import { ImageStyle, StyleProp } from "react-native";
 
 interface LazyImageProps {
   source: { uri: string };
-  style: any;
+  style?: StyleProp<ImageStyle>;
   placeholder?: React.ReactNode;
   fallback?: React.ReactNode;
 }
@@ -13,7 +15,7 @@ export const LazyImage: React.FC<LazyImageProps> = ({
   source,
   style,
   placeholder,
-  fallback
+  fallback,
 }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -53,7 +55,7 @@ export const LazyImage: React.FC<LazyImageProps> = ({
 const styles = {
   placeholder: {
     backgroundColor: Colors.light.background,
-    justifyContent: 'center',
-    alignItems: 'center',
-  }
+    justifyContent: "center",
+    alignItems: "center",
+  },
 };
