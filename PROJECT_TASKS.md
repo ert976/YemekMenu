@@ -157,7 +157,67 @@
 
 ---
 
+### TASK-014: Veri Kalıcılığı Sorununun Çözümü (Web)
+
+**İlişkili Spec**: SPEC-014
+**Durum**: ⏸️ Pending
+**Öncelik**: 🔴 Kritik
+**Tahmini Süre**: 3 saat
+**Atanan**: -
+**Bağımlılıklar**: TASK-010
+
+**Gereksinimler:**
+
+- [ ] Web tarafında "Mock Database" yerine kalıcı bir çözüm uygulanmalı.
+- [ ] `database/connection.ts` dosyası platforma göre ayrıştırılmalı (.web.ts extension).
+- [ ] Opsiyon 1: localStorage adaptörü yazılması.
+- [ ] Opsiyon 2: Supabase entegrasyonu (Önerilen).
+
+### TASK-016: Güvenli ID Üretimi (Backend Fix)
+
+**İlişkili Spec**: SPEC-016
+**Durum**: ⏸️ Pending
+**Öncelik**: 🔴 Kritik
+**Tahmini Süre**: 1 saat
+**Atanan**: -
+
+**Gereksinimler:**
+
+- [ ] `Date.now()` tabanlı ID üretimi kaldırılmalı.
+- [ ] `crypto.randomUUID()` kullanımı entegre edilmeli.
+- [ ] Çakışma riski sıfıra indirilmeli.
+
+---
+
 ## 🟡 YÜKSEK ÖNCELİK GÖREVLER (High Priority Tasks)
+
+### TASK-017: İş Mantığı Konfigürasyonunun Ayrıştırılması
+
+**İlişkili Spec**: SPEC-017
+**Durum**: ⏸️ Pending
+**Öncelik**: 🟡 Yüksek
+**Tahmini Süre**: 2 saat
+
+**Gereksinimler:**
+
+- [ ] `mealPlanner.ts` içindeki sayısal değerler (0.6 olasılık, side count vb.) dışarı alınmalı.
+- [ ] `constants/business-rules.ts` oluşturulmalı.
+
+### TASK-015: Yemek Verisinin Ayrıştırılması (Decoupling)
+
+**İlişkili Spec**: SPEC-015
+**Durum**: ⏸️ Pending
+**Öncelik**: 🟡 Yüksek
+**Tahmini Süre**: 2 saat
+**Bağımlılıklar**: TASK-014
+
+**Gereksinimler:**
+
+- [ ] `foods.ts` içindeki static array dışarı alınmalı (JSON veya API).
+- [ ] Uzaktan güncelleme mekanizması kurulmalı.
+- [ ] `Repository Pattern` uygulanarak veri kaynağı soyutlanmalı.
+
+---
 
 ### TASK-004: Authentication Güvenliğini İyileştirmeli
 
@@ -366,7 +426,31 @@
 - [ ] TASK-008.6: Animasyonlar ekle (reanimated)
 - [ ] TASK-008.7: Accessibility iyileştirmeleri
 
----
+### TASK-018: Stitch Design System Entegrasyonu (Refactoring)
+
+**İlişkili Spec**: SPEC-018
+**Durum**: ⏸️ Pending
+**Öncelik**: 🟡 Yüksek
+**Tahmini Süre**: 4 saat
+**Bağımlılıklar**: TASK-008
+
+**Gereksinimler:**
+
+- [ ] `FoodRatingComponent.tsx` içindeki hardcoded style'lar `theme.ts` tokenları ile değiştirilmeli.
+- [ ] `MenuPlanner.tsx` modernize edilmeli.
+- [ ] Bütün UI elementleri `Spacing`, `Typography` ve `Colors` objelerini kullanmalı.
+
+### TASK-019: Liste Performans Optimizasyonu (Frontend)
+
+**İlişkili Spec**: SPEC-019
+**Durum**: ⏸️ Pending
+**Öncelik**: 🟢 Orta
+**Tahmini Süre**: 2 saat
+
+**Gereksinimler:**
+
+- [ ] `FoodRatingComponent` içindeki `ScrollView` -> `FlatList` dönüşümü.
+- [ ] `windowSize` ve `initialNumToRender` ayarları ile memory optimizasyonu.
 
 ### TASK-009: Performance Optimizasyonu
 
