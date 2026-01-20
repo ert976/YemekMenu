@@ -1,6 +1,7 @@
 import { getAllFoods, getUserPreferences, saveMealPlan } from "./database";
 import { DailyMeal, DietType, Food, MealPlan, MenuSuggestion } from "./types";
 import { InsufficientDataError } from "./utils/errors";
+import { generateEntityId } from "./utils/id-generator";
 
 /**
  * Belirli bir diyete ve tercihlere göre yemekleri filtreler ve önceliklendirir
@@ -212,7 +213,7 @@ export async function generateBalancedMenu(
   }
 
   const newPlan: MealPlan = {
-    id: Date.now(),
+    id: generateEntityId(),
     userId: userId || 0,
     dietPreference: diet,
     plan_data: plan,
