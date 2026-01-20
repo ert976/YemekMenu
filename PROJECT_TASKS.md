@@ -176,16 +176,32 @@
 ### TASK-016: Güvenli ID Üretimi (Backend Fix)
 
 **İlişkili Spec**: SPEC-016
-**Durum**: ⏸️ Pending
+**Durum**: ✅ Completed
 **Öncelik**: 🔴 Kritik
-**Tahmini Süre**: 1 saat
+**Tahmini Süre**: 1 saat (Gerçekleşen: 30 dakika)
 **Atanan**: -
 
 **Gereksinimler:**
 
-- [ ] `Date.now()` tabanlı ID üretimi kaldırılmalı.
-- [ ] `crypto.randomUUID()` kullanımı entegre edilmeli.
-- [ ] Çakışma riski sıfıra indirilmeli.
+- [x] `Date.now()` tabanlı ID üretimi kaldırılmalı.
+- [x] `crypto.randomUUID()` kullanımı entegre edilmeli.
+- [x] Çakışma riski sıfıra indirilmeli.
+
+**İlgili Dosyalar:**
+
+- utils/id-generator.ts (yeni)
+- mealPlanner.ts
+- database/users.ts
+- database/connection.ts
+
+**Notlar:**
+
+- ✅ `generateEntityId()` fonksiyonu oluşturuldu
+- ✅ Node.js ve browser ortamlarında çalışan crypto desteği
+- ✅ Fallback polyfill eklendi
+- ✅ Tüm testler geçti (45/45)
+
+**Tamamlanma Tarihi**: 20 Ocak 2026
 
 ---
 
