@@ -1,4 +1,5 @@
 import { Database } from "../types";
+import { generateEntityId } from "../utils/id-generator";
 
 // Bellek içi depolama (Global state)
 const memoryStorage: Record<string, unknown> = {
@@ -18,8 +19,8 @@ const mockDb: Database = {
   runAsync: async (sql: string, params: any[] = []) => {
     // Bu metod genellikle INSERT/UPDATE için kullanılır
     console.log("Web/Mock: SQL Run:", sql, params);
-    // Basit bir ID döndür
-    return { lastInsertRowId: Date.now() };
+    // Güvenli benzersiz ID döndür
+    return { lastInsertRowId: generateEntityId() };
   },
   getFirstAsync: async (sql: string, params: any[] = []) => {
     console.log("Web/Mock: SQL GetFirst:", sql, params);

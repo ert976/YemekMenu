@@ -1,3 +1,4 @@
+import { generateEntityId } from "../utils/id-generator";
 import { appState, saveState } from "./state";
 
 export const addUser = async (
@@ -5,7 +6,7 @@ export const addUser = async (
   email: string,
   passwordHash: string,
 ) => {
-  const id = Date.now();
+  const id = generateEntityId();
   appState.users.push({
     id,
     username,
