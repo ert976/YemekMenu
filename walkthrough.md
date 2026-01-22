@@ -6,8 +6,10 @@ Bu belge, YemekMenü projesinin tüm fonksiyonel ve görsel gereksinimleri karş
 
 ### 1. Zenginleştirilmiş İçerik ve Kültürel Uyum 🥘
 
-- **50+ Geleneksel Yemek:** Veritabanı sadece örneklerle değil; çorbalar, kebaplar, zeytinyağlılar ve tatlılarla donatılmış gerçek bir Türk mutfağı ansiklopedisine dönüştürüldü.
+- **150+ Geleneksel Yemek:** Veritabanı sadece örneklerle değil; çorbalar, kebaplar, zeytinyağlılar ve tatlılarla donatılmış gerçek bir Türk mutfağı ansiklopedisine dönüştürüldü.
 - **Detaylı Veri:** Her yemeğin fiyat katmanı, kalori/makro değerleri ve diyet kısıtları sisteme işlendi.
+- **Her Öğünde Çorba:** Çorbalar artık sadece akşam değil, kahvaltı ve öğle yemeklerinde de birer seçenek olarak mönüde yer alabilir.
+
 
 ### 2. Akıllı ve Şeffaf Algoritma 🤖
 
