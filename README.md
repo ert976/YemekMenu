@@ -1,24 +1,25 @@
 # YemekMenu - Kişisel Menü Planlama Uygulaması
 
 > 🍳 **React Native + Expo** ile geliştirilen kişisel menü planlama uygulaması
-> 🎨 **239 yemek** seçeneği ile zengin menü oluşturma
+> 🎨 **150+ yemek** seçeneği ile zengin menü oluşturma
 > 🎯 **Stitch tasarım sistemi** ile modern ve kullanıcı dostu arayüz
 > 📱 **Enterprise seviyesinde** performans ve stability
 
 ## 📋 Proje Özellikleri
 
 ### 🍽️ **Yemek Veritabanı**
-- **Toplam**: 239 yemek
-- **Kategoriler**: 11 farklı kategori
+- **Toplam**: 150+ yemek (Genişletilmiş Veritabanı)
+- **Kategoriler**: 12 farklı kategori (Çorbalar, Sebze Yemekleri, Etli Yemekler, Döner & Kebap, Izgara & Mangal, Deniz Ürünleri, Baklagiller, Pilavlar, Hamur İşleri, Kahvaltı, Sütlü Tatlılar, Şerbetli Tatlılar, Meyveler)
 - **Diyet Seçenekleri**: Normal, Vejetaryen, Vegan, Düşük Karbonhidrat, Glütensiz, Helal
-- **Kahvaltı**: 38 seçenek (en zengin kategori)
+- **Esneklik**: Çorbalar artık tüm öğünlerde (kahvaltı, öğle, akşam) tercih edilebilir.
 
 ### 🎨 **Teknik Özellikler**
 - **Platform**: React Native + Expo
-- **Database**: SQLite (mobil) / Web simulation
-- **Type Safety**: TypeScript ile %90+ type coverage
-- **Performance**: Lazy loading, image caching, performance monitoring
-- **Error Handling**: Kapsamlı error handling ve user-friendly mesajlar
+- **Database**: SQLite (mobil) / Universal LocalStorage (Web persistent)
+- **Type Safety**: TypeScript ile %95+ type coverage
+- **Performance**: expo-image caching, useMemo/useCallback optimizasyonları, FlatList virtualization
+- **Error Handling**: Merkezi errorHandler ve ErrorBoundary entegrasyonu
+- **Integration**: MCP Server desteği ile AI asistan entegrasyonu
 
 ### 🎨 **UI/UX Özellikleri**
 - **Tasarım Sistemi**: Stitch design system

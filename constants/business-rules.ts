@@ -7,7 +7,9 @@ export const BUSINESS_RULES = {
     DINNER_CATEGORIES: ["Çorbalar", "Etli Yemekler", "Döner & Kebap", "Izgara & Mangal", "Sebze Yemekleri", "Deniz Ürünleri"],
     SNACK_CATEGORIES: ["Sütlü Tatlılar", "Şerbetli Tatlılar", "Meyveler"],
     BAKERY_PROBABILITY: 0.6,
-,
+    ECONOMY_SIDE_COUNT: 2,
+    NORMAL_SIDE_COUNT: 3,
+  },
   NUTRITION: {
     HIGH_PROTEIN_THRESHOLD: 25,
     LOW_CARB_THRESHOLD: 30,

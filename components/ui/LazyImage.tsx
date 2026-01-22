@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ActivityIndicator, Image, View } from "react-native";
+import { Image as ExpoImage } from "expo-image";
 import { Colors } from "../../constants/theme";
 
 import { ImageStyle, StyleProp } from "react-native";
@@ -41,12 +42,15 @@ export const LazyImage: React.FC<LazyImageProps> = ({
           {placeholder || <ActivityIndicator color={Colors.light.primary} />}
         </View>
       )}
-      <Image
+      <ExpoImage
         source={source}
         style={[style, loading ? { opacity: 0 } : { opacity: 1 }]}
         onLoad={handleLoad}
         onError={handleError}
-        resizeMode="cover"
+        transition={300}
+        placeholder="blur"
+        recyclingKey={source.uri}
+        cachePolicy="memory-disk"
       />
     </View>
   );
@@ -55,7 +59,7 @@ export const LazyImage: React.FC<LazyImageProps> = ({
 const styles = {
   placeholder: {
     backgroundColor: Colors.light.background,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: "center" as const,
+    alignItems: "center" as const,
   },
 };

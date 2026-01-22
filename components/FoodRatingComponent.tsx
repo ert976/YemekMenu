@@ -1,6 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Image } from "expo-image";
-import React, { useEffect, useState, useRef, useCallback } from "react";
+import React, { useEffect, useState, useRef, useCallback, useMemo } from "react";
 import {
     ActivityIndicator,
     Alert,
@@ -80,7 +80,7 @@ const FoodRatingComponent: React.FC<FoodRatingComponentProps> = ({
     }
   };
 
-  const handleRating = async (foodId: number, rating: number) => {
+  const handleRating = useCallback(async (foodId: number, rating: number) => {
     if (!user) return;
 
     try {
@@ -105,7 +105,19 @@ const FoodRatingComponent: React.FC<FoodRatingComponentProps> = ({
     } catch (error) {
       Alert.alert("Hata", "Derecelendirme kaydedilemedi.");
     }
-  };
+  }, [user, userRatings, currentFoodIndex, foods.length, onRatingComplete]);
+
+  const ratingOptions = useMemo(() => [
+    { emoji: "🤢", value: 1, label: "Kalsın" },
+    { emoji: "😕", value: 2, label: "Belki" },
+    { emoji: "😐", value: 3, label: "Fena Değil" },
+    { emoji: "😋", value: 4, label: "Severim" },
+    { emoji: "😍", value: 5, label: "Bayılırım!" },
+  ], []);
+
+  const progressPercentage = useMemo(() => {
+    return ((currentFoodIndex + 1) / foods.length) * 100;
+  }, [currentFoodIndex, foods.length]);
 
   const onViewableItemsChanged = useRef(({ viewableItems }: { viewableItems: ViewToken[] }) => {
     if (viewableItems.length > 0) {
@@ -148,13 +160,7 @@ const FoodRatingComponent: React.FC<FoodRatingComponentProps> = ({
               </Text>
 
               <View style={styles.emojiGrid}>
-                {[
-                  { emoji: "🤢", value: 1, label: "Kalsın" },
-                  { emoji: "😕", value: 2, label: "Belki" },
-                  { emoji: "😐", value: 3, label: "Fena Değil" },
-                  { emoji: "😋", value: 4, label: "Severim" },
-                  { emoji: "😍", value: 5, label: "Bayılırım!" },
-                ].map((rating) => (
+                {ratingOptions.map((rating) => (
                   <TouchableOpacity
                     key={rating.value}
                     style={[
@@ -176,7 +182,7 @@ const FoodRatingComponent: React.FC<FoodRatingComponentProps> = ({
         </View>
       </View>
     );
-  }, [userRatings, theme, width, handleRating]);
+  }, [userRatings, theme, width, handleRating, ratingOptions]);
 
   if (loading) {
     return (
@@ -191,7 +197,7 @@ const FoodRatingComponent: React.FC<FoodRatingComponentProps> = ({
     <View style={[styles.flex, { backgroundColor: theme.background }]}>
       <View style={styles.header}>
         <View style={[styles.progressBarBg, { backgroundColor: theme.border }]}>
-          <View style={[styles.progressBarFill, { width: `${((currentFoodIndex + 1) / foods.length) * 100}%`, backgroundColor: theme.primary }]} />
+          <View style={[styles.progressBarFill, { width: `${progressPercentage}%`, backgroundColor: theme.primary }]} />
         </View>
         <Text style={[styles.progressText, { color: theme.textSecondary }]}>
           {currentFoodIndex + 1} / {foods.length}
@@ -305,7 +311,5 @@ const styles = StyleSheet.create({
   navBtnText: { ...Typography.heading.small },
   disabledNav: { opacity: 0.2 },
 });
-
-export default FoodRatingComponent;
 
 export default FoodRatingComponent;

@@ -1,8 +1,8 @@
 # YemekMenu Proje Spesifikasyonları
 
 > Spec-Driven Development Yaklaşımı ile Proje Yönetimi
-> Tarih: 16 Ocak 2026
-> Versiyon: 3.0.0
+> Tarih: 22 Ocak 2026
+> Versiyon: 3.1.0
 
 ---
 
@@ -10,20 +10,18 @@
 
 ### 🎯 Proje Amacı
 
-Kişisel menü planlama uygulaması ile kullanıcıların sağlıklı ve dengeli beslenmesine yardımcı olmak.
+Kişisel menü planlama uygulaması ile kullanıcıların sağlıklı ve dengeli beslenmesine yardımcı olmak. Genişletilmiş 150+ yemek veritabanı ile akıllı öneriler sunmak.
 
 ### 🏗️ Mimari Kararları
 
 | Karar            | Açıklama                               | Durum                  |
 | ---------------- | -------------------------------------- | ---------------------- |
 | Platform         | React Native + Expo (Cross-platform)   | ✅                     |
-| Database         | SQLite (Mobile) / In-memory (Web)      | ✅                     |
-| Language         | TypeScript (%90+ type coverage)        | ✅                     |
-| State Management | React Context API                      | ✅                     |
-| Routing          | Expo Router (File-based)               | ✅                     |
-| Testing          | Jest + React Native Testing Library    | ⚠️ (Config sorunu var) |
-| Styling          | React Native StyleSheet + Custom Theme | ✅                     |
-| Authentication   | Local SQLite (Hash password)           | ✅                     |
+| Database         | SQLite (Mobile) / LocalStorage (Web)   | ✅                     |
+| Language         | TypeScript (%95+ type coverage)        | ✅                     |
+| Performance      | expo-image, useMemo, FlatList          | ✅                     |
+| Architecture     | Modüler Database, MCP Server Support   | ✅                     |
+| Error Handling   | Merkezi Handler + ErrorBoundary        | ✅                     |
 
 ---
 
@@ -271,23 +269,23 @@ npm test -- --watch
 
 ### ✅ Güçlü Yanlar (Strengths)
 
-1. **Type Safety**: types.ts ile iyi bir type infrastructure var
-2. **Modüler Database**: database/ klasörü ile modüler yapı oluşturulmuş
-3. **Authentication**: Hash password ile güvenli auth var
-4. **Rich Food Database**: 93+ yemek verisi var
+1. **Type Safety**: %95+ coverage ile güvenli kod tabanı.
+2. **Modüler Database**: Universal depolama çözümü (Mobile & Web).
+3. **Rich Food Database**: 150+ yemek verisi ve gelişmiş mönü algoritması.
+4. **Performance**: Görüntü önbelleğe alma ve render optimizasyonları tamamlandı.
+5. **AI Ready**: MCP Server entegrasyonu ile akıllı asistan desteği.
 
 ### ⚠️ Zayıf Yanlar (Weaknesses)
 
-1. **Test Framework**: Jest config hatası, testler çalışmıyor
-2. **Performance**: Test server çok yavaş başlıyor
-3. **Version Conflicts**: React Native ve React type uyumsuzluğu
-4. **Error Handling**: Yetersiz error handling
+1. **PWA Support**: Henüz offline manifest tam değil.
+2. **Multi-Language**: Sadece Türkçe desteği var.
 
-### 🔴 Kritik Sorunlar (Critical Issues)
+### 🟢 Tamamlanan Kritik Sorunlar
 
-1. **SPEC-001**: Jest testleri çalışmıyor (babel config eksik)
-2. **SPEC-002**: React Native 0.75.4 + @types/react 19.1.17 conflict
-3. **SPEC-003**: Test server >30 saniye başlıyor
+1. **SPEC-001**: Jest testleri ve Babel config düzeltildi.
+2. **SPEC-002**: React 18 downgrade ile versiyon uyumluluğu sağlandı.
+3. **SPEC-003**: Test server hızı optimize edildi (<3s).
+4. **SPEC-021**: Veritabanı 150+ öğeye çıkarıldı ve "Her Öğünde Çorba" kuralı eklendi.
 
 ---
 

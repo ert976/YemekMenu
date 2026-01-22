@@ -209,33 +209,49 @@
 ### TASK-009: Performance Optimizasyonu
 
 **İlişkili Spec**: SPEC-009
-**Durum**: ⏸️ Pending
+**Durum**: ✅ Completed
 **Öncelik**: 🟢 Orta
-**Tahmini Süre**: 4 saat
+**Tahmini Süre**: 4 saat (Gerçekleşen: 2 saat)
 **Atanan**: -
 **Bağımlılıklar**: TASK-003, TASK-005
 
 **Gereksinimler:**
 
-- [ ] Image lazy loading + caching (expo-image)
-- [ ] Memoization (useMemo, useCallback)
-- [ ] Virtualization (FlatList for long lists)
-- [ ] N+1 query problemi çözülmüş olmalı
+- [x] Image lazy loading + caching (expo-image)
+- [x] Memoization (useMemo, useCallback)
+- [x] Virtualization (FlatList for long lists)
+- [x] N+1 query problemi çözülmüş olmalı (Map-based rating lookup)
 
 **İlgili Dosyalar:**
 
 - mealPlanner.ts
 - database/foods.ts
 - components/FoodRatingComponent.tsx
+- components/ui/LazyImage.tsx
 
 **Alt Görevler:**
 
-- [ ] TASK-009.1: N+1 query problemini çöz (WHERE IN clause)
-- [ ] TASK-009.2: expo-image entegre et
-- [ ] TASK-009.3: FoodRatingComponent'e useMemo ekle
-- [ ] TASK-009.4: FoodRatingComponent'e useCallback ekle
-- [ ] TASK-009.5: Uzun listeler için FlatList kullan
+- [x] TASK-009.1: N+1 query problemini çöz (Map-based lookup)
+- [x] TASK-009.2: expo-image entegre et
+- [x] TASK-009.3: FoodRatingComponent'e useMemo ekle
+- [x] TASK-009.4: FoodRatingComponent'e useCallback ekle
+- [x] TASK-009.5: Uzun listeler için FlatList kullan
 - [ ] TASK-009.6: Performance monitoring ekle
+
+---
+
+### TASK-021: Veritabanı Genişletme ve Kurallar
+
+**İlişkili Spec**: SPEC-021 (Yeni)
+**Durum**: ✅ Completed
+**Öncelik**: 🟡 Yüksek
+**Tahmini Süre**: 2 saat (Gerçekleşen: 1 saat)
+
+**Gereksinimler:**
+
+- [x] Yemek veritabanı 150+ öğeye çıkarıldı.
+- [x] Çorbaların tüm öğünlerde (sabah, öğle, akşam) yenebilmesi kuralı uygulandı.
+- [x] Kategori bazlı çeşitlilik artırıldı.
 
 ---
 
