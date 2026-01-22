@@ -244,14 +244,24 @@
 
 **İlişkili Spec**: SPEC-021 (Yeni)
 **Durum**: ✅ Completed
-**Öncelik**: 🟡 Yüksek
-**Tahmini Süre**: 2 saat (Gerçekleşen: 1 saat)
+**Öncelik**: 🔴 Kritik
+**Tahmini Süre**: 2 saat (Gerçekleşen: 2 saat)
 
 **Gereksinimler:**
 
-- [x] Yemek veritabanı 150+ öğeye çıkarıldı.
+- [x] Yemek veritabanı 300+ öğeye çıkarıldı (Toplam 305 benzersiz öğe).
+- [x] Eski veritabanındaki (f981ee6) kayıp veriler geri getirildi ve mevcut liste ile birleştirildi.
 - [x] Çorbaların tüm öğünlerde (sabah, öğle, akşam) yenebilmesi kuralı uygulandı.
-- [x] Kategori bazlı çeşitlilik artırıldı.
+- [x] Tüm öğeler yeni `Food` tipine (priceLevel, nutritionalInfo vb.) uygun hale getirildi.
+- [x] ID çakışmaları önlendi ve tüm liste yeniden indekslendi (1-305).
+
+---
+
+## 📅 SONRAKİ ADIMLAR (Next Steps)
+
+1.  **TASK-011: PWA Offline Desteği**: Service Worker ve Manifest dosyalarının oluşturulması.
+2.  **TASK-012: Çoklu Dil Desteği**: i18next entegrasyonu ve TR/EN çevirileri.
+3.  **UI Cilalama**: 300+ yemek için kategorilendirilmiş görünümün (ExploreScreen) performans testi ve görsel iyileştirmeleri.
 
 ---
 
@@ -371,33 +381,22 @@
 | 🟡 Yüksek  | 5      | 5             | 0             | 0            |
 | 🟢 Orta    | 5      | 2             | 0             | 3            |
 | 🔵 Düşük   | 3      | 0             | 0             | 3            |
-| **Toplam** | **17** | **11 (65%)**  | **0 (0%)**    | **6 (35%)**  |
-
----
-
-## 🎯 HAFTALIK HEDEFLER (Current Sprint)
-
-**Sprint**: Sprint-1 (13-20 Ocak 2026)
-**Goal**: Core Backend ve İş Mantığı İyileştirmeleri
-
-**Bu Hafta Yapılacaklar:**
-
-- [x] TASK-001: Jest Configuration Düzeltmeli ✅
-- [x] TASK-002: Versiyon Uyunsuzluğunu Çözmeli ✅
-- [x] TASK-003: Test Server Hızlandırmalı ✅
-- [x] TASK-004: Authentication Güvenliğini İyileştirmeli ✅
-- [x] TASK-005: Menü Planlama Algoritmasını Geliştirmeli ✅
-- [x] TASK-006: Error Handling İyileştirmeli ✅
-- [x] TASK-007: Type Coverage İyileştirmeli ✅
-- [x] TASK-016: Güvenli ID Üretimi ✅
-- [x] TASK-017: İş Mantığı Ayrıştırması ✅
-- [x] TASK-010: Database Refactoring ✅ (Erken tamamlandı)
+| **Toplam** | **17** | **12 (71%)**  | **0 (0%)**    | **5 (29%)**  |
 
 ---
 
 ## 📝 GÖREV GÜNCELLEME NOTLARI
 
+### 22 Ocak 2026
+- ✅ **TASK-021: Veritabanı Genişletme Tamamlandı** ✅
+  - Eski (f981ee6) ve yeni veritabanları birleştirilerek **305 benzersiz yemeğe** ulaşıldı.
+  - Tüm veriler yeni `Food` tipine normalize edildi (priceLevel, nutritionalInfo vb.).
+  - ID çakışmaları çözüldü ve liste yeniden indekslendi.
+  - `mealPlanner.ts` üzerindeki "Çorba her öğünde" kuralı korundu.
+  - Proje bir sonraki aşama olan PWA/Offline desteği için hazır hale getirildi.
+
 ### 16 Ocak 2026
+
 
 - ✅ TASK-001: Jest Configuration Düzeltmeli ✅
   - @types/jest install edildi
