@@ -11,7 +11,7 @@ import {
     View,
 } from "react-native";
 import { useAuth } from "../../auth";
-import { Colors } from "../../constants/Colors";
+import { Colors, Spacing, BorderRadius, Typography } from "../../constants/theme";
 import { useToast } from "../../context/ToastContext";
 import { useColorScheme } from "../../hooks/use-color-scheme";
 import { generateBalancedMenu } from "../../mealPlanner";
@@ -21,7 +21,8 @@ const { width } = Dimensions.get("window");
 
 export default function ExploreScreen() {
   const { user } = useAuth();
-  const theme = useColorScheme() === "dark" ? Colors.dark : Colors.light;
+  const colorScheme = useColorScheme() ?? "light";
+  const theme = Colors[colorScheme];
   const { showSuccess, showError } = useToast();
 
   const [loading, setLoading] = useState(false);
@@ -64,11 +65,11 @@ export default function ExploreScreen() {
       case "preference":
         return "#FF7A00";
       case "economy":
-        return "#4CAF50";
+        return theme.success;
       case "health":
-        return "#2196F3";
+        return theme.info;
       default:
-        return "#9E9E9E";
+        return theme.textSecondary;
     }
   };
 
@@ -105,7 +106,7 @@ export default function ExploreScreen() {
           style={[
             styles.mealItem,
             {
-              backgroundColor: theme.card,
+              backgroundColor: theme.surface,
               flexDirection: "column",
               alignItems: "flex-start",
             },
@@ -119,10 +120,10 @@ export default function ExploreScreen() {
               justifyContent: "space-between",
             }}
           >
-            <Text style={styles.mealLabel}>
+            <Text style={[styles.mealLabel, { color: theme.primary }]}>
               {icon} {label}
             </Text>
-            <Text style={styles.nutritionValue}>🔥 ~{totalCalories} kcal</Text>
+            <Text style={[styles.nutritionValue, { color: theme.textSecondary }]}>🔥 ~{totalCalories} kcal</Text>
           </View>
 
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
@@ -140,23 +141,23 @@ export default function ExploreScreen() {
                   style={{
                     width: 70,
                     height: 70,
-                    borderRadius: 15,
+                    borderRadius: BorderRadius.large,
                     marginBottom: 5,
                   }}
                 />
                 <Text
                   numberOfLines={2}
                   style={{
-                    fontSize: 10,
+                    ...Typography.body.small,
                     textAlign: "center",
-                    color: theme.text,
+                    color: theme.textMain,
                     fontWeight: "600",
                   }}
                 >
                   {item.name}
                 </Text>
                 {item.subCategory === "main" && (
-                  <Text style={{ fontSize: 9, color: theme.tint }}>
+                  <Text style={{ fontSize: 9, color: theme.primary }}>
                     Ana Öğün
                   </Text>
                 )}
@@ -173,7 +174,7 @@ export default function ExploreScreen() {
       <View
         style={[
           styles.mealItem,
-          { backgroundColor: theme.card },
+          { backgroundColor: theme.surface },
           showCompact && styles.compactMeal,
         ]}
       >
@@ -185,18 +186,18 @@ export default function ExploreScreen() {
         <View style={styles.mealInfo}>
           <View style={styles.mealTitleRow}>
             {!showCompact && (
-              <Text style={styles.mealLabel}>
+              <Text style={[styles.mealLabel, { color: theme.primary }]}>
                 {icon} {label}
               </Text>
             )}
-            <Text style={[styles.priceTag, { color: theme.tint }]}>
+            <Text style={[styles.priceTag, { color: theme.primary }]}>
               {priceIcons}
             </Text>
           </View>
           <Text
             style={[
               styles.mealName,
-              { color: theme.text },
+              { color: theme.textMain },
               showCompact && { fontSize: 14 },
             ]}
             numberOfLines={1}
@@ -204,11 +205,11 @@ export default function ExploreScreen() {
             {meal.name}
           </Text>
           <View style={styles.nutritionRow}>
-            <Text style={styles.nutritionValue}>
+            <Text style={[styles.nutritionValue, { color: theme.textSecondary }]}>
               🔥 {meal.nutritionalInfo?.calories} kcal
             </Text>
             {!showCompact && (
-              <Text style={styles.nutritionValue}>
+              <Text style={[styles.nutritionValue, { color: theme.textSecondary }]}>
                 🥩 {meal.nutritionalInfo?.protein}g P
               </Text>
             )}
@@ -226,7 +227,7 @@ export default function ExploreScreen() {
 
     return (
       <View style={styles.dayDetails}>
-        <Text style={[styles.sectionTitle, { color: theme.text }]}>
+        <Text style={[styles.sectionTitle, { color: theme.textMain }]}>
           Günlük Detay - Gün {selectedDayIndex + currentWeekIndex * 7 + 1}
         </Text>
         {renderMealItem(dayData.breakfast, "Kahvaltı", "🍳")}
@@ -234,9 +235,9 @@ export default function ExploreScreen() {
         {renderMealItem(dayData.dinner, "Akşam Yemeği", "🍖")}
         {dayData.snack && renderMealItem(dayData.snack, "Ara Öğün", "🍎")}
 
-        <View style={[styles.descriptionCard, { backgroundColor: theme.card }]}>
-          <Ionicons name="bulb-outline" size={20} color={theme.tint} />
-          <Text style={[styles.descriptionText, { color: theme.text }]}>
+        <View style={[styles.descriptionCard, { backgroundColor: theme.surface, borderColor: theme.border, borderWidth: 1 }]}>
+          <Ionicons name="bulb-outline" size={20} color={theme.primary} />
+          <Text style={[styles.descriptionText, { color: theme.textMain }]}>
             {dayData.nutritionDescription}
           </Text>
         </View>
@@ -248,7 +249,7 @@ export default function ExploreScreen() {
     <ScrollView
       style={[styles.container, { backgroundColor: theme.background }]}
     >
-      <LinearGradient colors={["#FF7A00", "#FF4D00"]} style={styles.header}>
+      <LinearGradient colors={[theme.primary, "#FF4D00"]} style={styles.header}>
         <Text style={styles.headerTitle}>Beslenme Uzmanı</Text>
         <Text style={styles.headerSubtitle}>30 Günlük Kişisel Plan</Text>
       </LinearGradient>
@@ -261,7 +262,7 @@ export default function ExploreScreen() {
               style={[
                 styles.tabItem,
                 viewMode === mode && {
-                  borderBottomColor: theme.tint,
+                  borderBottomColor: theme.primary,
                   borderBottomWidth: 3,
                 },
               ]}
@@ -270,7 +271,7 @@ export default function ExploreScreen() {
               <Text
                 style={[
                   styles.tabText,
-                  { color: viewMode === mode ? theme.tint : "#aaa" },
+                  { color: viewMode === mode ? theme.primary : theme.textSecondary },
                 ]}
               >
                 {mode === "daily"
@@ -285,10 +286,10 @@ export default function ExploreScreen() {
 
         {!currentPlan ? (
           <View style={styles.emptyContainer}>
-            <Ionicons name="calendar-outline" size={64} color="#ccc" />
-            <Text style={styles.emptyText}>Henüz bir plan oluşturmadınız.</Text>
+            <Ionicons name="calendar-outline" size={64} color={theme.border} />
+            <Text style={[styles.emptyText, { color: theme.textSecondary }]}>Henüz bir plan oluşturmadınız.</Text>
             <TouchableOpacity
-              style={styles.generateButton}
+              style={[styles.generateButton, { backgroundColor: theme.primary }]}
               onPress={generateMenu}
             >
               <Text style={styles.generateButtonText}>
@@ -306,8 +307,10 @@ export default function ExploreScreen() {
                       key={idx}
                       style={[
                         styles.weekBtn,
+                        { backgroundColor: theme.surface, borderColor: theme.border, borderWidth: 1 },
                         currentWeekIndex === idx && {
-                          backgroundColor: theme.tint,
+                          backgroundColor: theme.primary,
+                          borderColor: theme.primary,
                         },
                       ]}
                       onPress={() => setCurrentWeekIndex(idx)}
@@ -315,6 +318,7 @@ export default function ExploreScreen() {
                       <Text
                         style={[
                           styles.weekBtnText,
+                          { color: theme.textSecondary },
                           currentWeekIndex === idx && { color: "white" },
                         ]}
                       >
@@ -333,18 +337,18 @@ export default function ExploreScreen() {
                       key={idx}
                       style={[
                         styles.dayCard,
-                        { backgroundColor: theme.card },
-                        selectedDayIndex === idx && styles.activeDayCard,
+                        { backgroundColor: theme.surface, borderColor: theme.border },
+                        selectedDayIndex === idx && { backgroundColor: theme.primary, borderColor: theme.primary },
                       ]}
                       onPress={() => setSelectedDayIndex(idx)}
                     >
-                      <Text style={[styles.dayCardText, { color: theme.text }]}>
+                      <Text style={[styles.dayCardText, { color: theme.textMain }, selectedDayIndex === idx && { color: "white" }]}>
                         Gün {idx + 1 + currentWeekIndex * 7}
                       </Text>
                       <Ionicons
                         name="restaurant-outline"
                         size={16}
-                        color={selectedDayIndex === idx ? "white" : theme.tint}
+                        color={selectedDayIndex === idx ? "white" : theme.primary}
                       />
                     </TouchableOpacity>
                   ))}
@@ -358,14 +362,14 @@ export default function ExploreScreen() {
                 {currentPlan.plan_data.map((_, idx) => (
                   <TouchableOpacity
                     key={idx}
-                    style={[styles.gridItem, { backgroundColor: theme.card }]}
+                    style={[styles.gridItem, { backgroundColor: theme.surface, borderColor: theme.border, borderWidth: 1 }]}
                     onPress={() => {
                       setViewMode("daily");
                       setSelectedDayIndex(idx % 7);
                       setCurrentWeekIndex(Math.floor(idx / 7));
                     }}
                   >
-                    <Text style={{ color: theme.text, fontSize: 10 }}>
+                    <Text style={{ color: theme.textMain, fontSize: 10 }}>
                       {idx + 1}
                     </Text>
                   </TouchableOpacity>
@@ -377,7 +381,7 @@ export default function ExploreScreen() {
               style={styles.reGenerateButton}
               onPress={generateMenu}
             >
-              <Text style={styles.reGenerateButtonText}>Planı Yenile</Text>
+              <Text style={[styles.reGenerateButtonText, { color: theme.primary }]}>Planı Yenile</Text>
             </TouchableOpacity>
           </View>
         )}
@@ -390,65 +394,61 @@ const styles = StyleSheet.create({
   container: { flex: 1 },
   header: {
     padding: 40,
-    borderBottomLeftRadius: 30,
-    borderBottomRightRadius: 30,
+    borderBottomLeftRadius: BorderRadius.extraLarge,
+    borderBottomRightRadius: BorderRadius.extraLarge,
   },
-  headerTitle: { fontSize: 24, fontWeight: "bold", color: "white" },
+  headerTitle: { ...Typography.display.small, color: "white" },
   headerSubtitle: {
-    fontSize: 16,
+    ...Typography.body.medium,
     color: "rgba(255,255,255,0.8)",
     marginTop: 5,
   },
-  configContainer: { padding: 20 },
+  configContainer: { padding: Spacing.lg },
   tabBar: {
     flexDirection: "row",
     justifyContent: "space-around",
-    marginBottom: 20,
+    marginBottom: Spacing.lg,
   },
-  tabItem: { paddingVertical: 10, flex: 1, alignItems: "center" },
-  tabText: { fontWeight: "bold", fontSize: 14 },
+  tabItem: { paddingVertical: Spacing.sm, flex: 1, alignItems: "center" },
+  tabText: { ...Typography.heading.small },
   emptyContainer: { alignItems: "center", marginTop: 50 },
-  emptyText: { color: "#999", marginTop: 15, marginBottom: 25 },
+  emptyText: { ...Typography.body.medium, marginTop: 15, marginBottom: 25 },
   generateButton: {
-    backgroundColor: "#FF7A00",
-    paddingHorizontal: 30,
-    paddingVertical: 15,
-    borderRadius: 25,
+    paddingHorizontal: Spacing.xl,
+    paddingVertical: Spacing.md,
+    borderRadius: BorderRadius.full,
   },
-  generateButtonText: { color: "white", fontWeight: "bold" },
+  generateButtonText: { color: "white", ...Typography.heading.medium },
   planContainer: { flex: 1 },
   weekSelector: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginBottom: 15,
+    marginBottom: Spacing.md,
   },
   weekBtn: {
-    paddingVertical: 8,
-    paddingHorizontal: 12,
-    borderRadius: 15,
-    backgroundColor: "#f0f0f0",
+    paddingVertical: Spacing.xs,
+    paddingHorizontal: Spacing.sm,
+    borderRadius: BorderRadius.large,
   },
-  weekBtnText: { fontSize: 12, fontWeight: "600", color: "#666" },
-  dayScroll: { marginBottom: 20 },
+  weekBtnText: { ...Typography.body.small, fontWeight: "600" },
+  dayScroll: { marginBottom: Spacing.lg },
   dayCard: {
     width: 70,
     height: 70,
-    borderRadius: 20,
+    borderRadius: BorderRadius.extraLarge,
     justifyContent: "center",
     alignItems: "center",
-    marginRight: 10,
+    marginRight: Spacing.sm,
     borderWidth: 1,
-    borderColor: "#f0f0f0",
   },
-  activeDayCard: { backgroundColor: "#FF7A00", borderColor: "#FF7A00" },
-  dayCardText: { fontSize: 12, fontWeight: "bold", marginBottom: 5 },
-  dayDetails: { marginTop: 10 },
-  sectionTitle: { fontSize: 18, fontWeight: "bold", marginBottom: 15 },
+  dayCardText: { ...Typography.body.small, fontWeight: "bold", marginBottom: 5 },
+  dayDetails: { marginTop: Spacing.sm },
+  sectionTitle: { ...Typography.heading.large, marginBottom: Spacing.md },
   mealItem: {
     flexDirection: "row",
-    padding: 15,
-    borderRadius: 20,
-    marginBottom: 15,
+    padding: Spacing.md,
+    borderRadius: BorderRadius.extraLarge,
+    marginBottom: Spacing.md,
     alignItems: "center",
     elevation: 2,
     shadowColor: "#000",
@@ -456,29 +456,29 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 4,
   },
-  mealImage: { width: 70, height: 70, borderRadius: 15 },
-  mealInfo: { flex: 1, marginLeft: 15 },
+  mealImage: { width: 70, height: 70, borderRadius: BorderRadius.large },
+  mealInfo: { flex: 1, marginLeft: Spacing.md },
   mealTitleRow: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     marginBottom: 2,
   },
-  mealLabel: { fontSize: 10, color: "#FF7A00", fontWeight: "bold" },
-  priceTag: { fontSize: 12, fontWeight: "bold", opacity: 0.8 },
-  mealName: { fontSize: 16, fontWeight: "700" },
+  mealLabel: { ...Typography.body.small, fontWeight: "bold" },
+  priceTag: { ...Typography.body.small, fontWeight: "bold" },
+  mealName: { ...Typography.heading.medium },
   nutritionRow: { flexDirection: "row", marginTop: 5 },
-  nutritionValue: { fontSize: 11, color: "#888", marginRight: 10 },
+  nutritionValue: { ...Typography.body.small, marginRight: 10 },
   descriptionCard: {
     flexDirection: "row",
-    padding: 15,
-    borderRadius: 15,
-    marginTop: 10,
+    padding: Spacing.md,
+    borderRadius: BorderRadius.large,
+    marginTop: Spacing.sm,
     alignItems: "center",
   },
   descriptionText: {
-    marginLeft: 10,
-    fontSize: 13,
+    marginLeft: Spacing.sm,
+    ...Typography.body.small,
     flex: 1,
     fontStyle: "italic",
   },
@@ -490,23 +490,23 @@ const styles = StyleSheet.create({
   gridItem: {
     width: (width - 60) / 7,
     height: 40,
-    borderRadius: 10,
+    borderRadius: BorderRadius.default,
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 8,
+    marginBottom: Spacing.xs,
   },
-  reGenerateButton: { marginTop: 30, padding: 15, alignItems: "center" },
-  reGenerateButtonText: { color: "#FF7A00", fontWeight: "bold" },
+  reGenerateButton: { marginTop: Spacing.xl, padding: Spacing.md, alignItems: "center" },
+  reGenerateButtonText: { ...Typography.heading.medium },
   badge: {
     position: "absolute",
     top: 10,
     right: 10,
     paddingHorizontal: 8,
     paddingVertical: 4,
-    borderRadius: 10,
+    borderRadius: BorderRadius.default,
     zIndex: 10,
   },
   badgeText: { color: "white", fontSize: 10, fontWeight: "bold" },
-  compactMeal: { padding: 10 },
-  compactMealImage: { width: 50, height: 50, borderRadius: 10 },
+  compactMeal: { padding: Spacing.sm },
+  compactMealImage: { width: 50, height: 50, borderRadius: BorderRadius.default },
 });

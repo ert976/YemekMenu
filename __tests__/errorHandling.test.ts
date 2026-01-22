@@ -1,9 +1,19 @@
-import { getAllFoods, getUserPreferences } from "../database";
+import { getAllFoods, getUserPreferences } from "../database/index";
 import { generateBalancedMenu } from "../mealPlanner";
-import { AppError, ErrorCode, InsufficientDataError } from "../utils/errors";
+import {
+  AppError,
+  ErrorType,
+  InsufficientDataError,
+} from "../utils/errorHandler";
+
+const ErrorCode = {
+  INSUFFICIENT_DATA: ErrorType.INSUFFICIENT_DATA,
+  AUTH_ERROR: ErrorType.AUTH,
+};
 
 // Mock the database functions
-jest.mock("../database");
+jest.mock("../database/index");
+
 
 describe("Error Handling Verification", () => {
   beforeEach(() => {
@@ -86,10 +96,11 @@ describe("Error Handling Verification", () => {
 
   describe("Custom Error Classes", () => {
     it("AppError should correctly capture code and message", () => {
-      const error = new AppError(ErrorCode.AUTH_ERROR, "Invalid credentials");
-      expect(error.code).toBe(ErrorCode.AUTH_ERROR);
+      const error = new AppError("Invalid credentials", ErrorType.AUTH);
+      expect(error.type).toBe(ErrorType.AUTH);
       expect(error.message).toBe("Invalid credentials");
     });
+
 
     it("InsufficientDataError should have INSUFFICIENT_DATA code", () => {
       const error = new InsufficientDataError("Not enough food");

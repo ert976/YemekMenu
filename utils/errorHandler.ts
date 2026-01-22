@@ -5,12 +5,14 @@ export enum ErrorType {
   VALIDATION = "VALIDATION",
   DATABASE = "DATABASE",
   AUTH = "AUTH",
+  INSUFFICIENT_DATA = "INSUFFICIENT_DATA",
   UNKNOWN = "UNKNOWN",
 }
 
 export class AppError extends Error {
   public type: ErrorType;
   public userMessage: string;
+  public code?: string; // Legacy support for tests
 
   constructor(
     message: string,
@@ -20,7 +22,15 @@ export class AppError extends Error {
     super(message);
     this.name = "AppError";
     this.type = type;
+    this.code = type; // Map type to code for legacy support
     this.userMessage = userMessage || "Bir hata oluştu. Lütfen tekrar deneyin.";
+  }
+}
+
+export class InsufficientDataError extends AppError {
+  constructor(message: string) {
+    super(message, ErrorType.INSUFFICIENT_DATA, message);
+    this.name = "InsufficientDataError";
   }
 }
 

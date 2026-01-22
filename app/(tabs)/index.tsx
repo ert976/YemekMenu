@@ -1,6 +1,6 @@
 import { useAuth } from "@/auth";
 import FoodRatingComponent from "@/components/FoodRatingComponent";
-import { Colors } from "@/constants/Colors";
+import { Colors, Spacing, Typography } from "@/constants/theme";
 import { useColorScheme } from "@/hooks/use-color-scheme";
 import { useRouter } from "expo-router";
 import React from "react";
@@ -21,7 +21,7 @@ export default function RateFoodScreen() {
   if (!user) {
     return (
       <View style={[styles.container, { backgroundColor: theme.background }]}>
-        <Text style={{ color: theme.text }}>Lütfen önce giriş yapın.</Text>
+        <Text style={{ color: theme.textMain }}>Lütfen önce giriş yapın.</Text>
       </View>
     );
   }
@@ -29,10 +29,10 @@ export default function RateFoodScreen() {
   return (
     <View style={[styles.container, { backgroundColor: theme.background }]}>
       <View style={styles.headerArea}>
-        <Text style={[styles.header, { color: theme.text }]}>
+        <Text style={[styles.header, { color: theme.textMain }]}>
           Yemekleri Keşfet
         </Text>
-        <Text style={styles.subHeader}>
+        <Text style={[styles.subHeader, { color: theme.textSecondary }]}>
           Zevkine göre puanla, sana özel menüler hazırlayalım
         </Text>
       </View>
@@ -47,17 +47,15 @@ const styles = StyleSheet.create({
   },
   headerArea: {
     paddingTop: 60,
-    paddingHorizontal: 20,
-    paddingBottom: 10,
+    paddingHorizontal: Spacing.lg,
+    paddingBottom: Spacing.md,
   },
   header: {
-    fontSize: 28,
-    fontWeight: "800",
+    ...Typography.display.small,
     letterSpacing: -0.5,
   },
   subHeader: {
-    fontSize: 15,
-    color: "#888",
+    ...Typography.body.medium,
     marginTop: 4,
   },
 });

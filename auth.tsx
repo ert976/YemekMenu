@@ -121,12 +121,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
           message: "Hatalı kullanıcı adı veya şifre.",
         },
       };
-    } catch (e: any) {
+    } catch (e: unknown) {
+      const error = e instanceof Error ? e.message : "Giriş yapılamadı.";
       return {
         success: false,
         error: {
           code: "AUTH_ERROR",
-          message: e.message || "Giriş yapılamadı.",
+          message: error,
         },
       };
     }
@@ -179,12 +180,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       await storage.setItem("@user", JSON.stringify(newUser));
       setUser(newUser);
       return { success: true, data: newUser };
-    } catch (e: any) {
+    } catch (e: unknown) {
+      const error = e instanceof Error ? e.message : "Kayıt yapılamadı.";
       return {
         success: false,
         error: {
           code: "AUTH_ERROR",
-          message: e.message || "Kayıt yapılamadı.",
+          message: error,
         },
       };
     }

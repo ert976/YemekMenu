@@ -97,18 +97,19 @@ export interface ApiResponse<T> {
 export interface AppError {
   code: string;
   message: string;
-  details?: any;
+  details?: unknown;
 }
 
 export interface Database {
-  execAsync: (sql: string) => Promise<any>;
+  execAsync: (sql: string) => Promise<unknown>;
   runAsync: (
     sql: string,
-    params?: any[],
+    params?: unknown[],
   ) => Promise<{ lastInsertRowId: number }>;
-  getFirstAsync: (sql: string, params?: any[]) => Promise<any>;
-  getAllAsync: (sql: string, params?: any[]) => Promise<any[]>;
+  getFirstAsync: (sql: string, params?: unknown[]) => Promise<unknown>;
+  getAllAsync: (sql: string, params?: unknown[]) => Promise<unknown[]>;
 }
+
 
 export interface SurveyResponse {
   userId: number;

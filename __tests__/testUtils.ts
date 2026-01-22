@@ -1,4 +1,4 @@
-import { Food, User } from "../types";
+import { Food, User, UserRating } from "../types";
 
 // Test utility fonksiyonları
 export const createMockUser = (overrides: Partial<User> = {}): User => ({
@@ -19,12 +19,13 @@ export const createMockFood = (overrides: Partial<Food> = {}): Food => ({
   ...overrides,
 });
 
-export const createMockUserRating = (overrides: Partial<any> = {}): any => ({
+export const createMockUserRating = (
+  overrides: Partial<UserRating> = {},
+): UserRating => ({
   id: Math.floor(Math.random() * 1000),
   user_id: 1,
   food_id: Math.floor(Math.random() * 1000),
   rating: 5,
-  created_at: new Date().toISOString(),
   ...overrides,
 });
 
@@ -50,7 +51,7 @@ const mockFoods: Food[] = [
   }),
 ];
 
-const mockUserRatings: any[] = [
+const mockUserRatings: UserRating[] = [
   createMockUserRating({ user_id: 1, food_id: 1, rating: 5 }),
   createMockUserRating({ user_id: 1, food_id: 2, rating: 4 }),
   createMockUserRating({ user_id: 1, food_id: 3, rating: 3 }),

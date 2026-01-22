@@ -1,0 +1,15 @@
+export const BUSINESS_RULES = {
+  MEAL_PLAN: {
+    DEFAULT_DAYS: 30,
+    MIN_FOOD_VARIETY: 10,
+    WEEKLY_REFRESH_DAYS: 7,
+    LUNCH_CATEGORIES: ["Çorbalar", "Sebze Yemekleri", "Baklagiller", "Etli Yemekler", "Hamur İşleri", "Pilavlar"],
+    DINNER_CATEGORIES: ["Çorbalar", "Etli Yemekler", "Döner & Kebap", "Izgara & Mangal", "Sebze Yemekleri", "Deniz Ürünleri"],
+    SNACK_CATEGORIES: ["Sütlü Tatlılar", "Şerbetli Tatlılar", "Meyveler"],
+    BAKERY_PROBABILITY: 0.6,
+,
+  NUTRITION: {
+    HIGH_PROTEIN_THRESHOLD: 25,
+    LOW_CARB_THRESHOLD: 30,
+  },
+};
