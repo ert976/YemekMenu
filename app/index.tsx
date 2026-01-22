@@ -17,6 +17,7 @@ import {
 import { useAuth } from "../auth";
 import { useToast } from "../context/ToastContext";
 import { useColorScheme } from "../hooks/use-color-scheme";
+import { Colors, Spacing, BorderRadius, Typography } from "../constants/theme";
 
 const { width } = Dimensions.get("window");
 
@@ -31,6 +32,7 @@ export default function LoginScreen() {
   const { showError } = useToast();
   const router = useRouter();
   const colorScheme = useColorScheme() ?? "light";
+  const theme = Colors[colorScheme];
 
   const handleAuth = async () => {
     if (!username || !password || (isRegister && !email)) {
@@ -60,7 +62,6 @@ export default function LoginScreen() {
   const handleDemoLogin = async () => {
     setIsSubmitting(true);
     try {
-      // 1. Standart demo kullanıcısı ile giriş yapmayı dene
       const demoPass = "Demo!12345";
       const result = await login("demo", demoPass);
       if (result.success) {
@@ -68,16 +69,12 @@ export default function LoginScreen() {
         return;
       }
 
-      // 2. Başarısızsa, standart demo kullanıcısını kaydetmeyi dene
       const regResult = await register("demo", "demo@yemekmenu.com", demoPass);
-
       if (regResult.success) {
         router.replace("/(tabs)");
         return;
       }
 
-      // 3. O da başarısızsa (muhtemelen şifre farklı), rastgele bir demo kullanıcısı oluştur
-      // Bu sayede "Hızlı Demo" her zaman çalışır.
       const randomSuffix = Math.floor(Math.random() * 10000);
       const dynamicUser = `demo_${randomSuffix}`;
       const fallbackResult = await register(
@@ -89,15 +86,10 @@ export default function LoginScreen() {
       if (fallbackResult.success) {
         router.replace("/(tabs)");
       } else {
-        // Her şey başarısız olursa hatayı göster
-        console.error("Demo Login Failed completely:", fallbackResult.error);
-        showError(
-          fallbackResult.error?.message || "Demo girişi oluşturulamadı.",
-        );
+        showError(fallbackResult.error?.message || "Demo girişi oluşturulamadı.");
       }
     } catch (e) {
       const msg = e instanceof Error ? e.message : "Beklenmeyen hata";
-      console.error("Demo Login Crash:", e);
       showError(msg);
     } finally {
       setIsSubmitting(false);
@@ -116,13 +108,13 @@ export default function LoginScreen() {
         style={styles.background}
       >
         <LinearGradient
-          colors={["rgba(0,0,0,0.3)", "rgba(0,0,0,0.85)"]}
+          colors={["rgba(0,0,0,0.3)", "rgba(0,0,0,0.9)"]}
           style={styles.overlay}
         >
           <View style={styles.content}>
             <View style={styles.headerContainer}>
-              <View style={styles.logoContainer}>
-                <Ionicons name="restaurant" size={40} color="#FF7A00" />
+              <View style={[styles.logoContainer, { borderColor: theme.primary }]}>
+                <Ionicons name="restaurant" size={40} color={theme.primary} />
               </View>
               <Text style={styles.title}>YemekMenü</Text>
               <Text style={styles.subtitle}>Beslenme Uzmanınız</Text>
@@ -130,12 +122,7 @@ export default function LoginScreen() {
 
             <View style={styles.formContainer}>
               <View style={styles.inputWrapper}>
-                <Ionicons
-                  name="person-outline"
-                  size={20}
-                  color="#aaa"
-                  style={styles.inputIcon}
-                />
+                <Ionicons name="person-outline" size={20} color="#aaa" style={styles.inputIcon} />
                 <TextInput
                   placeholder="Kullanıcı Adı"
                   placeholderTextColor="#aaa"
@@ -148,12 +135,7 @@ export default function LoginScreen() {
 
               {isRegister && (
                 <View style={styles.inputWrapper}>
-                  <Ionicons
-                    name="mail-outline"
-                    size={20}
-                    color="#aaa"
-                    style={styles.inputIcon}
-                  />
+                  <Ionicons name="mail-outline" size={20} color="#aaa" style={styles.inputIcon} />
                   <TextInput
                     placeholder="E-posta"
                     placeholderTextColor="#aaa"
@@ -167,12 +149,7 @@ export default function LoginScreen() {
               )}
 
               <View style={styles.inputWrapper}>
-                <Ionicons
-                  name="lock-closed-outline"
-                  size={20}
-                  color="#aaa"
-                  style={styles.inputIcon}
-                />
+                <Ionicons name="lock-closed-outline" size={20} color="#aaa" style={styles.inputIcon} />
                 <TextInput
                   placeholder="Şifre"
                   placeholderTextColor="#aaa"
@@ -189,7 +166,7 @@ export default function LoginScreen() {
                 disabled={isSubmitting}
               >
                 <LinearGradient
-                  colors={["#FF7A00", "#FF4D00"]}
+                  colors={[theme.primary, "#FF4D00"]}
                   start={{ x: 0, y: 0 }}
                   end={{ x: 1, y: 0 }}
                   style={styles.gradientButton}
@@ -208,7 +185,7 @@ export default function LoginScreen() {
                 style={styles.switchButton}
                 onPress={() => setIsRegister(!isRegister)}
               >
-                <Text style={styles.switchText}>
+                <Text style={[styles.switchText, { color: theme.primary }]}>
                   {isRegister
                     ? "Zaten hesabınız var mı? Giriş yapın"
                     : "Hesabınız yok mu? Hemen kayıt olun"}
@@ -228,6 +205,72 @@ export default function LoginScreen() {
     </KeyboardAvoidingView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: { flex: 1 },
+  background: { flex: 1, width: "100%", height: "100%" },
+  overlay: {
+    flex: 1,
+    paddingHorizontal: Spacing.xl,
+    justifyContent: "center",
+  },
+  content: { alignItems: "center" },
+  headerContainer: { alignItems: "center", marginBottom: Spacing.xxl },
+  logoContainer: {
+    width: 80,
+    height: 80,
+    borderRadius: BorderRadius.extraLarge,
+    backgroundColor: "rgba(255,255,255,0.15)",
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: Spacing.md,
+    borderWidth: 2,
+  },
+  title: {
+    ...Typography.display.large,
+    color: "white",
+    letterSpacing: 1,
+  },
+  subtitle: {
+    ...Typography.body.large,
+    color: "#ccc",
+    marginTop: 5,
+  },
+  formContainer: { width: "100%", maxWidth: 400 },
+  inputWrapper: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "rgba(255,255,255,0.1)",
+    borderRadius: BorderRadius.large,
+    marginBottom: Spacing.md,
+    paddingHorizontal: Spacing.md,
+    height: 60,
+    borderWidth: 1,
+    borderColor: "rgba(255,255,255,0.1)",
+  },
+  inputIcon: { marginRight: Spacing.sm },
+  input: { flex: 1, color: "white", fontSize: 16 },
+  loginButton: {
+    height: 60,
+    borderRadius: BorderRadius.large,
+    overflow: "hidden",
+    marginTop: Spacing.sm,
+    elevation: 5,
+  },
+  gradientButton: { flex: 1, alignItems: "center", justifyContent: "center" },
+  buttonText: { color: "white", ...Typography.heading.large },
+  switchButton: { marginTop: Spacing.lg, alignItems: "center" },
+  switchText: { ...Typography.body.medium, fontWeight: "600" },
+  demoButton: {
+    marginTop: Spacing.xl,
+    padding: Spacing.md,
+    borderRadius: BorderRadius.large,
+    borderWidth: 1,
+    borderColor: "rgba(255,255,255,0.2)",
+    alignItems: "center",
+  },
+  demoButtonText: { color: "#aaa", ...Typography.heading.small },
+});
 
 const styles = StyleSheet.create({
   container: { flex: 1 },

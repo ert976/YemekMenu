@@ -1,0 +1,93 @@
+[
+  {
+    "id": 1,
+    "name": "Mercimek Çorbası",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Mercimek_Corba.jpg/800px-Mercimek_Corba.jpg",
+    "category": "Çorbalar",
+    "is_vegetarian": true,
+    "is_vegan": true,
+    "is_halal": true,
+    "priceLevel": 1
+  },
+  {
+    "id": 2,
+    "name": "Ezogelin Çorbası",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Ezogelin_corba.jpg/800px-Ezogelin_corba.jpg",
+    "category": "Çorbalar",
+    "is_vegetarian": true,
+    "is_vegan": true,
+    "is_halal": true,
+    "priceLevel": 1
+  },
+  {
+    "id": 16,
+    "name": "Taze Fasulye",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Taze_fasulye.jpg/800px-Taze_fasulye.jpg",
+    "category": "Sebze Yemekleri",
+    "is_vegetarian": true,
+    "is_vegan": true,
+    "is_halal": true,
+    "priceLevel": 1
+  },
+  {
+    "id": 36,
+    "name": "Adana Kebap",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Adana_kebab%C4%B1.jpg/800px-Adana_kebab%C4%B1.jpg",
+    "category": "Döner & Kebap",
+    "is_vegetarian": false,
+    "is_vegan": false,
+    "is_halal": true,
+    "priceLevel": 3
+  },
+  {
+    "id": 61,
+    "name": "Kuru Fasulye",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Kuru_fasulye.jpg/800px-Kuru_fasulye.jpg",
+    "category": "Baklagiller",
+    "is_vegetarian": true,
+    "is_vegan": true,
+    "is_halal": true,
+    "priceLevel": 1
+  },
+  {
+    "id": 106,
+    "name": "Menemen",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Menemen.jpg/800px-Menemen.jpg",
+    "category": "Kahvaltı",
+    "subCategory": "main",
+    "is_vegetarian": true,
+    "is_vegan": false,
+    "is_halal": true,
+    "priceLevel": 1
+  },
+  {
+    "id": 301,
+    "name": "Elma",
+    "image_url": "https://images.unsplash.com/photo-1560806887-1e4cd0b6bcd6",
+    "category": "Meyveler",
+    "is_vegetarian": true,
+    "is_vegan": true,
+    "is_halal": true,
+    "priceLevel": 1
+  },
+  {
+    "id": 302,
+    "name": "Muz",
+    "image_url": "https://images.unsplash.com/photo-1571771894821-ad9902d83f4e",
+    "category": "Meyveler",
+    "is_vegetarian": true,
+    "is_vegan": true,
+    "is_halal": true,
+    "priceLevel": 1
+  },
+  {
+    "id": 303,
+    "name": "Mevsim Meyveleri Tabağı",
+    "image_url": "https://images.unsplash.com/photo-1519996529931-28324d5a630e",
+    "category": "Meyveler",
+    "is_vegetarian": true,
+    "is_vegan": true,
+    "is_halal": true,
+    "priceLevel": 2
+  }
+]

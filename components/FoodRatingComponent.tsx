@@ -1,23 +1,21 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Image } from "expo-image";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import {
     ActivityIndicator,
     Alert,
-    Dimensions,
-    ScrollView,
+    FlatList,
     StyleSheet,
     Text,
     TouchableOpacity,
     View,
     useWindowDimensions,
+    ViewToken,
 } from "react-native";
 import { useAuth } from "../auth";
-import { Colors } from "../constants/Colors";
+import { Colors, Spacing, BorderRadius, Typography } from "../constants/theme";
 import { getAllFoods, getUserRatings, rateFood } from "../database";
 import { useColorScheme } from "../hooks/use-color-scheme";
-
-const { width: windowWidth } = Dimensions.get("window");
 
 interface Food {
   id: number;
@@ -43,6 +41,7 @@ const FoodRatingComponent: React.FC<FoodRatingComponentProps> = ({
   const [loading, setLoading] = useState(true);
   const { user } = useAuth();
   const [userRatings, setUserRatings] = useState<Record<number, number>>({});
+  const flatListRef = useRef<FlatList>(null);
 
   useEffect(() => {
     loadInitialData();
@@ -81,14 +80,14 @@ const FoodRatingComponent: React.FC<FoodRatingComponentProps> = ({
     }
   };
 
-  const handleRating = async (rating: number) => {
-    if (!user || foods.length === 0) return;
+  const handleRating = async (foodId: number, rating: number) => {
+    if (!user) return;
 
     try {
-      await rateFood(user.id, foods[currentFoodIndex].id, rating);
+      await rateFood(user.id, foodId, rating);
 
       const newRatings = { ...userRatings };
-      newRatings[foods[currentFoodIndex].id] = rating;
+      newRatings[foodId] = rating;
       setUserRatings(newRatings);
 
       if (currentFoodIndex === foods.length - 1) {
@@ -98,135 +97,53 @@ const FoodRatingComponent: React.FC<FoodRatingComponentProps> = ({
           [{ text: "Hadi Bakalım", onPress: () => onRatingComplete() }],
         );
       } else {
-        setTimeout(() => {
-          setCurrentFoodIndex((prev) => prev + 1);
-        }, 300);
+        flatListRef.current?.scrollToIndex({
+          index: currentFoodIndex + 1,
+          animated: true,
+        });
       }
     } catch (error) {
       Alert.alert("Hata", "Derecelendirme kaydedilemedi.");
     }
   };
 
-  if (loading) {
+  const onViewableItemsChanged = useRef(({ viewableItems }: { viewableItems: ViewToken[] }) => {
+    if (viewableItems.length > 0) {
+      setCurrentFoodIndex(viewableItems[0].index ?? 0);
+    }
+  }).current;
+
+  const renderFoodItem = useCallback(({ item, index }: { item: Food, index: number }) => {
+    const currentRating = userRatings[item.id] || null;
+    
     return (
-      <View style={styles.centerContainer}>
-        <ActivityIndicator size="large" color={theme.tint} />
-        <Text style={[styles.loadingText, { color: theme.text }]}>
-          Lezzetler yükleniyor...
-        </Text>
-      </View>
-    );
-  }
-
-  if (foods.length === 0) {
-    return (
-      <View style={styles.centerContainer}>
-        <Ionicons name="alert-circle-outline" size={48} color={theme.icon} />
-        <Text style={[styles.loadingText, { color: theme.text }]}>
-          Yemek bulunamadı.
-        </Text>
-      </View>
-    );
-  }
-
-  if (currentFoodIndex >= foods.length) {
-    return (
-      <View style={styles.centerContainer}>
-        <Ionicons name="checkmark-circle" size={64} color={theme.success} />
-        <Text style={[styles.completeTitle, { color: theme.text }]}>
-          Hepsi Bu Kadar!
-        </Text>
-        <Text style={styles.completeSubtitle}>
-          Tüm yemekleri derecelendirdin.
-        </Text>
-        <TouchableOpacity
-          style={[styles.resetButton, { backgroundColor: theme.tint }]}
-          onPress={() => setCurrentFoodIndex(0)}
-        >
-          <Text style={styles.resetButtonText}>
-            Listeyi Baştan Gözden Geçir
-          </Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
-
-  const currentFood = foods[currentFoodIndex];
-  const currentRating = userRatings[currentFood.id] || null;
-  const progress = (currentFoodIndex + 1) / foods.length;
-
-  return (
-    <View style={styles.flex}>
-      <View style={styles.progressArea}>
-        <View style={[styles.progressBarBg, { backgroundColor: theme.border }]}>
-          <View
-            style={[
-              styles.progressBarFill,
-              { width: `${progress * 100}%`, backgroundColor: theme.tint },
-            ]}
-          />
-        </View>
-        <Text style={styles.progressText}>
-          {currentFoodIndex + 1} / {foods.length}
-        </Text>
-      </View>
-
-      <ScrollView
-        contentContainerStyle={styles.scrollContent}
-        showsVerticalScrollIndicator={false}
-      >
-        <View
-          style={[
-            styles.card,
-            { backgroundColor: theme.card, shadowColor: theme.text },
-          ]}
-        >
+      <View style={[styles.cardContainer, { width: width }]}>
+        <View style={[styles.card, { backgroundColor: theme.surface }]}>
           <Image
-            source={{
-              uri:
-                currentFood.image_url ||
-                "https://via.placeholder.com/400x300?text=Yemek+Resmi",
-            }}
-            style={[styles.foodImage, { height: width * 0.75 }]}
+            source={{ uri: item.image_url || "https://via.placeholder.com/400x300?text=Yemek+Resmi" }}
+            style={[styles.foodImage, { height: width * 0.7 }]}
             contentFit="cover"
             transition={300}
-            onError={(e) =>
-              console.log(
-                `Image load error for ${currentFood.name}:`,
-                e.error || e,
-              )
-            }
           />
 
           <View style={styles.cardInfo}>
             <View style={styles.tagRow}>
-              <View
-                style={[
-                  styles.categoryTag,
-                  { backgroundColor: theme.tint + "15" },
-                ]}
-              >
-                <Text style={[styles.categoryText, { color: theme.tint }]}>
-                  {currentFood.category.toUpperCase()}
+              <View style={[styles.categoryTag, { backgroundColor: theme.primary + "15" }]}>
+                <Text style={[styles.categoryText, { color: theme.primary }]}>
+                  {item.category.toUpperCase()}
                 </Text>
               </View>
-              {currentFood.is_vegetarian && (
-                <View
-                  style={[styles.categoryTag, { backgroundColor: "#4CAF5015" }]}
-                >
-                  <Text style={[styles.categoryText, { color: "#4CAF50" }]}>
-                    VEJETARYEN
-                  </Text>
+              {item.is_vegetarian && (
+                <View style={[styles.categoryTag, { backgroundColor: "#4CAF5015" }]}>
+                  <Text style={[styles.categoryText, { color: "#4CAF50" }]}>VEJETARYEN</Text>
                 </View>
               )}
             </View>
 
-            <Text style={[styles.foodName, { color: theme.text }]}>
-              {currentFood.name}
-            </Text>
+            <Text style={[styles.foodName, { color: theme.textMain }]}>{item.name}</Text>
 
             <View style={styles.ratingSection}>
-              <Text style={[styles.ratingPrompt, { color: theme.text }]}>
+              <Text style={[styles.ratingPrompt, { color: theme.textSecondary }]}>
                 Bu lezzet sana ne hissettiriyor?
               </Text>
 
@@ -237,34 +154,19 @@ const FoodRatingComponent: React.FC<FoodRatingComponentProps> = ({
                   { emoji: "😐", value: 3, label: "Fena Değil" },
                   { emoji: "😋", value: 4, label: "Severim" },
                   { emoji: "😍", value: 5, label: "Bayılırım!" },
-                ].map((item) => (
+                ].map((rating) => (
                   <TouchableOpacity
-                    key={item.value}
+                    key={rating.value}
                     style={[
                       styles.emojiCard,
-                      {
-                        backgroundColor: theme.background,
-                        borderColor: theme.border,
-                      },
-                      currentRating === item.value && {
-                        borderColor: theme.tint,
-                        backgroundColor: theme.tint + "10",
-                      },
+                      { backgroundColor: theme.background, borderColor: theme.border },
+                      currentRating === rating.value && { borderColor: theme.primary, backgroundColor: theme.primary + "10" }
                     ]}
-                    onPress={() => handleRating(item.value)}
+                    onPress={() => handleRating(item.id, rating.value)}
                   >
-                    <Text style={styles.emojiText}>{item.emoji}</Text>
-                    <Text
-                      style={[
-                        styles.emojiLabel,
-                        { color: theme.text },
-                        currentRating === item.value && {
-                          color: theme.tint,
-                          fontWeight: "700",
-                        },
-                      ]}
-                    >
-                      {item.label}
+                    <Text style={styles.emojiText}>{rating.emoji}</Text>
+                    <Text style={[styles.emojiLabel, { color: theme.textMain }, currentRating === rating.value && { color: theme.primary, fontWeight: "700" }]}>
+                      {rating.label}
                     </Text>
                   </TouchableOpacity>
                 ))}
@@ -272,197 +174,138 @@ const FoodRatingComponent: React.FC<FoodRatingComponentProps> = ({
             </View>
           </View>
         </View>
+      </View>
+    );
+  }, [userRatings, theme, width, handleRating]);
 
-        <View style={styles.navigationRow}>
-          <TouchableOpacity
-            style={[
-              styles.navBtn,
-              currentFoodIndex === 0 && styles.disabledNav,
-            ]}
-            onPress={() =>
-              currentFoodIndex > 0 && setCurrentFoodIndex((prev) => prev - 1)
-            }
-            disabled={currentFoodIndex === 0}
-          >
-            <Ionicons
-              name="arrow-back"
-              size={20}
-              color={currentFoodIndex === 0 ? theme.icon : theme.text}
-            />
-            <Text
-              style={[
-                styles.navBtnText,
-                { color: currentFoodIndex === 0 ? theme.icon : theme.text },
-              ]}
-            >
-              Geri
-            </Text>
-          </TouchableOpacity>
+  if (loading) {
+    return (
+      <View style={[styles.centerContainer, { backgroundColor: theme.background }]}>
+        <ActivityIndicator size="large" color={theme.primary} />
+        <Text style={[styles.loadingText, { color: theme.textMain }]}>Lezzetler yükleniyor...</Text>
+      </View>
+    );
+  }
 
-          <TouchableOpacity
-            style={styles.navBtn}
-            onPress={() => setCurrentFoodIndex((prev) => prev + 1)}
-          >
-            <Text style={[styles.navBtnText, { color: theme.text }]}>Atla</Text>
-            <Ionicons name="arrow-forward" size={20} color={theme.text} />
-          </TouchableOpacity>
+  return (
+    <View style={[styles.flex, { backgroundColor: theme.background }]}>
+      <View style={styles.header}>
+        <View style={[styles.progressBarBg, { backgroundColor: theme.border }]}>
+          <View style={[styles.progressBarFill, { width: `${((currentFoodIndex + 1) / foods.length) * 100}%`, backgroundColor: theme.primary }]} />
         </View>
-      </ScrollView>
+        <Text style={[styles.progressText, { color: theme.textSecondary }]}>
+          {currentFoodIndex + 1} / {foods.length}
+        </Text>
+      </View>
+
+      <FlatList
+        ref={flatListRef}
+        data={foods}
+        renderItem={renderFoodItem}
+        keyExtractor={(item) => item.id.toString()}
+        horizontal
+        pagingEnabled
+        showsHorizontalScrollIndicator={false}
+        onViewableItemsChanged={onViewableItemsChanged}
+        viewabilityConfig={{ itemVisiblePercentThreshold: 50 }}
+        getItemLayout={(_, index) => ({
+          length: width,
+          offset: width * index,
+          index,
+        })}
+        windowSize={3}
+        initialNumToRender={2}
+      />
+
+      <View style={styles.footer}>
+        <TouchableOpacity
+          style={[styles.navBtn, currentFoodIndex === 0 && styles.disabledNav]}
+          onPress={() => flatListRef.current?.scrollToIndex({ index: currentFoodIndex - 1, animated: true })}
+          disabled={currentFoodIndex === 0}
+        >
+          <Ionicons name="arrow-back" size={20} color={theme.textMain} />
+          <Text style={[styles.navBtnText, { color: theme.textMain }]}>Geri</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.navBtn}
+          onPress={() => {
+            if (currentFoodIndex < foods.length - 1) {
+              flatListRef.current?.scrollToIndex({ index: currentFoodIndex + 1, animated: true });
+            } else {
+              onRatingComplete();
+            }
+          }}
+        >
+          <Text style={[styles.navBtnText, { color: theme.textMain }]}>
+            {currentFoodIndex === foods.length - 1 ? "Bitir" : "Atla"}
+          </Text>
+          <Ionicons name="arrow-forward" size={20} color={theme.textMain} />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  flex: {
-    flex: 1,
-  },
-  centerContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 30,
-  },
-  scrollContent: {
-    padding: 20,
-    paddingBottom: 40,
-  },
-  progressArea: {
-    paddingHorizontal: 25,
-    paddingTop: 10,
+  flex: { flex: 1 },
+  centerContainer: { flex: 1, justifyContent: "center", alignItems: "center" },
+  header: {
+    paddingHorizontal: Spacing.lg,
+    paddingTop: Spacing.md,
     flexDirection: "row",
     alignItems: "center",
-    gap: 12,
+    gap: Spacing.sm,
   },
   progressBarBg: {
     flex: 1,
     height: 6,
-    borderRadius: 3,
+    borderRadius: BorderRadius.full,
     overflow: "hidden",
   },
-  progressBarFill: {
-    height: "100%",
-    borderRadius: 3,
-  },
+  progressBarFill: { height: "100%", borderRadius: BorderRadius.full },
   progressText: {
-    fontSize: 13,
-    fontWeight: "700",
-    color: "#888",
+    ...Typography.body.small,
     width: 45,
+    textAlign: "right",
+  },
+  cardContainer: {
+    padding: Spacing.md,
+    justifyContent: "center",
   },
   card: {
-    borderRadius: 32,
+    borderRadius: BorderRadius.extraLarge,
     overflow: "hidden",
-    shadowOffset: { width: 0, height: 10 },
-    shadowOpacity: 0.15,
-    shadowRadius: 20,
-    elevation: 10,
+    elevation: 4,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 12,
   },
-  foodImage: {
-    width: "100%",
-    // Height is set dynamically
-    backgroundColor: "#eee", // Placeholder color
-  },
-  cardInfo: {
-    padding: 24,
-  },
-  tagRow: {
-    flexDirection: "row",
-    gap: 8,
-    marginBottom: 12,
-  },
-  categoryTag: {
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 10,
-  },
-  categoryText: {
-    fontSize: 11,
-    fontWeight: "800",
-    letterSpacing: 0.5,
-  },
-  foodName: {
-    fontSize: 26,
-    fontWeight: "800",
-    marginBottom: 20,
-    letterSpacing: -0.5,
-  },
-  ratingSection: {
-    borderTopWidth: 1,
-    borderTopColor: "rgba(0,0,0,0.05)",
-    paddingTop: 20,
-  },
-  ratingPrompt: {
-    fontSize: 15,
-    fontWeight: "600",
-    marginBottom: 15,
-    textAlign: "center",
-    opacity: 0.7,
-  },
-  emojiGrid: {
+  foodImage: { width: "100%", backgroundColor: "#f0f0f0" },
+  cardInfo: { padding: Spacing.lg },
+  tagRow: { flexDirection: "row", gap: Spacing.xs, marginBottom: Spacing.sm },
+  categoryTag: { paddingHorizontal: Spacing.sm, paddingVertical: 4, borderRadius: BorderRadius.default },
+  categoryText: { ...Typography.body.small, fontWeight: "800" },
+  foodName: { ...Typography.display.small, marginBottom: Spacing.md },
+  ratingSection: { borderTopWidth: 1, borderTopColor: "rgba(0,0,0,0.05)", paddingTop: Spacing.md },
+  ratingPrompt: { ...Typography.body.medium, marginBottom: Spacing.sm, textAlign: "center" },
+  emojiGrid: { flexDirection: "row", justifyContent: "space-between", gap: Spacing.xs },
+  emojiCard: { flex: 1, paddingVertical: Spacing.sm, alignItems: "center", borderRadius: BorderRadius.large, borderWidth: 1 },
+  emojiText: { fontSize: 24, marginBottom: 4 },
+  emojiLabel: { fontSize: 9, textAlign: "center" },
+  loadingText: { ...Typography.body.large, marginTop: Spacing.md },
+  footer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    gap: 8,
+    padding: Spacing.lg,
+    paddingBottom: Spacing.xl,
   },
-  emojiCard: {
-    flex: 1,
-    paddingVertical: 12,
-    alignItems: "center",
-    borderRadius: 16,
-    borderWidth: 2,
-  },
-  emojiText: {
-    fontSize: 24,
-    marginBottom: 4,
-  },
-  emojiLabel: {
-    fontSize: 10,
-    textAlign: "center",
-  },
-  loadingText: {
-    marginTop: 15,
-    fontSize: 16,
-    fontWeight: "500",
-  },
-  completeTitle: {
-    fontSize: 24,
-    fontWeight: "800",
-    marginTop: 20,
-  },
-  completeSubtitle: {
-    color: "#888",
-    marginTop: 8,
-    fontSize: 16,
-  },
-  resetButton: {
-    marginTop: 30,
-    paddingVertical: 15,
-    paddingHorizontal: 25,
-    borderRadius: 16,
-  },
-  resetButtonText: {
-    color: "#fff",
-    fontWeight: "700",
-    fontSize: 16,
-  },
-  navigationRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginTop: 20,
-    paddingHorizontal: 5,
-  },
-  navBtn: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 6,
-    padding: 10,
-  },
-  navBtnText: {
-    fontSize: 15,
-    fontWeight: "600",
-  },
-  disabledNav: {
-    opacity: 0.3,
-  },
+  navBtn: { flexDirection: "row", alignItems: "center", gap: Spacing.xs },
+  navBtnText: { ...Typography.heading.small },
+  disabledNav: { opacity: 0.2 },
 });
+
+export default FoodRatingComponent;
 
 export default FoodRatingComponent;
