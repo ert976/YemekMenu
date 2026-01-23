@@ -38,7 +38,9 @@ export default function RateFoodScreen() {
           {t("rate.subtitle")}
         </Text>
       </View>
-      <FoodRatingComponent onRatingComplete={handleRatingComplete} />
+      <View style={{ flex: 1 }}>
+        <FoodRatingComponent onRatingComplete={handleRatingComplete} />
+      </View>
     </View>
   );
 }

@@ -1,13 +1,12 @@
 import * as Haptics from "expo-haptics";
 import React, { useState } from "react";
 import {
-    ActivityIndicator,
     Animated,
     Dimensions,
     StyleSheet,
     Text,
     TouchableOpacity,
-    View,
+    View
 } from "react-native";
 import {
     BorderRadius,
@@ -80,7 +79,7 @@ export const FoodCard: React.FC<FoodCardProps> = ({
 
   const handleRatingPress = (newRating: number) => {
     setRating(newRating);
-    
+
     // Haptik geri bildirim
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
 
@@ -142,7 +141,10 @@ export const FoodCard: React.FC<FoodCardProps> = ({
 
     if (food.is_vegetarian) {
       badges.push(
-        <View key="vegetarian" style={[styles.badge, { backgroundColor: theme.success }]}>
+        <View
+          key="vegetarian"
+          style={[styles.badge, { backgroundColor: theme.success }]}
+        >
           <Text style={styles.badgeText}>V</Text>
         </View>,
       );
@@ -150,7 +152,10 @@ export const FoodCard: React.FC<FoodCardProps> = ({
 
     if (food.is_vegan) {
       badges.push(
-        <View key="vegan" style={[styles.badge, { backgroundColor: "#2ecc71" }]}>
+        <View
+          key="vegan"
+          style={[styles.badge, { backgroundColor: "#2ecc71" }]}
+        >
           <Text style={styles.badgeText}>VG</Text>
         </View>,
       );
@@ -158,7 +163,10 @@ export const FoodCard: React.FC<FoodCardProps> = ({
 
     if (food.is_halal) {
       badges.push(
-        <View key="halal" style={[styles.badge, { backgroundColor: theme.primary }]}>
+        <View
+          key="halal"
+          style={[styles.badge, { backgroundColor: theme.primary }]}
+        >
           <Text style={styles.badgeText}>H</Text>
         </View>,
       );
@@ -190,22 +198,37 @@ export const FoodCard: React.FC<FoodCardProps> = ({
         activeOpacity={0.8}
       >
         {/* Image */}
-        <View style={[styles.imageContainer, { height: cardSize.imageHeight, backgroundColor: theme.background }]}>
+        <View
+          style={[
+            styles.imageContainer,
+            { height: cardSize.imageHeight, backgroundColor: theme.background },
+          ]}
+        >
           <LazyImage
             source={{ uri: food.image_url }}
             style={styles.image}
-            placeholder={<SkeletonLoader width="100%" height="100%" borderRadius={0} />}
+            foodName={food.name}
+            foodCategory={food.category}
+            placeholder={
+              <SkeletonLoader width="100%" height="100%" borderRadius={0} />
+            }
           />
           {renderDietaryInfo()}
         </View>
 
         {/* Content */}
         <View style={styles.content}>
-          <Text style={[styles.foodName, { color: theme.textMain }]} numberOfLines={2}>
+          <Text
+            style={[styles.foodName, { color: theme.textMain }]}
+            numberOfLines={2}
+          >
             {food.name}
           </Text>
 
-          <Text style={[styles.category, { color: theme.textSecondary }]} numberOfLines={1}>
+          <Text
+            style={[styles.category, { color: theme.textSecondary }]}
+            numberOfLines={1}
+          >
             {food.category}
           </Text>
 
@@ -213,7 +236,11 @@ export const FoodCard: React.FC<FoodCardProps> = ({
             <View style={styles.ratingSection}>
               {renderStars()}
               {rating > 0 && (
-                <Text style={[styles.ratingText, { color: theme.textSecondary }]}>{rating.toFixed(1)}/5</Text>
+                <Text
+                  style={[styles.ratingText, { color: theme.textSecondary }]}
+                >
+                  {rating.toFixed(1)}/5
+                </Text>
               )}
             </View>
           )}
