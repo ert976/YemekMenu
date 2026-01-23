@@ -1,5 +1,10 @@
 import { MealPlan, User, UserRating } from "../types";
 import { storage } from "../utils/storage";
+import { hashPassword } from "../utils/auth-utils";
+
+// Demo kullanıcı için sabit hash (demoparola için önceden hesaplanmış)
+// Hash: SHA256("demoparola" + "yemekmenu_salt")
+const DEMO_USER_HASH = "cd649cd0467e079f8ddd08263cb5e3556fde945f86de67605f143ae76c495a00";
 
 // Uygulama Durumu (App State)
 export const appState: {
@@ -10,7 +15,15 @@ export const appState: {
     [userId: number]: { likedIds: number[]; dislikedIds: number[] };
   };
 } = {
-  users: [],
+  users: [
+    {
+      id: 999999, // Demo kullanıcı için özel ID (food ID'leriyle çakışmamak için)
+      username: "demokullanici",
+      email: "demo@yemekmenu.app",
+      passwordHash: DEMO_USER_HASH,
+      lastActivity: Date.now(),
+    },
+  ],
   user_ratings: [],
   meal_plans: [],
   preferences: {},

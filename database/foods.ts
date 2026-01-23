@@ -10,6 +10,13 @@ export const COMMON_FOODS: Food[] = [
     "is_vegan": true,
     "is_halal": true,
     "priceLevel": 1,
+    "estimatedPrice": 18,
+    "nutritionalInfo": {
+      "calories": 120,
+      "protein": 6,
+      "carbs": 18,
+      "fat": 3
+    },
     "id": 1
   },
   {
@@ -1036,6 +1043,7 @@ export const COMMON_FOODS: Food[] = [
     "name": "Menemen",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Menemen.jpg/800px-Menemen.jpg",
     "category": "Kahvaltı",
+    "subCategory": "main",
     "is_vegetarian": true,
     "is_vegan": false,
     "is_halal": true,
@@ -1046,6 +1054,7 @@ export const COMMON_FOODS: Food[] = [
     "name": "Sahanda Yumurta",
     "image_url": "https://cdn.yemek.com/mnresize/1250/833/uploads/2015/04/sahanda-yumurta-asama-5.jpg",
     "category": "Kahvaltı",
+    "subCategory": "main",
     "is_vegetarian": true,
     "is_vegan": false,
     "is_halal": true,
@@ -1056,6 +1065,7 @@ export const COMMON_FOODS: Food[] = [
     "name": "Omlet",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Omlet.jpg/800px-Omlet.jpg",
     "category": "Kahvaltı",
+    "subCategory": "main",
     "is_vegetarian": true,
     "is_vegan": true,
     "is_halal": true,
@@ -1066,6 +1076,7 @@ export const COMMON_FOODS: Food[] = [
     "name": "Tost",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Tost.jpg/800px-Tost.jpg",
     "category": "Kahvaltı",
+    "subCategory": "main",
     "is_vegetarian": true,
     "is_vegan": true,
     "is_halal": true,
@@ -1076,6 +1087,7 @@ export const COMMON_FOODS: Food[] = [
     "name": "Poğaça",
     "image_url": "https://cdn.yemek.com/mnresize/1250/833/uploads/2014/11/peynirli-pogaca-asama-10.jpg",
     "category": "Kahvaltı",
+    "subCategory": "bakery",
     "is_vegetarian": true,
     "is_vegan": false,
     "is_halal": true,
@@ -1086,6 +1098,7 @@ export const COMMON_FOODS: Food[] = [
     "name": "Sucuklu Yumurta",
     "image_url": "https://cdn.yemek.com/mnresize/1250/833/uploads/2015/03/sucuklu-yumurta-asama-5.jpg",
     "category": "Kahvaltı",
+    "subCategory": "main",
     "is_vegetarian": false,
     "is_vegan": false,
     "is_halal": true,
@@ -1096,6 +1109,7 @@ export const COMMON_FOODS: Food[] = [
     "name": "Pastırmalı Yumurta",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Pastirmali_yumurta.jpg/800px-Pastirmali_yumurta.jpg",
     "category": "Kahvaltı",
+    "subCategory": "main",
     "is_vegetarian": false,
     "is_vegan": false,
     "is_halal": true,
@@ -1116,6 +1130,7 @@ export const COMMON_FOODS: Food[] = [
     "name": "Açık Büfe",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Acik_bufe.jpg/800px-Acik_bufe.jpg",
     "category": "Kahvaltı",
+    "subCategory": "main",
     "is_vegetarian": false,
     "is_vegan": false,
     "is_halal": true,
@@ -1126,6 +1141,7 @@ export const COMMON_FOODS: Food[] = [
     "name": "Peynir Tabak",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Peynir_tabak.jpg/800px-Peynir_tabak.jpg",
     "category": "Kahvaltı",
+    "subCategory": "side",
     "is_vegetarian": true,
     "is_vegan": true,
     "is_halal": true,
@@ -1136,6 +1152,7 @@ export const COMMON_FOODS: Food[] = [
     "name": "Zeytin",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Zeytin.jpg/800px-Zeytin.jpg",
     "category": "Kahvaltı",
+    "subCategory": "side",
     "is_vegetarian": true,
     "is_vegan": true,
     "is_halal": true,
@@ -1146,6 +1163,7 @@ export const COMMON_FOODS: Food[] = [
     "name": "Bal",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Bal.jpg/800px-Bal.jpg",
     "category": "Kahvaltı",
+    "subCategory": "side",
     "is_vegetarian": false,
     "is_vegan": false,
     "is_halal": true,
@@ -1156,6 +1174,7 @@ export const COMMON_FOODS: Food[] = [
     "name": "Kaymak",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Kaymak.jpg/800px-Kaymak.jpg",
     "category": "Kahvaltı",
+    "subCategory": "side",
     "is_vegetarian": true,
     "is_vegan": false,
     "is_halal": true,
@@ -1166,6 +1185,7 @@ export const COMMON_FOODS: Food[] = [
     "name": "Yumurta Salatası",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Yumurta_salatasi.jpg/800px-Yumurta_salatasi.jpg",
     "category": "Kahvaltı",
+    "subCategory": "side",
     "is_vegetarian": true,
     "is_vegan": true,
     "is_halal": true,
@@ -1186,6 +1206,7 @@ export const COMMON_FOODS: Food[] = [
     "name": "Domatesli Börek",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Domatesli_borek.jpg/800px-Domatesli_borek.jpg",
     "category": "Kahvaltı",
+    "subCategory": "bakery",
     "is_vegetarian": true,
     "is_vegan": true,
     "is_halal": true,
@@ -1196,6 +1217,7 @@ export const COMMON_FOODS: Food[] = [
     "name": "Ispanaklı Börek",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Ispanakli_borek.jpg/800px-Ispanakli_borek.jpg",
     "category": "Kahvaltı",
+    "subCategory": "bakery",
     "is_vegetarian": true,
     "is_vegan": true,
     "is_halal": true,
@@ -1206,6 +1228,7 @@ export const COMMON_FOODS: Food[] = [
     "name": "Patatesli Börek",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Patatesli_borek.jpg/800px-Patatesli_borek.jpg",
     "category": "Kahvaltı",
+    "subCategory": "bakery",
     "is_vegetarian": true,
     "is_vegan": true,
     "is_halal": true,
@@ -1216,6 +1239,7 @@ export const COMMON_FOODS: Food[] = [
     "name": "Kıymalı Pide",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Kiyimali_pide.jpg/800px-Kiyimali_pide.jpg",
     "category": "Kahvaltı",
+    "subCategory": "bakery",
     "is_vegetarian": false,
     "is_vegan": false,
     "is_halal": true,
@@ -1226,6 +1250,7 @@ export const COMMON_FOODS: Food[] = [
     "name": "Peynirli Pide",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Peynirli_pide.jpg/800px-Peynirli_pide.jpg",
     "category": "Kahvaltı",
+    "subCategory": "bakery",
     "is_vegetarian": true,
     "is_vegan": true,
     "is_halal": true,
@@ -1236,6 +1261,7 @@ export const COMMON_FOODS: Food[] = [
     "name": "Kuşbaşlı Pide",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Kusbasi_pide.jpg/800px-Kusbasi_pide.jpg",
     "category": "Kahvaltı",
+    "subCategory": "bakery",
     "is_vegetarian": false,
     "is_vegan": false,
     "is_halal": true,
@@ -1246,6 +1272,7 @@ export const COMMON_FOODS: Food[] = [
     "name": "Yumurtalı Ekmek",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Yumurtali_ekmek.jpg/800px-Yumurtali_ekmek.jpg",
     "category": "Kahvaltı",
+    "subCategory": "main",
     "is_vegetarian": true,
     "is_vegan": true,
     "is_halal": true,
@@ -1256,6 +1283,7 @@ export const COMMON_FOODS: Food[] = [
     "name": "Sosisli Börek",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Sosisli_borek.jpg/800px-Sosisli_borek.jpg",
     "category": "Kahvaltı",
+    "subCategory": "bakery",
     "is_vegetarian": false,
     "is_vegan": false,
     "is_halal": true,
@@ -1266,6 +1294,7 @@ export const COMMON_FOODS: Food[] = [
     "name": "Haşlanmış Yumurta",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Hashlanmis_yumurta.jpg/800px-Hashlanmis_yumurta.jpg",
     "category": "Kahvaltı",
+    "subCategory": "main",
     "is_vegetarian": true,
     "is_vegan": true,
     "is_halal": true,
@@ -1276,6 +1305,7 @@ export const COMMON_FOODS: Food[] = [
     "name": "Peynirli Omlet",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Peynirli_omlet.jpg/800px-Peynirli_omlet.jpg",
     "category": "Kahvaltı",
+    "subCategory": "main",
     "is_vegetarian": true,
     "is_vegan": true,
     "is_halal": true,
@@ -1286,6 +1316,7 @@ export const COMMON_FOODS: Food[] = [
     "name": "Sebzeli Omlet",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Sebzeli_omlet.jpg/800px-Sebzeli_omlet.jpg",
     "category": "Kahvaltı",
+    "subCategory": "main",
     "is_vegetarian": true,
     "is_vegan": true,
     "is_halal": true,
@@ -1306,6 +1337,7 @@ export const COMMON_FOODS: Food[] = [
     "name": "Sütlü Mısır",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Sutlu_misir.jpg/800px-Sutlu_misir.jpg",
     "category": "Kahvaltı",
+    "subCategory": "side",
     "is_vegetarian": true,
     "is_vegan": true,
     "is_halal": true,
@@ -1316,6 +1348,7 @@ export const COMMON_FOODS: Food[] = [
     "name": "Kaşarlı Tost",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Kasarli_tost.jpg/800px-Kasarli_tost.jpg",
     "category": "Kahvaltı",
+    "subCategory": "main",
     "is_vegetarian": false,
     "is_vegan": false,
     "is_halal": true,
@@ -1336,6 +1369,7 @@ export const COMMON_FOODS: Food[] = [
     "name": "Açma",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Acma.jpg/800px-Acma.jpg",
     "category": "Kahvaltı",
+    "subCategory": "bakery",
     "is_vegetarian": true,
     "is_vegan": true,
     "is_halal": true,
@@ -1713,54 +1747,26 @@ export const COMMON_FOODS: Food[] = [
     "id": 171
   },
   {
-    "name": "Türk Kahvesi",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Turk_kahvesi.jpg/800px-Turk_kahvesi.jpg",
-    "category": "İçecekler",
-    "is_vegetarian": true,
-    "is_vegan": true,
-    "is_halal": true,
-    "priceLevel": 1,
-    "id": 172
-  },
-  {
-    "name": "Sütlü Kahve",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Sutlu_kahve.jpg/800px-Sutlu_kahve.jpg",
-    "category": "İçecekler",
-    "is_vegetarian": true,
-    "is_vegan": false,
-    "is_halal": true,
-    "priceLevel": 1,
-    "id": 173
-  },
-  {
-    "name": "Filtre Kahve",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Filtre_kahve.jpg/800px-Filtre_kahve.jpg",
-    "category": "İçecekler",
-    "is_vegetarian": true,
-    "is_vegan": true,
-    "is_halal": true,
-    "priceLevel": 1,
-    "id": 174
-  },
-  {
-    "name": "Espresso",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Espresso.jpg/800px-Espresso.jpg",
-    "category": "İçecekler",
-    "is_vegetarian": true,
-    "is_vegan": true,
-    "is_halal": true,
-    "priceLevel": 1,
-    "id": 175
-  },
-  {
     "name": "Çay",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Cay.jpg/800px-Cay.jpg",
-    "category": "İçecekler",
+    "category": "Kahvaltı",
+    "subCategory": "drink",
     "is_vegetarian": true,
     "is_vegan": true,
     "is_halal": true,
     "priceLevel": 1,
     "id": 176
+  },
+  {
+    "name": "Türk Kahvesi",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Turk_kahvesi.jpg/800px-Turk_kahvesi.jpg",
+    "category": "Kahvaltı",
+    "subCategory": "drink",
+    "is_vegetarian": true,
+    "is_vegan": true,
+    "is_halal": true,
+    "priceLevel": 1,
+    "id": 172
   },
   {
     "name": "Yeşil Çay",
@@ -1971,16 +1977,6 @@ export const COMMON_FOODS: Food[] = [
     "is_halal": true,
     "priceLevel": 1,
     "id": 197
-  },
-  {
-    "name": "demokullanici",
-    "image_url": null,
-    "category": null,
-    "is_vegetarian": false,
-    "is_vegan": false,
-    "is_halal": true,
-    "priceLevel": 1,
-    "id": 198
   },
   {
     "name": "Karnıyarık",
@@ -3051,36 +3047,321 @@ export const COMMON_FOODS: Food[] = [
     "is_halal": true,
     "priceLevel": 2,
     "id": 305
+  },
+  {
+    "name": "Yaprak Sarması",
+    "image_url": "https://cdn.yemek.com/mnresize/1250/833/uploads/2014/12/yaprak-sarmasi-yemekcom.jpg",
+    "category": "Dolma & Sarma",
+    "is_vegetarian": false,
+    "is_vegan": false,
+    "is_halal": true,
+    "priceLevel": 2,
+    "id": 306
+  },
+  {
+    "name": "Biber Dolması",
+    "image_url": "https://cdn.yemek.com/mnresize/1250/833/uploads/2014/06/etli-biber-dolmasi-yemekcom.jpg",
+    "category": "Dolma & Sarma",
+    "is_vegetarian": false,
+    "is_vegan": false,
+    "is_halal": true,
+    "priceLevel": 2,
+    "id": 307
+  },
+  {
+    "name": "Kabak Dolması",
+    "image_url": "https://cdn.yemek.com/mnresize/1250/833/uploads/2015/06/kabak-dolmasi-yemekcom.jpg",
+    "category": "Dolma & Sarma",
+    "is_vegetarian": false,
+    "is_vegan": false,
+    "is_halal": true,
+    "priceLevel": 2,
+    "id": 308
+  },
+  {
+    "name": "Patlıcan Dolması",
+    "image_url": "https://cdn.yemek.com/mnresize/1250/833/uploads/2014/06/patlican-dolmasi-yemekcom.jpg",
+    "category": "Dolma & Sarma",
+    "is_vegetarian": false,
+    "is_vegan": false,
+    "is_halal": true,
+    "priceLevel": 2,
+    "id": 309
+  },
+  {
+    "name": "Domates Dolması",
+    "image_url": "https://cdn.yemek.com/mnresize/1250/833/uploads/2015/07/zeytinyagli-domates-dolmasi.jpg",
+    "category": "Dolma & Sarma",
+    "is_vegetarian": true,
+    "is_vegan": true,
+    "is_halal": true,
+    "priceLevel": 2,
+    "id": 310
+  },
+  {
+    "name": "Lahana Sarması",
+    "image_url": "https://cdn.yemek.com/mnresize/1250/833/uploads/2014/06/lahana-sarmasi-one-cikan.jpg",
+    "category": "Dolma & Sarma",
+    "is_vegetarian": false,
+    "is_vegan": false,
+    "is_halal": true,
+    "priceLevel": 2,
+    "id": 311
+  },
+  {
+    "name": "Kuru Fasulye Dolması",
+    "image_url": "https://i.lezzet.com.tr/images-xxlarge-recipe/kuru-fasulye-dolmasi-11b69bc6-5353-4f31-8631-d9e35df51c6e.jpg",
+    "category": "Dolma & Sarma",
+    "is_vegetarian": false,
+    "is_vegan": false,
+    "is_halal": true,
+    "priceLevel": 2,
+    "id": 312
+  },
+  {
+    "name": "Enginar Dolması",
+    "image_url": "https://cdn.yemek.com/mnresize/1250/833/uploads/2015/03/enginar-dolmasi-yemekcom.jpg",
+    "category": "Dolma & Sarma",
+    "is_vegetarian": false,
+    "is_vegan": false,
+    "is_halal": true,
+    "priceLevel": 3,
+    "id": 313
+  },
+  {
+    "name": "Lazanya",
+    "image_url": "https://cdn.yemek.com/mnresize/1250/833/uploads/2014/11/lazanya-tarifi.jpg",
+    "category": "Makarna",
+    "is_vegetarian": false,
+    "is_vegan": false,
+    "is_halal": true,
+    "priceLevel": 2,
+    "id": 314
+  },
+  {
+    "name": "Fettuccine Alfredo",
+    "image_url": "https://i.nefisyemektarifleri.com/2019/09/21/fettucini-alfredo-1.jpg",
+    "category": "Makarna",
+    "is_vegetarian": true,
+    "is_vegan": false,
+    "is_halal": true,
+    "priceLevel": 2,
+    "id": 315
+  },
+  {
+    "name": "Spagetti Bolonez",
+    "image_url": "https://cdn.yemek.com/mnresize/1250/833/uploads/2020/03/spagetti-bolonez-sunum.jpg",
+    "category": "Makarna",
+    "is_vegetarian": false,
+    "is_vegan": false,
+    "is_halal": true,
+    "priceLevel": 2,
+    "id": 316
+  },
+  {
+    "name": "Penne Arrabiata",
+    "image_url": "https://i.nefisyemektarifleri.com/2017/08/03/penne-arrabiata-3.jpg",
+    "category": "Makarna",
+    "is_vegetarian": true,
+    "is_vegan": true,
+    "is_halal": true,
+    "priceLevel": 2,
+    "id": 317
+  },
+  {
+    "name": "Kremalı Mantarlı Makarna",
+    "image_url": "https://i.nefisyemektarifleri.com/2020/02/14/kremali-mantarli-makarna-3.jpg",
+    "category": "Makarna",
+    "is_vegetarian": true,
+    "is_vegan": false,
+    "is_halal": true,
+    "priceLevel": 2,
+    "id": 318
+  },
+  {
+    "name": "Fırın Makarna",
+    "image_url": "https://cdn.yemek.com/mnresize/1250/833/uploads/2020/05/firin-makarna-tarifi.jpg",
+    "category": "Makarna",
+    "is_vegetarian": false,
+    "is_vegan": false,
+    "is_halal": true,
+    "priceLevel": 2,
+    "id": 319
+  },
+  {
+    "name": "Carbonara",
+    "image_url": "https://i.nefisyemektarifleri.com/2018/09/14/carbonara-2.jpg",
+    "category": "Makarna",
+    "is_vegetarian": false,
+    "is_vegan": false,
+    "is_halal": true,
+    "priceLevel": 2,
+    "id": 320
+  },
+  {
+    "name": "Makarna Salatası",
+    "image_url": "https://cdn.yemek.com/mnresize/1250/833/uploads/2015/07/makarna-salatasi-yemekcom.jpg",
+    "category": "Makarna",
+    "is_vegetarian": true,
+    "is_vegan": false,
+    "is_halal": true,
+    "priceLevel": 1,
+    "id": 321
+  },
+  {
+    "name": "Çoban Salatası",
+    "image_url": "https://cdn.yemek.com/mnresize/1250/833/uploads/2014/06/coban-salatasi-yemekcom.jpg",
+    "category": "Salatalar",
+    "is_vegetarian": true,
+    "is_vegan": true,
+    "is_halal": true,
+    "priceLevel": 1,
+    "id": 322
+  },
+  {
+    "name": "Akdeniz Salatası",
+    "image_url": "https://i.lezzet.com.tr/images-xxlarge-recipe/akdeniz-salatasi-c6f47e4b-43f3-4c79-bef7-33c02b30cd87.jpg",
+    "category": "Salatalar",
+    "is_vegetarian": true,
+    "is_vegan": false,
+    "is_halal": true,
+    "priceLevel": 2,
+    "id": 323
+  },
+  {
+    "name": "Mevsim Salatası",
+    "image_url": "https://cdn.yemek.com/mnresize/1250/833/uploads/2014/06/mevsim-salatasi-yemekcom.jpg",
+    "category": "Salatalar",
+    "is_vegetarian": true,
+    "is_vegan": true,
+    "is_halal": true,
+    "priceLevel": 1,
+    "id": 324
+  },
+  {
+    "name": "Patates Salatası",
+    "image_url": "https://cdn.yemek.com/mnresize/1250/833/uploads/2014/07/patates-salatasi-yemekcom.jpg",
+    "category": "Salatalar",
+    "is_vegetarian": true,
+    "is_vegan": false,
+    "is_halal": true,
+    "priceLevel": 1,
+    "id": 325
+  },
+  {
+    "name": "Ton Balıklı Salata",
+    "image_url": "https://i.nefisyemektarifleri.com/2018/01/24/ton-balikli-salata.jpg",
+    "category": "Salatalar",
+    "is_vegetarian": false,
+    "is_vegan": false,
+    "is_halal": true,
+    "priceLevel": 2,
+    "id": 326
+  },
+  {
+    "name": "Kısır",
+    "image_url": "https://cdn.yemek.com/mnresize/1250/833/uploads/2014/06/kisir-yemekcom.jpg",
+    "category": "Salatalar",
+    "is_vegetarian": true,
+    "is_vegan": true,
+    "is_halal": true,
+    "priceLevel": 1,
+    "id": 327
+  },
+  {
+    "name": "Gavurdağı Salatası",
+    "image_url": "https://cdn.yemek.com/mnresize/1250/833/uploads/2014/11/gavurdagi-salatasi-yemekcom.jpg",
+    "category": "Salatalar",
+    "is_vegetarian": true,
+    "is_vegan": true,
+    "is_halal": true,
+    "priceLevel": 1,
+    "id": 328
+  },
+  {
+    "name": "Tavuklu Sezar Salatası",
+    "image_url": "https://i.nefisyemektarifleri.com/2017/07/26/tavuklu-sezar-salatasi.jpg",
+    "category": "Salatalar",
+    "is_vegetarian": false,
+    "is_vegan": false,
+    "is_halal": true,
+    "priceLevel": 2,
+    "id": 329
   }
 ];
 
 const getNutritionByCategory = (category: string) => {
   switch (category) {
     case "Çorbalar":
-      return { calories: 150, protein: 5, carbs: 20, fat: 4 };
+      return { calories: 120, protein: 5, carbs: 18, fat: 3 };
     case "Baklagiller":
-      return { calories: 350, protein: 20, carbs: 50, fat: 2 };
+      return { calories: 280, protein: 18, carbs: 45, fat: 2 };
     case "Sebze Yemekleri":
-      return { calories: 200, protein: 4, carbs: 15, fat: 12 };
+      return { calories: 180, protein: 4, carbs: 15, fat: 10 };
     case "Izgara & Mangal":
     case "Döner & Kebap":
     case "Etli Yemekler":
-      return { calories: 450, protein: 35, carbs: 10, fat: 25 };
+      return { calories: 420, protein: 32, carbs: 12, fat: 24 };
     case "Hamur İşleri":
-      return { calories: 400, protein: 12, carbs: 60, fat: 15 };
+      return { calories: 380, protein: 10, carbs: 55, fat: 14 };
     case "Kahvaltı":
-      return { calories: 300, protein: 15, carbs: 20, fat: 18 };
+      return { calories: 280, protein: 12, carbs: 22, fat: 16 };
     case "Pilavlar":
-      return { calories: 300, protein: 5, carbs: 50, fat: 8 };
+      return { calories: 320, protein: 6, carbs: 58, fat: 8 };
+    case "Makarna":
+    case "Makarna & Pilav":
+      return { calories: 450, protein: 14, carbs: 65, fat: 12 };
+    case "Dolma & Sarma":
+      return { calories: 280, protein: 10, carbs: 38, fat: 8 };
+    case "Salatalar":
+      return { calories: 140, protein: 5, carbs: 12, fat: 8 };
     case "Sütlü Tatlılar":
-      return { calories: 250, protein: 6, carbs: 40, fat: 8 };
+      return { calories: 280, protein: 6, carbs: 42, fat: 9 };
     case "Şerbetli Tatlılar":
-      return { calories: 450, protein: 4, carbs: 70, fat: 18 };
+      return { calories: 480, protein: 5, carbs: 72, fat: 18 };
     case "Meyveler":
-      return { calories: 80, protein: 1, carbs: 20, fat: 0 };
+      return { calories: 65, protein: 1, carbs: 16, fat: 0 };
+    case "Deniz Ürünleri":
+      return { calories: 220, protein: 28, carbs: 5, fat: 8 };
     default:
       return { calories: 250, protein: 8, carbs: 30, fat: 10 };
   }
+};
+
+const getPriceByCategory = (category: string, priceLevel?: number) => {
+  // 4 kişilik evde malzeme maliyeti (2025 Ocak gerçek market fiyatları)
+  const basePrices: Record<string, number> = {
+    "Çorbalar": 18,           // Mercimek(12₺) + Soğan(2₺) + Tereyağı(4₺)
+    "Baklagiller": 25,        // Fasulye(10₺) + Salça(5₺) + Soğan(3₺) + Yağ(7₺)
+    "Sebze Yemekleri": 35,    // Sebze(15₺) + Soğan(3₺) + Domates(8₺) + Yağ(9₺)
+    "Etli Yemekler": 120,     // Kıyma/Et(80₺) + Sebze(15₺) + Yağ(10₺) + Baharat(5₺)
+    "Izgara & Mangal": 140,   // Et/Tavuk(100₺) + Malzeme(20₺) + Odun(20₺)
+    "Döner & Kebap": 110,     // Kıyma(70₺) + Ekmek(15₺) + Sebze(15₺) + Baharat(10₺)
+    "Hamur İşleri": 28,       // Un(8₺) + Yağ(10₺) + İç malzeme(10₺)
+    "Kahvaltı": 35,           // Yumurta(12₺) + Peynir(15₺) + Zeytin(8₺)
+    "Pilavlar": 22,           // Pirinç(12₺) + Tereyağı(6₺) + Şehriye(4₺)
+    "Makarna": 32,            // Makarna(8₺) + Salça(6₺) + Kıyma(12₺) + Kaşar(6₺)
+    "Makarna & Pilav": 30,    
+    "Dolma & Sarma": 55,      // Zeytinyağı(25₺) + Pirinç(10₺) + Sebze(15₺) + Baharat(5₺)
+    "Salatalar": 28,          // Domates(10₺) + Salatalık(8₺) + Limon(5₺) + Zeytinyağı(15₺)
+    "Sütlü Tatlılar": 38,     // Süt(12₺) + Şeker(8₺) + Un(6₺) + Tereyağı(12₺)
+    "Şerbetli Tatlılar": 55,  // Un(10₺) + Şeker(12₺) + Yağ(15₺) + Ceviz/Fıstık(18₺)
+    "Deniz Ürünleri": 85,     // Balık/Karides(60₺) + Limon(5₺) + Salata(15₺) + Yağ(5₺)
+    "Pizzalar": 45,           // Hamur(15₺) + Kaşar(18₺) + Sucuk/Salam(12₺)
+    "Burgerler": 50,          // Köfte(25₺) + Ekmek(10₺) + Sebze(10₺) + Sos(5₺)
+    "Meyveler": 20,
+    "Fast Food": 40,
+    "Sokak Lezzetleri": 30,
+  };
+
+  const basePrice = basePrices[category] || 35;
+  
+  // priceLevel varsa ekstra maliyet ekle (premium malzemeler için)
+  if (priceLevel) {
+    return basePrice + (priceLevel - 1) * 15;
+  }
+  
+  return basePrice;
 };
 
 export const getAllFoods = async (): Promise<Food[]> => {
@@ -3088,7 +3369,7 @@ export const getAllFoods = async (): Promise<Food[]> => {
     ...f,
     nutritionalInfo:
       f.nutritionalInfo || getNutritionByCategory(f.category as string),
-    estimatedPrice: f.priceLevel ? (f.priceLevel as number) * 45 : 85,
+    estimatedPrice: f.estimatedPrice || getPriceByCategory(f.category as string, f.priceLevel),
   }));
 };
 
