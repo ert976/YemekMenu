@@ -8,14 +8,14 @@ class UniversalStorage {
   private memoryStore: Record<string, string> = {};
 
   async getItem(key: string): Promise<string | null> {
-    if (Platform.OS === "web") {
+    if (Platform.OS === "web" && typeof localStorage !== "undefined") {
       return localStorage.getItem(key);
     }
     return this.memoryStore[key] || null;
   }
 
   async setItem(key: string, value: string): Promise<void> {
-    if (Platform.OS === "web") {
+    if (Platform.OS === "web" && typeof localStorage !== "undefined") {
       localStorage.setItem(key, value);
     } else {
       this.memoryStore[key] = value;
@@ -23,7 +23,7 @@ class UniversalStorage {
   }
 
   async removeItem(key: string): Promise<void> {
-    if (Platform.OS === "web") {
+    if (Platform.OS === "web" && typeof localStorage !== "undefined") {
       localStorage.removeItem(key);
     } else {
       delete this.memoryStore[key];

@@ -47,6 +47,12 @@ const FoodRatingComponent: React.FC<FoodRatingComponentProps> = ({
   const [userRatings, setUserRatings] = useState<Record<number, number>>({});
   const flatListRef = useRef<FlatList>(null);
 
+  const getItemLayout = useCallback((_: any, index: number) => ({
+    length: width,
+    offset: width * index,
+    index,
+  }), [width]);
+
   useEffect(() => {
     loadInitialData();
   }, []);
@@ -129,6 +135,7 @@ const FoodRatingComponent: React.FC<FoodRatingComponentProps> = ({
   ], [t]);
 
   const progressPercentage = useMemo(() => {
+    if (foods.length === 0) return 0;
     return ((currentFoodIndex + 1) / foods.length) * 100;
   }, [currentFoodIndex, foods.length]);
 
@@ -155,7 +162,7 @@ const FoodRatingComponent: React.FC<FoodRatingComponentProps> = ({
             <View style={styles.tagRow}>
               <View style={[styles.categoryTag, { backgroundColor: theme.primary + "15" }]}>
                 <Text style={[styles.categoryText, { color: theme.primary }]}>
-                  {item.category.toUpperCase()}
+                  {(item.category || "").toUpperCase()}
                 </Text>
               </View>
               {item.is_vegetarian && (
@@ -197,7 +204,7 @@ const FoodRatingComponent: React.FC<FoodRatingComponentProps> = ({
     );
   }, [userRatings, theme, width, handleRating, ratingOptions]);
 
-  if (loading) {
+  if (loading || width === 0) {
     return (
       <View style={[styles.centerContainer, { backgroundColor: theme.background, padding: Spacing.lg }]}>
         <View style={[styles.card, { backgroundColor: theme.surface, width: '100%', height: 500 }]}>
@@ -215,6 +222,21 @@ const FoodRatingComponent: React.FC<FoodRatingComponentProps> = ({
             </View>
           </View>
         </View>
+      </View>
+    );
+  }
+
+  if (foods.length === 0) {
+    return (
+      <View style={[styles.centerContainer, { backgroundColor: theme.background }]}>
+        <Ionicons name="alert-circle-outline" size={64} color={theme.textSecondary} />
+        <Text style={[styles.loadingText, { color: theme.textMain }]}>Yemek bulunamadı.</Text>
+        <TouchableOpacity 
+          style={[styles.navBtn, { marginTop: Spacing.md }]} 
+          onPress={loadInitialData}
+        >
+          <Text style={{ color: theme.primary }}>Tekrar Dene</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -240,13 +262,10 @@ const FoodRatingComponent: React.FC<FoodRatingComponentProps> = ({
         showsHorizontalScrollIndicator={false}
         onViewableItemsChanged={onViewableItemsChanged}
         viewabilityConfig={{ itemVisiblePercentThreshold: 50 }}
-        getItemLayout={(_, index) => ({
-          length: width,
-          offset: width * index,
-          index,
-        })}
+        getItemLayout={getItemLayout}
         windowSize={3}
         initialNumToRender={2}
+        style={styles.flex}
       />
 
       <View style={styles.footer}>
