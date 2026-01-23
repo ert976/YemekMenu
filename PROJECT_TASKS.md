@@ -91,11 +91,14 @@
 - [ ] Offline mode UI
 
 ### TASK-012: Multi-Language Desteği Ekle
-**Durum**: ⏸️ Pending
+**Durum**: 🔄 In Progress
 **Öncelik**: 🔵 Düşük
 **Alt Görevler:**
-- [ ] i18next entegrasyonu
-- [ ] TR/EN translation dosyaları
+- [ ] i18next ve react-i18next entegrasyonu
+- [ ] TR ve EN dil dosyalarının oluşturulması
+- [ ] Ana ekranların (Home, Explore, Settings) tercümesi
+- [ ] Ayarlar menüsüne dil değiştirme seçeneği eklenmesi
+- [ ] Dil tercihinin kalıcı olarak saklanması (Storage)
 
 ---
 

@@ -1,0 +1,58 @@
+{
+  "common": {
+    "loading": "Yükleniyor...",
+    "error": "Hata",
+    "success": "Başarılı",
+    "save": "Kaydet",
+    "cancel": "İptal",
+    "back": "Geri",
+    "next": "İleri",
+    "finish": "Bitir",
+    "skip": "Atla"
+  },
+  "auth": {
+    "login": "Giriş Yap",
+    "register": "Kayıt Ol",
+    "username": "Kullanıcı Adı",
+    "password": "Şifre",
+    "email": "E-posta",
+    "noAccount": "Hesabınız yok mu?",
+    "haveAccount": "Zaten hesabınız var mı?",
+    "demoLogin": "Hızlı Demo Deneyimi",
+    "welcome": "YemekMenü",
+    "subtitle": "Beslenme Uzmanınız"
+  },
+  "tabs": {
+    "rate": "Puanla",
+    "explore": "Keşfet",
+    "settings": "Ayarlar"
+  },
+  "rate": {
+    "title": "Yemekleri Keşfet",
+    "subtitle": "Zevkine göre puanla, sana özel menüler hazırlayalım",
+    "prompt": "Bu lezzet sana ne hissettiriyor?",
+    "completeTitle": "Harika!",
+    "completeMsg": "Tüm yemekleri derecelendirdin. Şimdi sana özel bir menü oluşturmaya ne dersin?",
+    "completeBtn": "Hadi Bakalım"
+  },
+  "explore": {
+    "title": "Beslenme Uzmanı",
+    "subtitle": "30 Günlük Kişisel Plan",
+    "daily": "Günlük",
+    "weekly": "Haftalık",
+    "monthly": "Aylık",
+    "noPlan": "Henüz bir plan oluşturmadınız.",
+    "generateBtn": "30 Günlük Mönü Oluştur",
+    "refreshBtn": "Planı Yenile",
+    "week": "{{count}}. Hafta",
+    "day": "Gün {{count}}"
+  },
+  "settings": {
+    "title": "Ayarlar",
+    "profile": "Profil",
+    "language": "Dil",
+    "theme": "Tema",
+    "logout": "Çıkış Yap",
+    "version": "Sürüm"
+  }
+}

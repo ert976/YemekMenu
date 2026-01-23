@@ -11,11 +11,17 @@ import { useAuth } from "../../auth";
 import { Colors, Spacing, BorderRadius, Typography } from "../../constants/theme";
 import { useColorScheme } from "../../hooks/use-color-scheme";
 import { Ionicons } from "@expo/vector-icons";
+import { useTranslation } from "react-i18next";
 
 export default function SettingsScreen() {
   const { user, logout } = useAuth();
+  const { t, i18n } = useTranslation();
   const colorScheme = useColorScheme() ?? "light";
   const theme = Colors[colorScheme];
+
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+  };
 
   const handleResetUserRatings = () => {
     Alert.alert(
@@ -57,21 +63,50 @@ export default function SettingsScreen() {
       contentContainerStyle={styles.contentContainer}
     >
       <View style={styles.header}>
-        <Text style={[styles.headerTitle, { color: theme.textMain }]}>Ayarlar</Text>
+        <Text style={[styles.headerTitle, { color: theme.textMain }]}>{t("settings.title")}</Text>
+      </View>
+
+      <View style={[styles.section, { backgroundColor: theme.surface }]}>
+        <View style={styles.sectionHeader}>
+          <Ionicons name="language-outline" size={24} color={theme.primary} />
+          <Text style={[styles.sectionTitle, { color: theme.textMain }]}>{t("settings.language")}</Text>
+        </View>
+        <View style={styles.optionsRow}>
+          <TouchableOpacity
+            style={[
+              styles.optionButton,
+              i18n.language === "tr" && { backgroundColor: theme.primary },
+              { borderColor: theme.border, borderWidth: 1 }
+            ]}
+            onPress={() => changeLanguage("tr")}
+          >
+            <Text style={[styles.optionText, i18n.language === "tr" && { color: "#fff", fontWeight: "bold" }]}>Türkçe</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[
+              styles.optionButton,
+              i18n.language === "en" && { backgroundColor: theme.primary },
+              { borderColor: theme.border, borderWidth: 1 }
+            ]}
+            onPress={() => changeLanguage("en")}
+          >
+            <Text style={[styles.optionText, i18n.language === "en" && { color: "#fff", fontWeight: "bold" }]}>English</Text>
+          </TouchableOpacity>
+        </View>
       </View>
 
       <View style={[styles.section, { backgroundColor: theme.surface }]}>
         <View style={styles.sectionHeader}>
           <Ionicons name="person-circle-outline" size={24} color={theme.primary} />
-          <Text style={[styles.sectionTitle, { color: theme.textMain }]}>Profil</Text>
+          <Text style={[styles.sectionTitle, { color: theme.textMain }]}>{t("settings.profile")}</Text>
         </View>
         <View style={styles.profileInfo}>
           <View style={styles.infoRow}>
-            <Text style={[styles.infoLabel, { color: theme.textSecondary }]}>Kullanıcı</Text>
+            <Text style={[styles.infoLabel, { color: theme.textSecondary }]}>{t("auth.username")}</Text>
             <Text style={[styles.infoValue, { color: theme.textMain }]}>{user?.username}</Text>
           </View>
           <View style={styles.infoRow}>
-            <Text style={[styles.infoLabel, { color: theme.textSecondary }]}>E-posta</Text>
+            <Text style={[styles.infoLabel, { color: theme.textSecondary }]}>{t("auth.email")}</Text>
             <Text style={[styles.infoValue, { color: theme.textMain }]}>{user?.email}</Text>
           </View>
         </View>
@@ -108,16 +143,16 @@ export default function SettingsScreen() {
           style={[styles.button, { backgroundColor: theme.textSecondary + "10" }]}
           onPress={handleLogout}
         >
-          <Text style={[styles.buttonText, { color: theme.textSecondary }]}>Çıkış Yap</Text>
+          <Text style={[styles.buttonText, { color: theme.textSecondary }]}>{t("settings.logout")}</Text>
         </TouchableOpacity>
       </View>
 
       <View style={styles.footer}>
         <Text style={[styles.footerText, { color: theme.textSecondary }]}>
-          Yemek Menü Uygulaması v1.2 (Agentic Mode)
+          {t("auth.welcome")} v1.2 (Agentic Mode)
         </Text>
         <Text style={[styles.footerText, { color: theme.textSecondary }]}>
-          Beslenme Uzmanı & Akıllı Planlayıcı
+          {t("auth.subtitle")}
         </Text>
       </View>
     </ScrollView>
@@ -148,6 +183,16 @@ const styles = StyleSheet.create({
   infoRow: { flexDirection: "row", justifyContent: "space-between", alignItems: "center" },
   infoLabel: { ...Typography.body.medium },
   infoValue: { ...Typography.heading.small },
+  optionsRow: {
+    flexDirection: "row",
+    gap: Spacing.sm,
+  },
+  optionButton: {
+    paddingHorizontal: Spacing.md,
+    paddingVertical: Spacing.sm,
+    borderRadius: BorderRadius.full,
+  },
+  optionText: { ...Typography.body.small },
   button: {
     padding: Spacing.md,
     borderRadius: BorderRadius.large,
@@ -161,35 +206,4 @@ const styles = StyleSheet.create({
     gap: Spacing.xs,
   },
   footerText: { ...Typography.body.small, opacity: 0.6 },
-});
-
-const styles = StyleSheet.create({
-  container: { flex: 1 },
-  header: {
-    fontSize: 24,
-    fontWeight: "bold",
-    textAlign: "center",
-    padding: 20,
-    borderBottomWidth: 1,
-  },
-  section: {
-    margin: 15,
-    padding: 20,
-    borderRadius: 20,
-    elevation: 4,
-    shadowColor: "#000",
-    shadowOpacity: 0.05,
-    shadowRadius: 10,
-  },
-  sectionTitle: { fontSize: 18, fontWeight: "700", marginBottom: 20 },
-  button: {
-    padding: 16,
-    borderRadius: 15,
-    alignItems: "center",
-    marginBottom: 12,
-  },
-  dangerButton: { backgroundColor: "#dc3545" },
-  logoutButton: { backgroundColor: "#6c757d" },
-  buttonText: { color: "white", fontSize: 16, fontWeight: "bold" },
-  infoText: { fontSize: 14, marginBottom: 8, opacity: 0.7 },
 });

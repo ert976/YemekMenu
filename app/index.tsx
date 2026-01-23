@@ -2,6 +2,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import {
     ActivityIndicator,
     Dimensions,
@@ -31,6 +32,7 @@ export default function LoginScreen() {
   const { login, register } = useAuth();
   const { showError } = useToast();
   const router = useRouter();
+  const { t } = useTranslation();
   const colorScheme = useColorScheme() ?? "light";
   const theme = Colors[colorScheme];
 
@@ -116,15 +118,15 @@ export default function LoginScreen() {
               <View style={[styles.logoContainer, { borderColor: theme.primary }]}>
                 <Ionicons name="restaurant" size={40} color={theme.primary} />
               </View>
-              <Text style={styles.title}>YemekMenü</Text>
-              <Text style={styles.subtitle}>Beslenme Uzmanınız</Text>
+              <Text style={styles.title}>{t("auth.welcome")}</Text>
+              <Text style={styles.subtitle}>{t("auth.subtitle")}</Text>
             </View>
 
             <View style={styles.formContainer}>
               <View style={styles.inputWrapper}>
                 <Ionicons name="person-outline" size={20} color="#aaa" style={styles.inputIcon} />
                 <TextInput
-                  placeholder="Kullanıcı Adı"
+                  placeholder={t("auth.username")}
                   placeholderTextColor="#aaa"
                   style={styles.input}
                   value={username}
@@ -137,7 +139,7 @@ export default function LoginScreen() {
                 <View style={styles.inputWrapper}>
                   <Ionicons name="mail-outline" size={20} color="#aaa" style={styles.inputIcon} />
                   <TextInput
-                    placeholder="E-posta"
+                    placeholder={t("auth.email")}
                     placeholderTextColor="#aaa"
                     style={styles.input}
                     value={email}
@@ -151,7 +153,7 @@ export default function LoginScreen() {
               <View style={styles.inputWrapper}>
                 <Ionicons name="lock-closed-outline" size={20} color="#aaa" style={styles.inputIcon} />
                 <TextInput
-                  placeholder="Şifre"
+                  placeholder={t("auth.password")}
                   placeholderTextColor="#aaa"
                   style={styles.input}
                   value={password}
@@ -175,7 +177,7 @@ export default function LoginScreen() {
                     <ActivityIndicator color="white" />
                   ) : (
                     <Text style={styles.buttonText}>
-                      {isRegister ? "Kayıt Ol" : "Giriş Yap"}
+                      {isRegister ? t("auth.register") : t("auth.login")}
                     </Text>
                   )}
                 </LinearGradient>
@@ -187,8 +189,8 @@ export default function LoginScreen() {
               >
                 <Text style={[styles.switchText, { color: theme.primary }]}>
                   {isRegister
-                    ? "Zaten hesabınız var mı? Giriş yapın"
-                    : "Hesabınız yok mu? Hemen kayıt olun"}
+                    ? t("auth.haveAccount")
+                    : t("auth.noAccount")}
                 </Text>
               </TouchableOpacity>
 
@@ -196,7 +198,7 @@ export default function LoginScreen() {
                 style={styles.demoButton}
                 onPress={handleDemoLogin}
               >
-                <Text style={styles.demoButtonText}>Hızlı Demo Deneyimi</Text>
+                <Text style={styles.demoButtonText}>{t("auth.demoLogin")}</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -270,106 +272,4 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   demoButtonText: { color: "#aaa", ...Typography.heading.small },
-});
-
-const styles = StyleSheet.create({
-  container: { flex: 1 },
-  background: { flex: 1, width: "100%", height: "100%" },
-  overlay: {
-    flex: 1,
-    paddingHorizontal: 30,
-    justifyContent: "center",
-  },
-  content: {
-    alignItems: "center",
-  },
-  headerContainer: {
-    alignItems: "center",
-    marginBottom: 40,
-  },
-  logoContainer: {
-    width: 80,
-    height: 80,
-    borderRadius: 25,
-    backgroundColor: "rgba(255,255,255,0.15)",
-    alignItems: "center",
-    justifyContent: "center",
-    marginBottom: 15,
-    borderWidth: 1,
-    borderColor: "rgba(255,255,255,0.3)",
-  },
-  title: {
-    fontSize: 36,
-    fontWeight: "bold",
-    color: "white",
-    letterSpacing: 1,
-  },
-  subtitle: {
-    fontSize: 18,
-    color: "#aaa",
-    marginTop: 5,
-  },
-  formContainer: {
-    width: "100%",
-    maxWidth: 400,
-  },
-  inputWrapper: {
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "rgba(255,255,255,0.1)",
-    borderRadius: 15,
-    marginBottom: 15,
-    paddingHorizontal: 15,
-    height: 60,
-    borderWidth: 1,
-    borderColor: "rgba(255,255,255,0.1)",
-  },
-  inputIcon: {
-    marginRight: 10,
-  },
-  input: {
-    flex: 1,
-    color: "white",
-    fontSize: 16,
-  },
-  loginButton: {
-    height: 60,
-    borderRadius: 15,
-    overflow: "hidden",
-    marginTop: 10,
-    elevation: 5,
-  },
-  gradientButton: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  buttonText: {
-    color: "white",
-    fontSize: 18,
-    fontWeight: "bold",
-  },
-  switchButton: {
-    marginTop: 20,
-    alignItems: "center",
-  },
-  switchText: {
-    color: "#FF7A00",
-    fontSize: 14,
-    fontWeight: "500",
-  },
-  demoButton: {
-    marginTop: 24,
-    padding: 16,
-    borderRadius: 12,
-    borderWidth: 1,
-    borderColor: "rgba(255,255,255,0.2)",
-    alignItems: "center",
-    backgroundColor: "transparent",
-  },
-  demoButtonText: {
-    color: "#aaa",
-    fontSize: 14,
-    fontWeight: "600",
-  },
 });

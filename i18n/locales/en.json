@@ -1,0 +1,58 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "save": "Save",
+    "cancel": "Cancel",
+    "back": "Back",
+    "next": "Next",
+    "finish": "Finish",
+    "skip": "Skip"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "username": "Username",
+    "password": "Password",
+    "email": "Email",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?",
+    "demoLogin": "Quick Demo Experience",
+    "welcome": "YemekMenu",
+    "subtitle": "Your Nutrition Expert"
+  },
+  "tabs": {
+    "rate": "Rate",
+    "explore": "Explore",
+    "settings": "Settings"
+  },
+  "rate": {
+    "title": "Explore Foods",
+    "subtitle": "Rate according to your taste, we'll prepare special menus for you",
+    "prompt": "How does this taste feel to you?",
+    "completeTitle": "Great!",
+    "completeMsg": "You've rated all foods. How about creating a special menu for you now?",
+    "completeBtn": "Let's Go"
+  },
+  "explore": {
+    "title": "Nutrition Expert",
+    "subtitle": "30-Day Personal Plan",
+    "daily": "Daily",
+    "weekly": "Weekly",
+    "monthly": "Monthly",
+    "noPlan": "You haven't created a plan yet.",
+    "generateBtn": "Create 30-Day Menu",
+    "refreshBtn": "Refresh Plan",
+    "week": "Week {{count}}",
+    "day": "Day {{count}}"
+  },
+  "settings": {
+    "title": "Settings",
+    "profile": "Profile",
+    "language": "Language",
+    "theme": "Theme",
+    "logout": "Logout",
+    "version": "Version"
+  }
+}

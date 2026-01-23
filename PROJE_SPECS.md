@@ -2,7 +2,7 @@
 
 > Spec-Driven Development Yaklaşımı ile Proje Yönetimi
 > Tarih: 23 Ocak 2026
-> Versiyon: 3.4.0
+> Versiyon: 3.5.0
 
 ---
 
@@ -279,8 +279,15 @@ npm test -- --watch
 ### SPEC-012: Multi-Language Desteği Olmalı
 
 **Priorite**: 🔵 Düşük
-**Durum**: ⏸️ Pending
+**Durum**: 🔄 In Progress
 **Metric**: i18n library ile TR + EN desteklemeli
+
+**Gereksinimler:**
+- [ ] `i18next` ve `react-i18next` kullanımı
+- [ ] JSON tabanlı translation yönetimi
+- [ ] Dinamik dil değişimi (re-render olmadan)
+- [ ] Sağdan sola (RTL) desteği altyapısı (Gelecek için)
+- [ ] Kullanıcı dil tercihinin persist edilmesi
 
 ---
 
@@ -299,8 +306,8 @@ npm test -- --watch
 | 🔴 Kritik  | 3      | 3           | 0           | 0           |
 | 🟡 Yüksek  | 4      | 4           | 0           | 0           |
 | 🟢 Orta    | 3      | 3           | 0           | 0           |
-| 🔵 Düşük   | 3      | 0           | 0           | 3           |
-| **Toplam** | **13** | **10 (77%)**| **0 (0%)**  | **3 (23%)** |
+| 🔵 Düşük   | 3      | 0           | 1           | 2           |
+| **Toplam** | **13** | **10 (77%)**| **1 (8%)**  | **2 (15%)** |
 
 ---
 

@@ -6,6 +6,7 @@ import {
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import "react-native-reanimated";
+import "@/i18n";
 
 import { AuthProvider } from "@/auth";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
