@@ -33,22 +33,29 @@
 - **Filtreleme**: Diyet ve helal filtreleri
 - **Performans**: Image lazy loading ve caching
 
-## 🚀️ GitHub Repository
+## 🚀 GitHub Deposu
 
-### 📂 **Repository Bilgileri**
+### 📂 **Depo Bilgileri**
 - **Platform**: GitHub
-- **Lisans**: MIT License
+- **Lisans**: MIT Lisansı
 - **Dil**: TypeScript/JavaScript
 - **Framework**: React Native + Expo
-- **Durum**: Production-ready
+- **Durum**: Yayına Hazır
 
-### 🔄 **Deployment**
-- **Web**: Expo Web build ile deploy
-- **iOS**: App Store üzerinden
-- **Android**: Google Play Store üzerinden
-- **Test**: Jest test coverage ile
-
-### 📈 **Repository Structure**
+### 📈 **Proje Yapısı**
+```
+YemekMenu/
+├── app/                 # Ana uygulama sayfaları
+├── components/           # UI bileşenleri
+├── constants/           # Tema ve sabitler
+├── database/            # Veritabanı modülleri
+├── utils/               # Yardımcı fonksiyonlar
+├── types.ts             # Tip tanımlamaları
+├── auth.tsx             # Kimlik doğrulama
+├── mealPlanner.ts        # Menü planlama motoru
+├── package.json          # Bağımlılıklar
+├── README.md            # Proje açıklaması
+└── TODO.md             # Görev listesi
 ```
 YemekMenu/
 ├── app/                 # Ana uygulama
