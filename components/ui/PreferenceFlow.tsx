@@ -2,16 +2,17 @@ import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/use-color-scheme";
 import { Food } from "@/types";
 import { Ionicons } from "@expo/vector-icons";
+import * as Haptics from "expo-haptics";
 import React, { useState } from "react";
 import {
     Dimensions,
-    Image,
     Modal,
     StyleSheet,
     Text,
     TouchableOpacity,
     View
 } from "react-native";
+import { LazyImage } from "./LazyImage";
 import Animated, {
     SlideInRight,
     SlideOutLeft
@@ -47,6 +48,15 @@ export const PreferenceFlow: React.FC<PreferenceFlowProps> = ({
   ];
 
   const handleRate = (value: number) => {
+    // Haptik geri bildirim ekle
+    if (value >= 4) {
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+    } else if (value <= 2) {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    } else {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    }
+
     const currentFood = foods[currentIndex];
 
     if (value >= 4) {
@@ -92,10 +102,9 @@ export const PreferenceFlow: React.FC<PreferenceFlowProps> = ({
               { backgroundColor: theme.card, shadowColor: theme.text },
             ]}
           >
-            <Image
+            <LazyImage
               source={{ uri: currentFood.image_url }}
               style={styles.image}
-              resizeMode="cover"
             />
             <View style={styles.infoArea}>
               <Text style={[styles.foodName, { color: theme.text }]}>

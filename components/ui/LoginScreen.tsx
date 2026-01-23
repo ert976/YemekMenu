@@ -13,8 +13,9 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useAuth } from '../../auth';
+import { useColorScheme } from '../../hooks/use-color-scheme';
 import { BorderRadius, Colors, Spacing, Typography } from '../../constants/theme';
-import { handleApiError, withErrorHandling } from '../../utils/errorHandler';
+import { handleError, withErrorHandling } from '../../utils/errorHandler';
 
 interface LoginScreenProps {
   onLoginSuccess?: () => void;
@@ -31,6 +32,8 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({
   const [errors, setErrors] = useState<{ username?: string; password?: string }>({});
 
   const { login } = useAuth();
+  const colorScheme = useColorScheme() ?? 'light';
+  const theme = Colors[colorScheme as 'light' | 'dark'];
 
   const validateForm = (): boolean => {
     const newErrors: { username?: string; password?: string } = {};
@@ -67,8 +70,8 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({
         onLoginSuccess();
       }
     } catch (error) {
-      const appError = handleApiError(error);
-      Alert.alert('Giriş Hatası', appError.message);
+      const appError = handleError(error);
+      Alert.alert('Giriş Hatası', appError.userMessage);
     } finally {
       setIsLoading(false);
     }
@@ -89,15 +92,15 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({
         onLoginSuccess();
       }
     } catch (error) {
-      const appError = handleApiError(error);
-      Alert.alert('Demo Giriş Hatası', appError.message);
+      const appError = handleError(error);
+      Alert.alert('Demo Giriş Hatası', appError.userMessage);
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.container, { backgroundColor: theme.background }]}>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.keyboardView}
@@ -108,21 +111,22 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({
         >
           {/* Header */}
           <View style={styles.header}>
-            <Text style={styles.title}>YemekMenu</Text>
-            <Text style={styles.subtitle}>Kişisel Menü Planlama Uygulamanız</Text>
+            <Text style={[styles.title, { color: theme.textMain }]}>YemekMenu</Text>
+            <Text style={[styles.subtitle, { color: theme.textSecondary }]}>Kişisel Menü Planlama Uygulamanız</Text>
           </View>
 
           {/* Login Form */}
-          <View style={styles.form}>
+          <View style={[styles.form, { backgroundColor: theme.surface }]}>
             <View style={styles.inputGroup}>
-              <Text style={styles.label}>Kullanıcı Adı</Text>
+              <Text style={[styles.label, { color: theme.textMain }]}>Kullanıcı Adı</Text>
               <TextInput
                 style={[
                   styles.input,
-                  errors.username ? styles.inputError : null
+                  { borderColor: theme.border, color: theme.textMain, backgroundColor: theme.surface },
+                  errors.username ? { borderColor: theme.error, borderWidth: 2 } : null
                 ]}
                 placeholder="Kullanıcı adınızı girin"
-                placeholderTextColor={Colors.light.textSecondary}
+                placeholderTextColor={theme.textSecondary}
                 value={username}
                 onChangeText={(text) => {
                   setUsername(text);
@@ -135,19 +139,20 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({
                 editable={!isLoading}
               />
               {errors.username && (
-                <Text style={styles.errorText}>{errors.username}</Text>
+                <Text style={[styles.errorText, { color: theme.error }]}>{errors.username}</Text>
               )}
             </View>
 
             <View style={styles.inputGroup}>
-              <Text style={styles.label}>Şifre</Text>
+              <Text style={[styles.label, { color: theme.textMain }]}>Şifre</Text>
               <TextInput
                 style={[
                   styles.input,
-                  errors.password ? styles.inputError : null
+                  { borderColor: theme.border, color: theme.textMain, backgroundColor: theme.surface },
+                  errors.password ? { borderColor: theme.error, borderWidth: 2 } : null
                 ]}
                 placeholder="Şifrenizi girin"
-                placeholderTextColor={Colors.light.textSecondary}
+                placeholderTextColor={theme.textSecondary}
                 value={password}
                 onChangeText={(text) => {
                   setPassword(text);
@@ -161,43 +166,43 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({
                 editable={!isLoading}
               />
               {errors.password && (
-                <Text style={styles.errorText}>{errors.password}</Text>
+                <Text style={[styles.errorText, { color: theme.error }]}>{errors.password}</Text>
               )}
             </View>
 
             <TouchableOpacity
-              style={[styles.loginButton, isLoading && styles.loginButtonDisabled]}
+              style={[styles.loginButton, { backgroundColor: theme.primary }, isLoading && { backgroundColor: theme.textSecondary }]}
               onPress={handleLogin}
               disabled={isLoading}
             >
               {isLoading ? (
                 <ActivityIndicator color="#ffffff" size="small" />
               ) : (
-                <Text style={styles.loginButtonText}>Giriş Yap</Text>
+                <Text style={[styles.loginButtonText, { color: '#fff' }]}>Giriş Yap</Text>
               )}
             </TouchableOpacity>
 
             {/* Demo Login Button */}
             <TouchableOpacity
-              style={styles.demoButton}
+              style={[styles.demoButton, { borderColor: theme.primary }]}
               onPress={handleDemoLogin}
               disabled={isLoading}
             >
-              <Text style={styles.demoButtonText}>Demo Giriş</Text>
+              <Text style={[styles.demoButtonText, { color: theme.primary }]}>Demo Giriş</Text>
             </TouchableOpacity>
 
             {/* Register Link */}
             <View style={styles.registerContainer}>
-              <Text style={styles.registerText}>Hesabınız yok mu? </Text>
+              <Text style={[styles.registerText, { color: theme.textSecondary }]}>Hesabınız yok mu? </Text>
               <TouchableOpacity onPress={onRegisterPress} disabled={isLoading}>
-                <Text style={styles.registerLink}>Kayıt Ol</Text>
+                <Text style={[styles.registerLink, { color: theme.primary }]}>Kayıt Ol</Text>
               </TouchableOpacity>
             </View>
           </View>
 
           {/* Footer */}
           <View style={styles.footer}>
-            <Text style={styles.footerText}>
+            <Text style={[styles.footerText, { color: theme.textSecondary }]}>
               Lezzetli ve dengeli beslenme için yanınızdayız 🍳
             </Text>
           </View>

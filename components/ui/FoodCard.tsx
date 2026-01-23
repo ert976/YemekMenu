@@ -1,3 +1,4 @@
+import * as Haptics from "expo-haptics";
 import React, { useState } from "react";
 import {
     ActivityIndicator,
@@ -16,6 +17,9 @@ import {
 } from "../../constants/theme";
 import { Food, UserRating } from "../../types";
 import { LazyImage } from "./LazyImage";
+import { SkeletonLoader } from "./SkeletonLoader";
+
+import { useColorScheme } from "../../hooks/use-color-scheme";
 
 interface FoodCardProps {
   food: Food;
@@ -36,6 +40,8 @@ export const FoodCard: React.FC<FoodCardProps> = ({
   showRating = true,
   size = "medium",
 }) => {
+  const colorScheme = useColorScheme() ?? "light";
+  const theme = Colors[colorScheme];
   const [rating, setRating] = useState(userRating?.rating || 0);
   const [scaleAnim] = useState(new Animated.Value(1));
   const [ratingAnim] = useState(new Animated.Value(0));
@@ -74,6 +80,9 @@ export const FoodCard: React.FC<FoodCardProps> = ({
 
   const handleRatingPress = (newRating: number) => {
     setRating(newRating);
+    
+    // Haptik geri bildirim
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
 
     // Rating animasyonu
     Animated.sequence([
@@ -115,7 +124,7 @@ export const FoodCard: React.FC<FoodCardProps> = ({
             <Text
               style={[
                 styles.star,
-                i <= rating ? styles.starFilled : styles.starEmpty,
+                { color: i <= rating ? theme.warning : theme.textSecondary },
               ]}
             >
               {i <= rating ? "★" : "☆"}
@@ -133,7 +142,7 @@ export const FoodCard: React.FC<FoodCardProps> = ({
 
     if (food.is_vegetarian) {
       badges.push(
-        <View key="vegetarian" style={[styles.badge, styles.vegetarianBadge]}>
+        <View key="vegetarian" style={[styles.badge, { backgroundColor: theme.success }]}>
           <Text style={styles.badgeText}>V</Text>
         </View>,
       );
@@ -141,7 +150,7 @@ export const FoodCard: React.FC<FoodCardProps> = ({
 
     if (food.is_vegan) {
       badges.push(
-        <View key="vegan" style={[styles.badge, styles.veganBadge]}>
+        <View key="vegan" style={[styles.badge, { backgroundColor: "#2ecc71" }]}>
           <Text style={styles.badgeText}>VG</Text>
         </View>,
       );
@@ -149,7 +158,7 @@ export const FoodCard: React.FC<FoodCardProps> = ({
 
     if (food.is_halal) {
       badges.push(
-        <View key="halal" style={[styles.badge, styles.halalBadge]}>
+        <View key="halal" style={[styles.badge, { backgroundColor: theme.primary }]}>
           <Text style={styles.badgeText}>H</Text>
         </View>,
       );
@@ -167,6 +176,8 @@ export const FoodCard: React.FC<FoodCardProps> = ({
         {
           width: cardSize.width,
           height: cardSize.height,
+          backgroundColor: theme.surface,
+          shadowColor: theme.textMain,
           transform: [{ scale: scaleAnim }],
         },
       ]}
@@ -179,22 +190,22 @@ export const FoodCard: React.FC<FoodCardProps> = ({
         activeOpacity={0.8}
       >
         {/* Image */}
-        <View style={[styles.imageContainer, { height: cardSize.imageHeight }]}>
+        <View style={[styles.imageContainer, { height: cardSize.imageHeight, backgroundColor: theme.background }]}>
           <LazyImage
             source={{ uri: food.image_url }}
             style={styles.image}
-            placeholder={<ActivityIndicator color={Colors.light.primary} />}
+            placeholder={<SkeletonLoader width="100%" height="100%" borderRadius={0} />}
           />
           {renderDietaryInfo()}
         </View>
 
         {/* Content */}
         <View style={styles.content}>
-          <Text style={styles.foodName} numberOfLines={2}>
+          <Text style={[styles.foodName, { color: theme.textMain }]} numberOfLines={2}>
             {food.name}
           </Text>
 
-          <Text style={styles.category} numberOfLines={1}>
+          <Text style={[styles.category, { color: theme.textSecondary }]} numberOfLines={1}>
             {food.category}
           </Text>
 
@@ -202,7 +213,7 @@ export const FoodCard: React.FC<FoodCardProps> = ({
             <View style={styles.ratingSection}>
               {renderStars()}
               {rating > 0 && (
-                <Text style={styles.ratingText}>{rating.toFixed(1)}/5</Text>
+                <Text style={[styles.ratingText, { color: theme.textSecondary }]}>{rating.toFixed(1)}/5</Text>
               )}
             </View>
           )}
@@ -214,9 +225,7 @@ export const FoodCard: React.FC<FoodCardProps> = ({
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: Colors.light.surface,
     borderRadius: BorderRadius.large,
-    shadowColor: Colors.light.textMain,
     shadowOffset: {
       width: 0,
       height: 4,
@@ -235,7 +244,6 @@ const styles = StyleSheet.create({
   imageContainer: {
     position: "relative",
     width: "100%",
-    backgroundColor: Colors.light.background,
   },
   image: {
     width: "100%",
@@ -254,8 +262,6 @@ const styles = StyleSheet.create({
     borderRadius: BorderRadius.full,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: Colors.light.surface,
-    shadowColor: Colors.light.textMain,
     shadowOffset: {
       width: 0,
       height: 1,
@@ -264,19 +270,10 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
     elevation: 2,
   },
-  vegetarianBadge: {
-    backgroundColor: Colors.light.success,
-  },
-  veganBadge: {
-    backgroundColor: "#2ecc71",
-  },
-  halalBadge: {
-    backgroundColor: Colors.light.primary,
-  },
   badgeText: {
     ...Typography.body.small,
     fontWeight: "bold" as const,
-    color: Colors.light.surface,
+    color: "#fff",
   },
   content: {
     flex: 1,
@@ -285,13 +282,11 @@ const styles = StyleSheet.create({
   },
   foodName: {
     ...Typography.heading.small,
-    color: Colors.light.textMain,
     marginBottom: Spacing.xs,
     lineHeight: 20,
   },
   category: {
     ...Typography.body.small,
-    color: Colors.light.textSecondary,
     marginBottom: Spacing.sm,
     textTransform: "capitalize",
   },
@@ -310,15 +305,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginHorizontal: 1,
   },
-  starFilled: {
-    color: Colors.light.warning,
-  },
-  starEmpty: {
-    color: Colors.light.textSecondary,
-  },
   ratingText: {
     ...Typography.body.small,
-    color: Colors.light.textSecondary,
     fontWeight: "500" as const,
   },
 });

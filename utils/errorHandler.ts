@@ -72,6 +72,25 @@ export const handleError = (
   return appError;
 };
 
+/**
+ * Async işlemleri hata yönetimi ile sarmalar
+ */
+export async function withErrorHandling<T>(
+  promise: Promise<T>,
+  context?: string
+): Promise<T> {
+  try {
+    return await promise;
+  } catch (err) {
+    const errorWithContext = err instanceof Error ? err : new Error(String(err));
+    if (context) {
+      errorWithContext.message = `[${context}] ${errorWithContext.message}`;
+    }
+    handleError(errorWithContext);
+    throw errorWithContext;
+  }
+}
+
 // Yardımcı Hata Oluşturucular
 export const createNetworkError = (msg: string) =>
   new AppError(

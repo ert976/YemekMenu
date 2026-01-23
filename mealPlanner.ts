@@ -331,6 +331,15 @@ function getBestNutritionalMatch(
     // 3. Daha Önce Kullanılmama Bonus (Haftalık çeşitlilik)
     if (!usedIds.has(food.id)) score += 30;
 
+    // 4. Bütçe Optimizasyonu (Economy Mode ise)
+    if (food.estimatedPrice) {
+      if (priceLevels.length === 1 && priceLevels[0] === 1) { // Very strict economy
+        score -= (food.estimatedPrice / 2); // Her 2₺ maliyet -1 puan
+      } else {
+        score -= (food.estimatedPrice / 5); // Her 5₺ maliyet -1 puan
+      }
+    }
+
     return { food, score };
   });
 

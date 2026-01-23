@@ -1,3 +1,4 @@
+import * as Haptics from "expo-haptics";
 import { Ionicons } from "@expo/vector-icons";
 import { Image } from "expo-image";
 import React, { useEffect, useState, useRef, useCallback, useMemo } from "react";
@@ -16,6 +17,7 @@ import { useAuth } from "../auth";
 import { Colors, Spacing, BorderRadius, Typography } from "../constants/theme";
 import { getAllFoods, getUserRatings, rateFood } from "../database";
 import { useColorScheme } from "../hooks/use-color-scheme";
+import { SkeletonLoader } from "./ui/SkeletonLoader";
 
 interface Food {
   id: number;
@@ -82,6 +84,15 @@ const FoodRatingComponent: React.FC<FoodRatingComponentProps> = ({
 
   const handleRating = useCallback(async (foodId: number, rating: number) => {
     if (!user) return;
+
+    // Haptik geri bildirim
+    if (rating >= 4) {
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+    } else if (rating <= 2) {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    } else {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    }
 
     try {
       await rateFood(user.id, foodId, rating);
@@ -186,9 +197,22 @@ const FoodRatingComponent: React.FC<FoodRatingComponentProps> = ({
 
   if (loading) {
     return (
-      <View style={[styles.centerContainer, { backgroundColor: theme.background }]}>
-        <ActivityIndicator size="large" color={theme.primary} />
-        <Text style={[styles.loadingText, { color: theme.textMain }]}>Lezzetler yükleniyor...</Text>
+      <View style={[styles.centerContainer, { backgroundColor: theme.background, padding: Spacing.lg }]}>
+        <View style={[styles.card, { backgroundColor: theme.surface, width: '100%', height: 500 }]}>
+          <SkeletonLoader width="100%" height={300} borderRadius={0} />
+          <View style={{ padding: Spacing.lg }}>
+            <SkeletonLoader width="40%" height={20} style={{ marginBottom: Spacing.sm }} />
+            <SkeletonLoader width="80%" height={30} style={{ marginBottom: Spacing.md }} />
+            <View style={{ borderTopWidth: 1, borderTopColor: "rgba(0,0,0,0.05)", paddingTop: Spacing.md }}>
+              <SkeletonLoader width="60%" height={20} style={{ marginBottom: Spacing.md, alignSelf: 'center' }} />
+              <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                {[1, 2, 3, 4, 5].map(i => (
+                  <SkeletonLoader key={i} width={50} height={50} borderRadius={12} />
+                ))}
+              </View>
+            </View>
+          </View>
+        </View>
       </View>
     );
   }

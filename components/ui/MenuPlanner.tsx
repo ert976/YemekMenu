@@ -15,6 +15,9 @@ import { generateBalancedMenu } from "../../mealPlanner";
 import { DietType, MealPlan } from "../../types";
 import { Ionicons } from "@expo/vector-icons";
 
+import { handleError, withErrorHandling } from "../../utils/errorHandler";
+import { SkeletonLoader } from "./SkeletonLoader";
+
 interface MenuPlannerProps {
   onMenuCreated?: (menuId: number) => void;
 }
@@ -26,7 +29,7 @@ export const MenuPlanner: React.FC<MenuPlannerProps> = ({ onMenuCreated }) => {
 
   const [dietPreference, setDietPreference] = useState<DietType>("normal");
   const [showHalalOnly, setShowHalalOnly] = useState(false);
-  const [isGenerating, setIsGenerating] = useState(false);
+  const [isGenerating, setIsLoading] = useState(false);
   const [generatedPlan, setGeneratedPlan] = useState<MealPlan | null>(null);
 
   const handleGenerateMenu = async () => {
@@ -35,13 +38,11 @@ export const MenuPlanner: React.FC<MenuPlannerProps> = ({ onMenuCreated }) => {
       return;
     }
 
-    setIsGenerating(true);
+    setIsLoading(true);
     try {
-      const plan = await generateBalancedMenu(
-        30,
-        dietPreference,
-        showHalalOnly,
-        user.id,
+      const plan = await withErrorHandling(
+        generateBalancedMenu(30, dietPreference, showHalalOnly, user.id),
+        "MenuPlanner.handleGenerateMenu"
       );
       setGeneratedPlan(plan);
       if (onMenuCreated) {
@@ -49,13 +50,9 @@ export const MenuPlanner: React.FC<MenuPlannerProps> = ({ onMenuCreated }) => {
       }
       Alert.alert("Başarılı", "30 Günlük Planınız Oluşturuldu!");
     } catch (error: unknown) {
-      const msg =
-        error instanceof Error
-          ? error.message
-          : "Menü oluşturulurken bir hata oluştu.";
-      Alert.alert("Hata", msg);
+      // handleError already shows the Alert via fallback in utils/errorHandler
     } finally {
-      setIsGenerating(false);
+      setIsLoading(false);
     }
   };
 
@@ -64,69 +61,75 @@ export const MenuPlanner: React.FC<MenuPlannerProps> = ({ onMenuCreated }) => {
       style={[styles.container, { backgroundColor: theme.background }]}
       contentContainerStyle={styles.contentContainer}
     >
-      <View style={styles.header}>
-        <Text style={[styles.title, { color: theme.textMain }]}>
-          Profesyonel Menü Planlayıcı
-        </Text>
-        <Text style={[styles.subtitle, { color: theme.textSecondary }]}>
-          Beslenme hedeflerinize uygun 30 günlük akıllı mönü oluşturun.
-        </Text>
-      </View>
-
-      <View style={[styles.card, { backgroundColor: theme.surface }]}>
-        <View style={styles.section}>
-          <View style={styles.sectionHeader}>
-            <Ionicons name="restaurant-outline" size={20} color={theme.primary} />
-            <Text style={[styles.label, { color: theme.textMain }]}>Diyet Tercihi</Text>
-          </View>
-          <View style={styles.optionsRow}>
-            {(
-              [
-                "normal",
-                "vegetarian",
-                "vegan",
-                "lowcarb",
-                "glutenfree",
-              ] as DietType[]
-            ).map((diet) => (
-              <TouchableOpacity
-                key={diet}
-                style={[
-                  styles.optionButton,
-                  { borderColor: theme.border },
-                  dietPreference === diet && { backgroundColor: theme.primary, borderColor: theme.primary },
-                ]}
-                onPress={() => setDietPreference(diet)}
-              >
-                <Text
-                  style={[
-                    styles.optionText,
-                    { color: theme.textMain },
-                    dietPreference === diet && { color: "#fff", fontWeight: "700" },
-                  ]}
-                >
-                  {diet.charAt(0).toUpperCase() + diet.slice(1)}
-                </Text>
-              </TouchableOpacity>
-            ))}
-          </View>
+        <View style={styles.header}>
+          <Text style={[styles.title, { color: theme.textMain }]}>
+            Profesyonel Menü Planlayıcı
+          </Text>
+          <Text style={[styles.subtitle, { color: theme.textSecondary }]}>
+            Beslenme hedeflerinize uygun 30 günlük akıllı mönü oluşturun.
+          </Text>
         </View>
 
-        <TouchableOpacity
-          style={[styles.generateButton, { backgroundColor: theme.primary }]}
-          onPress={handleGenerateMenu}
-          disabled={isGenerating}
-        >
-          {isGenerating ? (
-            <ActivityIndicator color="#fff" />
-          ) : (
-            <>
+        {isGenerating ? (
+          <View style={[styles.card, { backgroundColor: theme.surface }]}>
+            <SkeletonLoader width="60%" height={24} style={{ marginBottom: Spacing.md }} />
+            <View style={styles.optionsRow}>
+              {[1, 2, 3, 4, 5].map(i => (
+                <SkeletonLoader key={i} width={80} height={36} borderRadius={18} />
+              ))}
+            </View>
+            <SkeletonLoader width="100%" height={56} borderRadius={ BorderRadius.large } style={{ marginTop: Spacing.xl }} />
+          </View>
+        ) : (
+          <View style={[styles.card, { backgroundColor: theme.surface }]}>
+            <View style={styles.section}>
+              <View style={styles.sectionHeader}>
+                <Ionicons name="restaurant-outline" size={20} color={theme.primary} />
+                <Text style={[styles.label, { color: theme.textMain }]}>Diyet Tercihi</Text>
+              </View>
+              <View style={styles.optionsRow}>
+                {(
+                  [
+                    "normal",
+                    "vegetarian",
+                    "vegan",
+                    "lowcarb",
+                    "glutenfree",
+                  ] as DietType[]
+                ).map((diet) => (
+                  <TouchableOpacity
+                    key={diet}
+                    style={[
+                      styles.optionButton,
+                      { borderColor: theme.border },
+                      dietPreference === diet && { backgroundColor: theme.primary, borderColor: theme.primary },
+                    ]}
+                    onPress={() => setDietPreference(diet)}
+                  >
+                    <Text
+                      style={[
+                        styles.optionText,
+                        { color: theme.textMain },
+                        dietPreference === diet && { color: "#fff", fontWeight: "700" },
+                      ]}
+                    >
+                      {diet.charAt(0).toUpperCase() + diet.slice(1)}
+                    </Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
+            </View>
+
+            <TouchableOpacity
+              style={[styles.generateButton, { backgroundColor: theme.primary }]}
+              onPress={handleGenerateMenu}
+              disabled={isGenerating}
+            >
               <Text style={styles.generateButtonText}>30 Günlük Plan Hazırla</Text>
               <Ionicons name="sparkles" size={18} color="#fff" />
-            </>
-          )}
-        </TouchableOpacity>
-      </View>
+            </TouchableOpacity>
+          </View>
+        )}
 
       {generatedPlan && (
         <View style={[styles.resultContainer, { backgroundColor: theme.success + "10", borderColor: theme.success }]}>
@@ -199,38 +202,3 @@ const styles = StyleSheet.create({
   resultSubtitle: { ...Typography.body.small },
 });
 
-const styles = StyleSheet.create({
-  container: { flex: 1 },
-  content: { padding: 20 },
-  title: { fontSize: 24, fontWeight: "bold", marginBottom: 20 },
-  card: { padding: 20, borderRadius: 15, elevation: 4 },
-  label: { fontSize: 16, fontWeight: "600", marginBottom: 10 },
-  optionsRow: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    gap: 10,
-    marginBottom: 20,
-  },
-  optionButton: {
-    paddingHorizontal: 15,
-    paddingVertical: 8,
-    borderRadius: 20,
-    backgroundColor: "rgba(0,0,0,0.05)",
-  },
-  optionText: { fontSize: 14 },
-  generateButton: {
-    height: 50,
-    borderRadius: 10,
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 10,
-  },
-  generateButtonText: { color: "#fff", fontSize: 16, fontWeight: "bold" },
-  resultContainer: {
-    marginTop: 20,
-    padding: 15,
-    borderRadius: 10,
-    backgroundColor: "rgba(0,255,0,0.05)",
-  },
-  resultTitle: { fontSize: 18, fontWeight: "bold", marginBottom: 5 },
-});

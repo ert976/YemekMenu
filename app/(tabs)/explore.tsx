@@ -16,6 +16,7 @@ import { useToast } from "../../context/ToastContext";
 import { useColorScheme } from "../../hooks/use-color-scheme";
 import { generateBalancedMenu } from "../../mealPlanner";
 import { DietType, Food, MealPlan } from "../../types";
+import { SkeletonLoader } from "../../components/ui/SkeletonLoader";
 
 const { width } = Dimensions.get("window");
 
@@ -299,7 +300,14 @@ export default function ExploreScreen() {
           </View>
         ) : (
           <View style={styles.planContainer}>
-            {viewMode === "weekly" && (
+            {loading ? (
+              <View style={styles.skeletonContainer}>
+                <SkeletonLoader width="100%" height={150} style={{ marginBottom: Spacing.md }} />
+                <SkeletonLoader width="100%" height={80} style={{ marginBottom: Spacing.md }} />
+                <SkeletonLoader width="100%" height={250} style={{ marginBottom: Spacing.md }} />
+                <SkeletonLoader width="100%" height={120} />
+              </View>
+            ) : viewMode === "weekly" && (
               <View>
                 <View style={styles.weekSelector}>
                   {[0, 1, 2, 3].map((idx) => (
@@ -420,6 +428,9 @@ const styles = StyleSheet.create({
   },
   generateButtonText: { color: "white", ...Typography.heading.medium },
   planContainer: { flex: 1 },
+  skeletonContainer: {
+    paddingTop: Spacing.md,
+  },
   weekSelector: {
     flexDirection: "row",
     justifyContent: "space-between",

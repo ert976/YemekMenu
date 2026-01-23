@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ActivityIndicator, Image, View } from "react-native";
 import { Image as ExpoImage } from "expo-image";
 import { Colors } from "../../constants/theme";
+import { SkeletonLoader } from "./SkeletonLoader";
 
 import { ImageStyle, StyleProp } from "react-native";
 
@@ -39,7 +40,7 @@ export const LazyImage: React.FC<LazyImageProps> = ({
     <View style={style}>
       {loading && (
         <View style={[style, styles.placeholder]}>
-          {placeholder || <ActivityIndicator color={Colors.light.primary} />}
+          {placeholder || <SkeletonLoader width="100%" height="100%" borderRadius={0} />}
         </View>
       )}
       <ExpoImage
