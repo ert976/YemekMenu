@@ -1,6 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import {
     Dimensions,
     Image,
@@ -22,6 +23,7 @@ const { width } = Dimensions.get("window");
 
 export default function ExploreScreen() {
   const { user } = useAuth();
+  const { t } = useTranslation();
   const colorScheme = useColorScheme() ?? "light";
   const theme = Colors[colorScheme];
   const { showSuccess, showError } = useToast();
@@ -229,12 +231,12 @@ export default function ExploreScreen() {
     return (
       <View style={styles.dayDetails}>
         <Text style={[styles.sectionTitle, { color: theme.textMain }]}>
-          Günlük Detay - Gün {selectedDayIndex + currentWeekIndex * 7 + 1}
+          {t("explore.daily")} Detay - {t("explore.day", { count: selectedDayIndex + currentWeekIndex * 7 + 1 })}
         </Text>
-        {renderMealItem(dayData.breakfast, "Kahvaltı", "🍳")}
-        {renderMealItem(dayData.lunch, "Öğle Yemeği", "🥗")}
-        {renderMealItem(dayData.dinner, "Akşam Yemeği", "🍖")}
-        {dayData.snack && renderMealItem(dayData.snack, "Ara Öğün", "🍎")}
+        {renderMealItem(dayData.breakfast, t("explore.breakfast"), "🍳")}
+        {renderMealItem(dayData.lunch, t("explore.lunch"), "🥗")}
+        {renderMealItem(dayData.dinner, t("explore.dinner"), "🍖")}
+        {dayData.snack && renderMealItem(dayData.snack, t("explore.snack"), "🍎")}
 
         <View style={[styles.descriptionCard, { backgroundColor: theme.surface, borderColor: theme.border, borderWidth: 1 }]}>
           <Ionicons name="bulb-outline" size={20} color={theme.primary} />
@@ -251,8 +253,8 @@ export default function ExploreScreen() {
       style={[styles.container, { backgroundColor: theme.background }]}
     >
       <LinearGradient colors={[theme.primary, "#FF4D00"]} style={styles.header}>
-        <Text style={styles.headerTitle}>Beslenme Uzmanı</Text>
-        <Text style={styles.headerSubtitle}>30 Günlük Kişisel Plan</Text>
+        <Text style={styles.headerTitle}>{t("explore.title")}</Text>
+        <Text style={styles.headerSubtitle}>{t("explore.subtitle")}</Text>
       </LinearGradient>
 
       <View style={styles.configContainer}>
@@ -275,11 +277,7 @@ export default function ExploreScreen() {
                   { color: viewMode === mode ? theme.primary : theme.textSecondary },
                 ]}
               >
-                {mode === "daily"
-                  ? "Günlük"
-                  : mode === "weekly"
-                    ? "Haftalık"
-                    : "Aylık"}
+                {t(`explore.${mode}`)}
               </Text>
             </TouchableOpacity>
           ))}
@@ -288,13 +286,13 @@ export default function ExploreScreen() {
         {!currentPlan ? (
           <View style={styles.emptyContainer}>
             <Ionicons name="calendar-outline" size={64} color={theme.border} />
-            <Text style={[styles.emptyText, { color: theme.textSecondary }]}>Henüz bir plan oluşturmadınız.</Text>
+            <Text style={[styles.emptyText, { color: theme.textSecondary }]}>{t("explore.noPlan")}</Text>
             <TouchableOpacity
               style={[styles.generateButton, { backgroundColor: theme.primary }]}
               onPress={generateMenu}
             >
               <Text style={styles.generateButtonText}>
-                30 Günlük Mönü Oluştur
+                {t("explore.generateBtn")}
               </Text>
             </TouchableOpacity>
           </View>
@@ -330,7 +328,7 @@ export default function ExploreScreen() {
                           currentWeekIndex === idx && { color: "white" },
                         ]}
                       >
-                        {idx + 1}. Hafta
+                        {t("explore.week", { count: idx + 1 })}
                       </Text>
                     </TouchableOpacity>
                   ))}
@@ -351,7 +349,7 @@ export default function ExploreScreen() {
                       onPress={() => setSelectedDayIndex(idx)}
                     >
                       <Text style={[styles.dayCardText, { color: theme.textMain }, selectedDayIndex === idx && { color: "white" }]}>
-                        Gün {idx + 1 + currentWeekIndex * 7}
+                        {t("explore.day", { count: idx + 1 + currentWeekIndex * 7 })}
                       </Text>
                       <Ionicons
                         name="restaurant-outline"
@@ -389,7 +387,7 @@ export default function ExploreScreen() {
               style={styles.reGenerateButton}
               onPress={generateMenu}
             >
-              <Text style={[styles.reGenerateButtonText, { color: theme.primary }]}>Planı Yenile</Text>
+              <Text style={[styles.reGenerateButtonText, { color: theme.primary }]}>{t("explore.refreshBtn")}</Text>
             </TouchableOpacity>
           </View>
         )}

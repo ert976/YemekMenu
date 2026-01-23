@@ -18,6 +18,7 @@ import { Colors, Spacing, BorderRadius, Typography } from "../constants/theme";
 import { getAllFoods, getUserRatings, rateFood } from "../database";
 import { useColorScheme } from "../hooks/use-color-scheme";
 import { SkeletonLoader } from "./ui/SkeletonLoader";
+import { useTranslation } from "react-i18next";
 
 interface Food {
   id: number;
@@ -38,6 +39,7 @@ const FoodRatingComponent: React.FC<FoodRatingComponentProps> = ({
   const colorScheme = useColorScheme() ?? "light";
   const theme = Colors[colorScheme];
   const { width } = useWindowDimensions();
+  const { t } = useTranslation();
   const [foods, setFoods] = useState<Food[]>([]);
   const [currentFoodIndex, setCurrentFoodIndex] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -103,9 +105,9 @@ const FoodRatingComponent: React.FC<FoodRatingComponentProps> = ({
 
       if (currentFoodIndex === foods.length - 1) {
         Alert.alert(
-          "Harika!",
-          "Tüm yemekleri derecelendirdin. Şimdi sana özel bir menü oluşturmaya ne dersin?",
-          [{ text: "Hadi Bakalım", onPress: () => onRatingComplete() }],
+          t("rate.completeTitle"),
+          t("rate.completeMsg"),
+          [{ text: t("rate.completeBtn"), onPress: () => onRatingComplete() }],
         );
       } else {
         flatListRef.current?.scrollToIndex({
@@ -119,12 +121,12 @@ const FoodRatingComponent: React.FC<FoodRatingComponentProps> = ({
   }, [user, userRatings, currentFoodIndex, foods.length, onRatingComplete]);
 
   const ratingOptions = useMemo(() => [
-    { emoji: "🤢", value: 1, label: "Kalsın" },
-    { emoji: "😕", value: 2, label: "Belki" },
-    { emoji: "😐", value: 3, label: "Fena Değil" },
-    { emoji: "😋", value: 4, label: "Severim" },
-    { emoji: "😍", value: 5, label: "Bayılırım!" },
-  ], []);
+    { emoji: "🤢", value: 1, label: t("common.skip") },
+    { emoji: "😕", value: 2, label: t("common.cancel") },
+    { emoji: "😐", value: 3, label: t("common.next") },
+    { emoji: "😋", value: 4, label: t("common.save") },
+    { emoji: "😍", value: 5, label: t("common.finish") },
+  ], [t]);
 
   const progressPercentage = useMemo(() => {
     return ((currentFoodIndex + 1) / foods.length) * 100;
@@ -167,7 +169,7 @@ const FoodRatingComponent: React.FC<FoodRatingComponentProps> = ({
 
             <View style={styles.ratingSection}>
               <Text style={[styles.ratingPrompt, { color: theme.textSecondary }]}>
-                Bu lezzet sana ne hissettiriyor?
+                {t("rate.prompt")}
               </Text>
 
               <View style={styles.emojiGrid}>
@@ -254,7 +256,7 @@ const FoodRatingComponent: React.FC<FoodRatingComponentProps> = ({
           disabled={currentFoodIndex === 0}
         >
           <Ionicons name="arrow-back" size={20} color={theme.textMain} />
-          <Text style={[styles.navBtnText, { color: theme.textMain }]}>Geri</Text>
+          <Text style={[styles.navBtnText, { color: theme.textMain }]}>{t("common.back")}</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -268,7 +270,7 @@ const FoodRatingComponent: React.FC<FoodRatingComponentProps> = ({
           }}
         >
           <Text style={[styles.navBtnText, { color: theme.textMain }]}>
-            {currentFoodIndex === foods.length - 1 ? "Bitir" : "Atla"}
+            {currentFoodIndex === foods.length - 1 ? t("common.finish") : t("common.skip")}
           </Text>
           <Ionicons name="arrow-forward" size={20} color={theme.textMain} />
         </TouchableOpacity>

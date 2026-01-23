@@ -91,14 +91,14 @@
 - [ ] Offline mode UI
 
 ### TASK-012: Multi-Language Desteği Ekle
-**Durum**: 🔄 In Progress
+**Durum**: ✅ Completed (23 Ocak 2026)
 **Öncelik**: 🔵 Düşük
 **Alt Görevler:**
-- [ ] i18next ve react-i18next entegrasyonu
-- [ ] TR ve EN dil dosyalarının oluşturulması
-- [ ] Ana ekranların (Home, Explore, Settings) tercümesi
-- [ ] Ayarlar menüsüne dil değiştirme seçeneği eklenmesi
-- [ ] Dil tercihinin kalıcı olarak saklanması (Storage)
+- [x] i18next ve react-i18next entegrasyonu
+- [x] TR ve EN dil dosyalarının oluşturulması
+- [x] Ana ekranların (Home, Explore, Settings) tercümesi
+- [x] Ayarlar menüsüne dil değiştirme seçeneği eklenmesi
+- [x] Dil tercihinin kalıcı olarak saklanması (Storage)
 
 ---
 
@@ -157,14 +157,15 @@
 | 🔴 Kritik  | 4      | 4             | 0             | 0            |
 | 🟡 Yüksek  | 2      | 2             | 0             | 0            |
 | 🟢 Orta    | 2      | 2             | 0             | 0            |
-| 🔵 Düşük   | 3      | 0             | 0             | 3            |
-| **Toplam** | **11** | **8 (73%)**   | **0 (0%)**    | **3 (27%)**  |
+| 🔵 Düşük   | 3      | 1             | 0             | 2            |
+| **Toplam** | **11** | **9 (82%)**   | **0 (0%)**    | **2 (18%)**  |
 
 ---
 
 ## 📝 GÖREV GÜNCELLEME NOTLARI
 
 ### 23 Ocak 2026
+- Çoklu Dil (i18n) sistemi kuruldu. TR ve EN desteği eklendi.
 - Skeleton Screen entegrasyonu tamamlandı.
 - Premium UI ve Haptic Feedback tüm kritik akışlara eklendi.
 - Error Handling ve Robustness SPEC'leri karşılandı.

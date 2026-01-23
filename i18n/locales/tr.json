@@ -45,7 +45,11 @@
     "generateBtn": "30 Günlük Mönü Oluştur",
     "refreshBtn": "Planı Yenile",
     "week": "{{count}}. Hafta",
-    "day": "Gün {{count}}"
+    "day": "Gün {{count}}",
+    "breakfast": "Kahvaltı",
+    "lunch": "Öğle Yemeği",
+    "dinner": "Akşam Yemeği",
+    "snack": "Ara Öğün"
   },
   "settings": {
     "title": "Ayarlar",

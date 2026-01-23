@@ -45,7 +45,11 @@
     "generateBtn": "Create 30-Day Menu",
     "refreshBtn": "Refresh Plan",
     "week": "Week {{count}}",
-    "day": "Day {{count}}"
+    "day": "Day {{count}}",
+    "breakfast": "Breakfast",
+    "lunch": "Lunch",
+    "dinner": "Dinner",
+    "snack": "Snack"
   },
   "settings": {
     "title": "Settings",
