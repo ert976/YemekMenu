@@ -9,6 +9,12 @@ import {
     verifyPassword,
 } from "./utils/auth-utils";
 import { storage } from "./utils/storage";
+import {
+  getDemoSessionId,
+  clearDemoSession,
+  migrateDemoToUser,
+  isDemoUser,
+} from "./utils/session-utils";
 
 interface AuthContextType {
   user: User | null;
@@ -101,8 +107,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
           // Başarılı giriş: Rate limit'i sıfırla
           resetRateLimit(username);
 
+          // 🔥 Demo kullanıcı için session ID oluştur
+          let userId = foundUser.id;
+          if (isDemoUser(userId)) {
+            userId = await getDemoSessionId();
+            console.log(`[Auth] Demo user logged in with session: ${userId}`);
+          }
+
           const userToSave: User = {
-            id: foundUser.id,
+            id: userId, // Demo ise session ID, değilse gerçek ID
             username: foundUser.username,
             email: foundUser.email,
             lastActivity: Date.now(),
@@ -170,6 +183,18 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       const id = await addUser(username, email, passwordHash);
       if (!id) throw new Error("Kullanıcı oluşturulamadı.");
 
+      // 🔥 Demo session varsa migrate et
+      const currentUser = user;
+      if (currentUser && currentUser.id < 0) {
+        // Negative ID = demo session
+        const sessionData = await migrateDemoToUser(id);
+        if (sessionData) {
+          console.log(`[Auth] Migrated ${sessionData.ratings.length} ratings to user ${id}`);
+          // TODO: Session data'yı appState'e aktar (database/foods.ts'de implement edilecek)
+        }
+        await clearDemoSession();
+      }
+
       const newUser: User = {
         id,
         username,
@@ -193,6 +218,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const logout = async () => {
+    // Demo session ise temizle
+    if (user && user.id < 0) {
+      await clearDemoSession();
+    }
     await storage.removeItem("@user");
     setUser(null);
   };
