@@ -13,5 +13,11 @@ export const BUSINESS_RULES = {
   NUTRITION: {
     HIGH_PROTEIN_THRESHOLD: 25,
     LOW_CARB_THRESHOLD: 30,
+    TARGET_CALORIES: 2000,
+    RATIOS: {
+      PROTEIN: 0.30,
+      CARBS: 0.40,
+      FAT: 0.30,
+    }
   },
 };

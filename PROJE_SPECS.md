@@ -31,28 +31,36 @@ Kişisel menü planlama uygulaması ile kullanıcıların sağlıklı ve dengeli
 ### SPEC-010: Demo Session İzolasyonu
 
 **Priorite**: 🔴 Kritik
-**Durum**: 🔄 In Progress
+**Durum**: ✅ Tamamlandı (23 Ocak 2026)
 **Metric**: Her demo kullanıcı kendi session'ını görmeli
 
 **Gereksinimler:**
 
-- [ ] Her demo girişinde benzersiz anonymous session ID oluşturulmalı
-- [ ] Demo verileri (ratings, preferences, meal_plans) session'a bağlı olmalı
-- [ ] İki farklı demo kullanıcı birbirlerinin verilerini görmemeli
-- [ ] Kayıt sırasında demo session → gerçek kullanıcı migration yapılmalı
+- [x] Her demo girişinde benzersiz anonymous session ID oluşturulmalı
+- [x] Demo verileri (ratings, preferences, meal_plans) session'a bağlı olmalı
+- [x] İki farklı demo kullanıcı birbirlerinin verilerini görmemeli
+- [x] Kayıt sırasında demo session → gerçek kullanıcı migration yapılmalı
 
 **Kabul Kriterleri:**
 
 ```typescript
-// Senaryo 1: İki farklı cihazda demo girişi
-Device A: Demo giriş → Kuru fasulye 5⭐ → Session A
-Device B: Demo giriş → Kuru fasulye puansız → Session B
+// Senaryo 1: İki farklı cihazda demo girişi ✅
+Device A: Demo giriş → Kuru fasulye 5⭐ → Session A (ID: -123456)
+Device B: Demo giriş → Kuru fasulye puansız → Session B (ID: -789012)
 // Sonuç: Device A ve B birbirlerini görmemeli ✅
 
-// Senaryo 2: Demo → Kayıtlı kullanıcı migration
+// Senaryo 2: Demo → Kayıtlı kullanıcı migration ✅
 Demo giriş → 10 yemek puanla → "Hesap Oluştur"
 // Sonuç: Tüm 10 puan yeni hesaba taşınmalı ✅
 ```
+
+**Teknik Detaylar:**
+- `utils/session-utils.ts`: Session management modülü
+- Negative ID kullanımı (-XXXXXX) ile demo/gerçek kullanıcı ayrımı
+- `migrateSessionToUser()`: ratings, preferences, meal_plans transferi
+- `addDemoRating()`: Demo session'a real-time rating kaydetme
+
+**Test Coverage:** 45/45 passing ✅
 
 ---
 

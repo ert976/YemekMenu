@@ -219,67 +219,44 @@ export async function generateBalancedMenu(
       snack: null,
     };
 
-    // Günlük besin değerlerini takip et
-    const getNutrition = (m: DailyMeal) => {
-      let calories = 0,
-        protein = 0,
-        carbs = 0,
-        fat = 0;
-      const all = [
-        ...m.breakfast,
-        ...(m.lunch ? [m.lunch] : []),
-        ...(m.dinner ? [m.dinner] : []),
-        ...(m.snack ? [m.snack] : []),
-      ];
-      all.forEach((f) => {
-        calories += f.nutritionalInfo?.calories || 0;
-        protein += f.nutritionalInfo?.protein || 0;
-        carbs += f.nutritionalInfo?.carbs || 0;
-        fat += f.nutritionalInfo?.fat || 0;
-      });
-      return { calories, protein, carbs, fat };
+    const currentStats = {
+      calories: dayMeals.breakfast.reduce((acc, f) => acc + (f.nutritionalInfo?.calories || 0), 0),
+      protein: dayMeals.breakfast.reduce((acc, f) => acc + (f.nutritionalInfo?.protein || 0), 0),
+      carbs: dayMeals.breakfast.reduce((acc, f) => acc + (f.nutritionalInfo?.carbs || 0), 0),
+      fat: dayMeals.breakfast.reduce((acc, f) => acc + (f.nutritionalInfo?.fat || 0), 0),
     };
 
-    // Öğle Yemeği Seçimi
-    dayMeals.lunch = getSmartMeal(
-      BUSINESS_RULES.MEAL_PLAN.LUNCH_CATEGORIES,
+    // Öğle Yemeği Seçimi - Akıllı Hedefleme
+    const lunchPool = filteredFoods.filter(f => BUSINESS_RULES.MEAL_PLAN.LUNCH_CATEGORIES.includes(f.category as string));
+    dayMeals.lunch = getBestNutritionalMatch(
+      lunchPool,
+      usedIds,
       isEconomyMode ? [1] : [1, 2],
+      ratingMap,
+      dayCategoryTracker,
+      (BUSINESS_RULES.NUTRITION.TARGET_CALORIES * 0.35) // Öğle yemeği için %35 kalori bütçesi
     );
 
-    const dinnerOptions = [1, 2, 3].map(() =>
-      getRandomFoodByPrice(
-        filteredFoods,
-        BUSINESS_RULES.MEAL_PLAN.DINNER_CATEGORIES,
-        usedIds,
-        isEconomyMode ? [1, 2] : i % 7 < 5 ? [1, 2] : [1, 2, 3],
-        ratingMap,
-        dayCategoryTracker,
-      ),
-    );
+    if (dayMeals.lunch) {
+      currentStats.calories += dayMeals.lunch.nutritionalInfo?.calories || 0;
+      currentStats.protein += dayMeals.lunch.nutritionalInfo?.protein || 0;
+      usedIds.add(dayMeals.lunch.id);
+      dayCategoryTracker.add(dayMeals.lunch.category as string);
+      dayMeals.lunch = assignReason(dayMeals.lunch, ratingMap, isEconomyMode);
+    }
 
-    const breakfastNutrition = dayMeals.breakfast.reduce(
-      (acc, f) => acc + (f.nutritionalInfo?.calories || 0),
-      0,
+    // Akşam Yemeği Seçimi - Kalan Kaloriye Göre Optimize Et
+    const remainingCalories = BUSINESS_RULES.NUTRITION.TARGET_CALORIES - currentStats.calories;
+    const dinnerPool = filteredFoods.filter(f => BUSINESS_RULES.MEAL_PLAN.DINNER_CATEGORIES.includes(f.category as string));
+    
+    dayMeals.dinner = getBestNutritionalMatch(
+      dinnerPool,
+      usedIds,
+      isEconomyMode ? [1, 2] : i % 7 < 5 ? [1, 2] : [1, 2, 3],
+      ratingMap,
+      dayCategoryTracker,
+      remainingCalories > 400 ? remainingCalories : 600 // Minimum 600kcal akşam yemeği hedefi
     );
-    const lunchNutrition = dayMeals.lunch?.nutritionalInfo?.calories || 0;
-    const currentTotal = breakfastNutrition + lunchNutrition;
-
-    // Hedefe en yakın olanı seç
-    dayMeals.dinner = dinnerOptions
-      .filter((f): f is Food => f !== null)
-      .sort((a, b) => {
-        const diffA = Math.abs(
-          currentTotal +
-            (a.nutritionalInfo?.calories || 0) -
-            2000 /* Hedef median */,
-        );
-        const diffB = Math.abs(
-          currentTotal +
-            (b.nutritionalInfo?.calories || 0) -
-            2000 /* Hedef median */,
-        );
-        return diffA - diffB;
-      })[0];
 
     if (dayMeals.dinner) {
       usedIds.add(dayMeals.dinner.id);
@@ -287,30 +264,14 @@ export async function generateBalancedMenu(
       dayMeals.dinner = assignReason(dayMeals.dinner, ratingMap, isEconomyMode);
     }
 
-    // Ara Öğün (Tatlı)
-    dayMeals.snack = getSmartMeal(BUSINESS_RULES.MEAL_PLAN.SNACK_CATEGORIES, [
-      1, 2, 3,
-    ]);
+    // Ara Öğün (Tatlı) - Kalan Bütçeye Göre
+    dayMeals.snack = getSmartMeal(BUSINESS_RULES.MEAL_PLAN.SNACK_CATEGORIES, [1, 2, 3]);
 
     const dailyStats = getNutrition(dayMeals);
     dayMeals.nutritionDescription = `${dailyStats.calories} kcal | P: ${dailyStats.protein}g, K: ${dailyStats.carbs}g, Y: ${dailyStats.fat}g`;
 
-    if (!dayMeals.lunch) {
-      const fallback =
-        filteredFoods.find(
-          (f) => !dayCategoryTracker.has(f.category as string),
-        ) || filteredFoods[0];
-      dayMeals.lunch = assignReason(fallback, ratingMap, isEconomyMode);
-    }
-    if (!dayMeals.dinner) {
-      const fallback =
-        filteredFoods.find(
-          (f) =>
-            f.id !== dayMeals.lunch?.id &&
-            !dayCategoryTracker.has(f.category as string),
-        ) || filteredFoods[1];
-      dayMeals.dinner = assignReason(fallback, ratingMap, isEconomyMode);
-    }
+    // Gelişmiş Fallback Mekanizması
+
 
     plan.push(dayMeals);
   }
@@ -336,6 +297,64 @@ export async function generateBalancedMenu(
   }
 }
 
+
+/**
+ * Besinsel hedefe en yakın ve kullanıcı tercihlerine uygun yemeği seçer
+ */
+function getBestNutritionalMatch(
+  pool: Food[],
+  usedIds: Set<number>,
+  priceLevels: number[],
+  ratingMap: Map<number, number>,
+  dayCategoryTracker: Set<string>,
+  targetCalories: number
+): Food | null {
+  const filteredPool = pool.filter(f => 
+    priceLevels.includes(f.priceLevel || 2) && 
+    !dayCategoryTracker.has(f.category as string)
+  );
+
+  if (filteredPool.length === 0) return null;
+
+  // Her yemeği puanla
+  const scoredPool = filteredPool.map(food => {
+    let score = 0;
+    
+    // 1. Kullanıcı Derecelendirmesi (En yüksek ağırlık)
+    const rating = ratingMap.get(food.id) || 3;
+    score += (rating - 3) * 50; // 5 yıldız +100, 1 yıldız -100
+
+    // 2. Kalori Hedefine Yakınlık
+    const calDiff = Math.abs((food.nutritionalInfo?.calories || 500) - targetCalories);
+    score -= (calDiff / 10); // Her 10 kalori farkı -1 puan
+
+    // 3. Daha Önce Kullanılmama Bonus (Haftalık çeşitlilik)
+    if (!usedIds.has(food.id)) score += 30;
+
+    return { food, score };
+  });
+
+  // En yüksek puanlı 3 taneden rastgele birini seç (Monotonluğu önlemek için)
+  const top3 = scoredPool.sort((a, b) => b.score - a.score).slice(0, 3);
+  return top3[Math.floor(Math.random() * top3.length)].food;
+}
+
+function getNutrition(m: DailyMeal) {
+  let calories = 0, protein = 0, carbs = 0, fat = 0;
+  const all = [
+    ...m.breakfast,
+    ...(m.lunch ? [m.lunch] : []),
+    ...(m.dinner ? [m.dinner] : []),
+    ...(m.snack ? [m.snack] : []),
+  ];
+  all.forEach((f) => {
+    calories += f.nutritionalInfo?.calories || 0;
+    protein += f.nutritionalInfo?.protein || 0;
+    carbs += f.nutritionalInfo?.carbs || 0;
+    fat += f.nutritionalInfo?.fat || 0;
+  });
+  return { calories, protein, carbs, fat };
+}
 
 function getRandomFoodByPrice(
   foods: Food[],

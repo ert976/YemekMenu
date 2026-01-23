@@ -5,7 +5,7 @@ describe("mealPlanner", () => {
     it("should generate a 30-day menu plan", async () => {
       const plan = await generateBalancedMenu(30);
       expect(plan.plan_data.length).toBe(30);
-      expect(plan.weekly_groups.length).toBe(5); // 30 / 7 = 4.28 -> 5 groups
+      expect(plan.weekly_groups?.length).toBe(5); // 30 / 7 = 4.28 -> 5 groups
     });
 
     it("should respect diet restrictions (vegetarian)", async () => {

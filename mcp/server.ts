@@ -92,21 +92,44 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 
   try {
     if (name === "list_foods") {
-      // In a real implementation, we'd call getAllFoods()
+      const foodsPath = path.resolve(process.cwd(), 'database', 'foods.json');
+      const foods = JSON.parse(fs.readFileSync(foodsPath, 'utf-8'));
+      
+      let filtered = foods;
+      if (args?.category) {
+        filtered = filtered.filter((f: any) => f.category === args.category);
+      }
+      
+      // Filtreleme seçenekleri
+      if (args?.diet === "vegetarian") filtered = filtered.filter((f: any) => f.is_vegetarian);
+      if (args?.diet === "vegan") filtered = filtered.filter((f: any) => f.is_vegan);
+      if (args?.is_halal) filtered = filtered.filter((f: any) => f.is_halal);
+
       return {
         content: [
           {
             type: "text",
-            text: "This tool would return the list of foods. (Implementation bridge pending)",
+            text: `Found ${filtered.length} foods. Showing first 20:\n` + JSON.stringify(filtered.slice(0, 20), null, 2),
           },
         ],
       };
     } else if (name === "generate_menu") {
+      const foodsPath = path.resolve(process.cwd(), 'database', 'foods.json');
+      const foods = JSON.parse(fs.readFileSync(foodsPath, 'utf-8'));
+      
+      // Basitleştirilmiş mönü üretici (MCP için)
+      const days = (args?.days as number) || 7;
+      const menu = [];
+      for (let i = 0; i < days; i++) {
+        const randomFood = foods[Math.floor(Math.random() * foods.length)];
+        menu.push({ day: i + 1, food: randomFood.name, category: randomFood.category });
+      }
+
       return {
         content: [
           {
             type: "text",
-            text: `Generated a ${args?.days}-day ${args?.diet || "normal"} menu plan.`,
+            text: `Generated a ${days}-day plan:\n` + JSON.stringify(menu, null, 2),
           },
         ],
       };

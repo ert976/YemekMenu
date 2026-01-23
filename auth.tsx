@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { addUser, getUser } from "./database";
+import { migrateSessionToUser } from "./database/foods";
 import { ApiResponse, User } from "./types";
 import {
     checkRateLimit,
@@ -189,8 +190,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         // Negative ID = demo session
         const sessionData = await migrateDemoToUser(id);
         if (sessionData) {
-          console.log(`[Auth] Migrated ${sessionData.ratings.length} ratings to user ${id}`);
-          // TODO: Session data'yı appState'e aktar (database/foods.ts'de implement edilecek)
+          console.log(`[Auth] Migrating session data to user ${id}...`);
+          
+          // Session data'yı appState'e aktar
+          await migrateSessionToUser(currentUser.id, id, sessionData);
+          
+          console.log(`[Auth] ✅ Migration complete: ${sessionData.ratings.length} ratings, ${sessionData.preferences.likedIds.length} likes`);
         }
         await clearDemoSession();
       }

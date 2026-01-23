@@ -78,6 +78,53 @@ export const saveDemoSessionData = async (data: DemoSessionData): Promise<void> 
 };
 
 /**
+ * Demo session'a rating ekle
+ */
+export const addDemoRating = async (
+  foodId: number,
+  rating: number
+): Promise<void> => {
+  try {
+    const sessionData = await getDemoSessionData();
+    if (!sessionData) {
+      console.error("[DemoSession] No active session to add rating");
+      return;
+    }
+
+    // Mevcut rating'i bul ve güncelle veya yeni ekle
+    const existingIndex = sessionData.ratings.findIndex(r => r.food_id === foodId);
+    
+    if (existingIndex >= 0) {
+      sessionData.ratings[existingIndex].rating = rating;
+    } else {
+      sessionData.ratings.push({ food_id: foodId, rating });
+    }
+
+    // Preferences'ı otomatik güncelle (5-point scale)
+    if (rating >= 4) {
+      if (!sessionData.preferences.likedIds.includes(foodId)) {
+        sessionData.preferences.likedIds.push(foodId);
+      }
+      sessionData.preferences.dislikedIds = sessionData.preferences.dislikedIds.filter(
+        id => id !== foodId
+      );
+    } else if (rating <= 2) {
+      if (!sessionData.preferences.dislikedIds.includes(foodId)) {
+        sessionData.preferences.dislikedIds.push(foodId);
+      }
+      sessionData.preferences.likedIds = sessionData.preferences.likedIds.filter(
+        id => id !== foodId
+      );
+    }
+
+    await saveDemoSessionData(sessionData);
+    console.log(`[DemoSession] Added rating: Food ${foodId} = ${rating}⭐`);
+  } catch (error) {
+    console.error("[DemoSession] Error adding rating:", error);
+  }
+};
+
+/**
  * Demo session'ı temizle (logout veya migration sonrası)
  */
 export const clearDemoSession = async (): Promise<void> => {

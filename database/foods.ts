@@ -3405,3 +3405,73 @@ export const saveUserPreference = async (
   }
   await saveState();
 };
+
+/**
+ * Demo session verilerini gerçek kullanıcıya migrate et
+ */
+export const migrateSessionToUser = async (
+  sessionUserId: number, // Negative demo session ID
+  newUserId: number,      // Positive real user ID
+  sessionData: {
+    ratings: { food_id: number; rating: number }[];
+    preferences: { likedIds: number[]; dislikedIds: number[] };
+    meal_plans: any[];
+  }
+) => {
+  console.log(`[Migration] Starting: Session ${sessionUserId} → User ${newUserId}`);
+  
+  try {
+    // 1. Ratings'leri migrate et
+    for (const rating of sessionData.ratings) {
+      const existing = appState.user_ratings.find(
+        (r) => r.user_id === newUserId && r.food_id === rating.food_id
+      );
+      
+      if (!existing) {
+        appState.user_ratings.push({
+          id: appState.user_ratings.length + 1,
+          user_id: newUserId,
+          food_id: rating.food_id,
+          rating: rating.rating,
+        });
+      }
+    }
+    console.log(`[Migration] Migrated ${sessionData.ratings.length} ratings`);
+
+    // 2. Preferences'ı migrate et
+    const userPrefs = await getUserPreferences(newUserId);
+    
+    // Liked IDs
+    for (const likedId of sessionData.preferences.likedIds) {
+      if (!userPrefs.likedIds.includes(likedId)) {
+        userPrefs.likedIds.push(likedId);
+      }
+    }
+    
+    // Disliked IDs
+    for (const dislikedId of sessionData.preferences.dislikedIds) {
+      if (!userPrefs.dislikedIds.includes(dislikedId)) {
+        userPrefs.dislikedIds.push(dislikedId);
+      }
+    }
+    console.log(`[Migration] Migrated preferences: ${userPrefs.likedIds.length} likes, ${userPrefs.dislikedIds.length} dislikes`);
+
+    // 3. Meal plans'i migrate et
+    for (const plan of sessionData.meal_plans) {
+      appState.meal_plans.push({
+        ...plan,
+        userId: newUserId, // User ID'yi değiştir
+      });
+    }
+    console.log(`[Migration] Migrated ${sessionData.meal_plans.length} meal plans`);
+
+    // 4. State'i kaydet
+    await saveState();
+    
+    console.log(`[Migration] ✅ Completed successfully`);
+    return true;
+  } catch (error) {
+    console.error(`[Migration] ❌ Failed:`, error);
+    return false;
+  }
+};
