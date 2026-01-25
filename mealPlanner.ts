@@ -1,25 +1,8 @@
-import {
-  getAllFoods,
-  getUserPreferences,
-  saveMealPlan,
-  getUserRatings,
-} from "./database/index";
-import {
-  DailyMeal,
-  DietType,
-  Food,
-  MealPlan,
-  MenuSuggestion,
-  UserRating,
-} from "./types";
-import { generateEntityId } from "./utils/id-generator";
 import { BUSINESS_RULES } from "./constants/business-rules";
-import {
-  handleError,
-  ErrorType,
-  AppError,
-  InsufficientDataError,
-} from "./utils/errorHandler";
+import { getAllFoods, getUserRatings, saveMealPlan } from "./database/index";
+import { DailyMeal, DietType, Food, MealPlan, MenuSuggestion } from "./types";
+import { InsufficientDataError, handleError } from "./utils/errorHandler";
+import { generateEntityId } from "./utils/id-generator";
 
 /**
  * Belirli bir diyete ve tercihlere göre yemekleri filtreler ve önceliklendirir
@@ -115,7 +98,7 @@ export async function generateBalancedMenu(
   try {
     const allFoods = await getAllFoods();
     const ratings = userId ? await getUserRatings(userId) : [];
-    const ratingMap = new Map(ratings.map(r => [r.food_id, r.rating]));
+    const ratingMap = new Map(ratings.map((r) => [r.food_id, r.rating]));
 
     const filteredFoods = await filterFoodsByDiet(
       allFoods,
@@ -130,165 +113,202 @@ export async function generateBalancedMenu(
       );
     }
 
-  const plan: DailyMeal[] = [];
-  const usedIds = new Set<number>();
+    const plan: DailyMeal[] = [];
+    const usedIds = new Set<number>();
 
-  for (let i = 0; i < days; i++) {
-    // 7 günde bir çeşitliliği tazele
-    if (i % BUSINESS_RULES.MEAL_PLAN.WEEKLY_REFRESH_DAYS === 0) usedIds.clear();
+    for (let i = 0; i < days; i++) {
+      // 7 günde bir çeşitliliği tazele
+      if (i % BUSINESS_RULES.MEAL_PLAN.WEEKLY_REFRESH_DAYS === 0)
+        usedIds.clear();
 
-    const dayCategoryTracker = new Set<string>();
+      const dayCategoryTracker = new Set<string>();
 
-    const getSmartMeal = (cats: string[], pLevels: number[]) => {
-      // Çorba her öğünde yenebilir kuralı için kategorilere Çorbalar'ı ekle
-      const mealCats = cats.includes("Çorbalar") ? cats : ["Çorbalar", ...cats];
-      
-      const selected = getRandomFoodByPrice(
-        filteredFoods,
-        mealCats,
+      const getSmartMeal = (cats: string[], pLevels: number[]) => {
+        // Çorba her öğünde yenebilir kuralı için kategorilere Çorbalar'ı ekle
+        const mealCats = cats.includes("Çorbalar")
+          ? cats
+          : ["Çorbalar", ...cats];
+
+        const selected = getRandomFoodByPrice(
+          filteredFoods,
+          mealCats,
+          usedIds,
+          pLevels,
+          ratingMap,
+          dayCategoryTracker,
+        );
+        if (selected) {
+          dayCategoryTracker.add(selected.category as string);
+          return assignReason(selected, ratingMap, isEconomyMode);
+        }
+        return null;
+      };
+
+      // Yeni Serpme Kahvaltı Mantığı
+      const getBreakfastPlate = (): Food[] => {
+        const breakfastFoods = filteredFoods.filter(
+          (f) => f.category === "Kahvaltı",
+        );
+
+        // Çorbaları da kahvaltı havuzuna ekle (Sabah çorbası kültürü)
+        const soupFoods = filteredFoods.filter(
+          (f) => f.category === "Çorbalar",
+        );
+
+        const mains = breakfastFoods.filter((f) => f.subCategory === "main");
+        const sides = breakfastFoods.filter((f) => f.subCategory === "side");
+        const bakeries = breakfastFoods.filter(
+          (f) => f.subCategory === "bakery",
+        );
+        const drinks = breakfastFoods.filter((f) => f.subCategory === "drink");
+
+        const plate: Food[] = [];
+
+        // 1. Ana Ürün Seç (Yumurta, Menemen vb.) veya Çorba (%20 ihtimal)
+        let main: Food | null = null;
+        if (Math.random() < 0.2 && soupFoods.length > 0) {
+          main = getRandomItem(soupFoods, usedIds) || getRandomItem(soupFoods);
+        }
+
+        if (!main) {
+          main = getRandomItem(mains, usedIds) || getRandomItem(mains);
+        }
+
+        if (main) plate.push(assignReason(main, ratingMap, isEconomyMode));
+
+        // 2. Yan Ürünler (Peynir, Zeytin vb.) - 2-3 çeşit
+        const sideCount = isEconomyMode
+          ? BUSINESS_RULES.MEAL_PLAN.ECONOMY_SIDE_COUNT
+          : BUSINESS_RULES.MEAL_PLAN.NORMAL_SIDE_COUNT;
+        for (let k = 0; k < sideCount; k++) {
+          const side = getRandomItem(
+            sides.filter((s) => !plate.find((p) => p.id === s.id)),
+          );
+          if (side) plate.push(side);
+        }
+
+        // 3. Hamur İşi (Haftada 2-3 kez)
+        if (Math.random() > BUSINESS_RULES.MEAL_PLAN.BAKERY_PROBABILITY) {
+          const bakery = getRandomItem(bakeries);
+          if (bakery) plate.push(bakery);
+        }
+
+        // 4. İçecek (Her zaman)
+        const drink = getRandomItem(drinks) || drinks[0];
+        if (drink) plate.push(drink);
+
+        return plate;
+      };
+
+      const dayMeals: DailyMeal = {
+        breakfast: getBreakfastPlate(),
+        lunch: null,
+        dinner: null,
+        snack: null,
+      };
+
+      // Fix: Record breakfast categories in the tracker to prevent lunch/dinner clashes
+      dayMeals.breakfast.forEach((item) => {
+        if (item.category) dayCategoryTracker.add(item.category as string);
+      });
+
+      const currentStats = {
+        calories: dayMeals.breakfast.reduce(
+          (acc, f) => acc + (f.nutritionalInfo?.calories || 0),
+          0,
+        ),
+        protein: dayMeals.breakfast.reduce(
+          (acc, f) => acc + (f.nutritionalInfo?.protein || 0),
+          0,
+        ),
+        carbs: dayMeals.breakfast.reduce(
+          (acc, f) => acc + (f.nutritionalInfo?.carbs || 0),
+          0,
+        ),
+        fat: dayMeals.breakfast.reduce(
+          (acc, f) => acc + (f.nutritionalInfo?.fat || 0),
+          0,
+        ),
+      };
+
+      // Öğle Yemeği Seçimi - Akıllı Hedefleme
+      const lunchPool = filteredFoods.filter((f) =>
+        BUSINESS_RULES.MEAL_PLAN.LUNCH_CATEGORIES.includes(
+          f.category as string,
+        ),
+      );
+      dayMeals.lunch = getBestNutritionalMatch(
+        lunchPool,
         usedIds,
-        pLevels,
+        isEconomyMode ? [1] : [1, 2],
         ratingMap,
         dayCategoryTracker,
-      );
-      if (selected) {
-        dayCategoryTracker.add(selected.category as string);
-        return assignReason(selected, ratingMap, isEconomyMode);
-      }
-      return null;
-    };
-
-    // Yeni Serpme Kahvaltı Mantığı
-    const getBreakfastPlate = (): Food[] => {
-      const breakfastFoods = filteredFoods.filter(
-        (f) => f.category === "Kahvaltı",
-      );
-      
-      // Çorbaları da kahvaltı havuzuna ekle (Sabah çorbası kültürü)
-      const soupFoods = filteredFoods.filter(
-        (f) => f.category === "Çorbalar"
+        BUSINESS_RULES.NUTRITION.TARGET_CALORIES * 0.35, // Öğle yemeği için %35 kalori bütçesi
       );
 
-      const mains = breakfastFoods.filter((f) => f.subCategory === "main");
-      const sides = breakfastFoods.filter((f) => f.subCategory === "side");
-      const bakeries = breakfastFoods.filter((f) => f.subCategory === "bakery");
-      const drinks = breakfastFoods.filter((f) => f.subCategory === "drink");
-
-      const plate: Food[] = [];
-
-      // 1. Ana Ürün Seç (Yumurta, Menemen vb.) veya Çorba (%20 ihtimal)
-      let main: Food | null = null;
-      if (Math.random() < 0.2 && soupFoods.length > 0) {
-         main = getRandomItem(soupFoods, usedIds) || getRandomItem(soupFoods);
-      } 
-      
-      if (!main) {
-         main = getRandomItem(mains, usedIds) || getRandomItem(mains);
+      if (dayMeals.lunch) {
+        currentStats.calories += dayMeals.lunch.nutritionalInfo?.calories || 0;
+        currentStats.protein += dayMeals.lunch.nutritionalInfo?.protein || 0;
+        usedIds.add(dayMeals.lunch.id);
+        dayCategoryTracker.add(dayMeals.lunch.category as string);
+        dayMeals.lunch = assignReason(dayMeals.lunch, ratingMap, isEconomyMode);
       }
 
-      if (main) plate.push(assignReason(main, ratingMap, isEconomyMode));
+      // Akşam Yemeği Seçimi - Kalan Kaloriye Göre Optimize Et
+      const remainingCalories =
+        BUSINESS_RULES.NUTRITION.TARGET_CALORIES - currentStats.calories;
+      const dinnerPool = filteredFoods.filter((f) =>
+        BUSINESS_RULES.MEAL_PLAN.DINNER_CATEGORIES.includes(
+          f.category as string,
+        ),
+      );
 
-      // 2. Yan Ürünler (Peynir, Zeytin vb.) - 2-3 çeşit
-      const sideCount = isEconomyMode
-        ? BUSINESS_RULES.MEAL_PLAN.ECONOMY_SIDE_COUNT
-        : BUSINESS_RULES.MEAL_PLAN.NORMAL_SIDE_COUNT;
-      for (let k = 0; k < sideCount; k++) {
-        const side = getRandomItem(
-          sides.filter((s) => !plate.find((p) => p.id === s.id)),
+      dayMeals.dinner = getBestNutritionalMatch(
+        dinnerPool,
+        usedIds,
+        isEconomyMode ? [1, 2] : i % 7 < 5 ? [1, 2] : [1, 2, 3],
+        ratingMap,
+        dayCategoryTracker,
+        remainingCalories > 400 ? remainingCalories : 600, // Minimum 600kcal akşam yemeği hedefi
+      );
+
+      if (dayMeals.dinner) {
+        usedIds.add(dayMeals.dinner.id);
+        dayCategoryTracker.add(dayMeals.dinner.category as string);
+        dayMeals.dinner = assignReason(
+          dayMeals.dinner,
+          ratingMap,
+          isEconomyMode,
         );
-        if (side) plate.push(side);
       }
 
-      // 3. Hamur İşi (Haftada 2-3 kez)
-      if (Math.random() > BUSINESS_RULES.MEAL_PLAN.BAKERY_PROBABILITY) {
-        const bakery = getRandomItem(bakeries);
-        if (bakery) plate.push(bakery);
-      }
+      // Ara Öğün (Tatlı) - Kalan Bütçeye Göre
+      dayMeals.snack = getSmartMeal(
+        BUSINESS_RULES.MEAL_PLAN.SNACK_CATEGORIES,
+        [1, 2, 3],
+      );
 
-      // 4. İçecek (Her zaman)
-      const drink = getRandomItem(drinks) || drinks[0];
-      if (drink) plate.push(drink);
+      const dailyStats = getNutrition(dayMeals);
+      dayMeals.nutritionDescription = `${dailyStats.calories} kcal | P: ${dailyStats.protein}g, K: ${dailyStats.carbs}g, Y: ${dailyStats.fat}g`;
 
-      return plate;
-    };
+      // Gelişmiş Fallback Mekanizması
 
-    const dayMeals: DailyMeal = {
-      breakfast: getBreakfastPlate(),
-      lunch: null,
-      dinner: null,
-      snack: null,
-    };
-
-    const currentStats = {
-      calories: dayMeals.breakfast.reduce((acc, f) => acc + (f.nutritionalInfo?.calories || 0), 0),
-      protein: dayMeals.breakfast.reduce((acc, f) => acc + (f.nutritionalInfo?.protein || 0), 0),
-      carbs: dayMeals.breakfast.reduce((acc, f) => acc + (f.nutritionalInfo?.carbs || 0), 0),
-      fat: dayMeals.breakfast.reduce((acc, f) => acc + (f.nutritionalInfo?.fat || 0), 0),
-    };
-
-    // Öğle Yemeği Seçimi - Akıllı Hedefleme
-    const lunchPool = filteredFoods.filter(f => BUSINESS_RULES.MEAL_PLAN.LUNCH_CATEGORIES.includes(f.category as string));
-    dayMeals.lunch = getBestNutritionalMatch(
-      lunchPool,
-      usedIds,
-      isEconomyMode ? [1] : [1, 2],
-      ratingMap,
-      dayCategoryTracker,
-      (BUSINESS_RULES.NUTRITION.TARGET_CALORIES * 0.35) // Öğle yemeği için %35 kalori bütçesi
-    );
-
-    if (dayMeals.lunch) {
-      currentStats.calories += dayMeals.lunch.nutritionalInfo?.calories || 0;
-      currentStats.protein += dayMeals.lunch.nutritionalInfo?.protein || 0;
-      usedIds.add(dayMeals.lunch.id);
-      dayCategoryTracker.add(dayMeals.lunch.category as string);
-      dayMeals.lunch = assignReason(dayMeals.lunch, ratingMap, isEconomyMode);
+      plan.push(dayMeals);
     }
 
-    // Akşam Yemeği Seçimi - Kalan Kaloriye Göre Optimize Et
-    const remainingCalories = BUSINESS_RULES.NUTRITION.TARGET_CALORIES - currentStats.calories;
-    const dinnerPool = filteredFoods.filter(f => BUSINESS_RULES.MEAL_PLAN.DINNER_CATEGORIES.includes(f.category as string));
-    
-    dayMeals.dinner = getBestNutritionalMatch(
-      dinnerPool,
-      usedIds,
-      isEconomyMode ? [1, 2] : i % 7 < 5 ? [1, 2] : [1, 2, 3],
-      ratingMap,
-      dayCategoryTracker,
-      remainingCalories > 400 ? remainingCalories : 600 // Minimum 600kcal akşam yemeği hedefi
-    );
-
-    if (dayMeals.dinner) {
-      usedIds.add(dayMeals.dinner.id);
-      dayCategoryTracker.add(dayMeals.dinner.category as string);
-      dayMeals.dinner = assignReason(dayMeals.dinner, ratingMap, isEconomyMode);
+    const weeklyGroups: DailyMeal[][] = [];
+    for (let i = 0; i < plan.length; i += 7) {
+      weeklyGroups.push(plan.slice(i, i + 7));
     }
 
-    // Ara Öğün (Tatlı) - Kalan Bütçeye Göre
-    dayMeals.snack = getSmartMeal(BUSINESS_RULES.MEAL_PLAN.SNACK_CATEGORIES, [1, 2, 3]);
-
-    const dailyStats = getNutrition(dayMeals);
-    dayMeals.nutritionDescription = `${dailyStats.calories} kcal | P: ${dailyStats.protein}g, K: ${dailyStats.carbs}g, Y: ${dailyStats.fat}g`;
-
-    // Gelişmiş Fallback Mekanizması
-
-
-    plan.push(dayMeals);
-  }
-
-  const weeklyGroups: DailyMeal[][] = [];
-  for (let i = 0; i < plan.length; i += 7) {
-    weeklyGroups.push(plan.slice(i, i + 7));
-  }
-
-  const newPlan: MealPlan = {
-    id: generateEntityId(),
-    userId: userId || 0,
-    dietPreference: diet,
-    plan_data: plan,
-    weekly_groups: weeklyGroups,
-    createdAt: new Date().toISOString(),
-  };
+    const newPlan: MealPlan = {
+      id: generateEntityId(),
+      userId: userId || 0,
+      dietPreference: diet,
+      plan_data: plan,
+      weekly_groups: weeklyGroups,
+      createdAt: new Date().toISOString(),
+    };
 
     if (userId) await saveMealPlan(newPlan);
     return newPlan;
@@ -296,7 +316,6 @@ export async function generateBalancedMenu(
     throw handleError(error, { log: true, showToast: true });
   }
 }
-
 
 /**
  * Besinsel hedefe en yakın ve kullanıcı tercihlerine uygun yemeği seçer
@@ -307,36 +326,40 @@ function getBestNutritionalMatch(
   priceLevels: number[],
   ratingMap: Map<number, number>,
   dayCategoryTracker: Set<string>,
-  targetCalories: number
+  targetCalories: number,
 ): Food | null {
-  const filteredPool = pool.filter(f => 
-    priceLevels.includes(f.priceLevel || 2) && 
-    !dayCategoryTracker.has(f.category as string)
+  const filteredPool = pool.filter(
+    (f) =>
+      priceLevels.includes(f.priceLevel || 2) &&
+      !dayCategoryTracker.has(f.category as string),
   );
 
   if (filteredPool.length === 0) return null;
 
   // Her yemeği puanla
-  const scoredPool = filteredPool.map(food => {
+  const scoredPool = filteredPool.map((food) => {
     let score = 0;
-    
+
     // 1. Kullanıcı Derecelendirmesi (En yüksek ağırlık)
     const rating = ratingMap.get(food.id) || 3;
     score += (rating - 3) * 50; // 5 yıldız +100, 1 yıldız -100
 
     // 2. Kalori Hedefine Yakınlık
-    const calDiff = Math.abs((food.nutritionalInfo?.calories || 500) - targetCalories);
-    score -= (calDiff / 10); // Her 10 kalori farkı -1 puan
+    const calDiff = Math.abs(
+      (food.nutritionalInfo?.calories || 500) - targetCalories,
+    );
+    score -= calDiff / 10; // Her 10 kalori farkı -1 puan
 
     // 3. Daha Önce Kullanılmama Bonus (Haftalık çeşitlilik)
     if (!usedIds.has(food.id)) score += 30;
 
     // 4. Bütçe Optimizasyonu (Economy Mode ise)
     if (food.estimatedPrice) {
-      if (priceLevels.length === 1 && priceLevels[0] === 1) { // Very strict economy
-        score -= (food.estimatedPrice / 2); // Her 2₺ maliyet -1 puan
+      if (priceLevels.length === 1 && priceLevels[0] === 1) {
+        // Very strict economy
+        score -= food.estimatedPrice / 2; // Her 2₺ maliyet -1 puan
       } else {
-        score -= (food.estimatedPrice / 5); // Her 5₺ maliyet -1 puan
+        score -= food.estimatedPrice / 5; // Her 5₺ maliyet -1 puan
       }
     }
 
@@ -349,7 +372,10 @@ function getBestNutritionalMatch(
 }
 
 function getNutrition(m: DailyMeal) {
-  let calories = 0, protein = 0, carbs = 0, fat = 0;
+  let calories = 0,
+    protein = 0,
+    carbs = 0,
+    fat = 0;
   const all = [
     ...m.breakfast,
     ...(m.lunch ? [m.lunch] : []),
@@ -381,10 +407,15 @@ function getRandomFoodByPrice(
   );
 
   if (pool.length === 0) {
-    // Pool boşsa kategori kısıtlamasını koruyarak fiyatı gevşet
-    return (
-      foods.filter((f) => categories.includes(f.category as string))[0] || null
+    // Pool boşsa, kategoriyi tamamen serbest bırak ama hala BU GÜNÜN kategorilerini hariç tutmaya çalış
+    const fallbackPool = foods.filter(
+      (f) =>
+        !dayCategoryTracker || !dayCategoryTracker.has(f.category as string),
     );
+    return fallbackPool.length > 0
+      ? fallbackPool[0]
+      : foods.filter((f) => categories.includes(f.category as string))[0] ||
+          null;
   }
 
   const weightedPool: Food[] = [];
@@ -409,7 +440,6 @@ function getRandomFoodByPrice(
   if (selected) usedIds.add(selected.id);
   return selected;
 }
-
 
 export async function generateMenuSuggestions(): Promise<MenuSuggestion[]> {
   return []; // Legacy support

@@ -228,8 +228,13 @@ const getFallbackImage = (foodName?: string, foodCategory?: string): string => {
     return "https://cdn.yemek.com/mnresize/1250/833/uploads/2015/07/tavuklu-burger-yemekcom.jpg";
   }
 
-  // Genel yedek - En güvenilir Türk yemek sitesi
-  return "https://cdn.yemek.com/mnresize/1250/833/uploads/2014/11/mercimek-corbasi-yemekcom.jpg";
+  const getProxied = (url: string) =>
+    `https://images.weserv.nl/?url=${encodeURIComponent(url)}`;
+
+  // Genel yedek - En güvenilir Türk yemek sitesi (Poksili)
+  return getProxied(
+    "https://cdn.yemek.com/mnresize/1250/833/uploads/2014/11/mercimek-corbasi-yemekcom.jpg",
+  );
 };
 
 export const LazyImage: React.FC<LazyImageProps> = ({
@@ -261,10 +266,18 @@ export const LazyImage: React.FC<LazyImageProps> = ({
 
   return (
     <View style={style}>
-      {loading && (
+      {(loading || error) && (
         <View style={[style, styles.placeholder]}>
-          {placeholder || (
-            <SkeletonLoader width="100%" height="100%" borderRadius={0} />
+          {error ? (
+            <ExpoImage
+              source={{ uri: getFallbackImage(foodName, foodCategory) }}
+              style={style}
+              contentFit="cover"
+            />
+          ) : (
+            placeholder || (
+              <SkeletonLoader width="100%" height="100%" borderRadius={0} />
+            )
           )}
         </View>
       )}
@@ -277,6 +290,7 @@ export const LazyImage: React.FC<LazyImageProps> = ({
         placeholder="blur"
         recyclingKey={source.uri}
         cachePolicy="memory-disk"
+        contentFit="cover"
       />
     </View>
   );
