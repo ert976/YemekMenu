@@ -14,15 +14,15 @@ Kişisel menü planlama uygulaması ile kullanıcıların sağlıklı ve dengeli
 
 ### 🏗️ Mimari Kararları
 
-| Karar            | Açıklama                               | Durum                  |
-| ---------------- | -------------------------------------- | ---------------------- |
-| Platform         | React Native + Expo (Cross-platform)   | ✅                     |
-| Database         | SQLite (Mobile) / LocalStorage (Web)   | ✅                     |
-| Language         | TypeScript (%95+ type coverage)        | ✅                     |
-| Performance      | expo-image, useMemo, FlatList          | ✅                     |
-| Architecture     | Modüler Database, MCP Server Support   | ✅                     |
-| Error Handling   | Merkezi Handler + ErrorBoundary        | ✅                     |
-| Pricing System   | 2025 Market Data + Smart Calculation   | ✅                     |
+| Karar          | Açıklama                             | Durum |
+| -------------- | ------------------------------------ | ----- |
+| Platform       | React Native + Expo (Cross-platform) | ✅    |
+| Database       | SQLite (Mobile) / LocalStorage (Web) | ✅    |
+| Language       | TypeScript (%95+ type coverage)      | ✅    |
+| Performance    | expo-image, useMemo, FlatList        | ✅    |
+| Architecture   | Modüler Database, MCP Server Support | ✅    |
+| Error Handling | Merkezi Handler + ErrorBoundary      | ✅    |
+| Pricing System | 2025 Market Data + Smart Calculation | ✅    |
 
 ---
 
@@ -55,6 +55,7 @@ Demo giriş → 10 yemek puanla → "Hesap Oluştur"
 ```
 
 **Teknik Detaylar:**
+
 - `utils/session-utils.ts`: Session management modülü
 - Negative ID kullanımı (-XXXXXX) ile demo/gerçek kullanıcı ayrımı
 - `migrateSessionToUser()`: ratings, preferences, meal_plans transferi
@@ -135,6 +136,30 @@ npm audit
 npm test -- --watch
 # Sonuç: <5 saniyede ilk test çalışır
 # Gerçek: ~3.5s, hedef: <5s ✅
+```
+
+---
+
+### SPEC-014: Kitlesel Görsel Benzersizleştirme (Visual Uniqueness)
+
+**Priorite**: 🔴 Kritik
+**Durum**: 🔄 Devam Ediyor (131/329 Benzersiz)
+**Metric**: Her yemeğin kendine ait, benzersiz (unique) ve HD görseli olmalı
+
+**Gereksinimler:**
+
+- [x] Tüm 329 yemek için dublike/placeholder resimlerin otomatik tespiti
+- [x] `database/image_registry.json` ile kalıcı görsel hafızası (Sıfır Veri Kaybı)
+- [x] Çorbalar, Kahvaltılıklar ve Tatlıların (131 adet) benzersizleştirilmesi
+- [ ] Kebablar, Makarnalar ve Salataların (198 adet) benzersizleştirilmesi
+- [x] UI Üzerinden Hatalı Resim İhbar Sistemi (🚩 Butonu)
+- [x] Admin Paneli (`/admin/gallery`) ile görsel denetim
+
+**Kabul Kriterleri:**
+
+```bash
+node scripts/audit_uniqueness.js
+# Sonuç: "Total Duplicated URL Instances: 0" olmalı
 ```
 
 ---
@@ -283,6 +308,7 @@ npm test -- --watch
 **Metric**: i18n library ile TR + EN desteklemeli
 
 **Gereksinimler:**
+
 - [x] `i18next` ve `react-i18next` kullanımı
 - [x] JSON tabanlı translation yönetimi
 - [x] Dinamik dil değişimi (re-render olmadan)
@@ -301,13 +327,13 @@ npm test -- --watch
 
 ## 📊 SPECS ÖZETİ
 
-| Kategori   | Toplam | Tamamlanmış | Devam Eden  | Beklemede   |
-| ---------- | ------ | ----------- | ----------- | ----------- |
-| 🔴 Kritik  | 3      | 3           | 0           | 0           |
-| 🟡 Yüksek  | 4      | 4           | 0           | 0           |
-| 🟢 Orta    | 3      | 3           | 0           | 0           |
-| 🔵 Düşük   | 3      | 1           | 0           | 2           |
-| **Toplam** | **13** | **11 (85%)**| **0 (0%)**  | **2 (15%)** |
+| Kategori   | Toplam | Tamamlanmış  | Devam Eden | Beklemede   |
+| ---------- | ------ | ------------ | ---------- | ----------- |
+| 🔴 Kritik  | 4      | 3            | 1          | 0           |
+| 🟡 Yüksek  | 4      | 4            | 0          | 0           |
+| 🟢 Orta    | 3      | 3            | 0          | 0           |
+| 🔵 Düşük   | 3      | 1            | 0          | 2           |
+| **Toplam** | **14** | **11 (78%)** | **1 (8%)** | **2 (14%)** |
 
 ---
 
@@ -318,27 +344,27 @@ npm test -- --watch
 1. **Smart Algorithm**: Kalori ve tercih odaklı akıllı puanlama sistemi.
 2. **Enterprise Security**: Salted hash, rate limiting ve validation entegre.
 3. **Type Safety**: %95+ coverage ile güvenli kod tabanı.
-4. **Universal Storage**: Mobile & Web için kalıcı veri saklama.
-5. **AI Ready**: Global MCP Server yapılandırması tamamlandı.
-6. **Premium UI**: Skeleton screens ve haptic feedback entegre edildi.
-7. **Global Ready**: Çoklu dil (TR/EN) desteği tamamlandı.
+4. **Resilience**: `image_registry.json` ile görsel verilerin kalıcılığı sağlandı.
+5. **Detection**: Admin Paneli ve İhbar sistemi ile veri kalitesi kontrol altında.
 
 ### ⚠️ Zayıf Yanlar (Weaknesses)
 
-1. **PWA Support**: Offline desteği beklemede.
+1. **Visual Consistency**: Bazı kategorilerde hala dublike resimler mevcut (Kebaplar vb.).
+2. **PWA Support**: Offline desteği beklemede.
 
 ---
 
 ## 📝 SPECS VERSİYON GEÇMİŞİ
 
-| Versiyon | Tarih       | Değişiklikler                               |
-| -------- | ----------- | ------------------------------------------- |
-| 3.5.0    | 23 Jan 2026 | Çoklu Dil (i18n) desteği ve Türkçe yerelleştirme tamamlandı |
-| 3.4.0    | 23 Jan 2026 | Skeleton screens, Premium UI ve Error Handling tamamlandı |
-| 3.3.0    | 23 Jan 2026 | Demo Session İzolasyonu ve Migration eklendi |
-| 3.2.0    | 23 Jan 2026 | Algorithm, Security ve Dark Mode tamamlandı |
-| 3.1.0    | 22 Jan 2026 | DB 300+ yemek genişletmesi eklendi          |
-| 3.0.0    | 16 Jan 2026 | Spec-driven approach ile yeniden düzenlendi |
+| Versiyon | Tarih       | Değişiklikler                                                        |
+| -------- | ----------- | -------------------------------------------------------------------- |
+| 3.6.0    | 26 Jan 2026 | Kitlesel Görsel Benzersizleştirme (Phase 1) ve İhbar Sistemi eklendi |
+| 3.5.0    | 23 Jan 2026 | Çoklu Dil (i18n) desteği ve Türkçe yerelleştirme tamamlandı          |
+| 3.4.0    | 23 Jan 2026 | Skeleton screens, Premium UI ve Error Handling tamamlandı            |
+| 3.3.0    | 23 Jan 2026 | Demo Session İzolasyonu ve Migration eklendi                         |
+| 3.2.0    | 23 Jan 2026 | Algorithm, Security ve Dark Mode tamamlandı                          |
+| 3.1.0    | 22 Jan 2026 | DB 300+ yemek genişletmesi eklendi                                   |
+| 3.0.0    | 16 Jan 2026 | Spec-driven approach ile yeniden düzenlendi                          |
 
 ---
 
