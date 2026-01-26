@@ -26,10 +26,11 @@
 **Öncelik**: 🔴 Kritik
 **Gereksinimler:**
 
-- [x] Tüm 329 yemek için dublike/placeholder resimlerin tespiti (scripts/audit_uniqueness.js)
+- [x] Tüm 329 yemek için dublike/placeholder resimlerin tespiti (Otomatik: scripts/audit_uniqueness.js)
 - [x] Kalıcı veri merkezi oluşturuldu (database/image_registry.json)
 - [x] 131 yemeğe tam benzersiz ve HD görsel atandı
-- [ ] Kalan 198 yemek için "One Image per Dish" kuralı ile tarama yapılması
+- [/] **Otomatik Tespit Devrede**: Resimsizler ve ortak resimliler kod ile tespit ediliyor, manuel bildirim beklenmiyor.
+- [ ] Kalan 198 yemek için "One Image per Dish" kuralı ile toplu tarama yapılması
 - [ ] Admin Paneli (`admin/gallery`) üzerinden %100 doğrulama
 - [ ] Kaybolan verilerin Git üzerinden geri yüklenmesi ve korunması
 
