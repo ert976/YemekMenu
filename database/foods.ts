@@ -4,7 +4,7 @@ import { appState, saveState } from "./state";
 export const COMMON_FOODS: Food[] = [
   {
     "name": "Mercimek Çorbası",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F6%2F6c%2FMercimek_Corba.jpg%2F800px-Mercimek_Corba.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Mercimek_Corba.jpg/800px-Mercimek_Corba.jpg",
     "category": "Çorbalar",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -21,7 +21,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Ezogelin Çorbası",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F3%2F31%2FEzogelin_corba.jpg%2F800px-Ezogelin_corba.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Ezogelin_corba.jpg/800px-Ezogelin_corba.jpg",
     "category": "Çorbalar",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -31,7 +31,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Yayla Çorbası",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fe%2Fe5%2FYayla_%C4%9Forbas%C4%B1.jpg%2F800px-Yayla_%C4%9Forbas%C4%B1.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Yayla_ğorbası.jpg/800px-Yayla_ğorbası.jpg",
     "category": "Çorbalar",
     "is_vegetarian": true,
     "is_vegan": false,
@@ -41,7 +41,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "İşkembe Çorbası",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F6%2F6c%2FMercimek_Corba.jpg%2F800px-Mercimek_Corba.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Turkish_tripe_soup.jpg",
     "category": "Çorbalar",
     "is_vegetarian": false,
     "is_vegan": false,
@@ -51,7 +51,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Domates Çorbası",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F6%2F6c%2FMercimek_Corba.jpg%2F800px-Mercimek_Corba.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Domates_%C3%A7orbas%C4%B1.jpg",
     "category": "Çorbalar",
     "is_vegetarian": true,
     "is_vegan": false,
@@ -61,7 +61,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Tarhana Çorbası",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F6%2F6c%2FMercimek_Corba.jpg%2F800px-Mercimek_Corba.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/a4/Tarhana_%C3%A7orbas%C4%B1.jpg",
     "category": "Çorbalar",
     "is_vegetarian": true,
     "is_vegan": false,
@@ -71,7 +71,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Bulgur Çorbası",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F6%2F6c%2FMercimek_Corba.jpg%2F800px-Mercimek_Corba.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/14/Yogurtlu_yarma_soup.jpg",
     "category": "Çorbalar",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -81,7 +81,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Yoğurt Çorbası",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F6%2F6c%2FMercimek_Corba.jpg%2F800px-Mercimek_Corba.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/14/Yayla_or_yogurt_soup.jpg",
     "category": "Çorbalar",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -91,7 +91,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Mantar Çorbası",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F6%2F6c%2FMercimek_Corba.jpg%2F800px-Mercimek_Corba.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/45/Mantar_%C3%A7orbas%C4%B1.jpg",
     "category": "Çorbalar",
     "is_vegetarian": true,
     "is_vegan": false,
@@ -101,7 +101,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Kelle Paça",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F6%2F6c%2FMercimek_Corba.jpg%2F800px-Mercimek_Corba.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Kelle_pa%C3%A7a_%C3%A7orbas%C4%B1_-_head_and_leg_soup.jpg",
     "category": "Çorbalar",
     "is_vegetarian": false,
     "is_vegan": false,
@@ -111,7 +111,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Tavuk Suyu Çorbası",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F6%2F6c%2FMercimek_Corba.jpg%2F800px-Mercimek_Corba.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Tavuk_suyu_%C3%A7orba.jpg",
     "category": "Çorbalar",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -121,7 +121,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Sebzeli Çorba",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F6%2F6c%2FMercimek_Corba.jpg%2F800px-Mercimek_Corba.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/18/Kremal%C4%B1_sebze_%C3%A7orbas%C4%B1.jpg",
     "category": "Çorbalar",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -131,7 +131,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Nohut Çorbası",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F6%2F6c%2FMercimek_Corba.jpg%2F800px-Mercimek_Corba.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Yuksuk_soup.jpg",
     "category": "Çorbalar",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -141,7 +141,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Şehriye Çorbası",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F6%2F6c%2FMercimek_Corba.jpg%2F800px-Mercimek_Corba.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Tel_%C5%9Fehriye_soup.jpg",
     "category": "Çorbalar",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -151,7 +151,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Düğün Çorbası",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F6%2F6c%2FMercimek_Corba.jpg%2F800px-Mercimek_Corba.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Wedding_soup_from_the_Turkish_cuisine.jpg",
     "category": "Çorbalar",
     "is_vegetarian": false,
     "is_vegan": false,
@@ -161,7 +161,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Lahana Çorbası",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F6%2F6c%2FMercimek_Corba.jpg%2F800px-Mercimek_Corba.jpg",
+    "image_url": "https://images.unsplash.com/photo-1651783078053-fc9e8f2ed0e3?w=1200",
     "category": "Çorbalar",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -171,7 +171,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Pırasa Çorbası",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F6%2F6c%2FMercimek_Corba.jpg%2F800px-Mercimek_Corba.jpg",
+    "image_url": "https://images.unsplash.com/photo-1697898108747-8f43fe5f9fd8?w=1200",
     "category": "Çorbalar",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -181,7 +181,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Kuru Fasulye",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Ff%2Ffa%2FKuru_fasulye.jpg%2F800px-Kuru_fasulye.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Etli_kuru_fasulye.jpg",
     "category": "Baklagiller",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -191,7 +191,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Barbunya Pilaki",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Ff%2Ffa%2FKuru_fasulye.jpg%2F800px-Kuru_fasulye.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/84/Barbunya_pilaki.jpg",
     "category": "Baklagiller",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -201,7 +201,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Yeşil Mercimek",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Ff%2Ffa%2FKuru_fasulye.jpg%2F800px-Kuru_fasulye.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/51/Mercimekkoftesi.jpg",
     "category": "Baklagiller",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -211,7 +211,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Nohut Pilav",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Ff%2Ffa%2FKuru_fasulye.jpg%2F800px-Kuru_fasulye.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/49/Nohut_yahni_and_bulgur.jpg",
     "category": "Baklagiller",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -221,7 +221,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Mercimek Köfte",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Ff%2Ffa%2FKuru_fasulye.jpg%2F800px-Kuru_fasulye.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Mercimek_k%C3%B6ftesi.jpg",
     "category": "Baklagiller",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -231,7 +231,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Nohut Salata",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Ff%2Ffa%2FKuru_fasulye.jpg%2F800px-Kuru_fasulye.jpg",
+    "image_url": "https://images.unsplash.com/photo-1580050878264-c4985c8ae8e7?w=1200",
     "category": "Baklagiller",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -241,7 +241,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Fasulye Pilaki",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Ff%2Ffa%2FKuru_fasulye.jpg%2F800px-Kuru_fasulye.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/54/Pilaki_from_the_Turkish_cuisine.jpg",
     "category": "Baklagiller",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -251,7 +251,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Taze Fasulye",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fe%2Fe1%2FTaze_fasulye.jpg%2F800px-Taze_fasulye.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Green_bean_dishes_of_Turkey.jpg",
     "category": "Sebze Yemekleri",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -261,7 +261,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Patlıcan Musakka",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fe%2Fe1%2FTaze_fasulye.jpg%2F800px-Taze_fasulye.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Musakka.jpg",
     "category": "Sebze Yemekleri",
     "is_vegetarian": false,
     "is_vegan": false,
@@ -271,7 +271,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Bamya",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fe%2Fe1%2FTaze_fasulye.jpg%2F800px-Taze_fasulye.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/26/Bamia-Ocras_tomate_%28cropped%29.JPG",
     "category": "Sebze Yemekleri",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -281,7 +281,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Ispanak",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fe%2Fe1%2FTaze_fasulye.jpg%2F800px-Taze_fasulye.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Ispanak_dish.jpg",
     "category": "Sebze Yemekleri",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -291,7 +291,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Karnabahar",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fe%2Fe1%2FTaze_fasulye.jpg%2F800px-Taze_fasulye.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/08/Karnabahar_K%C4%B1zartmas%C4%B1.jpg",
     "category": "Sebze Yemekleri",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -301,7 +301,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Pırasa Yemeği",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fe%2Fe1%2FTaze_fasulye.jpg%2F800px-Taze_fasulye.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/12/Zeytinya%C4%9Fl%C4%B1_p%C4%B1rasa_%28with_rice%29.jpg",
     "category": "Sebze Yemekleri",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -311,7 +311,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Manti",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F1%2F10%2FMant%25C4%25B1.jpg%2F800px-Mant%25C4%25B1.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Hand-made_Turkish_manti.jpg",
     "category": "Hamur İşleri",
     "is_vegetarian": false,
     "is_vegan": false,
@@ -321,7 +321,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Pide",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F1%2F10%2FMant%25C4%25B1.jpg%2F800px-Mant%25C4%25B1.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/36/Pide_Leninha.jpg",
     "category": "Hamur İşleri",
     "is_vegetarian": false,
     "is_vegan": false,
@@ -331,7 +331,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Lahmacun",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F8%2F8e%2FDoner_kebab%252C_Istanbul%252C_Turkey.JPG%2F800px-Doner_kebab%252C_Istanbul%252C_Turkey.JPG",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Lahmacun.jpg",
     "category": "Döner & Kebap",
     "is_vegetarian": false,
     "is_vegan": false,
@@ -341,7 +341,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Börek",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FSimit-2x.JPG%2F800px-Simit-2x.JPG",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f7/B%C3%B6rek_in_Turkey.jpg",
     "category": "Kahvaltı",
     "is_vegetarian": true,
     "is_vegan": false,
@@ -351,7 +351,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Gözleme",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F1%2F10%2FMant%25C4%25B1.jpg%2F800px-Mant%25C4%25B1.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/d0/G%C3%B6zleme.JPG",
     "category": "Hamur İşleri",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -361,7 +361,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Simit",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FSimit-2x.JPG%2F800px-Simit-2x.JPG",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/07/Simit-2x.JPG",
     "category": "Kahvaltı",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -381,7 +381,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Urfa Kebap",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fd%2Fd4%2FAdana_kebab%C4%B1.jpg%2F800px-Adana_kebab%C4%B1.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Adana_kebabı.jpg/800px-Adana_kebabı.jpg",
     "category": "Döner & Kebap",
     "is_vegetarian": false,
     "is_vegan": false,
@@ -391,7 +391,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Beyti Kebap",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Ff%2Ff6%2FBeyti_Kebap.jpg%2F800px-Beyti_Kebap.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Beyti_Kebap.jpg/800px-Beyti_Kebap.jpg",
     "category": "Sokak Lezzetleri",
     "is_vegetarian": false,
     "is_vegan": false,
@@ -401,7 +401,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Döner Dürüm",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F8%2F8e%2FDoner_kebab%252C_Istanbul%252C_Turkey.JPG%2F800px-Doner_kebab%252C_Istanbul%252C_Turkey.JPG",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f1/D%C3%BCr%C3%BCm_D%C3%B6ner.jpg",
     "category": "Döner & Kebap",
     "is_vegetarian": false,
     "is_vegan": false,
@@ -411,7 +411,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Tavuk Döner",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F8%2F8e%2FDoner_kebab%252C_Istanbul%252C_Turkey.JPG%2F800px-Doner_kebab%252C_Istanbul%252C_Turkey.JPG",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/69/Zwei_Doener_Kebab.JPG",
     "category": "Döner & Kebap",
     "is_vegetarian": false,
     "is_vegan": false,
@@ -421,7 +421,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Köfte",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fmedia.gettyimages.com%2Fid%2F952966478%2Fphoto%2Fturkish-kofte-with-french-fries-on-a-plate.jpg%3Fs%3D612x612%26w%3Dgi%26k%3D20%26c%3D7XO-TnOecofukR1fcucNqgtqz_wVzoMGsK31QFOERZc%3D",
+    "image_url": "https://media.gettyimages.com/id/952966478/photo/turkish-kofte-with-french-fries-on-a-plate.jpg?s=612x612&w=gi&k=20&c=7XO-TnOecofukR1fcucNqgtqz_wVzoMGsK31QFOERZc=",
     "category": "Kebaplar",
     "is_vegetarian": false,
     "is_vegan": false,
@@ -431,7 +431,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "İskender",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F0d%2F%25C4%25B0skender_kebap.JPG%2F800px-%25C4%25B0skender_kebap.JPG",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/%C4%B0skender_kebap.JPG/800px-%C4%B0skender_kebap.JPG",
     "category": "Döner & Kebap",
     "is_vegetarian": false,
     "is_vegan": false,
@@ -441,7 +441,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Şiş Kebap",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F8%2F8e%2FDoner_kebab%252C_Istanbul%252C_Turkey.JPG%2F800px-Doner_kebab%252C_Istanbul%252C_Turkey.JPG",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/50/%C5%9Ei%C5%9F_kebap_and_pilav.jpg",
     "category": "Döner & Kebap",
     "is_vegetarian": false,
     "is_vegan": false,
@@ -451,7 +451,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Tavuk Pilav",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F8%2F87%2FKumpir.jpg%2F800px-Kumpir.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Roasted_chicken_and_Turkish_pilaf.jpg",
     "category": "Sokak Lezzetleri",
     "is_vegetarian": false,
     "is_vegan": false,
@@ -461,7 +461,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Kumpir",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F8%2F87%2FKumpir.jpg%2F800px-Kumpir.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/05/Kumpir2.jpg",
     "category": "Sokak Lezzetleri",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -471,7 +471,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Midye Dolma",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F8%2F87%2FKumpir.jpg%2F800px-Kumpir.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/45/Midye_dolma_%286%29.JPG",
     "category": "Sokak Lezzetleri",
     "is_vegetarian": false,
     "is_vegan": false,
@@ -481,7 +481,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Kokoreç",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F8%2F87%2FKumpir.jpg%2F800px-Kumpir.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/88/Grilled_kokore%C3%A7.jpg",
     "category": "Sokak Lezzetleri",
     "is_vegetarian": false,
     "is_vegan": false,
@@ -501,7 +501,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Paça Çorbası",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F8%2F87%2FKumpir.jpg%2F800px-Kumpir.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Ayak_pa%C3%A7a.jpg",
     "category": "Sokak Lezzetleri",
     "is_vegetarian": false,
     "is_vegan": false,
@@ -571,7 +571,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Tavuk Şiş",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fa%2Fa1%2FTurkish_meatballs.jpg%2F800px-Turkish_meatballs.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/22/Turkish_tavuk_shish.jpg",
     "category": "Izgara & Mangal",
     "is_vegetarian": false,
     "is_vegan": false,
@@ -581,7 +581,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Bonfile",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fmedia.istockphoto.com%2Fid%2F1213561258%2Fphoto%2Fsteak-from-turkish-cuisine.jpg%3Fs%3D612x612%26w%3D0%26k%3D20%26c%3DeFMbhxca6ANWyAoL6IJ_AxaTeDB3-uECW0rGh50FDt8%3D",
+    "image_url": "https://media.istockphoto.com/id/1213561258/photo/steak-from-turkish-cuisine.jpg?s=612x612&w=0&k=20&c=eFMbhxca6ANWyAoL6IJ_AxaTeDB3-uECW0rGh50FDt8=",
     "category": "Izgara",
     "is_vegetarian": false,
     "is_vegan": false,
@@ -591,7 +591,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Antrikot",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fa%2Fa1%2FTurkish_meatballs.jpg%2F800px-Turkish_meatballs.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Sirloin_steak.jpg",
     "category": "Izgara & Mangal",
     "is_vegetarian": false,
     "is_vegan": false,
@@ -601,7 +601,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Pirzola",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fa%2Fa1%2FTurkish_meatballs.jpg%2F800px-Turkish_meatballs.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/29/Lamb_chops.jpg",
     "category": "Izgara & Mangal",
     "is_vegetarian": false,
     "is_vegan": false,
@@ -611,7 +611,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Mozaik Pasta",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fwww.giverecipe.com%2Fwp-content%2Fuploads%2F2014%2F03%2FMozaik-Pasta-1.jpg",
+    "image_url": "https://www.giverecipe.com/wp-content/uploads/2014/03/Mozaik-Pasta-1.jpg",
     "category": "Pastalar",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -621,7 +621,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Tiramisu",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fimage.idntimes.com%2Fpost%2F20240711%2Fresep-tiramisu-tanpa-mascarpone-yang-tetap-creamy-dan-lezat-01-3kz8p-hl5rv4.jpg",
+    "image_url": "https://image.idntimes.com/post/20240711/resep-tiramisu-tanpa-mascarpone-yang-tetap-creamy-dan-lezat-01-3kz8p-hl5rv4.jpg",
     "category": "Pastalar",
     "is_vegetarian": false,
     "is_vegan": false,
@@ -631,7 +631,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Profiterol",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fmedia.gettyimages.com%2Fid%2F866537884%2Fphoto%2Fchocolate-profiterol.jpg%3Fs%3D612x612%26w%3Dgi%26k%3D20%26c%3DKjFdM6I3mvsKPDzUCwfX-3-QueE7sTKEs219SSqKIbU%3D",
+    "image_url": "https://media.gettyimages.com/id/866537884/photo/chocolate-profiterol.jpg?s=612x612&w=gi&k=20&c=KjFdM6I3mvsKPDzUCwfX-3-QueE7sTKEs219SSqKIbU=",
     "category": "Sütlü Tatlılar",
     "is_vegetarian": true,
     "is_vegan": false,
@@ -641,7 +641,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Ekler",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fhypeandhyper.com%2Fcontent%2Fimages%2Fsize%2Fw600%2F2022%2F10%2Fgrafi-jeremiah-v3SUdMi3u9s-unsplash-2.jpg",
+    "image_url": "https://hypeandhyper.com/content/images/size/w600/2022/10/grafi-jeremiah-v3SUdMi3u9s-unsplash-2.jpg",
     "category": "Pastalar",
     "is_vegetarian": true,
     "is_vegan": false,
@@ -651,7 +651,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Cheesecake",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fa%2Fa8%2FSaffron_Cheesecake_%2528Unsplash%2529.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Saffron_Cheesecake_%28Unsplash%29.jpg",
     "category": "Pastalar",
     "is_vegetarian": true,
     "is_vegan": false,
@@ -661,7 +661,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Muzlu Pasta",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2FjAqTEKmkJJI%2Fmaxresdefault.jpg",
+    "image_url": "https://i.ytimg.com/vi/jAqTEKmkJJI/maxresdefault.jpg",
     "category": "Pastalar",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -671,7 +671,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Cevizli Kek",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fwww.neomutfak.com%2Fwp-content%2Fuploads%2F2015%2F12%2FPSX_20151229_213327.jpg",
+    "image_url": "https://www.neomutfak.com/wp-content/uploads/2015/12/PSX_20151229_213327.jpg",
     "category": "Kekler",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -681,7 +681,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Fıstıklı Kek",
-    "image_url": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80",
+    "image_url": "https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?w=800",
     "category": "Kekler",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -691,7 +691,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Portakallı Kek",
-    "image_url": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80",
+    "image_url": "https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=800",
     "category": "Kekler",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -701,7 +701,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Elmalı Kek",
-    "image_url": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Apple_cake_with_vanilla_ice_cream_2.jpg",
     "category": "Kekler",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -711,7 +711,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Muzlu Kek",
-    "image_url": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/55/Banana_bread_slices.jpg",
     "category": "Kekler",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -721,7 +721,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Çikolatalı Kek",
-    "image_url": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/55/Chocolate_fudge_cake.jpg",
     "category": "Kekler",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -731,7 +731,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Kıvırcık Pasta",
-    "image_url": "https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=800&q=80",
+    "image_url": "https://images.unsplash.com/photo-1483695028939-5bb13f8648b0?w=800",
     "category": "Pastalar",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -741,7 +741,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Trileçe",
-    "image_url": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Pastel_de_Tres_Leches.jpg",
     "category": "Sütlü Tatlılar",
     "is_vegetarian": true,
     "is_vegan": false,
@@ -751,7 +751,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Paris Brest",
-    "image_url": "https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=800&q=80",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/de/Paris-Brest_IMG_0875.JPG",
     "category": "Pastalar",
     "is_vegetarian": true,
     "is_vegan": false,
@@ -761,7 +761,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Çikolatalı Pasta",
-    "image_url": "https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=800&q=80",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Piece_of_chocolate_cake_on_a_white_plate_decorated_with_chocolate_sauce.jpg",
     "category": "Pastalar",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -771,7 +771,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Yulaflı Pasta",
-    "image_url": "https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=800&q=80",
+    "image_url": "https://images.unsplash.com/photo-1639390171824-ec031a5c8ba3?w=800",
     "category": "Pastalar",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -781,7 +781,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Fransız Usulü Pasta",
-    "image_url": "https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=800&q=80",
+    "image_url": "https://images.unsplash.com/photo-1710077717714-976db5604dd7?w=800",
     "category": "Pastalar",
     "is_vegetarian": true,
     "is_vegan": false,
@@ -791,7 +791,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Sünger Pasta",
-    "image_url": "https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=800&q=80",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/a4/Cake_competition_%2814287027130%29.jpg",
     "category": "Pastalar",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -801,7 +801,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Kremalı Pasta",
-    "image_url": "https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=800&q=80",
+    "image_url": "https://images.unsplash.com/photo-1551634033-a08aa295491b?w=800",
     "category": "Pastalar",
     "is_vegetarian": true,
     "is_vegan": false,
@@ -811,7 +811,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Meyveli Pasta",
-    "image_url": "https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=800&q=80",
+    "image_url": "https://images.unsplash.com/photo-1702812528341-2da8657c76bd?w=800",
     "category": "Pastalar",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -821,7 +821,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Brownie",
-    "image_url": "https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=800&q=80",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Chocolate_brownie.jpg",
     "category": "Pastalar",
     "is_vegetarian": true,
     "is_vegan": false,
@@ -831,7 +831,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Blondie",
-    "image_url": "https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=800&q=80",
+    "image_url": "https://images.unsplash.com/photo-1626200397716-c36f1462300f?w=800",
     "category": "Pastalar",
     "is_vegetarian": true,
     "is_vegan": false,
@@ -841,7 +841,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Macaron",
-    "image_url": "https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=800&q=80",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/11/VanillaMacaron.jpg",
     "category": "Pastalar",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -851,7 +851,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Lava Kek",
-    "image_url": "https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=800&q=80",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Chocolate_Fondant.jpg",
     "category": "Pastalar",
     "is_vegetarian": true,
     "is_vegan": false,
@@ -861,7 +861,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Fondan Kek",
-    "image_url": "https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=800&q=80",
+    "image_url": "https://images.unsplash.com/photo-1595930142063-797ef7b5bbbe?w=800",
     "category": "Pastalar",
     "is_vegetarian": true,
     "is_vegan": false,
@@ -871,7 +871,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Pandispanya",
-    "image_url": "https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=800&q=80",
+    "image_url": "https://images.unsplash.com/photo-1559630854-e3615c5f4e46?w=800",
     "category": "Pastalar",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -881,7 +881,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Yulaflı Kek",
-    "image_url": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80",
+    "image_url": "https://images.unsplash.com/photo-1582295529191-c46e43c5b59b?w=800",
     "category": "Kekler",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -991,7 +991,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Kek Roll",
-    "image_url": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/da/Sri_Lankan_Swiss_roll.jpg",
     "category": "Kekler",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -1001,7 +1001,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Sütlaç",
-    "image_url": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Firinda_s%C3%BCtla%C3%A7.jpg",
     "category": "Sütlü Tatlılar",
     "is_vegetarian": true,
     "is_vegan": false,
@@ -1011,7 +1011,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Baklava",
-    "image_url": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/51/Baklava_1.jpg",
     "category": "Şerbetli Tatlılar",
     "is_vegetarian": true,
     "is_vegan": false,
@@ -1021,7 +1021,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Künefe",
-    "image_url": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/c9/K%C3%BCnefe_in_Ankara.jpg",
     "category": "Şerbetli Tatlılar",
     "is_vegetarian": true,
     "is_vegan": false,
@@ -1031,7 +1031,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Tavuk Göğsü Tatlısı",
-    "image_url": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Tavuk_G%C3%B6%C4%9Fs%C3%BC_Dessert.jpg",
     "category": "Sütlü Tatlılar",
     "is_vegetarian": false,
     "is_vegan": false,
@@ -1041,7 +1041,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Menemen",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FSimit-2x.JPG%2F800px-Simit-2x.JPG",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/17/Menemen.jpg",
     "category": "Kahvaltı",
     "subCategory": "main",
     "is_vegetarian": true,
@@ -1052,7 +1052,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Sahanda Yumurta",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FSimit-2x.JPG%2F800px-Simit-2x.JPG",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Sahanda_yumurta.jpg",
     "category": "Kahvaltı",
     "subCategory": "main",
     "is_vegetarian": true,
@@ -1063,7 +1063,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Omlet",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FSimit-2x.JPG%2F800px-Simit-2x.JPG",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/b1/FoodOmelete.jpg",
     "category": "Kahvaltı",
     "subCategory": "main",
     "is_vegetarian": true,
@@ -1074,7 +1074,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Tost",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FSimit-2x.JPG%2F800px-Simit-2x.JPG",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Ayval%C4%B1k_tostu.jpg",
     "category": "Kahvaltı",
     "subCategory": "main",
     "is_vegetarian": true,
@@ -1085,7 +1085,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Poğaça",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FSimit-2x.JPG%2F800px-Simit-2x.JPG",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Peynirli_po%C4%9Fa%C3%A7a_in_Ankara.jpg",
     "category": "Kahvaltı",
     "subCategory": "bakery",
     "is_vegetarian": true,
@@ -1096,7 +1096,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Sucuklu Yumurta",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FSimit-2x.JPG%2F800px-Simit-2x.JPG",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/70/Sucuklu_yumurta_%28sucuk_with_eggs%29.jpg",
     "category": "Kahvaltı",
     "subCategory": "main",
     "is_vegetarian": false,
@@ -1107,7 +1107,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Pastırmalı Yumurta",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FSimit-2x.JPG%2F800px-Simit-2x.JPG",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/88/Past%C4%B1rmal%C4%B1_yumurta.jpg",
     "category": "Kahvaltı",
     "subCategory": "main",
     "is_vegetarian": false,
@@ -1118,7 +1118,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Mücver",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fe%2Fe1%2FTaze_fasulye.jpg%2F800px-Taze_fasulye.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/3a/M%C3%BCcver.jpg",
     "category": "Sebze Yemekleri",
     "is_vegetarian": true,
     "is_vegan": false,
@@ -1172,7 +1172,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Kaymak",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FSimit-2x.JPG%2F800px-Simit-2x.JPG",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Kaymak_in_Turkey.jpg",
     "category": "Kahvaltı",
     "subCategory": "side",
     "is_vegetarian": true,
@@ -1183,7 +1183,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Yumurta Salatası",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FSimit-2x.JPG%2F800px-Simit-2x.JPG",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/21/EggSalad.jpg",
     "category": "Kahvaltı",
     "subCategory": "side",
     "is_vegetarian": true,
@@ -1204,7 +1204,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Domatesli Börek",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FSimit-2x.JPG%2F800px-Simit-2x.JPG",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/87/Su_b%C3%B6re%C4%9Fi_and_tea.jpg",
     "category": "Kahvaltı",
     "subCategory": "bakery",
     "is_vegetarian": true,
@@ -1215,7 +1215,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Ispanaklı Börek",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FSimit-2x.JPG%2F800px-Simit-2x.JPG",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Ispanakl%C4%B1_tepsi_b%C3%B6re%C4%9Fi.jpg",
     "category": "Kahvaltı",
     "subCategory": "bakery",
     "is_vegetarian": true,
@@ -1226,7 +1226,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Patatesli Börek",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FSimit-2x.JPG%2F800px-Simit-2x.JPG",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Byrek_me_patate.JPG",
     "category": "Kahvaltı",
     "subCategory": "bakery",
     "is_vegetarian": true,
@@ -1237,7 +1237,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Kıymalı Pide",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FSimit-2x.JPG%2F800px-Simit-2x.JPG",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Turkish_pide_with_ground_beef.jpg",
     "category": "Kahvaltı",
     "subCategory": "bakery",
     "is_vegetarian": false,
@@ -1248,7 +1248,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Peynirli Pide",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FSimit-2x.JPG%2F800px-Simit-2x.JPG",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/da/Peynirli_pide.jpg",
     "category": "Kahvaltı",
     "subCategory": "bakery",
     "is_vegetarian": true,
@@ -1270,7 +1270,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Yumurtalı Ekmek",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FSimit-2x.JPG%2F800px-Simit-2x.JPG",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Egg_Bread.jpg",
     "category": "Kahvaltı",
     "subCategory": "main",
     "is_vegetarian": true,
@@ -1281,7 +1281,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Sosisli Börek",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FSimit-2x.JPG%2F800px-Simit-2x.JPG",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/12/Sigara_boregi.jpg",
     "category": "Kahvaltı",
     "subCategory": "bakery",
     "is_vegetarian": false,
@@ -1292,7 +1292,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Haşlanmış Yumurta",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FSimit-2x.JPG%2F800px-Simit-2x.JPG",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/a4/Boiled_Egg_-_Crossection.jpg",
     "category": "Kahvaltı",
     "subCategory": "main",
     "is_vegetarian": true,
@@ -1303,7 +1303,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Peynirli Omlet",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FSimit-2x.JPG%2F800px-Simit-2x.JPG",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Cheese_Omelette.jpg",
     "category": "Kahvaltı",
     "subCategory": "main",
     "is_vegetarian": true,
@@ -1314,7 +1314,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Sebzeli Omlet",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FSimit-2x.JPG%2F800px-Simit-2x.JPG",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/67/Veggie_Omelette_upside_down.jpg",
     "category": "Kahvaltı",
     "subCategory": "main",
     "is_vegetarian": true,
@@ -1325,7 +1325,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Mantı",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F1%2F10%2FMant%25C4%25B1.jpg%2F800px-Mant%25C4%25B1.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/10/Mant%C4%B1.jpg",
     "category": "Hamur İşleri",
     "is_vegetarian": false,
     "is_vegan": false,
@@ -1335,7 +1335,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Sütlü Mısır",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FSimit-2x.JPG%2F800px-Simit-2x.JPG",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Sweetcorn_cobs_pile_%28Unsplash%29.jpg",
     "category": "Kahvaltı",
     "subCategory": "side",
     "is_vegetarian": true,
@@ -1346,7 +1346,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Kaşarlı Tost",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FSimit-2x.JPG%2F800px-Simit-2x.JPG",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6c/Toast-2.jpg",
     "category": "Kahvaltı",
     "subCategory": "main",
     "is_vegetarian": false,
@@ -1357,7 +1357,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Karışık Tost",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F8%2F87%2FKumpir.jpg%2F800px-Kumpir.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Sandwich_Mixto_02.jpg",
     "category": "Sokak Lezzetleri",
     "is_vegetarian": true,
     "is_vegan": false,
@@ -1367,7 +1367,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Açma",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FSimit-2x.JPG%2F800px-Simit-2x.JPG",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/8f/A%C3%A7ma_%28sade%29.jpg",
     "category": "Kahvaltı",
     "subCategory": "bakery",
     "is_vegetarian": true,
@@ -1398,7 +1398,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Çiğ Köfte",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fe%2Fe1%2FTaze_fasulye.jpg%2F800px-Taze_fasulye.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Turkish_%C3%A7i%C4%9F_k%C3%B6fte.jpg",
     "category": "Sebze Yemekleri",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -1428,7 +1428,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Hamburger",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F8%2F87%2FKumpir.jpg%2F800px-Kumpir.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/62/NCI_Visuals_Food_Hamburger.jpg",
     "category": "Sokak Lezzetleri",
     "is_vegetarian": false,
     "is_vegan": false,
@@ -1468,7 +1468,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Tantuni",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F9%2F92%2FTantuni2.jpg%2F800px-Tantuni2.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Tantuni2.jpg/800px-Tantuni2.jpg",
     "category": "Sokak Lezzetleri",
     "is_vegetarian": false,
     "is_vegan": false,
@@ -1488,7 +1488,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Balık Ekmek",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F8%2F87%2FKumpir.jpg%2F800px-Kumpir.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Gfp-fish-sandwich.jpg",
     "category": "Sokak Lezzetleri",
     "is_vegetarian": false,
     "is_vegan": false,
@@ -1538,7 +1538,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Tavuk Kanat",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fa%2Fa1%2FTurkish_meatballs.jpg%2F800px-Turkish_meatballs.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/b7/HK_Food_Chicken_Wings_Party_903_a.jpg",
     "category": "Izgara & Mangal",
     "is_vegetarian": false,
     "is_vegan": false,
@@ -1578,7 +1578,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Patlıcan Kebabı",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F8%2F8e%2FDoner_kebab%252C_Istanbul%252C_Turkey.JPG%2F800px-Doner_kebab%252C_Istanbul%252C_Turkey.JPG",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Patl%C4%B1can_kebap_1.jpg",
     "category": "Döner & Kebap",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -2170,7 +2170,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Kazandibi",
-    "image_url": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/0c/Kazandibi_Dessert.jpg",
     "category": "Sütlü Tatlılar",
     "is_vegetarian": true,
     "is_vegan": false,
@@ -2180,7 +2180,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Revani",
-    "image_url": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/82/Basboosa.jpg",
     "category": "Şerbetli Tatlılar",
     "is_vegetarian": true,
     "is_vegan": false,
@@ -2290,7 +2290,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Kısır",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fe%2Fe1%2FTaze_fasulye.jpg%2F800px-Taze_fasulye.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Kisir.jpg",
     "category": "Sebze Yemekleri",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -2630,7 +2630,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Keşkül",
-    "image_url": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Turkish_ke%C5%9Fk%C3%BCl.jpg",
     "category": "Sütlü Tatlılar",
     "is_vegetarian": true,
     "is_vegan": false,
@@ -2650,7 +2650,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Supangle",
-    "image_url": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Supangle_2.jpg",
     "category": "Sütlü Tatlılar",
     "is_vegetarian": true,
     "is_vegan": false,
@@ -2660,7 +2660,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Ayva Tatlısı",
-    "image_url": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/81/Ayva_tatl%C4%B1s%C4%B1.jpg",
     "category": "Şerbetli Tatlılar",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -2670,7 +2670,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Kabak Tatlısı",
-    "image_url": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Baked_pumpkin.jpg",
     "category": "Şerbetli Tatlılar",
     "is_vegetarian": true,
     "is_vegan": true,
@@ -2680,7 +2680,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Tulumba Tatlısı",
-    "image_url": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/24/Tulumba.jpg",
     "category": "Şerbetli Tatlılar",
     "is_vegetarian": true,
     "is_vegan": false,
@@ -2690,7 +2690,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Şekerpare",
-    "image_url": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Wasserweltfest_2012_-_T%C3%BCrkische_Mehlspeise.jpg",
     "category": "Şerbetli Tatlılar",
     "is_vegetarian": true,
     "is_vegan": false,
@@ -2700,7 +2700,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "İrmik Helvası",
-    "image_url": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Orient_sweets_(special_halva)_Samarkand,_Siyab.jpg",
     "category": "Şerbetli Tatlılar",
     "is_vegetarian": true,
     "is_vegan": false,
@@ -2710,7 +2710,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Un Helvası",
-    "image_url": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd",
+    "image_url": "https://images.unsplash.com/photo-1633040243823-6bf8d4edb0ec?w=800",
     "category": "Şerbetli Tatlılar",
     "is_vegetarian": true,
     "is_vegan": false,
@@ -2970,7 +2970,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Saray Sarması",
-    "image_url": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd",
+    "image_url": "https://images.unsplash.com/photo-1570099573975-950375a9e431?w=800",
     "category": "Sütlü Tatlılar",
     "is_vegetarian": true,
     "is_vegan": false,
@@ -2980,7 +2980,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Magnolia",
-    "image_url": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd",
+    "image_url": "https://vidarbergum.com/wp-content/uploads/2025/06/magnolia-1-1.jpg",
     "category": "Sütlü Tatlılar",
     "is_vegetarian": true,
     "is_vegan": false,
@@ -2990,7 +2990,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Güllaç",
-    "image_url": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/e3/G%C3%BClla%C3%A7_with_pomegranate.jpg",
     "category": "Sütlü Tatlılar",
     "is_vegetarian": true,
     "is_vegan": false,
@@ -3260,7 +3260,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     "name": "Kısır",
-    "image_url": "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F3%2F39%2FTurkish_salad.jpg%2F800px-Turkish_salad.jpg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Kisir.jpg",
     "category": "Salatalar",
     "is_vegetarian": true,
     "is_vegan": true,

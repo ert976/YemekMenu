@@ -364,5 +364,185 @@
     "name": "Un Helvası",
     "issue": "wrong",
     "timestamp": "2026-01-26T20:06:57.106Z"
+  },
+  {
+    "id": 32,
+    "name": "Pide",
+    "issue": "wrong",
+    "timestamp": "2026-01-26T20:39:56.656Z"
+  },
+  {
+    "id": 64,
+    "name": "Ekler",
+    "issue": "wrong",
+    "timestamp": "2026-01-26T20:40:24.524Z"
+  },
+  {
+    "id": 82,
+    "name": "Brownie",
+    "issue": "wrong",
+    "timestamp": "2026-01-26T20:40:39.720Z"
+  },
+  {
+    "id": 86,
+    "name": "Fondan Kek",
+    "issue": "wrong",
+    "timestamp": "2026-01-26T20:40:53.791Z"
+  },
+  {
+    "id": 132,
+    "name": "Kaşarlı Tost",
+    "issue": "wrong",
+    "timestamp": "2026-01-26T20:41:39.845Z"
+  },
+  {
+    "id": 155,
+    "name": "Patlıcan Kebabı",
+    "issue": "wrong",
+    "timestamp": "2026-01-26T20:42:00.558Z"
+  },
+  {
+    "id": 183,
+    "name": "İçli Köfte",
+    "issue": "wrong",
+    "timestamp": "2026-01-26T20:42:05.379Z"
+  },
+  {
+    "id": 189,
+    "name": "Çökertme Kebabı",
+    "issue": "wrong",
+    "timestamp": "2026-01-26T20:42:07.565Z"
+  },
+  {
+    "id": 184,
+    "name": "Hünkar Beşendi",
+    "issue": "wrong",
+    "timestamp": "2026-01-26T20:42:10.001Z"
+  },
+  {
+    "id": 206,
+    "name": "Etli Ekmek",
+    "issue": "wrong",
+    "timestamp": "2026-01-26T20:42:13.806Z"
+  },
+  {
+    "id": 207,
+    "name": "Tas Kebabı",
+    "issue": "wrong",
+    "timestamp": "2026-01-26T20:42:15.978Z"
+  },
+  {
+    "id": 208,
+    "name": "Kuzu İncik",
+    "issue": "wrong",
+    "timestamp": "2026-01-26T20:42:18.076Z"
+  },
+  {
+    "id": 209,
+    "name": "İzmir Köfte",
+    "issue": "wrong",
+    "timestamp": "2026-01-26T20:42:20.953Z"
+  },
+  {
+    "id": 210,
+    "name": "Kadınbudu Köfte",
+    "issue": "wrong",
+    "timestamp": "2026-01-26T20:42:23.473Z"
+  },
+  {
+    "id": 218,
+    "name": "Kazandibi",
+    "issue": "wrong",
+    "timestamp": "2026-01-26T20:42:25.526Z"
+  },
+  {
+    "id": 219,
+    "name": "Revani",
+    "issue": "wrong",
+    "timestamp": "2026-01-26T20:42:27.549Z"
+  },
+  {
+    "id": 221,
+    "name": "Muz",
+    "issue": "wrong",
+    "timestamp": "2026-01-26T20:42:32.887Z"
+  },
+  {
+    "id": 222,
+    "name": "Mevsim Meyveleri Tabağı",
+    "issue": "wrong",
+    "timestamp": "2026-01-26T20:42:34.785Z"
+  },
+  {
+    "id": 228,
+    "name": "Somon Izgara",
+    "issue": "wrong",
+    "timestamp": "2026-01-26T20:42:37.733Z"
+  },
+  {
+    "id": 227,
+    "name": "Çupra Izgara",
+    "issue": "wrong",
+    "timestamp": "2026-01-26T20:42:39.779Z"
+  },
+  {
+    "id": 229,
+    "name": "Hamsi Tava",
+    "issue": "wrong",
+    "timestamp": "2026-01-26T20:42:41.856Z"
+  },
+  {
+    "id": 264,
+    "name": "Keşkül",
+    "issue": "wrong",
+    "timestamp": "2026-01-26T20:42:47.079Z"
+  },
+  {
+    "id": 265,
+    "name": "Tavukgöğsü",
+    "issue": "wrong",
+    "timestamp": "2026-01-26T20:42:48.732Z"
+  },
+  {
+    "id": 266,
+    "name": "Supangle",
+    "issue": "wrong",
+    "timestamp": "2026-01-26T20:42:50.306Z"
+  },
+  {
+    "id": 267,
+    "name": "Ayva Tatlısı",
+    "issue": "wrong",
+    "timestamp": "2026-01-26T20:42:51.814Z"
+  },
+  {
+    "id": 268,
+    "name": "Kabak Tatlısı",
+    "issue": "wrong",
+    "timestamp": "2026-01-26T20:42:53.633Z"
+  },
+  {
+    "id": 272,
+    "name": "Un Helvası",
+    "issue": "wrong",
+    "timestamp": "2026-01-26T20:42:55.564Z"
+  },
+  {
+    "id": 271,
+    "name": "İrmik Helvası",
+    "issue": "wrong",
+    "timestamp": "2026-01-26T20:42:58.149Z"
+  },
+  {
+    "id": 270,
+    "name": "Şekerpare",
+    "issue": "wrong",
+    "timestamp": "2026-01-26T20:43:00.097Z"
+  },
+  {
+    "id": 269,
+    "name": "Tulumba Tatlısı",
+    "issue": "wrong",
+    "timestamp": "2026-01-26T20:43:02.258Z"
   }
 ]
