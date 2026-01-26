@@ -6,7 +6,7 @@ import {
     StyleSheet,
     Text,
     TouchableOpacity,
-    View
+    View,
 } from "react-native";
 import {
     BorderRadius,
@@ -214,6 +214,28 @@ export const FoodCard: React.FC<FoodCardProps> = ({
             }
           />
           {renderDietaryInfo()}
+
+          <TouchableOpacity
+            style={styles.reportButton}
+            onPress={(e) => {
+              e.stopPropagation();
+              fetch("/report-image", {
+                method: "POST",
+                body: JSON.stringify({
+                  id: food.id,
+                  name: food.name,
+                  issue: "wrong_image",
+                }),
+              }).then(() => {
+                Haptics.notificationAsync(
+                  Haptics.NotificationFeedbackType.Success,
+                );
+                alert("Geri bildiriminiz alındı. Teşekkürler!");
+              });
+            }}
+          >
+            <Text style={styles.reportIcon}>🚩</Text>
+          </TouchableOpacity>
         </View>
 
         {/* Content */}
@@ -335,5 +357,17 @@ const styles = StyleSheet.create({
   ratingText: {
     ...Typography.body.small,
     fontWeight: "500" as const,
+  },
+  reportButton: {
+    position: "absolute",
+    top: Spacing.xs,
+    left: Spacing.xs,
+    backgroundColor: "rgba(255,255,255,0.7)",
+    borderRadius: BorderRadius.full,
+    padding: 4,
+    zIndex: 10,
+  },
+  reportIcon: {
+    fontSize: 12,
   },
 });

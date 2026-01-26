@@ -1,4 +1,7 @@
+import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 import React from "react";
+import { useTranslation } from "react-i18next";
 import {
     Alert,
     ScrollView,
@@ -8,12 +11,16 @@ import {
     View,
 } from "react-native";
 import { useAuth } from "../../auth";
-import { Colors, Spacing, BorderRadius, Typography } from "../../constants/theme";
+import {
+    BorderRadius,
+    Colors,
+    Spacing,
+    Typography,
+} from "../../constants/theme";
 import { useColorScheme } from "../../hooks/use-color-scheme";
-import { Ionicons } from "@expo/vector-icons";
-import { useTranslation } from "react-i18next";
 
 export default function SettingsScreen() {
+  const router = useRouter();
   const { user, logout } = useAuth();
   const { t, i18n } = useTranslation();
   const colorScheme = useColorScheme() ?? "light";
@@ -63,87 +70,185 @@ export default function SettingsScreen() {
       contentContainerStyle={styles.contentContainer}
     >
       <View style={styles.header}>
-        <Text style={[styles.headerTitle, { color: theme.textMain }]}>{t("settings.title")}</Text>
+        <Text style={[styles.headerTitle, { color: theme.textMain }]}>
+          {t("settings.title")}
+        </Text>
       </View>
 
       <View style={[styles.section, { backgroundColor: theme.surface }]}>
         <View style={styles.sectionHeader}>
           <Ionicons name="language-outline" size={24} color={theme.primary} />
-          <Text style={[styles.sectionTitle, { color: theme.textMain }]}>{t("settings.language")}</Text>
+          <Text style={[styles.sectionTitle, { color: theme.textMain }]}>
+            {t("settings.language")}
+          </Text>
         </View>
         <View style={styles.optionsRow}>
           <TouchableOpacity
             style={[
               styles.optionButton,
               i18n.language === "tr" && { backgroundColor: theme.primary },
-              { borderColor: theme.border, borderWidth: 1 }
+              { borderColor: theme.border, borderWidth: 1 },
             ]}
             onPress={() => changeLanguage("tr")}
           >
-            <Text style={[styles.optionText, i18n.language === "tr" && { color: "#fff", fontWeight: "bold" }]}>Türkçe</Text>
+            <Text
+              style={[
+                styles.optionText,
+                i18n.language === "tr" && { color: "#fff", fontWeight: "bold" },
+              ]}
+            >
+              Türkçe
+            </Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={[
               styles.optionButton,
               i18n.language === "en" && { backgroundColor: theme.primary },
-              { borderColor: theme.border, borderWidth: 1 }
+              { borderColor: theme.border, borderWidth: 1 },
             ]}
             onPress={() => changeLanguage("en")}
           >
-            <Text style={[styles.optionText, i18n.language === "en" && { color: "#fff", fontWeight: "bold" }]}>English</Text>
+            <Text
+              style={[
+                styles.optionText,
+                i18n.language === "en" && { color: "#fff", fontWeight: "bold" },
+              ]}
+            >
+              English
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
 
       <View style={[styles.section, { backgroundColor: theme.surface }]}>
         <View style={styles.sectionHeader}>
-          <Ionicons name="person-circle-outline" size={24} color={theme.primary} />
-          <Text style={[styles.sectionTitle, { color: theme.textMain }]}>{t("settings.profile")}</Text>
+          <Ionicons
+            name="person-circle-outline"
+            size={24}
+            color={theme.primary}
+          />
+          <Text style={[styles.sectionTitle, { color: theme.textMain }]}>
+            {t("settings.profile")}
+          </Text>
         </View>
         <View style={styles.profileInfo}>
           <View style={styles.infoRow}>
-            <Text style={[styles.infoLabel, { color: theme.textSecondary }]}>{t("auth.username")}</Text>
-            <Text style={[styles.infoValue, { color: theme.textMain }]}>{user?.username}</Text>
+            <Text style={[styles.infoLabel, { color: theme.textSecondary }]}>
+              {t("auth.username")}
+            </Text>
+            <Text style={[styles.infoValue, { color: theme.textMain }]}>
+              {user?.username}
+            </Text>
           </View>
           <View style={styles.infoRow}>
-            <Text style={[styles.infoLabel, { color: theme.textSecondary }]}>{t("auth.email")}</Text>
-            <Text style={[styles.infoValue, { color: theme.textMain }]}>{user?.email}</Text>
+            <Text style={[styles.infoLabel, { color: theme.textSecondary }]}>
+              {t("auth.email")}
+            </Text>
+            <Text style={[styles.infoValue, { color: theme.textMain }]}>
+              {user?.email}
+            </Text>
           </View>
         </View>
       </View>
 
       <View style={[styles.section, { backgroundColor: theme.surface }]}>
         <View style={styles.sectionHeader}>
-          <Ionicons name="shield-checkmark-outline" size={24} color={theme.primary} />
-          <Text style={[styles.sectionTitle, { color: theme.textMain }]}>Veri Yönetimi</Text>
+          <Ionicons
+            name="shield-checkmark-outline"
+            size={24}
+            color={theme.primary}
+          />
+          <Text style={[styles.sectionTitle, { color: theme.textMain }]}>
+            Veri Yönetimi
+          </Text>
         </View>
 
         <TouchableOpacity
-          style={[styles.button, { backgroundColor: theme.primary + "10", borderColor: theme.primary, borderWidth: 1 }]}
+          style={[
+            styles.button,
+            {
+              backgroundColor: theme.primary + "10",
+              borderColor: theme.primary,
+              borderWidth: 1,
+            },
+          ]}
           onPress={handleResetUserRatings}
         >
-          <Text style={[styles.buttonText, { color: theme.primary }]}>Yemek Tercihlerini Sıfırla</Text>
+          <Text style={[styles.buttonText, { color: theme.primary }]}>
+            Yemek Tercihlerini Sıfırla
+          </Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={[styles.button, { backgroundColor: theme.error + "10", borderColor: theme.error, borderWidth: 1 }]}
+          style={[
+            styles.button,
+            {
+              backgroundColor: theme.error + "10",
+              borderColor: theme.error,
+              borderWidth: 1,
+            },
+          ]}
           onPress={handleResetAllData}
         >
-          <Text style={[styles.buttonText, { color: theme.error }]}>Tüm Verileri Sıfırla</Text>
+          <Text style={[styles.buttonText, { color: theme.error }]}>
+            Tüm Verileri Sıfırla
+          </Text>
         </TouchableOpacity>
       </View>
 
       <View style={[styles.section, { backgroundColor: theme.surface }]}>
         <View style={styles.sectionHeader}>
-          <Ionicons name="log-out-outline" size={24} color={theme.textSecondary} />
-          <Text style={[styles.sectionTitle, { color: theme.textMain }]}>Hesap</Text>
+          <Ionicons
+            name="settings-outline"
+            size={24}
+            color={theme.info || theme.primary}
+          />
+          <Text style={[styles.sectionTitle, { color: theme.textMain }]}>
+            Admin Araçları
+          </Text>
         </View>
 
         <TouchableOpacity
-          style={[styles.button, { backgroundColor: theme.textSecondary + "10" }]}
+          style={[
+            styles.button,
+            {
+              backgroundColor: (theme.info || theme.primary) + "10",
+              borderColor: theme.info || theme.primary,
+              borderWidth: 1,
+            },
+          ]}
+          onPress={() => router.push("/admin/gallery")}
+        >
+          <Text
+            style={[styles.buttonText, { color: theme.info || theme.primary }]}
+          >
+            Görsel Doğrulama Paneli
+          </Text>
+        </TouchableOpacity>
+      </View>
+
+      <View style={[styles.section, { backgroundColor: theme.surface }]}>
+        <View style={styles.sectionHeader}>
+          <Ionicons
+            name="log-out-outline"
+            size={24}
+            color={theme.textSecondary}
+          />
+          <Text style={[styles.sectionTitle, { color: theme.textMain }]}>
+            Hesap
+          </Text>
+        </View>
+
+        <TouchableOpacity
+          style={[
+            styles.button,
+            { backgroundColor: theme.textSecondary + "10" },
+          ]}
           onPress={handleLogout}
         >
-          <Text style={[styles.buttonText, { color: theme.textSecondary }]}>{t("settings.logout")}</Text>
+          <Text style={[styles.buttonText, { color: theme.textSecondary }]}>
+            {t("settings.logout")}
+          </Text>
         </TouchableOpacity>
       </View>
 
@@ -177,10 +282,19 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     shadowOffset: { width: 0, height: 2 },
   },
-  sectionHeader: { flexDirection: "row", alignItems: "center", gap: Spacing.sm, marginBottom: Spacing.lg },
+  sectionHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: Spacing.sm,
+    marginBottom: Spacing.lg,
+  },
   sectionTitle: { ...Typography.heading.medium },
   profileInfo: { gap: Spacing.md },
-  infoRow: { flexDirection: "row", justifyContent: "space-between", alignItems: "center" },
+  infoRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
   infoLabel: { ...Typography.body.medium },
   infoValue: { ...Typography.heading.small },
   optionsRow: {

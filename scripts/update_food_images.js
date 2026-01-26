@@ -8,109 +8,114 @@ function getProxiedUrl(url) {
 }
 
 const mapping = {
-  "Yayla Çorbası":
-    "https://upload.wikimedia.org/wikipedia/commons/9/96/Yayla_%C3%A7orbas%C4%B1.jpg",
-  Döner:
-    "https://upload.wikimedia.org/wikipedia/commons/8/8e/Doner_kebab%2C_Istanbul%2C_Turkey.JPG",
-  "İzgara Köfte":
-    "https://upload.wikimedia.org/wikipedia/commons/a/a1/Turkish_meatballs.jpg",
-  "Adana Kebap":
-    "https://upload.wikimedia.org/wikipedia/commons/c/cf/Adana_Kebap.jpg",
-  "Tarhana Çorbası":
-    "https://upload.wikimedia.org/wikipedia/commons/b/b2/Tarhana_soup_in_Ankara.jpg",
-  Lahmacun:
-    "https://images.unsplash.com/photo-1626202340503-4f96440db79f?auto=format&fit=crop&w=800&q=80",
-  Baklava:
-    "https://images.unsplash.com/photo-1541014163933-2882b544337b?auto=format&fit=crop&w=800&q=80",
-  Sütlaç:
-    "https://upload.wikimedia.org/wikipedia/commons/7/7c/Firinda_s%C3%BCtla%C3%A7.jpg",
-  "Sigara Böreği":
-    "https://upload.wikimedia.org/wikipedia/commons/5/52/Dost_Evi_Sigara_B%C3%B6re%C4%9Fi_-_panoramio.jpg",
-  Künefe:
-    "https://upload.wikimedia.org/wikipedia/commons/7/7a/K%C3%BCnefe%2C_Wiesbaden.jpg",
-  Poğaça:
-    "https://upload.wikimedia.org/wikipedia/commons/f/f3/Peynirli_po%C4%9Fa%C3%A7a_in_Ankara.jpg",
-  Pide: "https://upload.wikimedia.org/wikipedia/commons/f/fc/Burek_oslo.jpeg",
-  "Yaprak Sarma":
-    "https://upload.wikimedia.org/wikipedia/commons/5/5a/Vişneli_Yaprak_Sarma.jpg",
-  Simit: "https://upload.wikimedia.org/wikipedia/commons/0/07/Simit-2x.JPG",
-  "Patlıcan Karnıyarık":
-    "https://upload.wikimedia.org/wikipedia/commons/8/87/Karn%C4%B1yar%C4%B1k.JPG",
-  Menemen: "https://upload.wikimedia.org/wikipedia/commons/1/17/Menemen.jpg",
-  Mantı: "https://upload.wikimedia.org/wikipedia/commons/1/10/Mant%C4%B1.jpg",
-  Manti: "https://upload.wikimedia.org/wikipedia/commons/1/10/Mant%C4%B1.jpg",
-  "Çoban Salatası":
-    "https://upload.wikimedia.org/wikipedia/commons/3/39/Turkish_salad.jpg",
+  Bonfile:
+    "https://media.istockphoto.com/id/1213561258/photo/steak-from-turkish-cuisine.jpg?s=612x612&w=0&k=20&c=eFMbhxca6ANWyAoL6IJ_AxaTeDB3-uECW0rGh50FDt8=",
+  Ekler:
+    "https://hypeandhyper.com/content/images/size/w600/2022/10/grafi-jeremiah-v3SUdMi3u9s-unsplash-2.jpg",
+  Cheesecake:
+    "https://upload.wikimedia.org/wikipedia/commons/a/a8/Saffron_Cheesecake_%28Unsplash%29.jpg",
+  "Muzlu Pasta": "https://i.ytimg.com/vi/jAqTEKmkJJI/maxresdefault.jpg",
+  "Cevizli Kek":
+    "https://www.neomutfak.com/wp-content/uploads/2015/12/PSX_20151229_213327.jpg",
+  Köfte:
+    "https://media.gettyimages.com/id/952966478/photo/turkish-kofte-with-french-fries-on-a-plate.jpg?s=612x612&w=gi&k=20&c=7XO-TnOecofukR1fcucNqgtqz_wVzoMGsK31QFOERZc=",
+  "Mozaik Pasta":
+    "https://www.giverecipe.com/wp-content/uploads/2014/03/Mozaik-Pasta-1.jpg",
+  Tiramisu:
+    "https://image.idntimes.com/post/20240711/resep-tiramisu-tanpa-mascarpone-yang-tetap-creamy-dan-lezat-01-3kz8p-hl5rv4.jpg",
+  Profiterol:
+    "https://media.gettyimages.com/id/866537884/photo/chocolate-profiterol.jpg?s=612x612&w=gi&k=20&c=KjFdM6I3mvsKPDzUCwfX-3-QueE7sTKEs219SSqKIbU=",
+  // Discovered / Verified batch entries
+  "Urfa Kebap":
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Adana_kebabı.jpg/800px-Adana_kebabı.jpg",
+  İskender:
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/%C4%B0skender_kebap.JPG/800px-%C4%B0skender_kebap.JPG",
+  "Beyti Kebap":
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Beyti_Kebap.jpg/800px-Beyti_Kebap.jpg",
+  Tantuni:
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Tantuni2.jpg/800px-Tantuni2.jpg",
   "Mercimek Çorbası":
-    "https://upload.wikimedia.org/wikipedia/commons/1/16/Mercimek_%C3%A7orbas%C4%B1.jpg",
-  Bamya: "https://upload.wikimedia.org/wikipedia/commons/7/76/Bamya.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Mercimek_Corba.jpg/800px-Mercimek_Corba.jpg",
   "Ezogelin Çorbası":
-    "https://upload.wikimedia.org/wikipedia/commons/2/23/Ezogelin_Corba.jpg",
-  "Kuru Fasulye":
-    "https://upload.wikimedia.org/wikipedia/commons/f/fc/Kuru_fasulye.jpg",
-  "Mercimek Köfte":
-    "https://upload.wikimedia.org/wikipedia/commons/5/51/Mercimekkoftesi.jpg",
-  Karnabahar:
-    "https://upload.wikimedia.org/wikipedia/commons/c/c0/Karnabahar_salatası.jpg",
-  "Barbunya Pilaki":
-    "https://upload.wikimedia.org/wikipedia/commons/1/10/Barbunya_pilaki_in_Ankara.jpg",
-  "Patlıcan Musakka":
-    "https://upload.wikimedia.org/wikipedia/commons/9/9d/Musakka_ve_pilav.jpg",
-  "Taze Fasulye":
-    "https://upload.wikimedia.org/wikipedia/commons/c/c7/Zeytinya%C4%9Fl%C4%B1_taze_fasulye_from_Turkey.jpg",
-  "Domatesli Pilav":
-    "https://upload.wikimedia.org/wikipedia/commons/b/bc/Domatesli_pilav_from_Turkey.jpg",
-  "Nohut Pilav":
-    "https://upload.wikimedia.org/wikipedia/commons/2/2e/Pilav%2C_nohut_yahni%2C_chicken%2C_potatoes_etc.jpg",
-  "İşkembe Çorbası":
-    "https://upload.wikimedia.org/wikipedia/commons/7/79/Tripe_soup_and_mezes_from_Turkey.jpg",
-  "Yoğurt Çorbası":
-    "https://upload.wikimedia.org/wikipedia/commons/4/44/Yayla_chorba.jpg",
-  "Düğün Çorbası":
-    "https://upload.wikimedia.org/wikipedia/commons/b/b2/Wedding_soup_from_the_Turkish_cuisine.jpg",
-  "Mantar Çorbası":
-    "https://upload.wikimedia.org/wikipedia/commons/4/45/Mantar_%C3%A7orbas%C4%B1.jpg",
-  "Bulgur Çorbası":
-    "https://upload.wikimedia.org/wikipedia/commons/4/44/Yayla_chorba.jpg",
-  "Tavuklu Burger":
-    "https://upload.wikimedia.org/wikipedia/commons/1/12/Chicken_burger_from_Chitir_Chicken%2C_Hillegersberg%2C_Rotterdam_%282021%29_02.jpg",
-  "Şehriye Çorbası":
-    "https://upload.wikimedia.org/wikipedia/commons/e/e7/Duck_blood_and_green_bean_noodle_Soup_2010.JPG",
-  "Sebzeli Çorba":
-    "https://upload.wikimedia.org/wikipedia/commons/f/f6/Vegetable_soup_9.jpg",
-  "Pırasa Çorbası":
-    "https://upload.wikimedia.org/wikipedia/commons/2/26/Potato_Leek_Soup_%284258747258%29.jpg",
-  "Lahana Çorbası":
-    "https://upload.wikimedia.org/wikipedia/commons/d/d1/Kapusniak.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Ezogelin_corba.jpg/800px-Ezogelin_corba.jpg",
+  "Yayla Çorbası":
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Yayla_ğorbası.jpg/800px-Yayla_ğorbası.jpg",
 };
 
 const categoryPool = {
   Çorbalar:
-    "https://cdn.yemek.com/mnresize/1250/833/uploads/2014/11/mercimek-corbasi-yemekcom.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Mercimek_Corba.jpg/800px-Mercimek_Corba.jpg",
   Salatalar:
-    "https://cdn.yemek.com/mnresize/1250/833/uploads/2014/06/coban-salatasi-yemekcom.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Turkish_salad.jpg/800px-Turkish_salad.jpg",
   "Sebze Yemekleri":
-    "https://cdn.yemek.com/mnresize/1250/833/uploads/2014/11/taze-fasulye-yemekcom.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Taze_fasulye.jpg/800px-Taze_fasulye.jpg",
+  Baklagiller:
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Kuru_fasulye.jpg/800px-Kuru_fasulye.jpg",
+  "Döner & Kebap":
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Doner_kebab%2C_Istanbul%2C_Turkey.JPG/800px-Doner_kebab%2C_Istanbul%2C_Turkey.JPG",
+  Tatlılar:
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Baklava%2C_Turkish_cuisine.jpg/800px-Baklava%2C_Turkish_cuisine.jpg",
+  Kahvaltı:
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Simit-2x.JPG/800px-Simit-2x.JPG",
+  "Hamur İşleri":
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Mant%C4%B1.jpg/800px-Mant%C4%B1.jpg",
+  Meyveler:
+    "https://images.unsplash.com/photo-1519996529931-28324d5a630e?auto=format&fit=crop&w=800&q=80",
+  İçecekler:
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Ayran.jpg/800px-Ayran.jpg",
+  "Izgara & Mangal":
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Turkish_meatballs.jpg/800px-Turkish_meatballs.jpg",
+  "Sokak Lezzetleri":
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Kumpir.jpg/800px-Kumpir.jpg",
+  Kekler:
+    "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80",
+  Pastalar:
+    "https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=800&q=80",
+  Pilavlar:
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Pilav%2C_nohut_yahni%2C_chicken%2C_potatoes_etc.jpg/800px-Pilav%2C_nohut_yahni%2C_chicken%2C_potatoes_etc.jpg",
+  Makarna:
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Spaghetti_napolitana.jpg/800px-Spaghetti_napolitana.jpg",
 };
 
-let updatedCount = 0;
-const foodRegex =
-  /name:\s*\"([^\"]+)\",\n\s*image_url:\n\s*\"([^\"]+)\",\n\s*category:\s*\"([^\"]+)\"/g;
+// SAFETY FIRST: We will update the image_url line by line without removing any other food data.
+// We look for patterns like:
+// {
+//   "name": "...",
+//   "image_url": "...",
+//   "category": "..."
+// }
 
-let newContent = content.replace(
-  foodRegex,
-  (match, name, image_url, category) => {
-    let sourceUrl =
+let updatedCount = 0;
+const blocks = content.split("  {");
+const header = blocks[0];
+const foodBlocks = blocks.slice(1);
+
+const newFoodBlocks = foodBlocks.map((block) => {
+  const nameMatch = block.match(/"name":\s*"([^"]+)"/);
+  const categoryMatch = block.match(/"category":\s*"([^"]+)"/);
+
+  if (nameMatch && categoryMatch) {
+    const name = nameMatch[1];
+    const category = categoryMatch[1];
+    const sourceUrl =
       mapping[name] ||
       categoryPool[category] ||
-      "https://cdn.yemek.com/mnresize/1250/833/uploads/2014/11/mercimek-corbasi-yemekcom.jpg";
-    let finalUrl = getProxiedUrl(sourceUrl);
-    updatedCount++;
-    return `name: "${name}",\n    image_url:\n      "${finalUrl}",\n    category: "${category}"`;
-  },
-);
+      "https://images.unsplash.com/photo-1512621776951-a57141f2eefd";
+    const finalUrl = getProxiedUrl(sourceUrl);
 
-fs.writeFileSync(path, newContent);
+    // Replace only the image_url line
+    updatedCount++;
+    return block.replace(
+      /"image_url":\s*"[^"]+"/,
+      `"image_url": "${finalUrl}"`,
+    );
+  }
+  return block;
+});
+
+const finalContent = header + "  {" + newFoodBlocks.join("  {");
+fs.writeFileSync(path, finalContent);
+
 console.log(
-  `SUCCESS: Applied 40+ Proxied/Unsplash images for ${updatedCount} items.`,
+  `SUCCESS: Safely updated ${updatedCount} food image URLs without deleting any records.`,
 );

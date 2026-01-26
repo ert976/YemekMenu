@@ -2,24 +2,24 @@ import { Ionicons } from "@expo/vector-icons";
 import * as Haptics from "expo-haptics";
 import { Image as ExpoImage } from "expo-image";
 import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
+    useCallback,
+    useEffect,
+    useMemo,
+    useRef,
+    useState,
 } from "react";
 import { useTranslation } from "react-i18next";
 import {
-  ActivityIndicator,
-  FlatList,
-  Platform,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  ViewToken,
-  useWindowDimensions,
+    ActivityIndicator,
+    FlatList,
+    Platform,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
+    ViewToken,
+    useWindowDimensions,
 } from "react-native";
 import { useAuth } from "../auth";
 import { BorderRadius, Colors, Spacing, Typography } from "../constants/theme";
@@ -228,6 +228,66 @@ const FoodRatingComponent: React.FC<FoodRatingComponentProps> = ({
                   }
                 }}
               />
+              {/* Report Buttons Overlay */}
+              <View
+                style={{
+                  flexDirection: "row",
+                  position: "absolute",
+                  top: 10,
+                  left: 10,
+                  zIndex: 9999,
+                }}
+              >
+                <TouchableOpacity
+                  style={{
+                    backgroundColor: "rgba(255,0,0,0.8)",
+                    padding: 8,
+                    borderRadius: 6,
+                    marginRight: 8,
+                  }}
+                  onPress={() => {
+                    fetch("/report-image", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({
+                        id: item.id,
+                        name: item.name,
+                        issue: "missing",
+                      }),
+                    }).then(() => alert("Reported: Missing"));
+                  }}
+                >
+                  <Text
+                    style={{ color: "white", fontSize: 12, fontWeight: "bold" }}
+                  >
+                    📷 YOK
+                  </Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={{
+                    backgroundColor: "rgba(255,165,0,0.8)",
+                    padding: 8,
+                    borderRadius: 6,
+                  }}
+                  onPress={() => {
+                    fetch("/report-image", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({
+                        id: item.id,
+                        name: item.name,
+                        issue: "wrong",
+                      }),
+                    }).then(() => alert("Reported: Wrong"));
+                  }}
+                >
+                  <Text
+                    style={{ color: "white", fontSize: 12, fontWeight: "bold" }}
+                  >
+                    ⚠️ YANLIŞ
+                  </Text>
+                </TouchableOpacity>
+              </View>
             </View>
             <View style={styles.cardInfo}>
               <View style={styles.tagRow}>
@@ -414,6 +474,80 @@ const FoodRatingComponent: React.FC<FoodRatingComponentProps> = ({
                         }
                       }}
                     />
+                    {/* Report Buttons Overlay (Web) */}
+                    <View
+                      style={{
+                        flexDirection: "row",
+                        position: "absolute",
+                        top: 10,
+                        left: 10,
+                        zIndex: 9999,
+                      }}
+                    >
+                      <TouchableOpacity
+                        style={
+                          {
+                            backgroundColor: "rgba(255,0,0,0.8)",
+                            padding: 8,
+                            borderRadius: 6,
+                            marginRight: 8,
+                            cursor: "pointer",
+                          } as any
+                        }
+                        onPress={() => {
+                          fetch("/report-image", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({
+                              id: item.id,
+                              name: item.name,
+                              issue: "missing",
+                            }),
+                          }).then(() => alert("Reported: Missing"));
+                        }}
+                      >
+                        <Text
+                          style={{
+                            color: "white",
+                            fontSize: 12,
+                            fontWeight: "bold",
+                          }}
+                        >
+                          📷 YOK
+                        </Text>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        style={
+                          {
+                            backgroundColor: "rgba(255,165,0,0.8)",
+                            padding: 8,
+                            borderRadius: 6,
+                            cursor: "pointer",
+                          } as any
+                        }
+                        onPress={() => {
+                          fetch("/report-image", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({
+                              id: item.id,
+                              name: item.name,
+                              issue: "wrong",
+                            }),
+                          }).then(() => alert("Reported: Wrong"));
+                        }}
+                      >
+                        <Text
+                          style={{
+                            color: "white",
+                            fontSize: 12,
+                            fontWeight: "bold",
+                          }}
+                        >
+                          ⚠️ YANLIŞ
+                        </Text>
+                      </TouchableOpacity>
+                    </View>
                   </View>
 
                   <View style={{ padding: Spacing.md }}>
