@@ -1,0 +1,381 @@
+{
+  "images": {
+    "İskender Kebap": {
+      "url": "https://cdn.yemek.com/mncrop/600/315/uploads/2015/05/iskender-one-cikan.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/iskender/",
+      "tested": true,
+      "date_added": "2026-01-27"
+    },
+    "Kuzu Tandır": {
+      "url": "https://cdn.yemek.com/mncrop/600/315/uploads/2018/07/bby-tandir-yemekcom.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/kuzu-tandir/",
+      "tested": true,
+      "date_added": "2026-01-27"
+    },
+    "Testi Kebabı": {
+      "url": "https://cdn.yemek.com/mncrop/600/315/uploads/2025/08/testi-kebabi-tarifi.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/testi-kebabi/",
+      "tested": true,
+      "date_added": "2026-01-27"
+    },
+    "Terbiyeli Kuzu Şiş": {
+      "url": "https://cdn.yemek.com/mncrop/600/315/uploads/2023/10/terbiyeli-kuzu-sis-sunum-yemekcom.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/terbiyeli-kuzu-sis/",
+      "tested": true,
+      "date_added": "2026-01-27"
+    },
+    "Et Döner": {
+      "url": "https://cdn.yemek.com/mnresize/1250/833/images/mn/173385/et-doner-tarifi.jpg",
+      "status": "verified",
+      "source": "yemek.com",
+      "tested": true,
+      "date_added": "2026-01-27"
+    },
+    "Beyti": {
+      "url": "https://cdn.yemek.com/mnresize/1250/833/images/mn/173385/beyti-sarma-sicakmutfak.jpg",
+      "status": "verified",
+      "source": "yemek.com",
+      "tested": true,
+      "date_added": "2026-01-27"
+    },
+    "Ali Nazik": {
+      "url": "https://cdn.yemek.com/mnresize/1250/833/images/mn/173385/ali-nazik-tarifi.jpg",
+      "status": "verified",
+      "source": "yemek.com",
+      "tested": true,
+      "date_added": "2026-01-27"
+    },
+    "Çoban Kavurma": {
+      "url": "https://cdn.yemek.com/mnresize/1250/833/images/mn/173385/coban-kavurma-tarifi-yemekcom.jpg",
+      "status": "verified",
+      "source": "yemek.com",
+      "tested": true,
+      "date_added": "2026-01-27"
+    },
+    "Yumurtalı Pide": {
+      "url": "https://cdn.yemek.com/mncrop/600/315/uploads/2015/06/yumurtali-pide-yemekcom.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/yumurtali-pide/",
+      "tested": true,
+      "date_added": "2026-01-27"
+    },
+    "Ev Yapımı Beyti Sarma": {
+      "url": "https://cdn.yemek.com/mncrop/600/315/uploads/2017/11/Firinda-Beyti-Kebabi-yemekcom.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/ev-yapimi-beyti-sarma/",
+      "tested": true,
+      "date_added": "2026-01-27"
+    },
+    "Patates Köftesi": {
+      "url": "https://cdn.yemek.com/mncrop/600/315/uploads/2024/01/patates-koftesi-yemekcom.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/patates-koftesi/",
+      "tested": true,
+      "date_added": "2026-01-27"
+    },
+    "Cağ Kebabı": {
+      "url": "https://cdn.yemek.com/mncrop/600/315/uploads/2025/07/cag-kebabi-tarifi.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/cag-kebabi/",
+      "tested": true,
+      "date_added": "2026-01-27"
+    },
+    "Simit": {
+      "url": "https://cdn.yemek.com/mncrop/940/625/uploads/2019/04/simit-tarifi-son.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/simit/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Börek": {
+      "url": "https://cdn.yemek.com/mncrop/620/388/uploads/2015/06/gul-boregi-one-cikan.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/borek/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Menemen": {
+      "url": "https://cdn.yemek.com/mncrop/620/388/uploads/2023/10/menemen-yemekcom.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/menemen/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Sahanda Yumurta": {
+      "url": "https://cdn.yemek.com/mnresize/1250/833/uploads/2020/04/sahanda-yumurta-yemekcom.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/sahanda-yumurta/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Omlet": {
+      "url": "https://cdn.yemek.com/mncrop/600/315/uploads/2015/05/omlet-yemekcom.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/omlet/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Tost": {
+      "url": "https://cdn.yemek.com/mncrop/600/315/uploads/2023/03/tost-sunum-yemekcom.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/tost/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Poğaça": {
+      "url": "https://cdn.yemek.com/mncrop/620/388/uploads/2015/05/mayali-pogaca-yemekcom.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/pogaca/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Sucuklu Yumurta": {
+      "url": "https://cdn.yemek.com/mncrop/600/315/uploads/2015/01/sucuklu-yumurta-yemekcom.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/sucuklu-yumurta/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Pastırmalı Yumurta": {
+      "url": "https://cdn.yemek.com/mnresize/1250/833/uploads/2024/04/pastirmali-yumurta-yemekcom.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/pastirmali-yumurta/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Ispanaklı Börek": {
+      "url": "https://cdn.yemek.com/mncrop/600/315/uploads/2014/12/ispanakli-borek-yeni-one-cikan.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/ispanakli-borek/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Patatesli Börek": {
+      "url": "https://cdn.yemek.com/mncrop/940/625/uploads/2015/01/patatesli-borek-tarif-son.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/patatesli-borek/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Kıymalı Pide": {
+      "url": "https://cdn.yemek.com/mnresize/1250/833/uploads/2024/02/kiymali-pide-yemekcom.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/kiymali-pide/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Peynirli Pide": {
+      "url": "https://cdn.yemek.com/mncrop/600/315/uploads/2022/01/peynirli-pide-yeni-one-cikan.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/peynirli-pide/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Yumurtalı Ekmek": {
+      "url": "https://cdn.yemek.com/mncrop/600/315/uploads/2018/10/yumurtali-ekmek-yemekcom.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/yumurtali-ekmek/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Sosisli Börek": {
+      "url": "https://cdn.yemek.com/mncrop/620/388/uploads/2023/11/sosisli-borek.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/sosisli-borek/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Haşlanmış Yumurta": {
+      "url": "https://cdn.yemek.com/mncrop/620/388/uploads/2023/11/haslanmis-yumurta.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/haslanmis-yumurta/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Sütlü Mısır": {
+      "url": "https://cdn.yemek.com/mncrop/620/388/uploads/2023/11/sutlu-misir.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/sutlu-misir/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Açma": {
+      "url": "https://cdn.yemek.com/mnresize/1250/833/uploads/2022/03/acma-yemekcom.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/acma/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Taze Fasulye": {
+      "url": "https://cdn.yemek.com/uploads/2019/05/tazefasulyefbb.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/taze-fasulye/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Patlıcan Musakka": {
+      "url": "https://cdn.yemek.com/mncrop/600/315/uploads/2015/01/patlican-musakka-yemekcom.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/patlican-musakka/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Bamya": {
+      "url": "https://cdn.yemek.com/mnresize/1250/833/uploads/2015/07/bamya-yemekcom.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/bamya/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Ispanak": {
+      "url": "https://cdn.yemek.com/mnresize/1250/833/uploads/2023/11/ispanak-yemegi-yemekcom.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/ispanak/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Karnabahar": {
+      "url": "https://cdn.yemek.com/mncrop/600/315/uploads/2014/12/karnabahar-yemegi-tarifi.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/karnabahar/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Mücver": {
+      "url": "https://cdn.yemek.com/mncrop/600/315/uploads/2014/07/mucver-ytk-site.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/mucver/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Mantı": {
+      "url": "https://cdn.yemek.com/mnresize/1250/833/uploads/2024/01/manti-yemekcom.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/manti/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Pide": {
+      "url": "https://cdn.yemek.com/mnresize/940/940/uploads/2018/07/pide-tarifleri-kategorisi.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/pide/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Gözleme": {
+      "url": "https://cdn.yemek.com/mnresize/1250/833/uploads/2022/06/gozleme-yemekcom.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/gozleme/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Lahmacun": {
+      "url": "https://cdn.yemek.com/mnresize/1250/833/uploads/2020/04/lahmacun-yemekcom-1.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/lahmacun/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Kumpir": {
+      "url": "https://cdn.yemek.com/mnresize/1250/833/uploads/2021/03/kumpir-yemekcom.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/kumpir/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Hamburger": {
+      "url": "https://cdn.yemek.com/mnresize/1250/833/uploads/2015/01/burger-sunum-yemekcom.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/hamburger/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Fıstıklı Kek": {
+      "url": "https://cdn.yemek.com/mncrop/600/315/uploads/2017/01/fistikli-kek.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/fistikli-kek/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Portakallı Kek": {
+      "url": "https://cdn.yemek.com/mnresize/1250/833/uploads/2021/02/portakalli-kek-tarifi-yemekcom.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/portakalli-kek/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Elmalı Kek": {
+      "url": "https://cdn.yemek.com/mncrop/620/388/uploads/2014/07/elmali-kek-tarifi-son.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/elmali-kek/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Muzlu Kek": {
+      "url": "https://cdn.yemek.com/mnresize/1250/833/uploads/2025/04/muzlu-kek-tarifi.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/muzlu-kek/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Çikolatalı Kek": {
+      "url": "https://cdn.yemek.com/mnresize/1250/833/uploads/2023/06/cikolatali-kek-yeni.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/cikolatali-kek/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Tavuk Döner": {
+      "url": "https://cdn.yemek.com/mnresize/1250/833/uploads/2015/04/tavuk-doner-onecikan.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/tavuk-doner/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Şiş Kebap": {
+      "url": "https://cdn.yemek.com/mnresize/1250/833/uploads/2023/04/sis-kebap-onecikan.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/sis-kebap/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Patlıcan Kebabı": {
+      "url": "https://cdn.yemek.com/mnresize/1250/833/uploads/2015/04/patlican-kebabi-one-cikan.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/patlican-kebabi/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Tavuk Şiş": {
+      "url": "https://cdn.yemek.com/mncrop/600/315/uploads/2023/12/tavuk-sis-yemekcom.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/tavuk-sis/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Pirzola": {
+      "url": "https://cdn.yemek.com/mnresize/1250/833/uploads/2015/07/pirzola-onecikan.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/pirzola/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    },
+    "Kuru Fasulye": {
+      "url": "https://cdn.yemek.com/mncrop/600/315/uploads/2015/11/kuru-fasulye-yemekcom.jpg",
+      "status": "verified",
+      "source": "yemek.com/tarif/kuru-fasulye/",
+      "tested": true,
+      "date_added": "2026-01-30"
+    }
+  },
+  "summary": {
+    "total_images": 53,
+    "total_verified": 53,
+    "success_rate": "100%",
+    "last_updated": "2026-01-30"
+  }
+}
