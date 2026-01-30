@@ -1,0 +1,1056 @@
+{
+  "timestamp": "2026-01-30T17:03:43.410Z",
+  "strategy": "Hibrid: 180 Mevcut + 20 Yeni",
+  "summary": {
+    "mevcut": 180,
+    "yeni": 20,
+    "toplam": 200
+  },
+  "mevcut180": [
+    {
+      "name": "Lahmacun",
+      "category": "Döner & Kebap",
+      "score": 12
+    },
+    {
+      "name": "Simit",
+      "category": "Kahvaltı",
+      "score": 12
+    },
+    {
+      "name": "Adana Kebap",
+      "category": "Döner & Kebap",
+      "score": 12
+    },
+    {
+      "name": "Urfa Kebap",
+      "category": "Döner & Kebap",
+      "score": 12
+    },
+    {
+      "name": "Tavuk Döner",
+      "category": "Döner & Kebap",
+      "score": 12
+    },
+    {
+      "name": "Menemen",
+      "category": "Kahvaltı",
+      "score": 12
+    },
+    {
+      "name": "Tost",
+      "category": "Kahvaltı",
+      "score": 12
+    },
+    {
+      "name": "Et Döner",
+      "category": "Döner & Kebap",
+      "score": 12
+    },
+    {
+      "name": "Çay",
+      "category": "Kahvaltı",
+      "score": 12
+    },
+    {
+      "name": "Mercimek Çorbası",
+      "category": "Çorbalar",
+      "score": 11
+    },
+    {
+      "name": "Börek",
+      "category": "Kahvaltı",
+      "score": 11
+    },
+    {
+      "name": "Baklava",
+      "category": "Şerbetli Tatlılar",
+      "score": 11
+    },
+    {
+      "name": "Künefe",
+      "category": "Şerbetli Tatlılar",
+      "score": 11
+    },
+    {
+      "name": "Poğaça",
+      "category": "Kahvaltı",
+      "score": 11
+    },
+    {
+      "name": "Sucuklu Yumurta",
+      "category": "Kahvaltı",
+      "score": 11
+    },
+    {
+      "name": "Pastırmalı Yumurta",
+      "category": "Kahvaltı",
+      "score": 11
+    },
+    {
+      "name": "Açma",
+      "category": "Kahvaltı",
+      "score": 11
+    },
+    {
+      "name": "İskender Kebap",
+      "category": "Döner & Kebap",
+      "score": 11
+    },
+    {
+      "name": "Türk Kahvesi",
+      "category": "Kahvaltı",
+      "score": 11
+    },
+    {
+      "name": "Beyti",
+      "category": "Döner & Kebap",
+      "score": 11
+    },
+    {
+      "name": "Ali Nazik",
+      "category": "Döner & Kebap",
+      "score": 11
+    },
+    {
+      "name": "Ezogelin Çorbası",
+      "category": "Çorbalar",
+      "score": 10
+    },
+    {
+      "name": "Yayla Çorbası",
+      "category": "Çorbalar",
+      "score": 10
+    },
+    {
+      "name": "İşkembe Çorbası",
+      "category": "Çorbalar",
+      "score": 10
+    },
+    {
+      "name": "Domates Çorbası",
+      "category": "Çorbalar",
+      "score": 10
+    },
+    {
+      "name": "Tarhana Çorbası",
+      "category": "Çorbalar",
+      "score": 10
+    },
+    {
+      "name": "Kelle Paça",
+      "category": "Çorbalar",
+      "score": 10
+    },
+    {
+      "name": "Pide",
+      "category": "Hamur İşleri",
+      "score": 10
+    },
+    {
+      "name": "Köfte",
+      "category": "Kebaplar",
+      "score": 10
+    },
+    {
+      "name": "Kumpir",
+      "category": "Sokak Lezzetleri",
+      "score": 10
+    },
+    {
+      "name": "Ayran",
+      "category": "İçecekler",
+      "score": 10
+    },
+    {
+      "name": "Tavuk Şiş",
+      "category": "Izgara & Mangal",
+      "score": 10
+    },
+    {
+      "name": "Sütlaç",
+      "category": "Sütlü Tatlılar",
+      "score": 10
+    },
+    {
+      "name": "Mantı",
+      "category": "Hamur İşleri",
+      "score": 10
+    },
+    {
+      "name": "Çiğ Köfte",
+      "category": "Sebze Yemekleri",
+      "score": 10
+    },
+    {
+      "name": "Izgara Köfte",
+      "category": "Izgara & Mangal",
+      "score": 10
+    },
+    {
+      "name": "Kuru Fasulye",
+      "category": "Baklagiller",
+      "score": 9
+    },
+    {
+      "name": "Barbunya Pilaki",
+      "category": "Baklagiller",
+      "score": 9
+    },
+    {
+      "name": "Gözleme",
+      "category": "Hamur İşleri",
+      "score": 9
+    },
+    {
+      "name": "Şalgam",
+      "category": "İçecekler",
+      "score": 9
+    },
+    {
+      "name": "Hamburger",
+      "category": "Sokak Lezzetleri",
+      "score": 9
+    },
+    {
+      "name": "Karnıyarık",
+      "category": "Sebze Yemekleri",
+      "score": 9
+    },
+    {
+      "name": "Nohut",
+      "category": "Baklagiller",
+      "score": 9
+    },
+    {
+      "name": "Kısır",
+      "category": "Sebze Yemekleri",
+      "score": 9
+    },
+    {
+      "name": "İmam Bayıldı",
+      "category": "Sebze Yemekleri",
+      "score": 9
+    },
+    {
+      "name": "Kısır",
+      "category": "Salatalar",
+      "score": 9
+    },
+    {
+      "name": "Döner Dürüm",
+      "category": "Döner & Kebap",
+      "score": 7
+    },
+    {
+      "name": "İskender",
+      "category": "Döner & Kebap",
+      "score": 7
+    },
+    {
+      "name": "Şiş Kebap",
+      "category": "Döner & Kebap",
+      "score": 7
+    },
+    {
+      "name": "Sahanda Yumurta",
+      "category": "Kahvaltı",
+      "score": 7
+    },
+    {
+      "name": "Omlet",
+      "category": "Kahvaltı",
+      "score": 7
+    },
+    {
+      "name": "Açık Büfe",
+      "category": "Kahvaltı",
+      "score": 7
+    },
+    {
+      "name": "Peynir Tabak",
+      "category": "Kahvaltı",
+      "score": 7
+    },
+    {
+      "name": "Zeytin",
+      "category": "Kahvaltı",
+      "score": 7
+    },
+    {
+      "name": "Bal",
+      "category": "Kahvaltı",
+      "score": 7
+    },
+    {
+      "name": "Kaymak",
+      "category": "Kahvaltı",
+      "score": 7
+    },
+    {
+      "name": "Yumurta Salatası",
+      "category": "Kahvaltı",
+      "score": 7
+    },
+    {
+      "name": "Domatesli Börek",
+      "category": "Kahvaltı",
+      "score": 7
+    },
+    {
+      "name": "Ispanaklı Börek",
+      "category": "Kahvaltı",
+      "score": 7
+    },
+    {
+      "name": "Patatesli Börek",
+      "category": "Kahvaltı",
+      "score": 7
+    },
+    {
+      "name": "Kıymalı Pide",
+      "category": "Kahvaltı",
+      "score": 7
+    },
+    {
+      "name": "Peynirli Pide",
+      "category": "Kahvaltı",
+      "score": 7
+    },
+    {
+      "name": "Kuşbaşlı Pide",
+      "category": "Kahvaltı",
+      "score": 7
+    },
+    {
+      "name": "Yumurtalı Ekmek",
+      "category": "Kahvaltı",
+      "score": 7
+    },
+    {
+      "name": "Sosisli Börek",
+      "category": "Kahvaltı",
+      "score": 7
+    },
+    {
+      "name": "Haşlanmış Yumurta",
+      "category": "Kahvaltı",
+      "score": 7
+    },
+    {
+      "name": "Peynirli Omlet",
+      "category": "Kahvaltı",
+      "score": 7
+    },
+    {
+      "name": "Sebzeli Omlet",
+      "category": "Kahvaltı",
+      "score": 7
+    },
+    {
+      "name": "Sütlü Mısır",
+      "category": "Kahvaltı",
+      "score": 7
+    },
+    {
+      "name": "Kaşarlı Tost",
+      "category": "Kahvaltı",
+      "score": 7
+    },
+    {
+      "name": "Patlıcan Kebabı",
+      "category": "Döner & Kebap",
+      "score": 7
+    },
+    {
+      "name": "İçli Köfte",
+      "category": "Etli Yemekler",
+      "score": 7
+    },
+    {
+      "name": "Hünkar Beşendi",
+      "category": "Etli Yemekler",
+      "score": 7
+    },
+    {
+      "name": "Patates Köftesi",
+      "category": "Döner & Kebap",
+      "score": 7
+    },
+    {
+      "name": "Kaburga Sıyırma",
+      "category": "Döner & Kebap",
+      "score": 7
+    },
+    {
+      "name": "Çoban Kavurma",
+      "category": "Döner & Kebap",
+      "score": 7
+    },
+    {
+      "name": "Çökertme Kebabı",
+      "category": "Etli Yemekler",
+      "score": 7
+    },
+    {
+      "name": "Kuzu Kebabı",
+      "category": "Döner & Kebap",
+      "score": 7
+    },
+    {
+      "name": "Testi Kebabı",
+      "category": "Döner & Kebap",
+      "score": 7
+    },
+    {
+      "name": "Cağ Kebabı",
+      "category": "Döner & Kebap",
+      "score": 7
+    },
+    {
+      "name": "Kavurma",
+      "category": "Döner & Kebap",
+      "score": 7
+    },
+    {
+      "name": "Döner Salata",
+      "category": "Döner & Kebap",
+      "score": 7
+    },
+    {
+      "name": "Köfte Tabak",
+      "category": "Döner & Kebap",
+      "score": 7
+    },
+    {
+      "name": "Tavuk Şiş Kebap",
+      "category": "Döner & Kebap",
+      "score": 7
+    },
+    {
+      "name": "Kömür Kebabı",
+      "category": "Döner & Kebap",
+      "score": 7
+    },
+    {
+      "name": "Etli Ekmek",
+      "category": "Etli Yemekler",
+      "score": 7
+    },
+    {
+      "name": "Tas Kebabı",
+      "category": "Etli Yemekler",
+      "score": 7
+    },
+    {
+      "name": "Kuzu İncik",
+      "category": "Etli Yemekler",
+      "score": 7
+    },
+    {
+      "name": "İzmir Köfte",
+      "category": "Etli Yemekler",
+      "score": 7
+    },
+    {
+      "name": "Kadınbudu Köfte",
+      "category": "Etli Yemekler",
+      "score": 7
+    },
+    {
+      "name": "Mıhlama / Kuymak",
+      "category": "Kahvaltı",
+      "score": 7
+    },
+    {
+      "name": "Beyaz Peynir",
+      "category": "Kahvaltı",
+      "score": 7
+    },
+    {
+      "name": "Zeytin (Siyah/Yeşil)",
+      "category": "Kahvaltı",
+      "score": 7
+    },
+    {
+      "name": "Bal - Kaymak",
+      "category": "Kahvaltı",
+      "score": 7
+    },
+    {
+      "name": "Domates - Salatalık Söşüş",
+      "category": "Kahvaltı",
+      "score": 7
+    },
+    {
+      "name": "Türk Çayı",
+      "category": "Kahvaltı",
+      "score": 7
+    },
+    {
+      "name": "Pide (Kuşbaşılı)",
+      "category": "Döner & Kebap",
+      "score": 7
+    },
+    {
+      "name": "Beyti Sarma",
+      "category": "Döner & Kebap",
+      "score": 7
+    },
+    {
+      "name": "Tepsi Kebabı",
+      "category": "Döner & Kebap",
+      "score": 7
+    },
+    {
+      "name": "Kağıt Kebabı",
+      "category": "Döner & Kebap",
+      "score": 7
+    },
+    {
+      "name": "Orman Kebabı",
+      "category": "Döner & Kebap",
+      "score": 7
+    },
+    {
+      "name": "Kıymalı Yumurta",
+      "category": "Kahvaltı",
+      "score": 7
+    },
+    {
+      "name": "Çılbır",
+      "category": "Kahvaltı",
+      "score": 7
+    },
+    {
+      "name": "Patatesli Yumurta",
+      "category": "Kahvaltı",
+      "score": 7
+    },
+    {
+      "name": "Sigara Böreği",
+      "category": "Kahvaltı",
+      "score": 7
+    },
+    {
+      "name": "Paçanga Böreşi",
+      "category": "Kahvaltı",
+      "score": 7
+    },
+    {
+      "name": "Gözleme (Peynirli)",
+      "category": "Kahvaltı",
+      "score": 7
+    },
+    {
+      "name": "Acuka",
+      "category": "Kahvaltı",
+      "score": 7
+    },
+    {
+      "name": "Pişi",
+      "category": "Kahvaltı",
+      "score": 7
+    },
+    {
+      "name": "Pekmez - Tahin",
+      "category": "Kahvaltı",
+      "score": 7
+    },
+    {
+      "name": "Kuru İncir - Ceviz",
+      "category": "Kahvaltı",
+      "score": 7
+    },
+    {
+      "name": "Bulgur Çorbası",
+      "category": "Çorbalar",
+      "score": 6
+    },
+    {
+      "name": "Yoğurt Çorbası",
+      "category": "Çorbalar",
+      "score": 6
+    },
+    {
+      "name": "Mantar Çorbası",
+      "category": "Çorbalar",
+      "score": 6
+    },
+    {
+      "name": "Tavuk Suyu Çorbası",
+      "category": "Çorbalar",
+      "score": 6
+    },
+    {
+      "name": "Sebzeli Çorba",
+      "category": "Çorbalar",
+      "score": 6
+    },
+    {
+      "name": "Nohut Çorbası",
+      "category": "Çorbalar",
+      "score": 6
+    },
+    {
+      "name": "Şehriye Çorbası",
+      "category": "Çorbalar",
+      "score": 6
+    },
+    {
+      "name": "Düğün Çorbası",
+      "category": "Çorbalar",
+      "score": 6
+    },
+    {
+      "name": "Lahana Çorbası",
+      "category": "Çorbalar",
+      "score": 6
+    },
+    {
+      "name": "Pırasa Çorbası",
+      "category": "Çorbalar",
+      "score": 6
+    },
+    {
+      "name": "Çorba",
+      "category": "Çorbalar",
+      "score": 6
+    },
+    {
+      "name": "Antrikot",
+      "category": "Izgara & Mangal",
+      "score": 6
+    },
+    {
+      "name": "Pirzola",
+      "category": "Izgara & Mangal",
+      "score": 6
+    },
+    {
+      "name": "Profiterol",
+      "category": "Sütlü Tatlılar",
+      "score": 6
+    },
+    {
+      "name": "Trileçe",
+      "category": "Sütlü Tatlılar",
+      "score": 6
+    },
+    {
+      "name": "Tavuk Göğsü Tatlısı",
+      "category": "Sütlü Tatlılar",
+      "score": 6
+    },
+    {
+      "name": "Kaşarlı Köfte",
+      "category": "Izgara & Mangal",
+      "score": 6
+    },
+    {
+      "name": "Sulu Köfte",
+      "category": "Izgara & Mangal",
+      "score": 6
+    },
+    {
+      "name": "Tavuk Kanat",
+      "category": "Izgara & Mangal",
+      "score": 6
+    },
+    {
+      "name": "Tavuk Bonfile",
+      "category": "Izgara & Mangal",
+      "score": 6
+    },
+    {
+      "name": "Bonfile Şiş",
+      "category": "Izgara & Mangal",
+      "score": 6
+    },
+    {
+      "name": "Kuşbaşı",
+      "category": "Izgara & Mangal",
+      "score": 6
+    },
+    {
+      "name": "Kaburga",
+      "category": "Izgara & Mangal",
+      "score": 6
+    },
+    {
+      "name": "Sucuk Izgara",
+      "category": "Izgara & Mangal",
+      "score": 6
+    },
+    {
+      "name": "Pastırma Izgara",
+      "category": "Izgara & Mangal",
+      "score": 6
+    },
+    {
+      "name": "Biftek",
+      "category": "Izgara & Mangal",
+      "score": 6
+    },
+    {
+      "name": "Köfte Izgara",
+      "category": "Izgara & Mangal",
+      "score": 6
+    },
+    {
+      "name": "Tavuk Pirzola",
+      "category": "Izgara & Mangal",
+      "score": 6
+    },
+    {
+      "name": "Karışık Izgara",
+      "category": "Izgara & Mangal",
+      "score": 6
+    },
+    {
+      "name": "Balık Izgara",
+      "category": "Izgara & Mangal",
+      "score": 6
+    },
+    {
+      "name": "Sebzeli Izgara",
+      "category": "Izgara & Mangal",
+      "score": 6
+    },
+    {
+      "name": "Kazandibi",
+      "category": "Sütlü Tatlılar",
+      "score": 6
+    },
+    {
+      "name": "Revani",
+      "category": "Şerbetli Tatlılar",
+      "score": 6
+    },
+    {
+      "name": "Kuzu Pirzola",
+      "category": "Izgara & Mangal",
+      "score": 6
+    },
+    {
+      "name": "Kanat Izgara",
+      "category": "Izgara & Mangal",
+      "score": 6
+    },
+    {
+      "name": "Yuvalama Çorbası",
+      "category": "Çorbalar",
+      "score": 6
+    },
+    {
+      "name": "Lebeniye Çorbası",
+      "category": "Çorbalar",
+      "score": 6
+    },
+    {
+      "name": "Erişteli Yeşil Mercimek Çorbası",
+      "category": "Çorbalar",
+      "score": 6
+    },
+    {
+      "name": "Brokoli Çorbası",
+      "category": "Çorbalar",
+      "score": 6
+    },
+    {
+      "name": "Balkabağı Çorbası",
+      "category": "Çorbalar",
+      "score": 6
+    },
+    {
+      "name": "Keşkül",
+      "category": "Sütlü Tatlılar",
+      "score": 6
+    },
+    {
+      "name": "Tavukgöğsü",
+      "category": "Sütlü Tatlılar",
+      "score": 6
+    },
+    {
+      "name": "Supangle",
+      "category": "Sütlü Tatlılar",
+      "score": 6
+    },
+    {
+      "name": "Ayva Tatlısı",
+      "category": "Şerbetli Tatlılar",
+      "score": 6
+    },
+    {
+      "name": "Kabak Tatlısı",
+      "category": "Şerbetli Tatlılar",
+      "score": 6
+    },
+    {
+      "name": "Tulumba Tatlısı",
+      "category": "Şerbetli Tatlılar",
+      "score": 6
+    },
+    {
+      "name": "Şekerpare",
+      "category": "Şerbetli Tatlılar",
+      "score": 6
+    },
+    {
+      "name": "İrmik Helvası",
+      "category": "Şerbetli Tatlılar",
+      "score": 6
+    },
+    {
+      "name": "Un Helvası",
+      "category": "Şerbetli Tatlılar",
+      "score": 6
+    },
+    {
+      "name": "Saray Sarması",
+      "category": "Sütlü Tatlılar",
+      "score": 6
+    },
+    {
+      "name": "Magnolia",
+      "category": "Sütlü Tatlılar",
+      "score": 6
+    },
+    {
+      "name": "Güllaç",
+      "category": "Sütlü Tatlılar",
+      "score": 6
+    },
+    {
+      "name": "Aşure",
+      "category": "Sütlü Tatlılar",
+      "score": 6
+    },
+    {
+      "name": "Zerde",
+      "category": "Sütlü Tatlılar",
+      "score": 6
+    },
+    {
+      "name": "Puding",
+      "category": "Sütlü Tatlılar",
+      "score": 6
+    },
+    {
+      "name": "Meyveli Yoğurt",
+      "category": "Sütlü Tatlılar",
+      "score": 6
+    },
+    {
+      "name": "Dondurma",
+      "category": "Sütlü Tatlılar",
+      "score": 6
+    },
+    {
+      "name": "Yeşil Mercimek",
+      "category": "Baklagiller",
+      "score": 5
+    },
+    {
+      "name": "Nohut Pilav",
+      "category": "Baklagiller",
+      "score": 5
+    },
+    {
+      "name": "Mercimek Köfte",
+      "category": "Baklagiller",
+      "score": 5
+    },
+    {
+      "name": "Nohut Salata",
+      "category": "Baklagiller",
+      "score": 5
+    },
+    {
+      "name": "Fasulye Pilaki",
+      "category": "Baklagiller",
+      "score": 5
+    },
+    {
+      "name": "Taze Fasulye",
+      "category": "Sebze Yemekleri",
+      "score": 5
+    },
+    {
+      "name": "Patlıcan Musakka",
+      "category": "Sebze Yemekleri",
+      "score": 5
+    },
+    {
+      "name": "Bamya",
+      "category": "Sebze Yemekleri",
+      "score": 5
+    },
+    {
+      "name": "Ispanak",
+      "category": "Sebze Yemekleri",
+      "score": 5
+    },
+    {
+      "name": "Karnabahar",
+      "category": "Sebze Yemekleri",
+      "score": 5
+    },
+    {
+      "name": "Pırasa Yemeği",
+      "category": "Sebze Yemekleri",
+      "score": 5
+    },
+    {
+      "name": "Manti",
+      "category": "Hamur İşleri",
+      "score": 5
+    }
+  ],
+  "yeni20": [
+    {
+      "name": "Pizza",
+      "category": "Fast Food",
+      "score": 10,
+      "isNew": true
+    },
+    {
+      "name": "Burger",
+      "category": "Fast Food",
+      "score": 10,
+      "isNew": true
+    },
+    {
+      "name": "Kuzu Tandır",
+      "category": "Kebap",
+      "score": 9,
+      "isNew": true
+    },
+    {
+      "name": "Kadayıf",
+      "category": "Tatlı",
+      "score": 9,
+      "isNew": true
+    },
+    {
+      "name": "Kürdan Kebabı",
+      "category": "Kebap",
+      "score": 8,
+      "isNew": true
+    },
+    {
+      "name": "Döner Kebap",
+      "category": "Döner",
+      "score": 10,
+      "isNew": true
+    },
+    {
+      "name": "Tavuk But",
+      "category": "Izgara",
+      "score": 7,
+      "isNew": true
+    },
+    {
+      "name": "Kuzu Şiş",
+      "category": "Izgara",
+      "score": 7,
+      "isNew": true
+    },
+    {
+      "name": "Ciğer Şiş",
+      "category": "Izgara",
+      "score": 7,
+      "isNew": true
+    },
+    {
+      "name": "Hünkar Beğendi",
+      "category": "Etli",
+      "score": 8,
+      "isNew": true
+    },
+    {
+      "name": "Kuzu Kapama",
+      "category": "Etli",
+      "score": 7,
+      "isNew": true
+    },
+    {
+      "name": "Kuzu Yahni",
+      "category": "Etli",
+      "score": 7,
+      "isNew": true
+    },
+    {
+      "name": "Etli Barbunya",
+      "category": "Etli",
+      "score": 7,
+      "isNew": true
+    },
+    {
+      "name": "Tavuk Yahni",
+      "category": "Etli",
+      "score": 7,
+      "isNew": true
+    },
+    {
+      "name": "Fırında Tavuk",
+      "category": "Etli",
+      "score": 8,
+      "isNew": true
+    },
+    {
+      "name": "Fırında Patates",
+      "category": "Etli",
+      "score": 7,
+      "isNew": true
+    },
+    {
+      "name": "Fırında Sebze",
+      "category": "Etli",
+      "score": 7,
+      "isNew": true
+    },
+    {
+      "name": "Güveç",
+      "category": "Etli",
+      "score": 7,
+      "isNew": true
+    },
+    {
+      "name": "Kapama",
+      "category": "Etli",
+      "score": 7,
+      "isNew": true
+    },
+    {
+      "name": "Pirinç Pilavı",
+      "category": "Pilav",
+      "score": 8,
+      "isNew": true
+    }
+  ],
+  "categoryDistribution": {
+    "Döner & Kebap": 28,
+    "Kahvaltı": 47,
+    "Çorbalar": 23,
+    "Şerbetli Tatlılar": 9,
+    "Hamur İşleri": 4,
+    "Kebaplar": 1,
+    "Sokak Lezzetleri": 2,
+    "İçecekler": 2,
+    "Izgara & Mangal": 21,
+    "Sütlü Tatlılar": 16,
+    "Sebze Yemekleri": 10,
+    "Baklagiller": 8,
+    "Salatalar": 1,
+    "Etli Yemekler": 8,
+    "Fast Food": 2,
+    "Kebap": 2,
+    "Tatlı": 1,
+    "Döner": 1,
+    "Izgara": 3,
+    "Etli": 10,
+    "Pilav": 1
+  }
+}

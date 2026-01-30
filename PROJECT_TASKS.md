@@ -20,26 +20,36 @@
 
 ## 🔴 KRİTİK GÖREVLER (Critical Tasks)
 
-### TASK-DATA-003: Kitlesel Görsel Benzersizleştirme (329 Yemek)
+### TASK-DATA-003: Hybrid 200 Yemek Stratejisi (Yemeksepeti 2025)
 
-**Durum**: 🔄 In Progress (325/329 Atandı, ~%72 Benzersizlik)
+**Durum**: 🔄 In Progress (Strateji Değişimi: 325 → 200 Yemek)
 **Öncelik**: 🔴 Kritik
 **Son Güncelleme**: 30 Ocak 2026
+**Yeni Strateji:**
+
+> **325 yemek yerine 200 popüler yemek!**  
+> Yemeksepeti 2025 verilerine göre en popüler 200 yemek.
+
+**Bileşenler:**
+- **180 Mevcut Yemek**: foods.ts'den popüler olanlar seçildi
+- **20 Yeni Yemek**: Eksik popülerler (Pizza, Burger, Kadayıf, Kuzu Tandır, vb.)
+- **Toplam: 200 Yemek**
+
 **Gereksinimler:**
 
-- [x] Tüm 329 yemek için dublike/placeholder resimlerin tespiti (Otomatik: scripts/audit_uniqueness.js)
-- [x] Kalıcı veri merkezi oluşturuldu (database/image_registry.json)
-- [x] 325 yemeğe resim atandı (Firecrawl + Manuel mapping)
-- [x] Firecrawl ile 1912 yemek URL'i toplandı ve eşleştirildi
-- [x] **~250 benzersiz URL** ile %72 benzersizlik oranına ulaşıldı (önceki %45'ten yükseldi)
-- [x] **Otomatik Tespit Aktif**: Resimsizler ve ortak resimliler kod ile tespit ediliyor
-- [x] User feedback sistemi aktif - 🚩 bildirim butonu kullanımda
-- [x] **30 Ocak 2026**: 41 yeni yemek.com görseli eklendi (Simit, Kahvaltı, Sebze, Kebap grupları)
-- [x] **30 Ocak 2026**: 18 yemek foods.ts'de güncellendi (Wikimedia → Yemek.com)
-- [x] **30 Ocak 2026**: 12 duplicate gruba indirgeme (15'ten)
-- [ ] Kalan 12 duplicate grubu temizle (Döner, Izgara, İçecekler, Tatlılar, vb.)
-- [ ] Hedef: %95+ benzersizlik oranına ulaşmak (mevcut: ~%72)
-- [ ] Admin Paneli (`admin/gallery`) üzerinden %100 doğrulama
+- [x] Yemeksepeti 2025 analizi: En popüler 50 yemek belirlendi
+- [x] Mevcut 325 yemek analizi: 180 popüler yemek seçildi
+- [x] Eksik 20 popüler yemek tespit edildi
+- [x] **Hybrid 200 Liste**: `hybrid_200_foods.json` oluşturuldu
+- [ ] 20 yeni yemek için veri girişi (NutritionalInfo, priceLevel)
+- [ ] foods.ts güncelleme: 325 → 200 yemek
+- [ ] 200 yemek için görsel ataması (Firecrawl)
+- [ ] Hedef: %95+ benzersizlik
+- [ ] Admin Paneli doğrulama
+
+**Neden 200 Yemek?**
+
+> Daha yönetilebilir, %95+ benzersiz görsel garantisi, gerçek popülerlik verileri, hızlı MVP!
 
 **Neden Kritik?**
 
@@ -194,6 +204,53 @@
 - **foods.ts**: 18 yemek Wikimedia → Yemek.com görsellerine geçirildi
 - **Duplicate gruplar**: 15'ten 12'ye indirgeme
 
+### TASK-DATA-005: 20 Yeni Popüler Yemek Ekleme
+
+**Durum**: 🔄 In Progress (30 Ocak 2026)
+**Öncelik**: 🔴 Kritik
+**Amaç**: Hybrid 200 yemek listesini tamamlamak için 20 eksik popüler yemek
+
+**Eklenecek Yemekler:**
+
+**Fast Food (2):**
+- [ ] Pizza - NutritionalInfo, priceLevel, category
+- [ ] Burger - NutritionalInfo, priceLevel, category
+
+**Kebap (3):**
+- [ ] Kuzu Tandır - NutritionalInfo, priceLevel, category
+- [ ] Kürdan Kebabı - NutritionalInfo, priceLevel, category  
+- [ ] Döner Kebap - NutritionalInfo, priceLevel, category
+
+**Tatlı (1):**
+- [ ] Kadayıf - NutritionalInfo, priceLevel, category
+
+**Izgara (3):**
+- [ ] Tavuk But - NutritionalInfo, priceLevel, category
+- [ ] Kuzu Şiş - NutritionalInfo, priceLevel, category
+- [ ] Ciğer Şiş - NutritionalInfo, priceLevel, category
+
+**Etli Yemekler (10):**
+- [ ] Hünkar Beğendi - NutritionalInfo, priceLevel, category
+- [ ] Kuzu Kapama - NutritionalInfo, priceLevel, category
+- [ ] Kuzu Yahni - NutritionalInfo, priceLevel, category
+- [ ] Etli Barbunya - NutritionalInfo, priceLevel, category
+- [ ] Tavuk Yahni - NutritionalInfo, priceLevel, category
+- [ ] Fırında Tavuk - NutritionalInfo, priceLevel, category
+- [ ] Fırında Patates - NutritionalInfo, priceLevel, category
+- [ ] Fırında Sebze - NutritionalInfo, priceLevel, category
+- [ ] Güveç - NutritionalInfo, priceLevel, category
+- [ ] Kapama - NutritionalInfo, priceLevel, category
+
+**Pilav (1):**
+- [ ] Pirinç Pilavı - NutritionalInfo, priceLevel, category
+
+**Gereksinimler:**
+- [ ] Tüm 20 yemek için kalori/protein/karbonhidrat/yağ değerleri
+- [ ] Kategori bazlı fiyatlandırma (18₺-140₺ arası)
+- [ ] Vegetarian/Vegan/Halal flag'leri
+- [ ] Yemek.com'dan görsel URL'leri (Firecrawl)
+- [ ] foods.ts'e ekleme (ID: 326-345)
+
 ### TASK-021: Veritabanı Genişletme (305 Yemek)
 
 **Durum**: ✅ Completed
@@ -236,6 +293,16 @@
 - Premium UI ve Haptic Feedback tüm kritik akışlara eklendi.
 - Error Handling ve Robustness SPEC'leri karşılandı.
 - Proje görsel ve teknik olarak "v1.0-release" adayı haline geldi.
+
+### 30 Ocak 2026 - Strateji Değişimi: Hybrid 200 Yemek
+
+- **Yemeksepeti Analizi**: 2025'in en popüler 50 yemeği belirlendi
+- **Strateji Değişimi**: 325 yemek → 200 popüler yemek kararı
+- **Hybrid Liste**: 180 mevcut + 20 yeni = 200 yemek
+- **Eksik Tespiti**: Pizza, Burger, Kadayıf, Kuzu Tandır, vb. 20 popüler yemek eklenecek
+- **Rapor**: `hybrid_200_foods.json` oluşturuldu
+- **Yeni TASK**: TASK-DATA-005 (20 Yeni Yemek Ekleme) oluşturuldu
+- **Hedef**: %95+ benzersiz görsel ile 200 yemek
 
 ### 27 Ocak 2026
 
