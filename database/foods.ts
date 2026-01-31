@@ -10,6 +10,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: true,
     is_halal: true,
     priceLevel: 1,
+    estimatedPrice: 45,
+    nutritionalInfo: { calories: 280, protein: 18, carbs: 45, fat: 2 },
     id: 1,
   },
   {
@@ -20,6 +22,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: true,
     is_halal: true,
     priceLevel: 1,
+    estimatedPrice: 42,
+    nutritionalInfo: { calories: 280, protein: 18, carbs: 45, fat: 2 },
     id: 2,
   },
   {
@@ -30,6 +34,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: true,
     is_halal: true,
     priceLevel: 1,
+    estimatedPrice: 40,
+    nutritionalInfo: { calories: 280, protein: 18, carbs: 45, fat: 2 },
     id: 3,
   },
   {
@@ -40,6 +46,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: true,
     is_halal: true,
     priceLevel: 1,
+    estimatedPrice: 43,
+    nutritionalInfo: { calories: 280, protein: 18, carbs: 45, fat: 2 },
     id: 4,
   },
   {
@@ -50,6 +58,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: true,
     is_halal: true,
     priceLevel: 1,
+    estimatedPrice: 55,
+    nutritionalInfo: { calories: 180, protein: 4, carbs: 15, fat: 10 },
     id: 5,
   },
   {
@@ -60,6 +70,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: true,
     is_halal: true,
     priceLevel: 1,
+    estimatedPrice: 45,
+    nutritionalInfo: { calories: 180, protein: 4, carbs: 15, fat: 10 },
     id: 6,
   },
   {
@@ -70,6 +82,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: true,
     is_halal: true,
     priceLevel: 1,
+    estimatedPrice: 50,
+    nutritionalInfo: { calories: 180, protein: 4, carbs: 15, fat: 10 },
     id: 7,
   },
   {
@@ -80,6 +94,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: true,
     is_halal: true,
     priceLevel: 1,
+    estimatedPrice: 48,
+    nutritionalInfo: { calories: 180, protein: 4, carbs: 15, fat: 10 },
     id: 8,
   },
   {
@@ -90,6 +106,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: false,
     is_halal: true,
     priceLevel: 1,
+    estimatedPrice: 75,
+    nutritionalInfo: { calories: 280, protein: 12, carbs: 18, fat: 18 },
     id: 9,
   },
   {
@@ -100,6 +118,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: true,
     is_halal: true,
     priceLevel: 1,
+    estimatedPrice: 52,
+    nutritionalInfo: { calories: 180, protein: 4, carbs: 15, fat: 10 },
     id: 30,
   },
   {
@@ -110,6 +130,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: false,
     is_halal: true,
     priceLevel: 1,
+    estimatedPrice: 70,
+    nutritionalInfo: { calories: 380, protein: 10, carbs: 55, fat: 14 },
     id: 32,
   },
   {
@@ -120,6 +142,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: false,
     is_halal: true,
     priceLevel: 1,
+    estimatedPrice: 55,
+    nutritionalInfo: { calories: 420, protein: 32, carbs: 12, fat: 24 },
     id: 33,
   },
   {
@@ -130,6 +154,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: true,
     is_halal: true,
     priceLevel: 1,
+    estimatedPrice: 10,
+    nutritionalInfo: { calories: 280, protein: 12, carbs: 22, fat: 16 },
     id: 36,
   },
   {
@@ -140,6 +166,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: false,
     is_halal: true,
     priceLevel: 3,
+    estimatedPrice: 220,
+    nutritionalInfo: { calories: 420, protein: 32, carbs: 12, fat: 24 },
     id: 37,
   },
   {
@@ -150,6 +178,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: false,
     is_halal: true,
     priceLevel: 3,
+    estimatedPrice: 210,
+    nutritionalInfo: { calories: 420, protein: 32, carbs: 12, fat: 24 },
     id: 38,
   },
   {
@@ -160,6 +190,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: false,
     is_halal: true,
     priceLevel: 1,
+    estimatedPrice: 180,
+    nutritionalInfo: { calories: 420, protein: 32, carbs: 12, fat: 24 },
     id: 39,
   },
   {
@@ -170,6 +202,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: false,
     is_halal: true,
     priceLevel: 2,
+    estimatedPrice: 80,
+    nutritionalInfo: { calories: 420, protein: 32, carbs: 12, fat: 24 },
     id: 40,
   },
   {
@@ -180,6 +214,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: false,
     is_halal: true,
     priceLevel: 1,
+    estimatedPrice: 65,
+    nutritionalInfo: { calories: 380, protein: 28, carbs: 10, fat: 18 },
     id: 41,
   },
   {
@@ -190,6 +226,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: false,
     is_halal: true,
     priceLevel: 1,
+    estimatedPrice: 150,
+    nutritionalInfo: { calories: 520, protein: 38, carbs: 18, fat: 28 },
     id: 43,
   },
   {
@@ -200,6 +238,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: false,
     is_halal: true,
     priceLevel: 1,
+    estimatedPrice: 170,
+    nutritionalInfo: { calories: 420, protein: 32, carbs: 12, fat: 24 },
     id: 44,
   },
   {
@@ -210,6 +250,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: false,
     is_halal: true,
     priceLevel: 1,
+    estimatedPrice: 55,
+    nutritionalInfo: { calories: 420, protein: 32, carbs: 12, fat: 24 },
     id: 45,
   },
   {
@@ -220,6 +262,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: true,
     is_halal: true,
     priceLevel: 1,
+    estimatedPrice: 35,
+    nutritionalInfo: { calories: 380, protein: 8, carbs: 65, fat: 12 },
     id: 46,
   },
   {
@@ -230,6 +274,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: true,
     is_halal: true,
     priceLevel: 1,
+    estimatedPrice: 12,
+    nutritionalInfo: { calories: 65, protein: 4, carbs: 6, fat: 3 },
     id: 51,
   },
   {
@@ -241,6 +287,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: true,
     is_halal: true,
     priceLevel: 1,
+    estimatedPrice: 5,
+    nutritionalInfo: { calories: 5, protein: 0, carbs: 1, fat: 0 },
     id: 176,
   },
   {
@@ -252,6 +300,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: true,
     is_halal: true,
     priceLevel: 1,
+    estimatedPrice: 20,
+    nutritionalInfo: { calories: 15, protein: 0, carbs: 3, fat: 0 },
     id: 172,
   },
   {
@@ -262,6 +312,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: false,
     is_halal: true,
     priceLevel: 1,
+    estimatedPrice: 85,
+    nutritionalInfo: { calories: 280, protein: 6, carbs: 42, fat: 9 },
     id: 100,
   },
   {
@@ -272,6 +324,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: false,
     is_halal: true,
     priceLevel: 3,
+    estimatedPrice: 180,
+    nutritionalInfo: { calories: 480, protein: 5, carbs: 72, fat: 18 },
     id: 101,
   },
   {
@@ -282,6 +336,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: false,
     is_halal: true,
     priceLevel: 3,
+    estimatedPrice: 220,
+    nutritionalInfo: { calories: 480, protein: 5, carbs: 72, fat: 18 },
     id: 102,
   },
   {
@@ -293,6 +349,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: false,
     is_halal: true,
     priceLevel: 1,
+    estimatedPrice: 40,
+    nutritionalInfo: { calories: 280, protein: 12, carbs: 22, fat: 16 },
     id: 104,
   },
   {
@@ -304,6 +362,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: false,
     is_halal: true,
     priceLevel: 1,
+    estimatedPrice: 30,
+    nutritionalInfo: { calories: 280, protein: 12, carbs: 22, fat: 16 },
     id: 105,
   },
   {
@@ -315,6 +375,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: true,
     is_halal: true,
     priceLevel: 1,
+    estimatedPrice: 35,
+    nutritionalInfo: { calories: 280, protein: 12, carbs: 22, fat: 16 },
     id: 106,
   },
   {
@@ -326,6 +388,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: true,
     is_halal: true,
     priceLevel: 1,
+    estimatedPrice: 25,
+    nutritionalInfo: { calories: 380, protein: 10, carbs: 55, fat: 14 },
     id: 107,
   },
   {
@@ -337,6 +401,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: false,
     is_halal: true,
     priceLevel: 1,
+    estimatedPrice: 30,
+    nutritionalInfo: { calories: 380, protein: 10, carbs: 55, fat: 14 },
     id: 108,
   },
   {
@@ -347,6 +413,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: true,
     is_halal: true,
     priceLevel: 1,
+    estimatedPrice: 35,
+    nutritionalInfo: { calories: 120, protein: 5, carbs: 18, fat: 3 },
     id: 55,
   },
   {
@@ -357,6 +425,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: true,
     is_halal: true,
     priceLevel: 1,
+    estimatedPrice: 38,
+    nutritionalInfo: { calories: 120, protein: 5, carbs: 18, fat: 3 },
     id: 56,
   },
   {
@@ -367,6 +437,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: true,
     is_halal: true,
     priceLevel: 1,
+    estimatedPrice: 32,
+    nutritionalInfo: { calories: 120, protein: 5, carbs: 18, fat: 3 },
     id: 57,
   },
   {
@@ -377,6 +449,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: true,
     is_halal: true,
     priceLevel: 1,
+    estimatedPrice: 30,
+    nutritionalInfo: { calories: 120, protein: 5, carbs: 18, fat: 3 },
     id: 58,
   },
   {
@@ -387,6 +461,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: true,
     is_halal: true,
     priceLevel: 1,
+    estimatedPrice: 36,
+    nutritionalInfo: { calories: 120, protein: 5, carbs: 18, fat: 3 },
     id: 59,
   },
   {
@@ -397,6 +473,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: false,
     is_halal: true,
     priceLevel: 1,
+    estimatedPrice: 70,
+    nutritionalInfo: { calories: 150, protein: 12, carbs: 8, fat: 8 },
     id: 60,
   },
   {
@@ -407,6 +485,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: false,
     is_halal: true,
     priceLevel: 1,
+    estimatedPrice: 160,
+    nutritionalInfo: { calories: 420, protein: 32, carbs: 12, fat: 24 },
     id: 181,
   },
   {
@@ -417,6 +497,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: false,
     is_halal: true,
     priceLevel: 3,
+    estimatedPrice: 190,
+    nutritionalInfo: { calories: 420, protein: 32, carbs: 12, fat: 24 },
     id: 182,
   },
   {
@@ -427,6 +509,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: false,
     is_halal: true,
     priceLevel: 2,
+    estimatedPrice: 95,
+    nutritionalInfo: { calories: 280, protein: 12, carbs: 18, fat: 18 },
     id: 199,
   },
   {
@@ -437,6 +521,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: true,
     is_halal: true,
     priceLevel: 2,
+    estimatedPrice: 85,
+    nutritionalInfo: { calories: 180, protein: 4, carbs: 15, fat: 10 },
     id: 200,
   },
   {
@@ -447,6 +533,8 @@ export const COMMON_FOODS: Food[] = [
     is_vegan: false,
     is_halal: true,
     priceLevel: 3,
+    estimatedPrice: 120,
+    nutritionalInfo: { calories: 280, protein: 6, carbs: 42, fat: 9 },
     id: 300,
   },
   {

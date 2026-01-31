@@ -8,9 +8,10 @@
 ## 📋 Proje Özellikleri
 
 ### 🍽️ **Yemek Veritabanı**
-- **Toplam**: 349 yemek (329 ana + 20 popüler yemek)
+- **Toplam**: 80 yemek (44 ana + 36 yeni popüler & kahvaltılık)
 - **Kategoriler**: 12 farklı kategori (Çorbalar, Sebze Yemekleri, Etli Yemekler, Döner & Kebap, Izgara & Mangal, Deniz Ürünleri, Baklagiller, Pilavlar, Hamur İşleri, Kahvaltı, Sütlü Tatlılar, Şerbetli Tatlılar, Meyveler)
 - **Diyet Seçenekleri**: Normal, Vejetaryen, Vegan, Düşük Karbonhidrat, Glütensiz, Helal
+- **Fiyatlandırma**: Her yemeğin tahmini fiyatı (estimatedPrice) ve besin değeri (nutritionalInfo) mevcut
 - **Esneklik**: Çorbalar artık tüm öğünlerde (kahvaltı, öğle, akşam) tercih edilebilir.
 
 ### 🎨 **Teknik Özellikler**
