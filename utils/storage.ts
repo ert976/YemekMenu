@@ -1,24 +1,26 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Platform } from "react-native";
 
 /**
  * Uygulama genelinde kullanılan evrensel depolama katmanı.
- * Web'de localStorage, Native'de ise bellek içi (veya AsyncStorage) kullanımını soyutlar.
+ * Web'de localStorage, Native'de AsyncStorage kullanır.
+ * Artık mobile'de de kalıcı depolama var! ✅
  */
 class UniversalStorage {
-  private memoryStore: Record<string, string> = {};
-
   async getItem(key: string): Promise<string | null> {
     if (Platform.OS === "web" && typeof localStorage !== "undefined") {
       return localStorage.getItem(key);
     }
-    return this.memoryStore[key] || null;
+    // Mobile'de AsyncStorage kullan (kalıcı!)
+    return await AsyncStorage.getItem(key);
   }
 
   async setItem(key: string, value: string): Promise<void> {
     if (Platform.OS === "web" && typeof localStorage !== "undefined") {
       localStorage.setItem(key, value);
     } else {
-      this.memoryStore[key] = value;
+      // Mobile'de AsyncStorage kullan (kalıcı!)
+      await AsyncStorage.setItem(key, value);
     }
   }
 
@@ -26,8 +28,29 @@ class UniversalStorage {
     if (Platform.OS === "web" && typeof localStorage !== "undefined") {
       localStorage.removeItem(key);
     } else {
-      delete this.memoryStore[key];
+      await AsyncStorage.removeItem(key);
     }
+  }
+
+  /**
+   * Tüm veriyi temizle (logout vs. için)
+   */
+  async clear(): Promise<void> {
+    if (Platform.OS === "web" && typeof localStorage !== "undefined") {
+      localStorage.clear();
+    } else {
+      await AsyncStorage.clear();
+    }
+  }
+
+  /**
+   * Tüm key'leri listele (debug için)
+   */
+  async getAllKeys(): Promise<string[]> {
+    if (Platform.OS === "web" && typeof localStorage !== "undefined") {
+      return Object.keys(localStorage);
+    }
+    return await AsyncStorage.getAllKeys();
   }
 }
 

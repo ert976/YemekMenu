@@ -206,55 +206,81 @@
 
 ### TASK-DATA-005: 20 Yeni Popüler Yemek Ekleme
 
-**Durum**: 🔄 In Progress (30 Ocak 2026)
+**Durum**: ✅ Completed (31 Ocak 2026)
 **Öncelik**: 🔴 Kritik
 **Amaç**: Hybrid 200 yemek listesini tamamlamak için 20 eksik popüler yemek
 
-**Eklenecek Yemekler:**
+**Eklenen Yemekler:**
 
 **Fast Food (2):**
-- [ ] Pizza - NutritionalInfo, priceLevel, category
-- [ ] Burger - NutritionalInfo, priceLevel, category
+- ✅ Pizza - ID: 330, priceLevel: 2, 85₺
+- ✅ Burger - ID: 331, priceLevel: 2, 95₺
 
 **Kebap (3):**
-- [ ] Kuzu Tandır - NutritionalInfo, priceLevel, category
-- [ ] Kürdan Kebabı - NutritionalInfo, priceLevel, category  
-- [ ] Döner Kebap - NutritionalInfo, priceLevel, category
+- ✅ Kuzu Tandır - ID: 332, priceLevel: 3, 140₺
+- ✅ Kürdan Kebabı - ID: 334, priceLevel: 3, 120₺
+- ✅ Döner Kebap - ID: 335, priceLevel: 2, 75₺
 
 **Tatlı (1):**
-- [ ] Kadayıf - NutritionalInfo, priceLevel, category
+- ✅ Kadayıf - ID: 333, priceLevel: 2, 65₺
 
 **Izgara (3):**
-- [ ] Tavuk But - NutritionalInfo, priceLevel, category
-- [ ] Kuzu Şiş - NutritionalInfo, priceLevel, category
-- [ ] Ciğer Şiş - NutritionalInfo, priceLevel, category
+- ✅ Tavuk But - ID: 336, priceLevel: 2, 65₺
+- ✅ Kuzu Şiş - ID: 337, priceLevel: 3, 110₺
+- ✅ Ciğer Şiş - ID: 338, priceLevel: 2, 70₺
 
 **Etli Yemekler (10):**
-- [ ] Hünkar Beğendi - NutritionalInfo, priceLevel, category
-- [ ] Kuzu Kapama - NutritionalInfo, priceLevel, category
-- [ ] Kuzu Yahni - NutritionalInfo, priceLevel, category
-- [ ] Etli Barbunya - NutritionalInfo, priceLevel, category
-- [ ] Tavuk Yahni - NutritionalInfo, priceLevel, category
-- [ ] Fırında Tavuk - NutritionalInfo, priceLevel, category
-- [ ] Fırında Patates - NutritionalInfo, priceLevel, category
-- [ ] Fırında Sebze - NutritionalInfo, priceLevel, category
-- [ ] Güveç - NutritionalInfo, priceLevel, category
-- [ ] Kapama - NutritionalInfo, priceLevel, category
+- ✅ Hünkar Beğendi - ID: 339, priceLevel: 3, 125₺
+- ✅ Kuzu Kapama - ID: 340, priceLevel: 3, 130₺
+- ✅ Kuzu Yahni - ID: 341, priceLevel: 3, 115₺
+- ✅ Etli Barbunya - ID: 342, priceLevel: 2, 85₺
+- ✅ Tavuk Yahni - ID: 343, priceLevel: 2, 75₺
+- ✅ Fırında Tavuk - ID: 344, priceLevel: 2, 80₺
+- ✅ Fırında Patates - ID: 345, priceLevel: 1, 45₺
+- ✅ Fırında Sebze - ID: 346, priceLevel: 1, 55₺
+- ✅ Güveç - ID: 347, priceLevel: 2, 90₺
+- ✅ Kapama - ID: 348, priceLevel: 2, 85₺
 
 **Pilav (1):**
-- [ ] Pirinç Pilavı - NutritionalInfo, priceLevel, category
+- ✅ Pirinç Pilavı - ID: 349, priceLevel: 1, 35₺
 
-**Gereksinimler:**
-- [ ] Tüm 20 yemek için kalori/protein/karbonhidrat/yağ değerleri
-- [ ] Kategori bazlı fiyatlandırma (18₺-140₺ arası)
-- [ ] Vegetarian/Vegan/Halal flag'leri
-- [ ] Yemek.com'dan görsel URL'leri (Firecrawl)
-- [ ] foods.ts'e ekleme (ID: 326-345)
+**Yarım Kalan İşlem:**
+- 🔄 **24 düşük maliyetli yemek** eklenmeye başlandı (ID: 350-373)
+- ❌ **Duplicate kontrolü sonrası kaldırıldı** - Mevcut yemekler zaten var
+- 📝 **Maliyet dengesi** için farklı yemekler araştırılacak
+
+**Tamamlanan:**
+- ✅ Tüm 20 yemek için nutritionalInfo, priceLevel, category
+- ✅ Yemek.com ve Wikimedia'dan görsel URL'leri
+- ✅ foods.ts güncellendi (ID: 330-349)
+- ✅ image_registry.json güncellendi
 
 ### TASK-021: Veritabanı Genişletme (305 Yemek)
 
 **Durum**: ✅ Completed
 **Notlar**: Yemek veritabanı normalize edildi ve genişletildi.
+
+---
+
+## 📝 BEKLEYEN GÖREVLER (Pending)
+
+### TASK-MENU-001: Menü Oluşturma Sistemi Kontrolü
+
+**Durum**: ⏸️ Pending (Backend tamamlandıktan sonra)
+**Öncelik**: 🟡 Orta
+**Bağımlılıklar**:
+- ✅ Backend alt yapısı (AsyncStorage entegrasyonu)
+- ✅ Yemek veritabanı (349 yemek)
+- 🔄 Maliyet dengesi optimizasyonu
+
+**Kontrol Edilecekler:**
+- [ ] Düşük bütçeli menüler (50-100₺) oluşturma testi
+- [ ] Orta bütçeli menüler (100-200₺) oluşturma testi  
+- [ ] Yüksek bütçeli menüler (200₺+) oluşturma testi
+- [ ] Maliyet dengesi algoritması doğrulama
+- [ ] Fiyat dağılımı optimizasyonu (%40 düşük, %40 orta, %20 yüksek)
+
+**Not**: Backend ve veritabanı tamamlandıktan sonra menü oluşturma sistemi detaylıca test edilecek.
 
 ### TASK-UI-001: Dark Mode ve Modernizasyon
 

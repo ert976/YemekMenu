@@ -8,14 +8,14 @@
 ## 📋 Proje Özellikleri
 
 ### 🍽️ **Yemek Veritabanı**
-- **Toplam**: 150+ yemek (Genişletilmiş Veritabanı)
+- **Toplam**: 349 yemek (329 ana + 20 popüler yemek)
 - **Kategoriler**: 12 farklı kategori (Çorbalar, Sebze Yemekleri, Etli Yemekler, Döner & Kebap, Izgara & Mangal, Deniz Ürünleri, Baklagiller, Pilavlar, Hamur İşleri, Kahvaltı, Sütlü Tatlılar, Şerbetli Tatlılar, Meyveler)
 - **Diyet Seçenekleri**: Normal, Vejetaryen, Vegan, Düşük Karbonhidrat, Glütensiz, Helal
 - **Esneklik**: Çorbalar artık tüm öğünlerde (kahvaltı, öğle, akşam) tercih edilebilir.
 
 ### 🎨 **Teknik Özellikler**
 - **Platform**: React Native + Expo
-- **Database**: SQLite (mobil) / Universal LocalStorage (Web persistent)
+- **Database**: AsyncStorage (Mobile) / LocalStorage (Web) - Kalıcı veri saklama
 - **Type Safety**: TypeScript ile %95+ type coverage
 - **Performance**: expo-image caching, useMemo/useCallback optimizasyonları, FlatList virtualization
 - **Error Handling**: Merkezi errorHandler ve ErrorBoundary entegrasyonu

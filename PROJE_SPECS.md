@@ -17,7 +17,7 @@ Kişisel menü planlama uygulaması ile kullanıcıların sağlıklı ve dengeli
 | Karar          | Açıklama                             | Durum |
 | -------------- | ------------------------------------ | ----- |
 | Platform       | React Native + Expo (Cross-platform) | ✅    |
-| Database       | SQLite (Mobile) / LocalStorage (Web) | ✅    |
+| Database       | AsyncStorage (Mobile) / LocalStorage (Web) | ✅    |
 | Language       | TypeScript (%95+ type coverage)      | ✅    |
 | Performance    | expo-image, useMemo, FlatList        | ✅    |
 | Architecture   | Modüler Database, MCP Server Support | ✅    |
