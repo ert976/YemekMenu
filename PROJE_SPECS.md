@@ -119,16 +119,16 @@ npm audit
 
 **Priorite**: 🔴 Kritik
 **Durum**: ✅ Tamamlandı
-**Metric**:
+**Metric**: 
 
-- **Yemek Veritabanı:** 329 çeşit Türk mutfağı yemeği (Genişletilmiş Diyet Seçenekleri ile).
-- **Kategoriler:** Çorbalar, Zeytinyağlılar, Etli Yemekler, Baklagiller, Hamur İşleri, Tatlılar, Kahvaltılıklar, Dolma & Sarma, Makarna, Salatalar.
+- **Yemek Veritabanı:** 80 çeşit Türk mutfağı yemeği (Dolaylı ID sistemi ile 1-365 arası).
+- **Kategoriler:** Çorbalar, Sebze Yemekleri, Etli Yemekler, Döner & Kebap, Izgara & Mangal, Deniz Ürünleri, Baklagiller, Pilavlar, Hamur İşleri, Kahvaltı, Sütlü Tatlılar, Şerbetli Tatlılar.
 - **Kişiselleştirme:**
-  - Vejetaryen, Vegan, Glutensiz, Düşük Karbonhidrat filtreleri.
-  - "Serpme Kahvaltı" (Parça parça seçim imkanı: Peynir, Zeytin, Reçel, Ana Sıcak vb.).
-  - Bütçe dostu veya Gurme tercih modları.
-- **Fiyatlandırma:** 2025 Ocak market verilerine göre gerçekçi malzeme maliyeti (18₺-140₺)
-- **Beslenme:** Otomatik kalori/protein/karbonhidrat/yağ hesaplaması (kategori bazlı)
+  - Vejetaryen, Vegan, Glutensiz, Düşük Karbonhidrat, Helal filtreleri.
+  - 5 yıldız puanlama sistemi (🤢 😐 😍).
+  - Diyet tercihi (Settings üzerinden).
+- **Fiyatlandırma:** 2026 Ocak market verilerine göre gerçekçi malzeme maliyeti (5-680₺).
+- **Beslenme:** Tüm yemeklere estimatedPrice ve nutritionalInfo eklendi (kalori, protein, karbonhidrat, yağ).
 
 **Kabul Kriterleri:**
 

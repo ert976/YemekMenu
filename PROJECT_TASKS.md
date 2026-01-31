@@ -357,16 +357,16 @@
 
 - **AsyncStorage Entegrasyonu**: @react-native-async-storage/async-storage kuruldu
 - **Kalıcı Depolama**: Mobile'de artık veriler uygulama kapanınca kaybolmuyor
-- **20 Yeni Yemek Eklendi**: Pizza, Burger, Kuzu Tandır, Kadayıf, Kürdan Kebabı, vb. (ID: 330-349)
-- **16 Kahvaltılık Eklendi**: Menemen, Omlet, Tost, Poğaça, Peynirler, Çay, vb. (ID: 350-365)
-- **Toplam Yemek**: 329 → 365 yemek
+- **Yemek Sayısı Netleştirme**: Gerçek yemek sayısı 80 olarak doğrulandı (eskide 365/200 planı vardı)
+- **Fiyat & Besin Değerleri**: Tüm 80 yemeğe estimatedPrice ve nutritionalInfo eklendi
 - **2026 Ocak Fiyat Araştırması**: Market fiyatları araştırıldı (CarrefourSA, Migros)
-- **FAZ-1 & FAZ-2 Tamamlandı**: Tüm 80 yemeğe estimatedPrice ve nutritionalInfo eklendi
+- **FAZ-1 & FAZ-2 Tamamlandı**: Yemek veritabanı fiyatlandırma ve besin değerleri
 - **Fiyat Dağılımı**: 58% düşük (5-60₺), 29% orta (61-200₺), 14% yüksek (201+₺)
-- **MD Güncelleme**: PROJE_SPECS.md ve README.md güncellendi
+- **MD Güncelleme**: PROJE_SPECS.md ve README.md gerçek sayılara göre güncellendi
 - **GitHub Commit**: ba74ff5 - AsyncStorage ve 20 yeni yemek
 - **GitHub Commit**: b6d1f2a - Dokümantasyon güncellemeleri
 - **GitHub Commit**: 07388c6 - Fiyat güncellemeleri ve 16 kahvaltılık
+- **GitHub Commit**: 094168c - FAZ-2 Tamamlandı
 
 ---
 
@@ -446,3 +446,132 @@
 - [ ] Fiyat dağılımı analizi (%40 düşük, %40 orta, %20 yüksek)
 
 **Not**: Tüm fiyatlar 2026 Ocak 31 market fiyatlarına (CarrefourSA, Migros) göre hesaplanmıştır.
+
+---
+
+## 🎯 FAZ-3: Puanlama → Otomatik Menü Akışı (Öncelik: 🔴 Kritik)
+
+**Durum**: ⏸️ Pending (Başlanacak)
+**Hedef**: Kullanıcıların yemekleri puanlayarak otomatik dengeli menüler oluşturması
+
+**Kullanıcı Akışı:**
+
+1. **Puanlama Aşaması**
+   - Kullanıcı PreferenceFlow'da yemekleri puanlar (5 yıldız: 🤢 😐 😍)
+   - Rating'ler database'e kaydedilir
+   - User preferences oluşturulur (sevilenler, sevilmeyenler)
+
+2. **Otomatik Menü Oluşturma**
+   - İlk girişte otomatik menü oluşturulur
+   - Diyet tercihi (Settings üzerinden) değerlendirilir
+   - Gıda mühendisi algoritması ile dengeli menü oluşturulur
+
+3. **Menü Güncelleme**
+   - Diyet değişince menü otomatik güncellenir
+   - Puan değişince menü güncellenebilir
+
+**Bileşenler:**
+
+### FAZ-3.1: Puanlama Sistemi
+
+**Gereksinimler:**
+- [ ] PreferenceFlow'u test et ve debug et
+- [ ] Rating sistemi'ni doğrula (1-5 arası)
+- [ ] Rating'leri database'e kaydet (getUserRatings, rateFood)
+- [ ] User preferences'i sakla (sevilen/ sevilmeyen listesi)
+- [ ] Haptic feedback ekle (puanlama sırasında)
+
+**Hedef Dosyalar:**
+- `components/ui/PreferenceFlow.tsx` - Test ve iyileştirme
+- `database/ratings.ts` - Rating işlemleri doğrula
+- `types.ts` - Rating interface kontrol et
+
+### FAZ-3.2: Otomatik Menü Oluşturma
+
+**Gereksinimler:**
+- [ ] İlk girişte otomatik menü oluştur (auth.tsx'te)
+- [ ] Diyet değişince menü güncelle (SettingsScreen)
+- [ ] "Menüyü Güncelle" butonu ekle (ExploreScreen)
+- [ ] Kullanıcıya menü hazır bildirimi (toast/notification)
+
+**Hedef Dosyalar:**
+- `auth.tsx` - İlk girişte otomatik menü tetikleme
+- `app/(tabs)/settings.tsx` - Diyet değişince güncelleme
+- `app/(tabs)/explore.tsx` - Manuel güncelleme butonu
+
+### FAZ-3.3: Gıda Mühendisi Algoritması
+
+**Gereksinimler:**
+- [ ] mealPlanner.ts'da algoritmayı güçlendir
+- [ ] Besin dengesi hesapla (protein/karbonhidrat/yağ oranı)
+- [ ] Kategori çeşitliliği sağla (haftada en fazla 2x aynı kategori)
+- [ ] Maliyet dengesi optimize et (farklı bütçe seviyeleri)
+- [ ] Sağlıklı seçimler (öğün bazlı makro dengesi)
+
+**Algoritma Kuralları:**
+
+**Besin Dengesi:**
+- Günlük kalori: ~2000 kcal
+- Protein: ~100g (%20)
+- Karbonhidrat: ~250g (%50)
+- Yağ: ~70g (%30)
+
+**Kategori Çeşitliliği:**
+- Haftada en fazla 2x kırmızı et
+- Haftada en fazla 2x hamur işleri
+- Haftada en az 2x sebze yemeği
+- Haftada en az 2x baklagil
+
+**Maliyet Dengesi:**
+- Düşük bütçe: 50-100₺/gün
+- Orta bütçe: 100-200₺/gün
+- Yüksek bütçe: 200+₺/gün
+
+### FAZ-3.4: UI İyileştirmeleri
+
+**Gereksinimler:**
+- [ ] FoodCard'a fiyat gösterimi (estimatedPrice)
+- [ ] NutritionalInfoModal ekle (besin değerlerini göster)
+- [ ] Long press ile nutrition modal aç
+- [ ] Menü detay ekranı (günlük özet, toplam kalori, toplam fiyat)
+- [ ] Loading durumları (menü oluştururken skeleton göster)
+
+**Hedef Dosyalar:**
+- `components/ui/FoodCard.tsx` - Fiyat ve nutrition gösterimi
+- `components/ui/NutritionalInfoModal.tsx` - Besin değerleri modal
+- `app/(tabs)/explore.tsx` - Menü detay ve loading
+
+### FAZ-3.5: Test ve Optimizasyon
+
+**Gereksinimler:**
+- [ ] Demo ile test et (misafir girişi)
+- [ ] Farklı diyetlerle test et (vegan, vegetarian, normal)
+- [ ] Maliyet dengesi test et (düşük/orta/yüksek bütçe)
+- [ ] Besin dengesi test et (makro hesabı doğrula)
+- [ ] Performans test et (menü oluşturma süresi < 3 saniye)
+
+**Başarı Kriterleri:**
+- ✅ 5 yıldız puanlama sistemi çalışıyor
+- ✅ Otomatik menü oluşturuluyor
+- ✅ Diyet değişince menü güncelleniyor
+- ✅ Gıda mühendisi dengeli menü oluşturuyor
+- ✅ Maliyet dengesi sağlanıyor
+- ✅ Besin dengesi sağlanıyor
+- ✅ Demo test geçiyor
+
+**Sonuç:** Kullanıcılar yemekleri puanlayarak otomatik dengeli menüler oluşturabilecek (gıda mühendisi mantığı ile).
+
+---
+
+## 📋 Gelecek Görevler (Önem Sırasına Göre)
+
+### FAZ-4: Yemek Sayısı Artırma (Öncelik: 🔵 Düşük - İleri Tarihe Ertelendi)
+
+**Not:** Yemek sayısı artırma FAZ-3 tamamlandıktan sonra değerlendirilecek. Şu anki odak: Puanlama → Otomatik Menü akışı.
+
+- [ ] Kalan eksik yemekleri ekle (target: 200+ yemek)
+- [ ] Görsel optimizasyon (Yemek.com'dan yeni görseller)
+- [ ] Duplicate yemek kontrolü ve temizliği
+- [ ] Kategori dağılımını optimize et
+
+### FAZ-5: Diğer İyileştirmeler (Öncelik: 🔵 Düşük)

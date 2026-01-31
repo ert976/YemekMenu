@@ -72,6 +72,19 @@ YemekMenu/
 └── TODO.md             # Görev listesi
 ```
 
+### 🔧 **Geliştirme Akışı (Yeni)**
+
+**Puanlama → Otomatik Menü:**
+1. Kullanıcı PreferenceFlow'da yemekleri puanlar (🤢 😐 😍)
+2. Rating'ler database'e kaydedilir
+3. Otomatik menü oluşturulur (gıda mühendisi algoritması ile)
+4. Menü dengeli, sağlıklı ve çeşitli olur
+
+**Diyet Tercihleri:**
+- Settings'ten diyet seçimi (normal, vegan, vegetarian, glutenfree)
+- Diyet değişince menü otomatik güncellenir
+- Helal filtresi de mevcut
+
 ## 🎯 **Kullanım**
 
 ### 📱 **Başlangıç**
