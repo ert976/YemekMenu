@@ -352,3 +352,92 @@
 - **foods.ts Senkronizasyonu**: 18 yemek Wikimedia → Yemek.com görsellerine geçirildi
 - **Duplicate Gruplar**: 15'ten 12'ye indirgeme
 - **Benzersizlik**: ~%72 seviyesine yükseldi (hedef: %95+)
+
+### 31 Ocak 2026
+
+- **AsyncStorage Entegrasyonu**: @react-native-async-storage/async-storage kuruldu
+- **Kalıcı Depolama**: Mobile'de artık veriler uygulama kapanınca kaybolmuyor
+- **20 Yeni Yemek Eklendi**: Pizza, Burger, Kuzu Tandır, Kadayıf, Kürdan Kebabı, vb. (ID: 330-349)
+- **Toplam Yemek**: 329 → 349 yemek
+- **2026 Ocak Fiyat Araştırması**: Market fiyatları araştırıldı (CarrefourSA, Migros)
+- **Fiyat Bilgisi**: Dana kıyma 730-810₺/kg, Kuzu eti 982-1.700₺/kg, Yumurta ~5₺/adet
+- **Kahvaltılık Fiyatları**: Peynir 310-600₺/kg, Zeytin ~309₺/kg
+- **MD Güncelleme**: PROJE_SPECS.md ve README.md güncellendi
+- **GitHub Commit**: ba74ff5 - AsyncStorage ve 20 yeni yemek
+
+---
+
+## 📋 Gelecek Görevler (Önem Sırasına Göre)
+
+### FAZ-1: Kritik Fiyat Güncellemeleri (Öncelik: 🔴 Yüksek)
+
+**Hedef**: En popüler yemeklerin fiyatlarını 2026 Ocak market verilerine göre güncelle
+
+**Yapılacaklar:**
+1. [ ] 20 yeni popüler yemeğe estimatedPrice ekle
+   - Pizza: ~150₺ (evde) / 200₺ (dışarı)
+   - Burger: ~165₺ (evde) / 250₺ (dışarı)
+   - Kuzu Tandır: ~680₺ (malzeme: 500g kuzu eti ~600₺ + baharat)
+   - Hünkar Beğendi: ~620₺ (malzeme: 500g kuzu eti ~550₺ + patlıcan ~30₺ + süt/yağ ~40₺)
+   - Adana Kebap: ~95₺/porsiyon (malzeme: 200g kıyma ~160₺ + baharat)
+   
+2. [ ] Baklagillere fiyat ekle (4 kişilik maliyet)
+   - Kuru Fasulye: ~105₺ (500g fasulye 35₺ + soğan 10₺ + salça 20₺ + yağ 30₺ + baharat 10₺)
+   - Nohut: ~85₺ (500g nohut 30₺ + soğan 10₺ + salça 15₺ + yağ 25₺)
+   - Mercimek: ~55₺ (400g mercimek 20₺ + sebzeler/yağ 25₺)
+   
+3. [ ] Ana yemeklere fiyat ekle
+   - Etli yemekler: ~300-750₺ arası (et miktarına göre)
+   - Sebze yemekleri: ~55-290₺ arası
+   - Kebaplar: ~45-170₺/porsiyon
+   - Çorbalar: ~8-25₺/porsiyon
+
+### FAZ-2: Kahvaltı Kategorisi (Öncelik: 🟡 Orta)
+
+**Hedef**: Kahvaltı menüsü oluşturma özelliği için kahvaltılık ürünler ekle
+
+**Eklenecekler:**
+1. [ ] Temel Kahvaltılıklar
+   - Menemen: Maliyet ~30₺ (2 yumurta 10₺ + domates/biber 15₺ + yağ 5₺)
+   - Omlet: Maliyet ~35₺ (3 yumurta 15₺ + yağ 5₺ + peynir 15₺)
+   - Sahanda Yumurta: Maliyet ~25₺ (2 yumurta 10₺ + tereyağ 10₺ + baharat 5₺)
+   - Tost: Maliyet ~20₺ (ekmek 5₺ + kaşar 10₺ + tereyağ 5₺)
+   
+2. [ ] Hamur İşleri
+   - Simit: ~15₺
+   - Poğaça: ~20-25₺
+   - Açma: ~20₺
+   - Börek (çeşitleri): ~40-80₺
+   
+3. [ ] Peynir & Zeytin Çeşitleri
+   - Beyaz Peynir: ~15-30₺/porsiyon (50g)
+   - Taze Kaşar: ~15₺/porsiyon (30g)
+   - Ezine Peyniri: ~35-40₺/porsiyon (50g)
+   - Zeytin (çeşitleri): ~10-20₺/porsiyon (30g)
+   
+4. [ ] İçecekler
+   - Çay: ~5₺
+   - Türk Kahvesi: ~15-20₺
+   - Süt: ~8₺/bardak (200ml)
+   - Ayran: ~10-15₺
+   - Taze Sıkma Portakal Suyu: ~25-35₺
+   
+5. [ ] Diğer Kahvaltılıklar
+   - Bal: ~10-15₺/porsiyon (20g)
+   - Reçel: ~5-10₺/porsiyon (20g)
+   - Tereyağ: ~3-5₺/porsiyon (10g)
+   - Tahin-Pekmez: ~15₺
+   - Nutella: ~15-20₺
+   - Sürülebilir Peynir (Labne/Philadelphia): ~12-15₺
+
+**Kişi Başı Kahvaltı Maliyeti**: ~75-95₺ (ortalama)
+
+### FAZ-3: Diğer İyileştirmeler (Öncelik: 🔵 Düşük)
+
+- [ ] Kalan 329 yemeğin fiyatlarını otomatik hesaplama script'i
+- [ ] Görsel optimizasyon (Yemek.com'dan yeni görseller)
+- [ ] Duplicate yemek kontrolü ve temizliği
+- [ ] Menü planlama algoritması test ve optimizasyonu
+- [ ] Fiyat dağılımı analizi (%40 düşük, %40 orta, %20 yüksek)
+
+**Not**: Tüm fiyatlar 2026 Ocak 31 market fiyatlarına (CarrefourSA, Migros) göre hesaplanmıştır.
