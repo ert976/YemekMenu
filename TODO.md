@@ -22,7 +22,24 @@
 1. **Menü Mantığı Hatası**: Öğünler tek yemek yerine kombinasyon olmalı (TASK-MENU-002)
    - Öğle/Akşam: Ana Yemek + Yan Yemek + İçecek
    - Ara öğün: Meyve/Yoğurt (şekerli tatlı değil)
-2. **Kalan Görsel İyileştirmeleri**: Picsum görselleri yemeklerle alakalı olmayabilir, gerçek yemek görselleri bulunabilir
+
+2. **⚠️ Görsel Sorunu - DEVAM EDİYOR (1 Şubat 2026)**
+   - **Durum**: Picsum placeholder görseller kullanılıyor ama çoğu yemekle alakasız
+   - **Test**: 20-30 resim kontrol edildi, sadece 1-2 tanesi uygun çıktı
+   - **Root Cause**: yemek.com Cloudflare hotlink protection var (403 Forbidden)
+   - **Denenen Çözümler**:
+     - ❌ Direkt CDN URL'leri: 403/404 hatası
+     - ❌ Firecrawl screenshot: Cloudflare "Access denied" sayfası
+     - ❌ curl/wget User-Agent spoofing: Başarısız
+     - ❌ yemek.com tarif sayfaları scrape: Aynı koruma var
+   - **Alternatif Kaynaklar**:
+     - 🔄 Wikimedia Commons: Bazı Türk yemekleri var ama sınırlı
+     - 🔄 Pexels: Gerçek yemek fotoğrafları var ama API key gerekir
+     - 🔄 Unsplash Source: `https://source.unsplash.com/400x300/?kebab` (denenebilir)
+   - **Önerilen Çözüm**: 
+     - assets/images/ klasörüne lokal görseller indir
+     - Veya Unsplash Source kullan (generic ama yemek görselleri)
+   - **Not**: Şu an için Picsum ile devam, ileride gerçek görseller eklenecek
 
 ## ✅ 1 Şubat 2026 Tamamlananlar
 

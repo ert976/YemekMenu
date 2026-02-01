@@ -33,6 +33,26 @@
 - **Script**: `scripts/update-images.js` ile batch güncelleme yapıldı
 - **Sonuç**: 0 yemek.com URL'i kaldı, tüm görseller Picsum üzerinden çalışıyor
 - **Benzersizlik**: Her yemek için food name bazlı unique seed kullanıldı
+
+**⚠️ Görsel Kalitesi Uyarısı (1 Şubat 2026 - NOT):**
+
+- **Test Sonucu**: 20-30 resim kontrol edildi, sadece 1-2 tanesi yemekle alakalı çıktı
+- **Neden**: Picsum seed bazlı rastgele görseller üretiyor (manzara, hayvan, nesne vs.)
+- **Gerçek Yemek Görselleri**: Eski commit'lerde (3362bc0) 173 yemek.com URL'i mevcut ama indirilemiyor
+- **Denenen Yöntemler**:
+  - ❌ curl/wget User-Agent spoofing: 403/404
+  - ❌ Firecrawl screenshot: Cloudflare "Access denied"
+  - ❌ Direkt CDN URL'leri: Hotlink protection aktif
+- **Alternatif Kaynaklar Araştırıldı**:
+  - 🔄 Wikimedia Commons: Bazı Türk yemekleri var, CORS-friendly
+  - 🔄 Pexels: Gerçek yemek fotoğrafları, API key gerekli
+  - 🔄 Unsplash Source: `source.unsplash.com/400x300/?food` (denenebilir)
+- **Gelecek Çözüm Seçenekleri**:
+  1. **assets/images/** klasörüne lokal görseller indir (en güvenilir)
+  2. Unsplash Source kullan (generic yemek görselleri)
+  3. Pexels API ile gerçek görseller çek (API key gerekli)
+- **Şu Anki Durum**: Picsum placeholder görsellerle devam ediliyor
+- **Not**: `scripts/yemek_foods.json` dosyasında eski yemek.com linkleri kayıtlı
 **Yeni Strateji:**
 
 > **325 yemek yerine 197 helal yemek!**  
