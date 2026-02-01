@@ -1702,7 +1702,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Humus",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2014/06/mercimek-corbasi-yemekcom.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2020/09/humus-yemekcom.jpg",
     category: "Mezeler",
     is_vegetarian: true,
     is_vegan: true,
@@ -2102,7 +2102,7 @@ export const COMMON_FOODS: Food[] = [
   // ŞERBETLİ TATLILAR (8 yemek - ID: 426-433)
   {
     name: "Revani",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2014/06/mercimek-corbasi-yemekcom.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2014/06/revani-yemekcom.jpg",
     category: "Şerbetli Tatlılar",
     is_vegetarian: true,
     is_vegan: false,
@@ -2114,7 +2114,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Şekerpare",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2014/06/mercimek-corbasi-yemekcom.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2022/04/sekerpare-tarifi-yemekcom.jpg",
     category: "Şerbetli Tatlılar",
     is_vegetarian: true,
     is_vegan: false,
@@ -2199,7 +2199,7 @@ export const COMMON_FOODS: Food[] = [
   // SÜTLÜ TATLILAR (7 yemek - ID: 434-440)
   {
     name: "Kazandibi",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2014/06/mercimek-corbasi-yemekcom.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2021/08/kazandibi-yemekcom.jpg",
     category: "Sütlü Tatlılar",
     is_vegetarian: true,
     is_vegan: false,
@@ -2211,7 +2211,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Tavuk Göğsü",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2014/06/mercimek-corbasi-yemekcom.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2014/12/gercek-tavuk-gogsu-tarifi-yeni.jpg",
     category: "Sütlü Tatlılar",
     is_vegetarian: true,
     is_vegan: false,
