@@ -25,6 +25,10 @@
 
 ## ✅ 1 Şubat 2026 Tamamlananlar
 
+- [x] **Image URL Fix**: 156 yemek.com URL'i Picsum'a çevrildi ✅
+  - Cloudflare hotlink protection nedeniyle yemek.com görselleri yüklenmiyordu
+  - Tüm URL'ler `https://picsum.photos/seed/{food_name}/400/300` formatına dönüştürüldü
+  - LazyImage runtime conversion artık yedek olarak çalışıyor
 - [x] **FAZ-1**: 20 Yeni Yemek Verisi - ID 330-349 için tam veri girişi ✅
 - [x] **FAZ-2**: Kritik Görsel Düzeltmeleri - 18 yemek için yanlış görseller düzeltildi ✅
   - ID 339-341 (Hünkar Beğendi, Kuzu Kapama, Kuzu Yahni)
@@ -47,6 +51,49 @@
 - [ ] **FAZ-6**: 40 özel yemek ekleme (Dolma, Sarma, İçecekler)
 - [ ] **FAZ-7**: Görsel optimizasyonu - %95+ benzersizlik hedefi
 - [ ] **FAZ-8**: Final test ve Admin Paneli doğrulama
+
+## 🚨 YENİ SORUN: Menü Oluşturma Mantığı Hatası (1 Şubat 2026)
+
+### ❌ Tespit Edilen Problemler
+
+**Kullanıcı Test Senaryosu:**
+- Öğle Yemeği: Sadece **Karnıyarık** (tek yemek)
+- Akşam Yemeği: Sadece **Testi Kebabı** (tek yemek)
+- Ara Öğün: **Un Helvası** (şekerli tatlı)
+- İkindi: *(Meyve önerisi - kullanıcı tarafından fark edildi)*
+
+### 🔍 Diyetisyen Gözüyle Analiz
+
+```
+❌ MEVCUT MANTIK (HATALI):
+Öğle:     Karnıyarık (yağlı, ağır, tek yemek)
+Akşam:    Testi Kebabı (yağlı, ağır, tek yemek)
+Ara:      Un Helvası (şeker, kan şekeri riski)
+
+✅ DOĞRU MENÜ MANTIĞI:
+Öğle:     Ana Yemek + Salata + Çorba
+Akşam:    Ana Yemek + Yan Yemek + Tatlı
+Ara:      Meyve (elma, armut) veya Yoğurt
+İkindi:   Protein (ceviz, badem) veya Süt
+```
+
+### 🎯 Gereksinimler
+
+- [ ] **Besin Grubu Dengesi**: Her öğün Ana Yemek + Yan Yemek + İçecek
+- [ ] **Ara Öğün Mantığı**: Şekerli tatlılar yerine Meyve/Süt/Yoğurt
+- [ ] **Öğün Çeşitliliği**: Tek yemek yerine kombinasyon
+- [ ] **Kan Şekeri Kontrolü**: Diyabet riski olan kullanıcılar için düşük glisemik seçenekler
+
+### 📋 Kategorilere Göre Öğün Dağılımı
+
+| Öğün | Ana | Yan | İçecek | Ara Öğün Seçenekleri |
+|------|-----|-----|--------|---------------------|
+| **Öğle** | Et/Tavuk/Baklagil | Pilav/Makarna + Salata | Ayran/Çay | - |
+| **Akşam** | Et/Tavuk/Baklagil | Sebze + Salata | Ayran/Çay | - |
+| **Ara** | - | - | - | Meyve, Yoğurt, Süt, Kefir |
+| **İkindi** | - | - | - | Kuruyemiş, Peynir, Süt |
+
+---
 
 ## ✅ Accomplished Today (30 Ocak 2026)
 

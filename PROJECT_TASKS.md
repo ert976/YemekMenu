@@ -25,6 +25,14 @@
 **Durum**: ✅ **Tamamlandı** (1 Şubat 2026)
 **Öncelik**: 🔴 Kritik
 **Son Güncelleme**: 1 Şubat 2026
+
+**🔥 1 Şubat 2026 - Image URL Acil Fix:**
+
+- **Sorun**: yemek.com Cloudflare hotlink protection nedeniyle görseller 403 Forbidden dönüyordu
+- **Çözüm**: 156 yemek.com URL'i `picsum.photos` servisine çevrildi
+- **Script**: `scripts/update-images.js` ile batch güncelleme yapıldı
+- **Sonuç**: 0 yemek.com URL'i kaldı, tüm görseller Picsum üzerinden çalışıyor
+- **Benzersizlik**: Her yemek için food name bazlı unique seed kullanıldı
 **Yeni Strateji:**
 
 > **325 yemek yerine 197 helal yemek!**  
@@ -288,6 +296,94 @@
 - [ ] Fiyat dağılımı optimizasyonu (%40 düşük, %40 orta, %20 yüksek)
 
 **Not**: Backend ve veritabanı tamamlandıktan sonra menü oluşturma sistemi detaylıca test edilecek.
+
+### TASK-MENU-002: Menü Mantığı Hatası ve Diyetisyen Kuralları (1 Şubat 2026)
+
+**Durum**: 🔄 **In Progress** - Kullanıcı testiyle tespit edildi
+**Öncelik**: 🔴 **Kritik** - Diyetisyen mantığına aykırı
+**Tarih**: 1 Şubat 2026
+
+**Kullanıcı Test Sonucu:**
+
+| Öğün | Atanan Yemek | Sorun | Doğru Olmalı |
+|------|---------------|-------|--------------|
+| **Öğle** | Sadece Karnıyarık | ❌ Tek yemek, ağır, yağlı | Ana Yemek + Salata + Çorba |
+| **Akşam** | Sadece Testi Kebabı | ❌ Tek yemek, ağır | Ana Yemek + Yan Yemek + Tatlı |
+| **Ara Öğün** | Un Helvası | ❌ Şekerli tatlı (kan şekeri riski) | Meyve (elma, armut) veya Yoğurt |
+| **İkindi** | *(boş)* | ❌ Eksik öğün | Kuruyemiş veya Peynir |
+
+**Diyetisyen Gözüyle Analiz:**
+
+```
+❌ MEVCUT MANTIK (HATALI):
+- Öğle: Karnıyarık (sadece ana yemek, 280 kcal)
+- Akşam: Testi Kebabı (sadece ana yemek, 450 kcal)
+- Ara: Un Helvası (şeker, 320 kcal)
+- Toplam: ~1050 kcal (yetersiz)
+- Protein: ~35g (yetersiz)
+- Kan şekeri: Düşme riski (şekerli ara öğün)
+
+✅ DOĞRU MENÜ MANTIĞI:
+- Öğle: Ana Yemek + Salata + Çorba + Ayran (~600 kcal)
+- Akşam: Ana Yemek + Yan Yemek + Tatlı + Çay (~800 kcal)
+- Ara: Meyve (elma: 95 kcal) veya Yoğurt (~150 kcal)
+- İkindi: Ceviz/Badem (~200 kcal) veya Peynir (~180 kcal)
+- Toplam: ~1750-1850 kcal (optimal)
+- Protein: ~80-100g (yeterli)
+- Kan şekeri: Stabil (düşük glisemik)
+```
+
+**Algoritma Gereksinimleri:**
+
+- [ ] **Öğün Yapısı**: Her öğün = Ana + Yan + İçecek
+- [ ] **Besin Dengesi**: Günlük protein 80-100g, kalori 1800-2000 kcal
+- [ ] **Ara Öğün Mantığı**: 
+  - Meyve (elma, armut, portakal)
+  - Süt ürünleri (yoğurt, kefir, süt)
+  - Kuruyemiş (ceviz, badem, fındık)
+  - ❌ Şekerli tatlılar (kan şekeri riski)
+- [ ] **Kategori Çeşitliliği**: 
+  - Günde 2 öğün sebze/salata
+  - Günde 1 öğün baklagil veya et
+  - Haftada 2-3 kez balık
+- [ ] **Maliyet Dengesi**: %40 düşük + %40 orta + %20 yüksek fiyat
+- [ ] **Glisemik Kontrol**: Düşük glisemik yemekler ara öğünlerde
+
+**Teknik İyileştirmeler:**
+
+1. **MealPlanner.ts Algoritması**:
+   - `createBalancedMenu()` fonksiyonu güçlendir
+   - Her öğün için 3 parça zorunlu (ana + yan + içecek)
+   - Ara öğünler için ayrı kural seti
+   - Kategori döngüsü (aynı kategori 2 günde 1 kez)
+
+2. **Yemek Kategori Eşleştirmesi**:
+   - Ana Yemek: Etli, Tavuk, Baklagil, Balık
+   - Yan Yemek: Pilav, Makarna, Sebze, Salata
+   - İçecek: Ayran, Çay, Su, Kefir
+   - Ara Öğün: Meyve, Yoğurt, Kuruyemiş, Peynir
+
+3. **Kan Şekeri Optimizasyonu**:
+   - Yüksek glisemik yemekler ana öğünlere
+   - Düşük glisemik ara öğünlere
+   - Şekerli tatlılar yasak listesi (ara öğün)
+
+**Başarı Kriterleri:**
+
+- ✅ Her öğünde en az 3 parça (ana + yan + içecek)
+- ✅ Günlük 1800-2000 kcal arası
+- ✅ Günlük 80-100g protein
+- ✅ Ara öğünlerde meyve/yoğurt/kuruyemiş
+- ❌ Ara öğünlerde şekerli tatlı yok
+- ✅ Kan şekeri dostu menüler
+
+**Diyetisyen Notu:**
+
+> "Un Helvası gibi şekerli tatlıları ara öğüne koymak kan şekerini hızla yükseltip sonra düşürür. Bu durum ikindi saatlerinde hipoglisemi (kan şekeri düşmesi) riski yaratır. Ara öğünlerde elma, armut gibi lifli meyveler veya yoğurt tercih edilmeli."
+> 
+> — Klinik Diyetisyen (Kullanıcı geri bildiriminden)
+
+---
 
 ### TASK-UI-001: Dark Mode ve Modernizasyon
 
