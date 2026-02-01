@@ -143,17 +143,25 @@ npm test -- --watch
 ### SPEC-014: Kitlesel Görsel Benzersizleştirme (Visual Uniqueness)
 
 **Priorite**: 🔴 Kritik
-**Durum**: 🔄 Devam Ediyor (131/329 Benzersiz)
+**Durum**: 🔄 Devam Ediyor (120/120 Benzersiz - Hedef 200)
 **Metric**: Her yemeğin kendine ait, benzersiz (unique) ve HD görseli olmalı
 
 **Gereksinimler:**
 
-- [x] Tüm 329 yemek için dublike/placeholder resimlerin otomatik tespiti
+- [x] Tüm 120 yemek için dublike/placeholder resimlerin otomatik tespiti
 - [x] `database/image_registry.json` ile kalıcı görsel hafızası (Sıfır Veri Kaybı)
-- [x] Çorbalar, Kahvaltılıklar ve Tatlıların (131 adet) benzersizleştirilmesi
-- [ ] Kebablar, Makarnalar ve Salataların (198 adet) benzersizleştirilmesi
+- [x] FAZ-4: 40 yeni yemek eklendi (ID: 366-405)
+- [ ] FAZ-5: 60 popüler yemek eklenecek (Kebap, Tatlı, Çorba çeşitleri)
+- [ ] FAZ-6: 40 özel yemek eklenecek (Dolma, Sarma, İçecekler)
 - [x] UI Üzerinden Hatalı Resim İhbar Sistemi (🚩 Butonu)
 - [x] Admin Paneli (`/admin/gallery`) ile görsel denetim
+
+**Yemek.com Referans URL'leri (Doğrulanmış):**
+- İskender Kebap: https://cdn.yemek.com/mncrop/600/315/uploads/2015/05/iskender-one-cikan.jpg
+- Kuzu Tandır: https://cdn.yemek.com/mncrop/600/315/uploads/2018/07/bby-tandir-yemekcom.jpg
+- Testi Kebabı: https://cdn.yemek.com/mncrop/600/315/uploads/2025/08/testi-kebabi-tarifi.jpg
+- Cağ Kebabı: https://cdn.yemek.com/mncrop/600/315/uploads/2025/07/cag-kebabi-tarifi.jpg
+- Patates Köftesi: https://cdn.yemek.com/mncrop/600/315/uploads/2024/01/patates-koftesi-yemekcom.jpg
 
 **Kabul Kriterleri:**
 
@@ -369,3 +377,59 @@ node scripts/audit_uniqueness.js
 ---
 
 **Not**: Bu dosya PROJECT_TASKS.md ile birlikte kullanılır.
+
+---
+
+## 📊 Ek Bölümler
+
+### 💰 Fiyatlandırma Stratejisi (Pricing Strategy)
+
+**Veri Kaynakları:**
+
+1. **Dış Veri Kaynakları & API Entegrasyonu (Otomatik)**
+   - **Resmi Veriler (TÜİK / TCMB):** Temel gıda maddelerinin aylık ortalama fiyatları
+   - **Market API'leri:** Getir, Migros vb. ürün fiyatları
+
+2. **Web Scraping (Yarı-Otomatik)**
+   - `Firecrawl` ile market sitelerinden periyodik tarama
+   - AI normalizasyon ile birim fiyat (₺/gr) hesaplama
+
+3. **Kurumsal Giriş Paneli (Manuel)**
+   - Maliyet Paneli: Firma satın alma fiyatları
+   - Reçete Sistemi: Otomatik porsiyon maliyeti hesaplama
+
+**Yol Haritası:**
+- ✅ Aşama 1: `priceLevel` (1, 2, 3) mantığı stabil
+- ⏸️ Aşama 2: `ingredients[]` dizisi ekleme
+- ⏸️ Aşama 3: Mock Price API ile dinamik maliyet
+- ⏸️ Aşama 4: Gerçek API/Scraper entegrasyonu
+
+---
+
+### 🚀 Deployment & Mağaza Yayını
+
+**EAS Build Yapılandırması:**
+
+```bash
+# 1. EAS CLI Kurulumu
+npm install -g eas-cli
+eas login
+
+# 2. Proje Yapılandırması
+eas build:configure
+
+# 3. Android Yayını (.aab)
+eas build --platform android --profile production
+
+# 4. iOS Yayını (.ipa)
+eas build --platform ios --profile production
+```
+
+**Gerekli Varlıklar:**
+- İkon: 1024x1024 px (şeffaf olmayan arka plan)
+- Splash Screen: 2048x2048 px (ortalanmış logo)
+
+**Kontrol Listesi:**
+- [ ] EAS build test edildi (TestFlight/Internal Testing)
+- [ ] Mağaza açıklaması güncellendi (Ekonomi Modu vurgusu)
+- [ ] Ekran görüntüleri modern UI ile hazırlandı

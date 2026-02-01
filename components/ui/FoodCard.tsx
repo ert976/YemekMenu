@@ -17,6 +17,7 @@ import {
 import { Food, UserRating } from "../../types";
 import { LazyImage } from "./LazyImage";
 import { SkeletonLoader } from "./SkeletonLoader";
+import { NutritionalInfoModal } from "./NutritionalInfoModal";
 
 import { useColorScheme } from "../../hooks/use-color-scheme";
 
@@ -44,6 +45,8 @@ export const FoodCard: React.FC<FoodCardProps> = ({
   const [rating, setRating] = useState(userRating?.rating || 0);
   const [scaleAnim] = useState(new Animated.Value(1));
   const [ratingAnim] = useState(new Animated.Value(0));
+  const [nutritionModalVisible, setNutritionModalVisible] = useState(false);
+  const [longPressTimer, setLongPressTimer] = useState<ReturnType<typeof setTimeout> | null>(null);
 
   const cardSizes = {
     small: { width: 140, height: 180, imageHeight: 80 },
@@ -62,6 +65,14 @@ export const FoodCard: React.FC<FoodCardProps> = ({
       toValue: 0.95,
       useNativeDriver: true,
     }).start();
+
+    const timer = setTimeout(() => {
+      if (food.nutritionalInfo) {
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+        setNutritionModalVisible(true);
+      }
+    }, 500);
+    setLongPressTimer(timer);
   };
 
   const handlePressOut = () => {
@@ -69,6 +80,11 @@ export const FoodCard: React.FC<FoodCardProps> = ({
       toValue: 1,
       useNativeDriver: true,
     }).start();
+
+    if (longPressTimer) {
+      clearTimeout(longPressTimer);
+      setLongPressTimer(null);
+    }
   };
 
   const handleCardPress = () => {
@@ -172,9 +188,26 @@ export const FoodCard: React.FC<FoodCardProps> = ({
       );
     }
 
+    if (food.nutritionalInfo) {
+      badges.push(
+        <View
+          key="nutrition"
+          style={[styles.badge, { backgroundColor: theme.info }]}
+        >
+          <Text style={styles.badgeText}>🥗</Text>
+        </View>,
+      );
+    }
+
     return badges.length > 0 ? (
       <View style={styles.dietaryBadges}>{badges}</View>
     ) : null;
+  };
+
+  const getPriceColor = () => {
+    if (food.priceLevel === 1) return theme.success;
+    if (food.priceLevel === 2) return theme.warning;
+    return theme.error;
   };
 
   return (
@@ -254,6 +287,18 @@ export const FoodCard: React.FC<FoodCardProps> = ({
             {food.category}
           </Text>
 
+          {food.estimatedPrice && (
+            <Text
+              style={[
+                styles.price,
+                { color: getPriceColor() },
+              ]}
+              numberOfLines={1}
+            >
+              ~{food.estimatedPrice} ₺
+            </Text>
+          )}
+
           {showRating && (
             <View style={styles.ratingSection}>
               {renderStars()}
@@ -268,6 +313,12 @@ export const FoodCard: React.FC<FoodCardProps> = ({
           )}
         </View>
       </TouchableOpacity>
+
+      <NutritionalInfoModal
+        visible={nutritionModalVisible}
+        onClose={() => setNutritionModalVisible(false)}
+        food={food}
+      />
     </Animated.View>
   );
 };
@@ -336,8 +387,13 @@ const styles = StyleSheet.create({
   },
   category: {
     ...Typography.body.small,
-    marginBottom: Spacing.sm,
+    marginBottom: Spacing.xs,
     textTransform: "capitalize",
+  },
+  price: {
+    ...Typography.body.small,
+    fontWeight: "600",
+    marginBottom: Spacing.sm,
   },
   ratingSection: {
     alignItems: "center",
