@@ -1,17 +1,22 @@
 # YemekMenu - Kişisel Menü Planlama Uygulaması
 
 > 🍳 **React Native + Expo** ile geliştirilen kişisel menü planlama uygulaması
-> 🎨 **150+ yemek** seçeneği ile zengin menü oluşturma
+> 🎨 **120 yemek** seçeneği ile zengin menü oluşturma (Hedef: 200)
 > 🎯 **Stitch tasarım sistemi** ile modern ve kullanıcı dostu arayüz
 > 📱 **Enterprise seviyesinde** performans ve stability
 
 ## 📋 Proje Özellikleri
 
 ### 🍽️ **Yemek Veritabanı**
-- **Toplam**: 80 yemek (44 ana + 36 yeni popüler & kahvaltılık)
-- **Kategoriler**: 12 farklı kategori (Çorbalar, Sebze Yemekleri, Etli Yemekler, Döner & Kebap, Izgara & Mangal, Deniz Ürünleri, Baklagiller, Pilavlar, Hamur İşleri, Kahvaltı, Sütlü Tatlılar, Şerbetli Tatlılar, Meyveler)
+- **Toplam**: 120 yemek (mevcut) / Hedef: 200 yemek (Hybrid 200 Stratejisi)
+- **Son Güncelleme**: 1 Şubat 2026 - 40 yeni yemek eklendi (Toplam: 120)
+- **Yeni Eklenen (FAZ-4)**: 40 kritik yemek (ID: 366-405) - Pilav, Makarna, Zeytinyağlı, Börek, Salata, Meze, Deniz, Tatlı
+- **Görsel Benzersizliği**: Kritik hatalar düzeltildi, yemek.com kaynakları eklendi
+- **Kategoriler**: 15 farklı kategori (Pilavlar, Makarna, Zeytinyağlılar, Mezeler, Deniz Ürünleri eklendi) (Çorbalar, Sebze Yemekleri, Etli Yemekler, Döner & Kebap, Izgara & Mangal, Deniz Ürünleri, Baklagiller, Pilavlar, Hamur İşleri, Kahvaltı, Sütlü Tatlılar, Şerbetli Tatlılar, Meyveler)
 - **Diyet Seçenekleri**: Normal, Vejetaryen, Vegan, Düşük Karbonhidrat, Glütensiz, Helal
-- **Fiyatlandırma**: Her yemeğin tahmini fiyatı (estimatedPrice) ve besin değeri (nutritionalInfo) mevcut
+- **Fiyatlandırma**: 2026 Ocak market verilerine göre güncellendi (5-680₺ arası)
+- **Besin Değerleri**: Tüm 80 yemeğe nutritionalInfo eklendi (kalori, protein, karbonhidrat, yağ)
+- **Görsel Kayıtları**: image_registry.json ile kalıcı görsel hafızası
 - **Esneklik**: Çorbalar artık tüm öğünlerde (kahvaltı, öğle, akşam) tercih edilebilir.
 
 ### 🎨 **Teknik Özellikler**

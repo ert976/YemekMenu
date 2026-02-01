@@ -41,9 +41,12 @@
 - [x] Mevcut 325 yemek analizi: 180 popüler yemek seçildi
 - [x] Eksik 20 popüler yemek tespit edildi
 - [x] **Hybrid 200 Liste**: `hybrid_200_foods.json` oluşturuldu
-- [ ] 20 yeni yemek için veri girişi (NutritionalInfo, priceLevel)
-- [ ] foods.ts güncelleme: 325 → 200 yemek
-- [ ] 200 yemek için görsel ataması (Firecrawl)
+- [x] 20 yeni yemek için veri girişi (NutritionalInfo, priceLevel) ✅ 1 Şubat 2026
+- [x] foods.ts güncelleme: 20 yeni yemek eklendi (ID: 330-349) ✅
+- [x] Kritik görsel düzeltmeleri: 18 yemek için yemek.com görselleri atandı ✅
+- [x] **FAZ-4**: 40 kritik yemek eklendi (ID: 366-405) - Pilav, Makarna, Zeytinyağlı, Börek, Salata, Meze, Deniz, Tatlı ✅ 1 Şubat 2026
+- [ ] **FAZ-5**: 60 popüler yemek eklenecek (Kebap, Tatlı, Çorba çeşitleri)
+- [ ] **FAZ-6**: 40 özel yemek eklenecek (Dolma, Sarma, İçecekler)
 - [ ] Hedef: %95+ benzersizlik
 - [ ] Admin Paneli doğrulama
 
