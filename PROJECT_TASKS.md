@@ -415,6 +415,17 @@
 
 ## 📝 GÖREV GÜNCELLEME NOTLARI
 
+### 1 Şubat 2026 - Acil Görsel Fix: yemek.com → Picsum
+
+- **🚨 Kritik Sorun**: yemek.com Cloudflare hotlink protection nedeniyle 403 Forbidden hatası
+- **🔧 Çözüm**: 156 yemek.com URL'i Picsum Photos'a çevrildi
+- **📸 Yeni Format**: `https://picsum.photos/seed/{yemek_adı}/400/300`
+- **📝 Script**: `scripts/update-images.js` batch güncelleme aracı oluşturuldu
+- **🧹 Temizlik**: `image_issues_log.json` sıfırlandı (215 eski hata kaydı)
+- **✅ Sonuç**: Tüm görseller şimdi CORS-friendly Picsum servisi üzerinden yükleniyor
+- **📦 Commit**: `615292b` - fix(images): Convert 156 yemek.com URLs to Picsum Photos
+- **🎯 Not**: Picsum görselleri placeholder'dır, ileride gerçek yemek görselleri ile değiştirilebilir
+
 ### 23 Ocak 2026
 
 - Çoklu Dil (i18n) sistemi kuruldu. TR ve EN desteği eklendi.

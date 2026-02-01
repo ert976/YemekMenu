@@ -17,11 +17,12 @@
 **Etli:** Hünkar Beğendi, Kuzu Kapama, Kuzu Yahni, Etli Barbunya, Tavuk Yahni, Fırında Tavuk, Fırında Patates, Fırında Sebze, Güveç, Kapama  
 **Pilav:** Pirinç Pilavı
 
-## 🚩 Current Problems
+## 🚩 Mevcut Problemler
 
-1. **Görsel Atama**: 200 yemek için %95+ benzersiz görsel hedefi
-2. **20 Yeni Yemek**: Görsel ve veri girişi gerekiyor
-3. **Registry**: 104 görsel → 200 yemek için yetersiz
+1. **Menü Mantığı Hatası**: Öğünler tek yemek yerine kombinasyon olmalı (TASK-MENU-002)
+   - Öğle/Akşam: Ana Yemek + Yan Yemek + İçecek
+   - Ara öğün: Meyve/Yoğurt (şekerli tatlı değil)
+2. **Kalan Görsel İyileştirmeleri**: Picsum görselleri yemeklerle alakalı olmayabilir, gerçek yemek görselleri bulunabilir
 
 ## ✅ 1 Şubat 2026 Tamamlananlar
 
@@ -95,7 +96,17 @@ Ara:      Meyve (elma, armut) veya Yoğurt
 
 ---
 
-## ✅ Accomplished Today (30 Ocak 2026)
+## ✅ 1 Şubat 2026 Yapılanlar
+
+- **🖼️ Görsel URL Fix**: 156 yemek.com URL'i Picsum'a çevrildi ✅
+  - Cloudflare hotlink protection nedeniyle yemek.com görselleri yüklenmiyordu (403 Forbidden)
+  - Tüm URL'ler `https://picsum.photos/seed/{food_name}/400/300` formatına dönüştürüldü
+  - Türkçe karakter normalizasyonu eklendi (ü→u, ş→s, ı→i, ö→o, ç→c, ğ→g)
+  - `scripts/update-images.js` batch güncelleme script'i oluşturuldu
+  - `image_issues_log.json` temizlendi (215 eski hata kaydı silindi)
+  - **Commit**: 615292b - fix(images): Convert 156 yemek.com URLs to Picsum Photos
+
+## ✅ 30 Ocak 2026 Yapılanlar
 
 - **Strateji Değişimi**: 325 → 200 yemek kararı (Yemeksepeti verilerine göre)
 - **Hybrid Liste**: 180 mevcut + 20 yeni = 200 yemek listesi oluşturuldu
