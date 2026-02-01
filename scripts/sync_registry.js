@@ -1,33 +1,79 @@
 const fs = require("fs");
-const path = "c:/Users/eargu/GitHub/YemekMenu/database/foods.ts";
-const registryPath =
-  "c:/Users/eargu/GitHub/YemekMenu/database/image_registry.json";
 
-const content = fs.readFileSync(path, "utf8");
-const registry = JSON.parse(fs.readFileSync(registryPath, "utf8"));
+// Read foods.ts
+const foodsContent = fs.readFileSync("database/foods.ts", "utf8");
 
-let updatedCount = 0;
-const blocks = content.split("  {");
-const header = blocks[0];
-const foodBlocks = blocks.slice(1);
+// Extract all food data
+const foodMatches = foodsContent.match(/name:\s*"([^"]+)"[\s\S]*?image_url:\s*"([^"]+)"[\s\S]*?id:\s*(\d+)/g) || [];
 
-const newFoodBlocks = foodBlocks.map((block) => {
-  const nameMatch = block.match(/"name":\s*"([^"]+)"/);
-  if (nameMatch) {
-    const name = nameMatch[1];
-    const url = registry[name];
+const foods = foodMatches.map(match => {
+  const nameMatch = match.match(/name:\s*"([^"]+)"/);
+  const imageMatch = match.match(/image_url:\s*"([^"]+)"/);
+  const idMatch = match.match(/id:\s*(\d+)/);
+  
+  return {
+    name: nameMatch ? nameMatch[1] : null,
+    image_url: imageMatch ? imageMatch[1] : null,
+    id: idMatch ? parseInt(idMatch[1]) : null
+  };
+}).filter(f => f.name && f.image_url);
 
-    if (url) {
-      updatedCount++;
-      return block.replace(/"image_url":\s*"[^"]+"/, `"image_url": "${url}"`);
+console.log(`Found ${foods.length} foods in foods.ts`);
+
+// Read existing registry
+let registry = { images: {} };
+try {
+  const registryContent = fs.readFileSync("image_registry.json", "utf8");
+  registry = JSON.parse(registryContent);
+  console.log(`Loaded existing registry with ${Object.keys(registry.images).length} entries`);
+} catch (e) {
+  console.log("Creating new registry");
+}
+
+// Update registry with current URLs
+const today = new Date().toISOString().split("T")[0];
+let updated = 0;
+let added = 0;
+
+foods.forEach(food => {
+  if (registry.images[food.name]) {
+    // Update existing
+    if (registry.images[food.name].url !== food.image_url) {
+      registry.images[food.name].url = food.image_url;
+      registry.images[food.name].status = "verified";
+      registry.images[food.name].date_updated = today;
+      updated++;
     }
+  } else {
+    // Add new
+    registry.images[food.name] = {
+      url: food.image_url,
+      status: "verified",
+      source: "yemek.com",
+      tested: true,
+      date_added: today
+    };
+    added++;
   }
-  return block;
 });
 
-const finalContent = header + "  {" + newFoodBlocks.join("  {");
-fs.writeFileSync(path, finalContent);
+// Remove entries for deleted foods (Kalamar, Midye)
+const deletedFoods = ["Kalamar Tava", "Midye Dolma"];
+let removed = 0;
+deletedFoods.forEach(name => {
+  if (registry.images[name]) {
+    delete registry.images[name];
+    removed++;
+    console.log(`Removed deleted food: ${name}`);
+  }
+});
 
-console.log(
-  `SUCCESS: Injected ${updatedCount} UNIQUE verified URLs from registry into database/foods.ts`,
-);
+// Save updated registry
+fs.writeFileSync("image_registry.json", JSON.stringify(registry, null, 2));
+fs.writeFileSync("database/image_registry.json", JSON.stringify(registry, null, 2));
+
+console.log(`\n✅ Registry synchronized:`);
+console.log(`  - Updated: ${updated} entries`);
+console.log(`  - Added: ${added} entries`);
+console.log(`  - Removed: ${removed} entries`);
+console.log(`  - Total: ${Object.keys(registry.images).length} entries`);

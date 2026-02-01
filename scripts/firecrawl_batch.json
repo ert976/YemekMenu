@@ -1,0 +1,1912 @@
+[
+  {
+    "name": "Adana Kebap",
+    "url": "https://www.yemek.com/tarif/adana-kebap",
+    "alternatives": [
+      "adana-kebap",
+      "adana-kebap-tarifi",
+      "ev-usulu-adana-kebap",
+      "adanakebap"
+    ]
+  },
+  {
+    "name": "İskender Kebap",
+    "url": "https://www.yemek.com/tarif/iskender-kebap",
+    "alternatives": [
+      "iskender-kebap",
+      "iskender-kebap-tarifi",
+      "ev-usulu-iskender-kebap",
+      "iskenderkebap"
+    ]
+  },
+  {
+    "name": "Et Döner",
+    "url": "https://www.yemek.com/tarif/et-doner",
+    "alternatives": [
+      "et-doner",
+      "et-doner-tarifi",
+      "ev-usulu-et-doner",
+      "etdoner"
+    ]
+  },
+  {
+    "name": "Beyti",
+    "url": "https://www.yemek.com/tarif/beyti",
+    "alternatives": [
+      "beyti",
+      "beyti-tarifi",
+      "ev-usulu-beyti",
+      "beyti"
+    ]
+  },
+  {
+    "name": "Ali Nazik",
+    "url": "https://www.yemek.com/tarif/ali-nazik",
+    "alternatives": [
+      "ali-nazik",
+      "ali-nazik-tarifi",
+      "ev-usulu-ali-nazik",
+      "alinazik"
+    ]
+  },
+  {
+    "name": "Patates Köftesi",
+    "url": "https://www.yemek.com/tarif/patates-koftesi",
+    "alternatives": [
+      "patates-koftesi",
+      "patates-koftesi-tarifi",
+      "ev-usulu-patates-koftesi",
+      "patateskoftesi"
+    ]
+  },
+  {
+    "name": "Kaburga Sıyırma",
+    "url": "https://www.yemek.com/tarif/kaburga-siyirma",
+    "alternatives": [
+      "kaburga-siyirma",
+      "kaburga-siyirma-tarifi",
+      "ev-usulu-kaburga-siyirma",
+      "kaburgasiyirma"
+    ]
+  },
+  {
+    "name": "Çoban Kavurma",
+    "url": "https://www.yemek.com/tarif/coban-kavurma",
+    "alternatives": [
+      "coban-kavurma",
+      "coban-kavurma-tarifi",
+      "ev-usulu-coban-kavurma",
+      "cobankavurma"
+    ]
+  },
+  {
+    "name": "Kuzu Kebabı",
+    "url": "https://www.yemek.com/tarif/kuzu-kebabi",
+    "alternatives": [
+      "kuzu-kebabi",
+      "kuzu-kebabi-tarifi",
+      "ev-usulu-kuzu-kebabi",
+      "kuzukebabi"
+    ]
+  },
+  {
+    "name": "Testi Kebabı",
+    "url": "https://www.yemek.com/tarif/testi-kebabi",
+    "alternatives": [
+      "testi-kebabi",
+      "testi-kebabi-tarifi",
+      "ev-usulu-testi-kebabi",
+      "testikebabi"
+    ]
+  },
+  {
+    "name": "Cağ Kebabı",
+    "url": "https://www.yemek.com/tarif/cag-kebabi",
+    "alternatives": [
+      "cag-kebabi",
+      "cag-kebabi-tarifi",
+      "ev-usulu-cag-kebabi",
+      "cagkebabi"
+    ]
+  },
+  {
+    "name": "Kavurma",
+    "url": "https://www.yemek.com/tarif/kavurma",
+    "alternatives": [
+      "kavurma",
+      "kavurma-tarifi",
+      "ev-usulu-kavurma",
+      "kavurma"
+    ]
+  },
+  {
+    "name": "Döner Salata",
+    "url": "https://www.yemek.com/tarif/doner-salata",
+    "alternatives": [
+      "doner-salata",
+      "doner-salata-tarifi",
+      "ev-usulu-doner-salata",
+      "donersalata"
+    ]
+  },
+  {
+    "name": "Köfte Tabak",
+    "url": "https://www.yemek.com/tarif/kofte-tabak",
+    "alternatives": [
+      "kofte-tabak",
+      "kofte-tabak-tarifi",
+      "ev-usulu-kofte-tabak",
+      "koftetabak"
+    ]
+  },
+  {
+    "name": "Tavuk Şiş Kebap",
+    "url": "https://www.yemek.com/tarif/tavuk-sis-kebap",
+    "alternatives": [
+      "tavuk-sis-kebap",
+      "tavuk-sis-kebap-tarifi",
+      "ev-usulu-tavuk-sis-kebap",
+      "tavuksiskebap"
+    ]
+  },
+  {
+    "name": "Kömür Kebabı",
+    "url": "https://www.yemek.com/tarif/komur-kebabi",
+    "alternatives": [
+      "komur-kebabi",
+      "komur-kebabi-tarifi",
+      "ev-usulu-komur-kebabi",
+      "komurkebabi"
+    ]
+  },
+  {
+    "name": "Pide (Kuşbaşılı)",
+    "url": "https://www.yemek.com/tarif/pide-kusbasili",
+    "alternatives": [
+      "pide-kusbasili",
+      "pide-kusbasili-tarifi",
+      "ev-usulu-pide-kusbasili",
+      "pidekusbasili"
+    ]
+  },
+  {
+    "name": "Beyti Sarma",
+    "url": "https://www.yemek.com/tarif/beyti-sarma",
+    "alternatives": [
+      "beyti-sarma",
+      "beyti-sarma-tarifi",
+      "ev-usulu-beyti-sarma",
+      "beytisarma"
+    ]
+  },
+  {
+    "name": "Tepsi Kebabı",
+    "url": "https://www.yemek.com/tarif/tepsi-kebabi",
+    "alternatives": [
+      "tepsi-kebabi",
+      "tepsi-kebabi-tarifi",
+      "ev-usulu-tepsi-kebabi",
+      "tepsikebabi"
+    ]
+  },
+  {
+    "name": "Kağıt Kebabı",
+    "url": "https://www.yemek.com/tarif/kagit-kebabi",
+    "alternatives": [
+      "kagit-kebabi",
+      "kagit-kebabi-tarifi",
+      "ev-usulu-kagit-kebabi",
+      "kagitkebabi"
+    ]
+  },
+  {
+    "name": "Orman Kebabı",
+    "url": "https://www.yemek.com/tarif/orman-kebabi",
+    "alternatives": [
+      "orman-kebabi",
+      "orman-kebabi-tarifi",
+      "ev-usulu-orman-kebabi",
+      "ormankebabi"
+    ]
+  },
+  {
+    "name": "Çiğer Sote",
+    "url": "https://www.yemek.com/tarif/ciger-sote",
+    "alternatives": [
+      "ciger-sote",
+      "ciger-sote-tarifi",
+      "ev-usulu-ciger-sote",
+      "cigersote"
+    ]
+  },
+  {
+    "name": "Pilav Ustası",
+    "url": "https://www.yemek.com/tarif/pilav-ustasi",
+    "alternatives": [
+      "pilav-ustasi",
+      "pilav-ustasi-tarifi",
+      "ev-usulu-pilav-ustasi",
+      "pilavustasi"
+    ]
+  },
+  {
+    "name": "Köfte Dürüm",
+    "url": "https://www.yemek.com/tarif/kofte-durum",
+    "alternatives": [
+      "kofte-durum",
+      "kofte-durum-tarifi",
+      "ev-usulu-kofte-durum",
+      "koftedurum"
+    ]
+  },
+  {
+    "name": "Peynirli Tost",
+    "url": "https://www.yemek.com/tarif/peynirli-tost",
+    "alternatives": [
+      "peynirli-tost",
+      "peynirli-tost-tarifi",
+      "ev-usulu-peynirli-tost",
+      "peynirlitost"
+    ]
+  },
+  {
+    "name": "Sucuklu Tost",
+    "url": "https://www.yemek.com/tarif/sucuklu-tost",
+    "alternatives": [
+      "sucuklu-tost",
+      "sucuklu-tost-tarifi",
+      "ev-usulu-sucuklu-tost",
+      "sucuklutost"
+    ]
+  },
+  {
+    "name": "Kıymalı Tost",
+    "url": "https://www.yemek.com/tarif/kiymali-tost",
+    "alternatives": [
+      "kiymali-tost",
+      "kiymali-tost-tarifi",
+      "ev-usulu-kiymali-tost",
+      "kiymalitost"
+    ]
+  },
+  {
+    "name": "Ciger Sandviç",
+    "url": "https://www.yemek.com/tarif/ciger-sandvic",
+    "alternatives": [
+      "ciger-sandvic",
+      "ciger-sandvic-tarifi",
+      "ev-usulu-ciger-sandvic",
+      "cigersandvic"
+    ]
+  },
+  {
+    "name": "Çiş Biftek",
+    "url": "https://www.yemek.com/tarif/cis-biftek",
+    "alternatives": [
+      "cis-biftek",
+      "cis-biftek-tarifi",
+      "ev-usulu-cis-biftek",
+      "cisbiftek"
+    ]
+  },
+  {
+    "name": "Mısır",
+    "url": "https://www.yemek.com/tarif/misir",
+    "alternatives": [
+      "misir",
+      "misir-tarifi",
+      "ev-usulu-misir",
+      "misir"
+    ]
+  },
+  {
+    "name": "Ayran",
+    "url": "https://www.yemek.com/tarif/ayran",
+    "alternatives": [
+      "ayran",
+      "ayran-tarifi",
+      "ev-usulu-ayran",
+      "ayran"
+    ]
+  },
+  {
+    "name": "Şalgam",
+    "url": "https://www.yemek.com/tarif/salgam",
+    "alternatives": [
+      "salgam",
+      "salgam-tarifi",
+      "ev-usulu-salgam",
+      "salgam"
+    ]
+  },
+  {
+    "name": "Kefir",
+    "url": "https://www.yemek.com/tarif/kefir",
+    "alternatives": [
+      "kefir",
+      "kefir-tarifi",
+      "ev-usulu-kefir",
+      "kefir"
+    ]
+  },
+  {
+    "name": "Turşu Suyu",
+    "url": "https://www.yemek.com/tarif/tursu-suyu",
+    "alternatives": [
+      "tursu-suyu",
+      "tursu-suyu-tarifi",
+      "ev-usulu-tursu-suyu",
+      "tursusuyu"
+    ]
+  },
+  {
+    "name": "Meyve Suyu",
+    "url": "https://www.yemek.com/tarif/meyve-suyu",
+    "alternatives": [
+      "meyve-suyu",
+      "meyve-suyu-tarifi",
+      "ev-usulu-meyve-suyu",
+      "meyvesuyu"
+    ]
+  },
+  {
+    "name": "Portakal Suyu",
+    "url": "https://www.yemek.com/tarif/portakal-suyu",
+    "alternatives": [
+      "portakal-suyu",
+      "portakal-suyu-tarifi",
+      "ev-usulu-portakal-suyu",
+      "portakalsuyu"
+    ]
+  },
+  {
+    "name": "Elma Suyu",
+    "url": "https://www.yemek.com/tarif/elma-suyu",
+    "alternatives": [
+      "elma-suyu",
+      "elma-suyu-tarifi",
+      "ev-usulu-elma-suyu",
+      "elmasuyu"
+    ]
+  },
+  {
+    "name": "Üzüm Suyu",
+    "url": "https://www.yemek.com/tarif/uzum-suyu",
+    "alternatives": [
+      "uzum-suyu",
+      "uzum-suyu-tarifi",
+      "ev-usulu-uzum-suyu",
+      "uzumsuyu"
+    ]
+  },
+  {
+    "name": "Smoothie",
+    "url": "https://www.yemek.com/tarif/smoothie",
+    "alternatives": [
+      "smoothie",
+      "smoothie-tarifi",
+      "ev-usulu-smoothie",
+      "smoothie"
+    ]
+  },
+  {
+    "name": "Muzlu Smoothie",
+    "url": "https://www.yemek.com/tarif/muzlu-smoothie",
+    "alternatives": [
+      "muzlu-smoothie",
+      "muzlu-smoothie-tarifi",
+      "ev-usulu-muzlu-smoothie",
+      "muzlusmoothie"
+    ]
+  },
+  {
+    "name": "Çilekli Smoothie",
+    "url": "https://www.yemek.com/tarif/cilekli-smoothie",
+    "alternatives": [
+      "cilekli-smoothie",
+      "cilekli-smoothie-tarifi",
+      "ev-usulu-cilekli-smoothie",
+      "cileklismoothie"
+    ]
+  },
+  {
+    "name": "Yeşil Çay",
+    "url": "https://www.yemek.com/tarif/yesil-cay",
+    "alternatives": [
+      "yesil-cay",
+      "yesil-cay-tarifi",
+      "ev-usulu-yesil-cay",
+      "yesilcay"
+    ]
+  },
+  {
+    "name": "Adaçayı Çayı",
+    "url": "https://www.yemek.com/tarif/adacayi-cayi",
+    "alternatives": [
+      "adacayi-cayi",
+      "adacayi-cayi-tarifi",
+      "ev-usulu-adacayi-cayi",
+      "adacayicayi"
+    ]
+  },
+  {
+    "name": "Nane Limon",
+    "url": "https://www.yemek.com/tarif/nane-limon",
+    "alternatives": [
+      "nane-limon",
+      "nane-limon-tarifi",
+      "ev-usulu-nane-limon",
+      "nanelimon"
+    ]
+  },
+  {
+    "name": "Limonata",
+    "url": "https://www.yemek.com/tarif/limonata",
+    "alternatives": [
+      "limonata",
+      "limonata-tarifi",
+      "ev-usulu-limonata",
+      "limonata"
+    ]
+  },
+  {
+    "name": "Çorba",
+    "url": "https://www.yemek.com/tarif/corba",
+    "alternatives": [
+      "corba",
+      "corba-tarifi",
+      "ev-usulu-corba",
+      "corba"
+    ]
+  },
+  {
+    "name": "Yuvalama Çorbası",
+    "url": "https://www.yemek.com/tarif/yuvalama-corbasi",
+    "alternatives": [
+      "yuvalama-corbasi",
+      "yuvalama-corbasi-tarifi",
+      "ev-usulu-yuvalama-corbasi",
+      "yuvalamacorbasi"
+    ]
+  },
+  {
+    "name": "Lebeniye Çorbası",
+    "url": "https://www.yemek.com/tarif/lebeniye-corbasi",
+    "alternatives": [
+      "lebeniye-corbasi",
+      "lebeniye-corbasi-tarifi",
+      "ev-usulu-lebeniye-corbasi",
+      "lebeniyecorbasi"
+    ]
+  },
+  {
+    "name": "Erişteli Yeşil Mercimek Çorbası",
+    "url": "https://www.yemek.com/tarif/eristeli-yesil-mercimek-corbasi",
+    "alternatives": [
+      "eristeli-yesil-mercimek-corbasi",
+      "eristeli-yesil-mercimek-corbasi-tarifi",
+      "ev-usulu-eristeli-yesil-mercimek-corbasi",
+      "eristeliyesilmercimekcorbasi"
+    ]
+  },
+  {
+    "name": "Brokoli Çorbası",
+    "url": "https://www.yemek.com/tarif/brokoli-corbasi",
+    "alternatives": [
+      "brokoli-corbasi",
+      "brokoli-corbasi-tarifi",
+      "ev-usulu-brokoli-corbasi",
+      "brokolicorbasi"
+    ]
+  },
+  {
+    "name": "Balkabağı Çorbası",
+    "url": "https://www.yemek.com/tarif/balkabagi-corbasi",
+    "alternatives": [
+      "balkabagi-corbasi",
+      "balkabagi-corbasi-tarifi",
+      "ev-usulu-balkabagi-corbasi",
+      "balkabagicorbasi"
+    ]
+  },
+  {
+    "name": "Et Sote",
+    "url": "https://www.yemek.com/tarif/et-sote",
+    "alternatives": [
+      "et-sote",
+      "et-sote-tarifi",
+      "ev-usulu-et-sote",
+      "etsote"
+    ]
+  },
+  {
+    "name": "Çoban Salatası",
+    "url": "https://www.yemek.com/tarif/coban-salatasi",
+    "alternatives": [
+      "coban-salatasi",
+      "coban-salatasi-tarifi",
+      "ev-usulu-coban-salatasi",
+      "cobansalatasi"
+    ]
+  },
+  {
+    "name": "Mercimek Köftesi",
+    "url": "https://www.yemek.com/tarif/mercimek-koftesi",
+    "alternatives": [
+      "mercimek-koftesi",
+      "mercimek-koftesi-tarifi",
+      "ev-usulu-mercimek-koftesi",
+      "mercimekkoftesi"
+    ]
+  },
+  {
+    "name": "Karnıyarık",
+    "url": "https://www.yemek.com/tarif/karniyarik",
+    "alternatives": [
+      "karniyarik",
+      "karniyarik-tarifi",
+      "ev-usulu-karniyarik",
+      "karniyarik"
+    ]
+  },
+  {
+    "name": "İmambayıldı",
+    "url": "https://www.yemek.com/tarif/imambayildi",
+    "alternatives": [
+      "imambayildi",
+      "imambayildi-tarifi",
+      "ev-usulu-imambayildi",
+      "imambayildi"
+    ]
+  },
+  {
+    "name": "Zeytinyaşlı Enginar",
+    "url": "https://www.yemek.com/tarif/zeytinyasli-enginar",
+    "alternatives": [
+      "zeytinyasli-enginar",
+      "zeytinyasli-enginar-tarifi",
+      "ev-usulu-zeytinyasli-enginar",
+      "zeytinyaslienginar"
+    ]
+  },
+  {
+    "name": "Pırasa",
+    "url": "https://www.yemek.com/tarif/pirasa",
+    "alternatives": [
+      "pirasa",
+      "pirasa-tarifi",
+      "ev-usulu-pirasa",
+      "pirasa"
+    ]
+  },
+  {
+    "name": "Türlü",
+    "url": "https://www.yemek.com/tarif/turlu",
+    "alternatives": [
+      "turlu",
+      "turlu-tarifi",
+      "ev-usulu-turlu",
+      "turlu"
+    ]
+  },
+  {
+    "name": "Pazı Sarması",
+    "url": "https://www.yemek.com/tarif/pazi-sarmasi",
+    "alternatives": [
+      "pazi-sarmasi",
+      "pazi-sarmasi-tarifi",
+      "ev-usulu-pazi-sarmasi",
+      "pazisarmasi"
+    ]
+  },
+  {
+    "name": "Kabak Mücver",
+    "url": "https://www.yemek.com/tarif/kabak-mucver",
+    "alternatives": [
+      "kabak-mucver",
+      "kabak-mucver-tarifi",
+      "ev-usulu-kabak-mucver",
+      "kabakmucver"
+    ]
+  },
+  {
+    "name": "Zeytinyaşlı Yaprak Sarma",
+    "url": "https://www.yemek.com/tarif/zeytinyasli-yaprak-sarma",
+    "alternatives": [
+      "zeytinyasli-yaprak-sarma",
+      "zeytinyasli-yaprak-sarma-tarifi",
+      "ev-usulu-zeytinyasli-yaprak-sarma",
+      "zeytinyasliyapraksarma"
+    ]
+  },
+  {
+    "name": "Biber Dolması",
+    "url": "https://www.yemek.com/tarif/biber-dolmasi",
+    "alternatives": [
+      "biber-dolmasi",
+      "biber-dolmasi-tarifi",
+      "ev-usulu-biber-dolmasi",
+      "biberdolmasi"
+    ]
+  },
+  {
+    "name": "Şakşuka",
+    "url": "https://www.yemek.com/tarif/saksuka",
+    "alternatives": [
+      "saksuka",
+      "saksuka-tarifi",
+      "ev-usulu-saksuka",
+      "saksuka"
+    ]
+  },
+  {
+    "name": "Enginar",
+    "url": "https://www.yemek.com/tarif/enginar",
+    "alternatives": [
+      "enginar",
+      "enginar-tarifi",
+      "ev-usulu-enginar",
+      "enginar"
+    ]
+  },
+  {
+    "name": "Kereviz",
+    "url": "https://www.yemek.com/tarif/kereviz",
+    "alternatives": [
+      "kereviz",
+      "kereviz-tarifi",
+      "ev-usulu-kereviz",
+      "kereviz"
+    ]
+  },
+  {
+    "name": "Bezelye",
+    "url": "https://www.yemek.com/tarif/bezelye",
+    "alternatives": [
+      "bezelye",
+      "bezelye-tarifi",
+      "ev-usulu-bezelye",
+      "bezelye"
+    ]
+  },
+  {
+    "name": "Semizotu",
+    "url": "https://www.yemek.com/tarif/semizotu",
+    "alternatives": [
+      "semizotu",
+      "semizotu-tarifi",
+      "ev-usulu-semizotu",
+      "semizotu"
+    ]
+  },
+  {
+    "name": "Patates Oturtma",
+    "url": "https://www.yemek.com/tarif/patates-oturtma",
+    "alternatives": [
+      "patates-oturtma",
+      "patates-oturtma-tarifi",
+      "ev-usulu-patates-oturtma",
+      "patatesoturtma"
+    ]
+  },
+  {
+    "name": "Kabak Kalye",
+    "url": "https://www.yemek.com/tarif/kabak-kalye",
+    "alternatives": [
+      "kabak-kalye",
+      "kabak-kalye-tarifi",
+      "ev-usulu-kabak-kalye",
+      "kabakkalye"
+    ]
+  },
+  {
+    "name": "Karnabahar Graten",
+    "url": "https://www.yemek.com/tarif/karnabahar-graten",
+    "alternatives": [
+      "karnabahar-graten",
+      "karnabahar-graten-tarifi",
+      "ev-usulu-karnabahar-graten",
+      "karnabahargraten"
+    ]
+  },
+  {
+    "name": "Brokoli Salatası",
+    "url": "https://www.yemek.com/tarif/brokoli-salatasi",
+    "alternatives": [
+      "brokoli-salatasi",
+      "brokoli-salatasi-tarifi",
+      "ev-usulu-brokoli-salatasi",
+      "brokolisalatasi"
+    ]
+  },
+  {
+    "name": "Haydari",
+    "url": "https://www.yemek.com/tarif/haydari",
+    "alternatives": [
+      "haydari",
+      "haydari-tarifi",
+      "ev-usulu-haydari",
+      "haydari"
+    ]
+  },
+  {
+    "name": "Humus",
+    "url": "https://www.yemek.com/tarif/humus",
+    "alternatives": [
+      "humus",
+      "humus-tarifi",
+      "ev-usulu-humus",
+      "humus"
+    ]
+  },
+  {
+    "name": "Deniz Börülcesi",
+    "url": "https://www.yemek.com/tarif/deniz-borulcesi",
+    "alternatives": [
+      "deniz-borulcesi",
+      "deniz-borulcesi-tarifi",
+      "ev-usulu-deniz-borulcesi",
+      "denizborulcesi"
+    ]
+  },
+  {
+    "name": "Babagannuş",
+    "url": "https://www.yemek.com/tarif/babagannus",
+    "alternatives": [
+      "babagannus",
+      "babagannus-tarifi",
+      "ev-usulu-babagannus",
+      "babagannus"
+    ]
+  },
+  {
+    "name": "Atom",
+    "url": "https://www.yemek.com/tarif/atom",
+    "alternatives": [
+      "atom",
+      "atom-tarifi",
+      "ev-usulu-atom",
+      "atom"
+    ]
+  },
+  {
+    "name": "Muhammara",
+    "url": "https://www.yemek.com/tarif/muhammara",
+    "alternatives": [
+      "muhammara",
+      "muhammara-tarifi",
+      "ev-usulu-muhammara",
+      "muhammara"
+    ]
+  },
+  {
+    "name": "Cacık",
+    "url": "https://www.yemek.com/tarif/cacik",
+    "alternatives": [
+      "cacik",
+      "cacik-tarifi",
+      "ev-usulu-cacik",
+      "cacik"
+    ]
+  },
+  {
+    "name": "Gavurdağı Salatası",
+    "url": "https://www.yemek.com/tarif/gavurdagi-salatasi",
+    "alternatives": [
+      "gavurdagi-salatasi",
+      "gavurdagi-salatasi-tarifi",
+      "ev-usulu-gavurdagi-salatasi",
+      "gavurdagisalatasi"
+    ]
+  },
+  {
+    "name": "Roka Salatası",
+    "url": "https://www.yemek.com/tarif/roka-salatasi",
+    "alternatives": [
+      "roka-salatasi",
+      "roka-salatasi-tarifi",
+      "ev-usulu-roka-salatasi",
+      "rokasalatasi"
+    ]
+  },
+  {
+    "name": "Piyaz",
+    "url": "https://www.yemek.com/tarif/piyaz",
+    "alternatives": [
+      "piyaz",
+      "piyaz-tarifi",
+      "ev-usulu-piyaz",
+      "piyaz"
+    ]
+  },
+  {
+    "name": "Rus Salatası",
+    "url": "https://www.yemek.com/tarif/rus-salatasi",
+    "alternatives": [
+      "rus-salatasi",
+      "rus-salatasi-tarifi",
+      "ev-usulu-rus-salatasi",
+      "russalatasi"
+    ]
+  },
+  {
+    "name": "Tarator",
+    "url": "https://www.yemek.com/tarif/tarator",
+    "alternatives": [
+      "tarator",
+      "tarator-tarifi",
+      "ev-usulu-tarator",
+      "tarator"
+    ]
+  },
+  {
+    "name": "Havuç Tarator",
+    "url": "https://www.yemek.com/tarif/havuc-tarator",
+    "alternatives": [
+      "havuc-tarator",
+      "havuc-tarator-tarifi",
+      "ev-usulu-havuc-tarator",
+      "havuctarator"
+    ]
+  },
+  {
+    "name": "Patlıcan Salatası",
+    "url": "https://www.yemek.com/tarif/patlican-salatasi",
+    "alternatives": [
+      "patlican-salatasi",
+      "patlican-salatasi-tarifi",
+      "ev-usulu-patlican-salatasi",
+      "patlicansalatasi"
+    ]
+  },
+  {
+    "name": "Köpoğlu",
+    "url": "https://www.yemek.com/tarif/kopoglu",
+    "alternatives": [
+      "kopoglu",
+      "kopoglu-tarifi",
+      "ev-usulu-kopoglu",
+      "kopoglu"
+    ]
+  },
+  {
+    "name": "Girit Ezmesi",
+    "url": "https://www.yemek.com/tarif/girit-ezmesi",
+    "alternatives": [
+      "girit-ezmesi",
+      "girit-ezmesi-tarifi",
+      "ev-usulu-girit-ezmesi",
+      "giritezmesi"
+    ]
+  },
+  {
+    "name": "İmam Bayıldı",
+    "url": "https://www.yemek.com/tarif/imam-bayildi",
+    "alternatives": [
+      "imam-bayildi",
+      "imam-bayildi-tarifi",
+      "ev-usulu-imam-bayildi",
+      "imambayildi"
+    ]
+  },
+  {
+    "name": "Zeytinyaşlı Taze Fasulye",
+    "url": "https://www.yemek.com/tarif/zeytinyasli-taze-fasulye",
+    "alternatives": [
+      "zeytinyasli-taze-fasulye",
+      "zeytinyasli-taze-fasulye-tarifi",
+      "ev-usulu-zeytinyasli-taze-fasulye",
+      "zeytinyaslitazefasulye"
+    ]
+  },
+  {
+    "name": "Zeytinyaşlı Pırasa",
+    "url": "https://www.yemek.com/tarif/zeytinyasli-pirasa",
+    "alternatives": [
+      "zeytinyasli-pirasa",
+      "zeytinyasli-pirasa-tarifi",
+      "ev-usulu-zeytinyasli-pirasa",
+      "zeytinyaslipirasa"
+    ]
+  },
+  {
+    "name": "Zeytinyaşlı Brüksel Lahanası",
+    "url": "https://www.yemek.com/tarif/zeytinyasli-bruksel-lahanasi",
+    "alternatives": [
+      "zeytinyasli-bruksel-lahanasi",
+      "zeytinyasli-bruksel-lahanasi-tarifi",
+      "ev-usulu-zeytinyasli-bruksel-lahanasi",
+      "zeytinyaslibruksellahanasi"
+    ]
+  },
+  {
+    "name": "Zeytinyaşlı Karnabahar",
+    "url": "https://www.yemek.com/tarif/zeytinyasli-karnabahar",
+    "alternatives": [
+      "zeytinyasli-karnabahar",
+      "zeytinyasli-karnabahar-tarifi",
+      "ev-usulu-zeytinyasli-karnabahar",
+      "zeytinyaslikarnabahar"
+    ]
+  },
+  {
+    "name": "Zeytinyaşlı Yer Elması",
+    "url": "https://www.yemek.com/tarif/zeytinyasli-yer-elmasi",
+    "alternatives": [
+      "zeytinyasli-yer-elmasi",
+      "zeytinyasli-yer-elmasi-tarifi",
+      "ev-usulu-zeytinyasli-yer-elmasi",
+      "zeytinyasliyerelmasi"
+    ]
+  },
+  {
+    "name": "Zeytinyaşlı Şevketi Bostan",
+    "url": "https://www.yemek.com/tarif/zeytinyasli-sevketi-bostan",
+    "alternatives": [
+      "zeytinyasli-sevketi-bostan",
+      "zeytinyasli-sevketi-bostan-tarifi",
+      "ev-usulu-zeytinyasli-sevketi-bostan",
+      "zeytinyaslisevketibostan"
+    ]
+  },
+  {
+    "name": "Zeytinyaşlı Bamya",
+    "url": "https://www.yemek.com/tarif/zeytinyasli-bamya",
+    "alternatives": [
+      "zeytinyasli-bamya",
+      "zeytinyasli-bamya-tarifi",
+      "ev-usulu-zeytinyasli-bamya",
+      "zeytinyaslibamya"
+    ]
+  },
+  {
+    "name": "Havuçlu Kek",
+    "url": "https://www.yemek.com/tarif/havuclu-kek",
+    "alternatives": [
+      "havuclu-kek",
+      "havuclu-kek-tarifi",
+      "ev-usulu-havuclu-kek",
+      "havuclukek"
+    ]
+  },
+  {
+    "name": "Limonlu Kek",
+    "url": "https://www.yemek.com/tarif/limonlu-kek",
+    "alternatives": [
+      "limonlu-kek",
+      "limonlu-kek-tarifi",
+      "ev-usulu-limonlu-kek",
+      "limonlukek"
+    ]
+  },
+  {
+    "name": "Kahveli Kek",
+    "url": "https://www.yemek.com/tarif/kahveli-kek",
+    "alternatives": [
+      "kahveli-kek",
+      "kahveli-kek-tarifi",
+      "ev-usulu-kahveli-kek",
+      "kahvelikek"
+    ]
+  },
+  {
+    "name": "Bademli Kek",
+    "url": "https://www.yemek.com/tarif/bademli-kek",
+    "alternatives": [
+      "bademli-kek",
+      "bademli-kek-tarifi",
+      "ev-usulu-bademli-kek",
+      "bademlikek"
+    ]
+  },
+  {
+    "name": "Vişneli Kek",
+    "url": "https://www.yemek.com/tarif/visneli-kek",
+    "alternatives": [
+      "visneli-kek",
+      "visneli-kek-tarifi",
+      "ev-usulu-visneli-kek",
+      "visnelikek"
+    ]
+  },
+  {
+    "name": "Cupcake",
+    "url": "https://www.yemek.com/tarif/cupcake",
+    "alternatives": [
+      "cupcake",
+      "cupcake-tarifi",
+      "ev-usulu-cupcake",
+      "cupcake"
+    ]
+  },
+  {
+    "name": "Muffin",
+    "url": "https://www.yemek.com/tarif/muffin",
+    "alternatives": [
+      "muffin",
+      "muffin-tarifi",
+      "ev-usulu-muffin",
+      "muffin"
+    ]
+  },
+  {
+    "name": "Madlen",
+    "url": "https://www.yemek.com/tarif/madlen",
+    "alternatives": [
+      "madlen",
+      "madlen-tarifi",
+      "ev-usulu-madlen",
+      "madlen"
+    ]
+  },
+  {
+    "name": "Madeleine",
+    "url": "https://www.yemek.com/tarif/madeleine",
+    "alternatives": [
+      "madeleine",
+      "madeleine-tarifi",
+      "ev-usulu-madeleine",
+      "madeleine"
+    ]
+  },
+  {
+    "name": "Whoopie Pie",
+    "url": "https://www.yemek.com/tarif/whoopie-pie",
+    "alternatives": [
+      "whoopie-pie",
+      "whoopie-pie-tarifi",
+      "ev-usulu-whoopie-pie",
+      "whoopiepie"
+    ]
+  },
+  {
+    "name": "Açık Büfe",
+    "url": "https://www.yemek.com/tarif/acik-bufe",
+    "alternatives": [
+      "acik-bufe",
+      "acik-bufe-tarifi",
+      "ev-usulu-acik-bufe",
+      "acikbufe"
+    ]
+  },
+  {
+    "name": "Peynir Tabak",
+    "url": "https://www.yemek.com/tarif/peynir-tabak",
+    "alternatives": [
+      "peynir-tabak",
+      "peynir-tabak-tarifi",
+      "ev-usulu-peynir-tabak",
+      "peynirtabak"
+    ]
+  },
+  {
+    "name": "Zeytin",
+    "url": "https://www.yemek.com/tarif/zeytin",
+    "alternatives": [
+      "zeytin",
+      "zeytin-tarifi",
+      "ev-usulu-zeytin",
+      "zeytin"
+    ]
+  },
+  {
+    "name": "Bal",
+    "url": "https://www.yemek.com/tarif/bal",
+    "alternatives": [
+      "bal",
+      "bal-tarifi",
+      "ev-usulu-bal",
+      "bal"
+    ]
+  },
+  {
+    "name": "Kuşbaşlı Pide",
+    "url": "https://www.yemek.com/tarif/kusbasli-pide",
+    "alternatives": [
+      "kusbasli-pide",
+      "kusbasli-pide-tarifi",
+      "ev-usulu-kusbasli-pide",
+      "kusbaslipide"
+    ]
+  },
+  {
+    "name": "Çay",
+    "url": "https://www.yemek.com/tarif/cay",
+    "alternatives": [
+      "cay",
+      "cay-tarifi",
+      "ev-usulu-cay",
+      "cay"
+    ]
+  },
+  {
+    "name": "Türk Kahvesi",
+    "url": "https://www.yemek.com/tarif/turk-kahvesi",
+    "alternatives": [
+      "turk-kahvesi",
+      "turk-kahvesi-tarifi",
+      "ev-usulu-turk-kahvesi",
+      "turkkahvesi"
+    ]
+  },
+  {
+    "name": "Mıhlama / Kuymak",
+    "url": "https://www.yemek.com/tarif/mihlama-kuymak",
+    "alternatives": [
+      "mihlama-kuymak",
+      "mihlama-kuymak-tarifi",
+      "ev-usulu-mihlama-kuymak",
+      "mihlamakuymak"
+    ]
+  },
+  {
+    "name": "Beyaz Peynir",
+    "url": "https://www.yemek.com/tarif/beyaz-peynir",
+    "alternatives": [
+      "beyaz-peynir",
+      "beyaz-peynir-tarifi",
+      "ev-usulu-beyaz-peynir",
+      "beyazpeynir"
+    ]
+  },
+  {
+    "name": "Zeytin (Siyah/Yeşil)",
+    "url": "https://www.yemek.com/tarif/zeytin-siyah-yesil",
+    "alternatives": [
+      "zeytin-siyah-yesil",
+      "zeytin-siyah-yesil-tarifi",
+      "ev-usulu-zeytin-siyah-yesil",
+      "zeytinsiyahyesil"
+    ]
+  },
+  {
+    "name": "Bal - Kaymak",
+    "url": "https://www.yemek.com/tarif/bal-kaymak",
+    "alternatives": [
+      "bal-kaymak",
+      "bal-kaymak-tarifi",
+      "ev-usulu-bal-kaymak",
+      "balkaymak"
+    ]
+  },
+  {
+    "name": "Domates - Salatalık Söşüş",
+    "url": "https://www.yemek.com/tarif/domates-salatalik-sosus",
+    "alternatives": [
+      "domates-salatalik-sosus",
+      "domates-salatalik-sosus-tarifi",
+      "ev-usulu-domates-salatalik-sosus",
+      "domatessalataliksosus"
+    ]
+  },
+  {
+    "name": "Türk Çayı",
+    "url": "https://www.yemek.com/tarif/turk-cayi",
+    "alternatives": [
+      "turk-cayi",
+      "turk-cayi-tarifi",
+      "ev-usulu-turk-cayi",
+      "turkcayi"
+    ]
+  },
+  {
+    "name": "Kıymalı Yumurta",
+    "url": "https://www.yemek.com/tarif/kiymali-yumurta",
+    "alternatives": [
+      "kiymali-yumurta",
+      "kiymali-yumurta-tarifi",
+      "ev-usulu-kiymali-yumurta",
+      "kiymaliyumurta"
+    ]
+  },
+  {
+    "name": "Çılbır",
+    "url": "https://www.yemek.com/tarif/cilbir",
+    "alternatives": [
+      "cilbir",
+      "cilbir-tarifi",
+      "ev-usulu-cilbir",
+      "cilbir"
+    ]
+  },
+  {
+    "name": "Patatesli Yumurta",
+    "url": "https://www.yemek.com/tarif/patatesli-yumurta",
+    "alternatives": [
+      "patatesli-yumurta",
+      "patatesli-yumurta-tarifi",
+      "ev-usulu-patatesli-yumurta",
+      "patatesliyumurta"
+    ]
+  },
+  {
+    "name": "Sigara Böreği",
+    "url": "https://www.yemek.com/tarif/sigara-boregi",
+    "alternatives": [
+      "sigara-boregi",
+      "sigara-boregi-tarifi",
+      "ev-usulu-sigara-boregi",
+      "sigaraboregi"
+    ]
+  },
+  {
+    "name": "Paçanga Böreşi",
+    "url": "https://www.yemek.com/tarif/pacanga-boresi",
+    "alternatives": [
+      "pacanga-boresi",
+      "pacanga-boresi-tarifi",
+      "ev-usulu-pacanga-boresi",
+      "pacangaboresi"
+    ]
+  },
+  {
+    "name": "Gözleme (Peynirli)",
+    "url": "https://www.yemek.com/tarif/gozleme-peynirli",
+    "alternatives": [
+      "gozleme-peynirli",
+      "gozleme-peynirli-tarifi",
+      "ev-usulu-gozleme-peynirli",
+      "gozlemepeynirli"
+    ]
+  },
+  {
+    "name": "Acuka",
+    "url": "https://www.yemek.com/tarif/acuka",
+    "alternatives": [
+      "acuka",
+      "acuka-tarifi",
+      "ev-usulu-acuka",
+      "acuka"
+    ]
+  },
+  {
+    "name": "Pişi",
+    "url": "https://www.yemek.com/tarif/pisi",
+    "alternatives": [
+      "pisi",
+      "pisi-tarifi",
+      "ev-usulu-pisi",
+      "pisi"
+    ]
+  },
+  {
+    "name": "Pekmez - Tahin",
+    "url": "https://www.yemek.com/tarif/pekmez-tahin",
+    "alternatives": [
+      "pekmez-tahin",
+      "pekmez-tahin-tarifi",
+      "ev-usulu-pekmez-tahin",
+      "pekmeztahin"
+    ]
+  },
+  {
+    "name": "Kuru İncir - Ceviz",
+    "url": "https://www.yemek.com/tarif/kuru-incir-ceviz",
+    "alternatives": [
+      "kuru-incir-ceviz",
+      "kuru-incir-ceviz-tarifi",
+      "ev-usulu-kuru-incir-ceviz",
+      "kuruincirceviz"
+    ]
+  },
+  {
+    "name": "Kaşarlı Köfte",
+    "url": "https://www.yemek.com/tarif/kasarli-kofte",
+    "alternatives": [
+      "kasarli-kofte",
+      "kasarli-kofte-tarifi",
+      "ev-usulu-kasarli-kofte",
+      "kasarlikofte"
+    ]
+  },
+  {
+    "name": "Sulu Köfte",
+    "url": "https://www.yemek.com/tarif/sulu-kofte",
+    "alternatives": [
+      "sulu-kofte",
+      "sulu-kofte-tarifi",
+      "ev-usulu-sulu-kofte",
+      "sulukofte"
+    ]
+  },
+  {
+    "name": "Tavuk Bonfile",
+    "url": "https://www.yemek.com/tarif/tavuk-bonfile",
+    "alternatives": [
+      "tavuk-bonfile",
+      "tavuk-bonfile-tarifi",
+      "ev-usulu-tavuk-bonfile",
+      "tavukbonfile"
+    ]
+  },
+  {
+    "name": "Bonfile Şiş",
+    "url": "https://www.yemek.com/tarif/bonfile-sis",
+    "alternatives": [
+      "bonfile-sis",
+      "bonfile-sis-tarifi",
+      "ev-usulu-bonfile-sis",
+      "bonfilesis"
+    ]
+  },
+  {
+    "name": "Kuşbaşı",
+    "url": "https://www.yemek.com/tarif/kusbasi",
+    "alternatives": [
+      "kusbasi",
+      "kusbasi-tarifi",
+      "ev-usulu-kusbasi",
+      "kusbasi"
+    ]
+  },
+  {
+    "name": "Kaburga",
+    "url": "https://www.yemek.com/tarif/kaburga",
+    "alternatives": [
+      "kaburga",
+      "kaburga-tarifi",
+      "ev-usulu-kaburga",
+      "kaburga"
+    ]
+  },
+  {
+    "name": "Sucuk Izgara",
+    "url": "https://www.yemek.com/tarif/sucuk-izgara",
+    "alternatives": [
+      "sucuk-izgara",
+      "sucuk-izgara-tarifi",
+      "ev-usulu-sucuk-izgara",
+      "sucukizgara"
+    ]
+  },
+  {
+    "name": "Pastırma Izgara",
+    "url": "https://www.yemek.com/tarif/pastirma-izgara",
+    "alternatives": [
+      "pastirma-izgara",
+      "pastirma-izgara-tarifi",
+      "ev-usulu-pastirma-izgara",
+      "pastirmaizgara"
+    ]
+  },
+  {
+    "name": "Biftek",
+    "url": "https://www.yemek.com/tarif/biftek",
+    "alternatives": [
+      "biftek",
+      "biftek-tarifi",
+      "ev-usulu-biftek",
+      "biftek"
+    ]
+  },
+  {
+    "name": "Köfte Izgara",
+    "url": "https://www.yemek.com/tarif/kofte-izgara",
+    "alternatives": [
+      "kofte-izgara",
+      "kofte-izgara-tarifi",
+      "ev-usulu-kofte-izgara",
+      "kofteizgara"
+    ]
+  },
+  {
+    "name": "Tavuk Pirzola",
+    "url": "https://www.yemek.com/tarif/tavuk-pirzola",
+    "alternatives": [
+      "tavuk-pirzola",
+      "tavuk-pirzola-tarifi",
+      "ev-usulu-tavuk-pirzola",
+      "tavukpirzola"
+    ]
+  },
+  {
+    "name": "Karışık Izgara",
+    "url": "https://www.yemek.com/tarif/karisik-izgara",
+    "alternatives": [
+      "karisik-izgara",
+      "karisik-izgara-tarifi",
+      "ev-usulu-karisik-izgara",
+      "karisikizgara"
+    ]
+  },
+  {
+    "name": "Balık Izgara",
+    "url": "https://www.yemek.com/tarif/balik-izgara",
+    "alternatives": [
+      "balik-izgara",
+      "balik-izgara-tarifi",
+      "ev-usulu-balik-izgara",
+      "balikizgara"
+    ]
+  },
+  {
+    "name": "Sebzeli Izgara",
+    "url": "https://www.yemek.com/tarif/sebzeli-izgara",
+    "alternatives": [
+      "sebzeli-izgara",
+      "sebzeli-izgara-tarifi",
+      "ev-usulu-sebzeli-izgara",
+      "sebzeliizgara"
+    ]
+  },
+  {
+    "name": "Izgara Köfte",
+    "url": "https://www.yemek.com/tarif/izgara-kofte",
+    "alternatives": [
+      "izgara-kofte",
+      "izgara-kofte-tarifi",
+      "ev-usulu-izgara-kofte",
+      "izgarakofte"
+    ]
+  },
+  {
+    "name": "Kuzu Pirzola",
+    "url": "https://www.yemek.com/tarif/kuzu-pirzola",
+    "alternatives": [
+      "kuzu-pirzola",
+      "kuzu-pirzola-tarifi",
+      "ev-usulu-kuzu-pirzola",
+      "kuzupirzola"
+    ]
+  },
+  {
+    "name": "Kanat Izgara",
+    "url": "https://www.yemek.com/tarif/kanat-izgara",
+    "alternatives": [
+      "kanat-izgara",
+      "kanat-izgara-tarifi",
+      "ev-usulu-kanat-izgara",
+      "kanatizgara"
+    ]
+  },
+  {
+    "name": "İçli Köfte",
+    "url": "https://www.yemek.com/tarif/icli-kofte",
+    "alternatives": [
+      "icli-kofte",
+      "icli-kofte-tarifi",
+      "ev-usulu-icli-kofte",
+      "iclikofte"
+    ]
+  },
+  {
+    "name": "Hünkar Beşendi",
+    "url": "https://www.yemek.com/tarif/hunkar-besendi",
+    "alternatives": [
+      "hunkar-besendi",
+      "hunkar-besendi-tarifi",
+      "ev-usulu-hunkar-besendi",
+      "hunkarbesendi"
+    ]
+  },
+  {
+    "name": "Çökertme Kebabı",
+    "url": "https://www.yemek.com/tarif/cokertme-kebabi",
+    "alternatives": [
+      "cokertme-kebabi",
+      "cokertme-kebabi-tarifi",
+      "ev-usulu-cokertme-kebabi",
+      "cokertmekebabi"
+    ]
+  },
+  {
+    "name": "Etli Ekmek",
+    "url": "https://www.yemek.com/tarif/etli-ekmek",
+    "alternatives": [
+      "etli-ekmek",
+      "etli-ekmek-tarifi",
+      "ev-usulu-etli-ekmek",
+      "etliekmek"
+    ]
+  },
+  {
+    "name": "Tas Kebabı",
+    "url": "https://www.yemek.com/tarif/tas-kebabi",
+    "alternatives": [
+      "tas-kebabi",
+      "tas-kebabi-tarifi",
+      "ev-usulu-tas-kebabi",
+      "taskebabi"
+    ]
+  },
+  {
+    "name": "Kuzu İncik",
+    "url": "https://www.yemek.com/tarif/kuzu-incik",
+    "alternatives": [
+      "kuzu-incik",
+      "kuzu-incik-tarifi",
+      "ev-usulu-kuzu-incik",
+      "kuzuincik"
+    ]
+  },
+  {
+    "name": "İzmir Köfte",
+    "url": "https://www.yemek.com/tarif/izmir-kofte",
+    "alternatives": [
+      "izmir-kofte",
+      "izmir-kofte-tarifi",
+      "ev-usulu-izmir-kofte",
+      "izmirkofte"
+    ]
+  },
+  {
+    "name": "Kadınbudu Köfte",
+    "url": "https://www.yemek.com/tarif/kadinbudu-kofte",
+    "alternatives": [
+      "kadinbudu-kofte",
+      "kadinbudu-kofte-tarifi",
+      "ev-usulu-kadinbudu-kofte",
+      "kadinbudukofte"
+    ]
+  },
+  {
+    "name": "Çupra Izgara",
+    "url": "https://www.yemek.com/tarif/cupra-izgara",
+    "alternatives": [
+      "cupra-izgara",
+      "cupra-izgara-tarifi",
+      "ev-usulu-cupra-izgara",
+      "cupraizgara"
+    ]
+  },
+  {
+    "name": "Somon Izgara",
+    "url": "https://www.yemek.com/tarif/somon-izgara",
+    "alternatives": [
+      "somon-izgara",
+      "somon-izgara-tarifi",
+      "ev-usulu-somon-izgara",
+      "somonizgara"
+    ]
+  },
+  {
+    "name": "Hamsi Tava",
+    "url": "https://www.yemek.com/tarif/hamsi-tava",
+    "alternatives": [
+      "hamsi-tava",
+      "hamsi-tava-tarifi",
+      "ev-usulu-hamsi-tava",
+      "hamsitava"
+    ]
+  },
+  {
+    "name": "Tavukgöğsü",
+    "url": "https://www.yemek.com/tarif/tavukgogsu",
+    "alternatives": [
+      "tavukgogsu",
+      "tavukgogsu-tarifi",
+      "ev-usulu-tavukgogsu",
+      "tavukgogsu"
+    ]
+  },
+  {
+    "name": "Aşure",
+    "url": "https://www.yemek.com/tarif/asure",
+    "alternatives": [
+      "asure",
+      "asure-tarifi",
+      "ev-usulu-asure",
+      "asure"
+    ]
+  },
+  {
+    "name": "Zerde",
+    "url": "https://www.yemek.com/tarif/zerde",
+    "alternatives": [
+      "zerde",
+      "zerde-tarifi",
+      "ev-usulu-zerde",
+      "zerde"
+    ]
+  },
+  {
+    "name": "Puding",
+    "url": "https://www.yemek.com/tarif/puding",
+    "alternatives": [
+      "puding",
+      "puding-tarifi",
+      "ev-usulu-puding",
+      "puding"
+    ]
+  },
+  {
+    "name": "Meyveli Yoğurt",
+    "url": "https://www.yemek.com/tarif/meyveli-yogurt",
+    "alternatives": [
+      "meyveli-yogurt",
+      "meyveli-yogurt-tarifi",
+      "ev-usulu-meyveli-yogurt",
+      "meyveliyogurt"
+    ]
+  },
+  {
+    "name": "Dondurma",
+    "url": "https://www.yemek.com/tarif/dondurma",
+    "alternatives": [
+      "dondurma",
+      "dondurma-tarifi",
+      "ev-usulu-dondurma",
+      "dondurma"
+    ]
+  },
+  {
+    "name": "Yaprak Sarması",
+    "url": "https://www.yemek.com/tarif/yaprak-sarmasi",
+    "alternatives": [
+      "yaprak-sarmasi",
+      "yaprak-sarmasi-tarifi",
+      "ev-usulu-yaprak-sarmasi",
+      "yapraksarmasi"
+    ]
+  },
+  {
+    "name": "Kabak Dolması",
+    "url": "https://www.yemek.com/tarif/kabak-dolmasi",
+    "alternatives": [
+      "kabak-dolmasi",
+      "kabak-dolmasi-tarifi",
+      "ev-usulu-kabak-dolmasi",
+      "kabakdolmasi"
+    ]
+  },
+  {
+    "name": "Patlıcan Dolması",
+    "url": "https://www.yemek.com/tarif/patlican-dolmasi",
+    "alternatives": [
+      "patlican-dolmasi",
+      "patlican-dolmasi-tarifi",
+      "ev-usulu-patlican-dolmasi",
+      "patlicandolmasi"
+    ]
+  },
+  {
+    "name": "Domates Dolması",
+    "url": "https://www.yemek.com/tarif/domates-dolmasi",
+    "alternatives": [
+      "domates-dolmasi",
+      "domates-dolmasi-tarifi",
+      "ev-usulu-domates-dolmasi",
+      "domatesdolmasi"
+    ]
+  },
+  {
+    "name": "Lahana Sarması",
+    "url": "https://www.yemek.com/tarif/lahana-sarmasi",
+    "alternatives": [
+      "lahana-sarmasi",
+      "lahana-sarmasi-tarifi",
+      "ev-usulu-lahana-sarmasi",
+      "lahanasarmasi"
+    ]
+  },
+  {
+    "name": "Kuru Fasulye Dolması",
+    "url": "https://www.yemek.com/tarif/kuru-fasulye-dolmasi",
+    "alternatives": [
+      "kuru-fasulye-dolmasi",
+      "kuru-fasulye-dolmasi-tarifi",
+      "ev-usulu-kuru-fasulye-dolmasi",
+      "kurufasulyedolmasi"
+    ]
+  },
+  {
+    "name": "Enginar Dolması",
+    "url": "https://www.yemek.com/tarif/enginar-dolmasi",
+    "alternatives": [
+      "enginar-dolmasi",
+      "enginar-dolmasi-tarifi",
+      "ev-usulu-enginar-dolmasi",
+      "enginardolmasi"
+    ]
+  },
+  {
+    "name": "Nohut",
+    "url": "https://www.yemek.com/tarif/nohut",
+    "alternatives": [
+      "nohut",
+      "nohut-tarifi",
+      "ev-usulu-nohut",
+      "nohut"
+    ]
+  },
+  {
+    "name": "Zeytinyaşlı Barbunya",
+    "url": "https://www.yemek.com/tarif/zeytinyasli-barbunya",
+    "alternatives": [
+      "zeytinyasli-barbunya",
+      "zeytinyasli-barbunya-tarifi",
+      "ev-usulu-zeytinyasli-barbunya",
+      "zeytinyaslibarbunya"
+    ]
+  },
+  {
+    "name": "Elma",
+    "url": "https://www.yemek.com/tarif/elma",
+    "alternatives": [
+      "elma",
+      "elma-tarifi",
+      "ev-usulu-elma",
+      "elma"
+    ]
+  },
+  {
+    "name": "Muz",
+    "url": "https://www.yemek.com/tarif/muz",
+    "alternatives": [
+      "muz",
+      "muz-tarifi",
+      "ev-usulu-muz",
+      "muz"
+    ]
+  },
+  {
+    "name": "Mevsim Meyveleri Tabağı",
+    "url": "https://www.yemek.com/tarif/mevsim-meyveleri-tabagi",
+    "alternatives": [
+      "mevsim-meyveleri-tabagi",
+      "mevsim-meyveleri-tabagi-tarifi",
+      "ev-usulu-mevsim-meyveleri-tabagi",
+      "mevsimmeyveleritabagi"
+    ]
+  },
+  {
+    "name": "Pirinc Pilavı",
+    "url": "https://www.yemek.com/tarif/pirinc-pilavi",
+    "alternatives": [
+      "pirinc-pilavi",
+      "pirinc-pilavi-tarifi",
+      "ev-usulu-pirinc-pilavi",
+      "pirincpilavi"
+    ]
+  },
+  {
+    "name": "Bulgur Pilavı",
+    "url": "https://www.yemek.com/tarif/bulgur-pilavi",
+    "alternatives": [
+      "bulgur-pilavi",
+      "bulgur-pilavi-tarifi",
+      "ev-usulu-bulgur-pilavi",
+      "bulgurpilavi"
+    ]
+  },
+  {
+    "name": "Kısır",
+    "url": "https://www.yemek.com/tarif/kisir",
+    "alternatives": [
+      "kisir",
+      "kisir-tarifi",
+      "ev-usulu-kisir",
+      "kisir"
+    ]
+  },
+  {
+    "name": "Lazanya",
+    "url": "https://www.yemek.com/tarif/lazanya",
+    "alternatives": [
+      "lazanya",
+      "lazanya-tarifi",
+      "ev-usulu-lazanya",
+      "lazanya"
+    ]
+  },
+  {
+    "name": "Fettuccine Alfredo",
+    "url": "https://www.yemek.com/tarif/fettuccine-alfredo",
+    "alternatives": [
+      "fettuccine-alfredo",
+      "fettuccine-alfredo-tarifi",
+      "ev-usulu-fettuccine-alfredo",
+      "fettuccinealfredo"
+    ]
+  },
+  {
+    "name": "Spagetti Bolonez",
+    "url": "https://www.yemek.com/tarif/spagetti-bolonez",
+    "alternatives": [
+      "spagetti-bolonez",
+      "spagetti-bolonez-tarifi",
+      "ev-usulu-spagetti-bolonez",
+      "spagettibolonez"
+    ]
+  },
+  {
+    "name": "Penne Arrabiata",
+    "url": "https://www.yemek.com/tarif/penne-arrabiata",
+    "alternatives": [
+      "penne-arrabiata",
+      "penne-arrabiata-tarifi",
+      "ev-usulu-penne-arrabiata",
+      "pennearrabiata"
+    ]
+  },
+  {
+    "name": "Kremalı Mantarlı Makarna",
+    "url": "https://www.yemek.com/tarif/kremali-mantarli-makarna",
+    "alternatives": [
+      "kremali-mantarli-makarna",
+      "kremali-mantarli-makarna-tarifi",
+      "ev-usulu-kremali-mantarli-makarna",
+      "kremalimantarlimakarna"
+    ]
+  },
+  {
+    "name": "Fırın Makarna",
+    "url": "https://www.yemek.com/tarif/firin-makarna",
+    "alternatives": [
+      "firin-makarna",
+      "firin-makarna-tarifi",
+      "ev-usulu-firin-makarna",
+      "firinmakarna"
+    ]
+  },
+  {
+    "name": "Carbonara",
+    "url": "https://www.yemek.com/tarif/carbonara",
+    "alternatives": [
+      "carbonara",
+      "carbonara-tarifi",
+      "ev-usulu-carbonara",
+      "carbonara"
+    ]
+  },
+  {
+    "name": "Makarna Salatası",
+    "url": "https://www.yemek.com/tarif/makarna-salatasi",
+    "alternatives": [
+      "makarna-salatasi",
+      "makarna-salatasi-tarifi",
+      "ev-usulu-makarna-salatasi",
+      "makarnasalatasi"
+    ]
+  },
+  {
+    "name": "Akdeniz Salatası",
+    "url": "https://www.yemek.com/tarif/akdeniz-salatasi",
+    "alternatives": [
+      "akdeniz-salatasi",
+      "akdeniz-salatasi-tarifi",
+      "ev-usulu-akdeniz-salatasi",
+      "akdenizsalatasi"
+    ]
+  },
+  {
+    "name": "Mevsim Salatası",
+    "url": "https://www.yemek.com/tarif/mevsim-salatasi",
+    "alternatives": [
+      "mevsim-salatasi",
+      "mevsim-salatasi-tarifi",
+      "ev-usulu-mevsim-salatasi",
+      "mevsimsalatasi"
+    ]
+  },
+  {
+    "name": "Patates Salatası",
+    "url": "https://www.yemek.com/tarif/patates-salatasi",
+    "alternatives": [
+      "patates-salatasi",
+      "patates-salatasi-tarifi",
+      "ev-usulu-patates-salatasi",
+      "patatessalatasi"
+    ]
+  },
+  {
+    "name": "Ton Balıklı Salata",
+    "url": "https://www.yemek.com/tarif/ton-balikli-salata",
+    "alternatives": [
+      "ton-balikli-salata",
+      "ton-balikli-salata-tarifi",
+      "ev-usulu-ton-balikli-salata",
+      "tonbaliklisalata"
+    ]
+  },
+  {
+    "name": "Tavuklu Sezar Salatası",
+    "url": "https://www.yemek.com/tarif/tavuklu-sezar-salatasi",
+    "alternatives": [
+      "tavuklu-sezar-salatasi",
+      "tavuklu-sezar-salatasi-tarifi",
+      "ev-usulu-tavuklu-sezar-salatasi",
+      "tavuklusezarsalatasi"
+    ]
+  }
+]
