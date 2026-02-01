@@ -16,7 +16,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Nohut",
-    image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Kuru_fasulye.jpg/800px-Kuru_fasulye.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2014/06/nohut-yemekcom.jpg",
     category: "Baklagiller",
     is_vegetarian: true,
     is_vegan: true,
@@ -28,7 +28,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Mercimek",
-    image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Kuru_fasulye.jpg/800px-Kuru_fasulye.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2014/06/mercimek-yemekcom.jpg",
     category: "Baklagiller",
     is_vegetarian: true,
     is_vegan: true,
@@ -40,7 +40,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Barbunya",
-    image_url: "https://upload.wikimedia.org/wikipedia/commons/8/84/Barbunya_pilaki.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2014/06/barbunya-yemekcom.jpg",
     category: "Baklagiller",
     is_vegetarian: true,
     is_vegan: true,
@@ -64,7 +64,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Kabak",
-    image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Taze_fasulye.jpg/800px-Taze_fasulye.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2014/06/kabak-yemekcom.jpg",
     category: "Sebze Yemekleri",
     is_vegetarian: true,
     is_vegan: true,
@@ -88,7 +88,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Ispanak",
-    image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Taze_fasulye.jpg/800px-Taze_fasulye.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2014/06/ispanak-yemekcom.jpg",
     category: "Sebze Yemekleri",
     is_vegetarian: true,
     is_vegan: true,
@@ -160,7 +160,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Adana Kebap",
-    image_url: "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F8%2F8e%2FDoner_kebab%252C_Istanbul%252C_Turkey.JPG%2F800px-Doner_kebab%252C_Istanbul%252C_Turkey.JPG",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2023/04/adana-kebap-onecikan.jpg",
     category: "Döner & Kebap",
     is_vegetarian: false,
     is_vegan: false,
@@ -244,7 +244,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Tavuk Pilav",
-    image_url: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Roasted_chicken_and_Turkish_pilaf.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2023/04/tavuklu-pilav-yemekcom.jpg",
     category: "Sokak Lezzetleri",
     is_vegetarian: false,
     is_vegan: false,
@@ -479,7 +479,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Beyti",
-    image_url: "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F8%2F8e%2FDoner_kebab%252C_Istanbul%252C_Turkey.JPG%2F800px-Doner_kebab%252C_Istanbul%252C_Turkey.JPG",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2017/11/Firinda-Beyti-Kebabi-yemekcom.jpg",
     category: "Döner & Kebap",
     is_vegetarian: false,
     is_vegan: false,
@@ -491,7 +491,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Ali Nazik",
-    image_url: "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F8%2F8e%2FDoner_kebab%252C_Istanbul%252C_Turkey.JPG%2F800px-Doner_kebab%252C_Istanbul%252C_Turkey.JPG",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2020/09/ali-nazik-yemekcom.jpg",
     category: "Döner & Kebap",
     is_vegetarian: false,
     is_vegan: false,
@@ -503,7 +503,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Karnıyarık",
-    image_url: "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fe%2Fe1%2FTaze_fasulye.jpg%2F800px-Taze_fasulye.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2014/06/karniyarik-yemekcom.jpg",
     category: "Sebze Yemekleri",
     is_vegetarian: false,
     is_vegan: false,
@@ -515,7 +515,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "İmambayıldı",
-    image_url: "https://images.weserv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fe%2Fe1%2FTaze_fasulye.jpg%2F800px-Taze_fasulye.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2014/06/imam-bayildi-yemekcom.jpg",
     category: "Sebze Yemekleri",
     is_vegetarian: true,
     is_vegan: true,
@@ -641,7 +641,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Tavuk But",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2023/12/tavuk-sis-yemekcom.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2020/03/tavuk-but-yemekcom.jpg",
     category: "Izgara & Mangal",
     is_vegetarian: false,
     is_vegan: false,
@@ -743,7 +743,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Etli Barbunya",
-    image_url: "https://upload.wikimedia.org/wikipedia/commons/8/84/Barbunya_pilaki.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2014/06/etli-barbunya-yemekcom.jpg",
     category: "Etli Yemekler",
     is_vegetarian: false,
     is_vegan: false,
@@ -760,7 +760,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Tavuk Yahni",
-    image_url: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Roasted_chicken_and_Turkish_pilaf.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2020/03/tavuk-yahni-yemekcom.jpg",
     category: "Etli Yemekler",
     is_vegetarian: false,
     is_vegan: false,
@@ -777,7 +777,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Fırında Tavuk",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2023/12/tavuk-sis-yemekcom.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2020/03/firinda-tavuk-yemekcom.jpg",
     category: "Etli Yemekler",
     is_vegetarian: false,
     is_vegan: false,
@@ -1204,7 +1204,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Tavuklu Pilav",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2023/12/tavuk-sis-yemekcom.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2023/04/tavuklu-pilav-yemekcom.jpg",
     category: "Pilavlar",
     is_vegetarian: false,
     is_vegan: false,
@@ -1307,7 +1307,7 @@ export const COMMON_FOODS: Food[] = [
   // MAKARNA (7 yemek - ID: 374-380)
   {
     name: "Spagetti Bolonez",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2023/12/kremali-makarna-yemekcom.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2014/06/spagetti-bolonez-yemekcom.jpg",
     category: "Makarna",
     is_vegetarian: false,
     is_vegan: false,
@@ -1324,7 +1324,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Carbonara",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2023/12/kremali-makarna-yemekcom.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2020/03/carbonara-yemekcom.jpg",
     category: "Makarna",
     is_vegetarian: false,
     is_vegan: false,
@@ -1341,7 +1341,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Fırın Makarna",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2023/12/kremali-makarna-yemekcom.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2020/03/firin-makarna-yemekcom.jpg",
     category: "Makarna",
     is_vegetarian: true,
     is_vegan: false,
@@ -1358,7 +1358,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Kremalı Mantarlı Makarna",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2023/12/kremali-makarna-yemekcom.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2020/03/kremali-mantarli-makarna-yemekcom.jpg",
     category: "Makarna",
     is_vegetarian: true,
     is_vegan: false,
@@ -1375,7 +1375,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Penne Arrabiata",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2023/12/kremali-makarna-yemekcom.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2020/03/penne-arrabbiata-yemekcom.jpg",
     category: "Makarna",
     is_vegetarian: true,
     is_vegan: true,
@@ -1392,7 +1392,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Fettuccine Alfredo",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2023/12/kremali-makarna-yemekcom.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2020/03/fettucine-alfredo-yemekcom.jpg",
     category: "Makarna",
     is_vegetarian: true,
     is_vegan: false,
@@ -1409,7 +1409,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Lazanya",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2023/12/kremali-makarna-yemekcom.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2014/06/lazanya-yemekcom.jpg",
     category: "Makarna",
     is_vegetarian: false,
     is_vegan: false,
@@ -1427,7 +1427,7 @@ export const COMMON_FOODS: Food[] = [
   // ZEYTİNYAĞLILAR (6 yemek - ID: 381-386)
   {
     name: "Zeytinyağlı Enginar",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2015/01/patlican-musakka-yemekcom.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2014/06/enginar-yemekcom.jpg",
     category: "Zeytinyağlılar",
     is_vegetarian: true,
     is_vegan: true,
@@ -1444,7 +1444,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Zeytinyağlı Pırasa",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2015/01/patlican-musakka-yemekcom.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2014/06/pirasa-yemekcom.jpg",
     category: "Zeytinyağlılar",
     is_vegetarian: true,
     is_vegan: true,
@@ -1461,7 +1461,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Zeytinyağlı Taze Fasulye",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2015/01/patlican-musakka-yemekcom.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2014/06/taze-fasulye-yemekcom.jpg",
     category: "Zeytinyağlılar",
     is_vegetarian: true,
     is_vegan: true,
@@ -1478,7 +1478,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Zeytinyağlı Bamya",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2015/01/patlican-musakka-yemekcom.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2014/06/bamya-yemekcom.jpg",
     category: "Zeytinyağlılar",
     is_vegetarian: true,
     is_vegan: true,
@@ -1495,7 +1495,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Zeytinyağlı Bakla",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2015/01/patlican-musakka-yemekcom.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2014/06/bakla-yemekcom.jpg",
     category: "Zeytinyağlılar",
     is_vegetarian: true,
     is_vegan: true,
@@ -1512,7 +1512,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Zeytinyağlı Kabak",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2015/01/patlican-musakka-yemekcom.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2014/06/kabak-yemekcom.jpg",
     category: "Zeytinyağlılar",
     is_vegetarian: true,
     is_vegan: true,
@@ -1530,7 +1530,7 @@ export const COMMON_FOODS: Food[] = [
   // BÖREK (5 yemek - ID: 387-391)
   {
     name: "Su Böreği",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2024/01/sigara-boregi-yemekcom.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2014/06/su-boregi-yemekcom.jpg",
     category: "Hamur İşleri",
     is_vegetarian: true,
     is_vegan: false,
@@ -1547,7 +1547,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Peynirli Börek",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2024/01/sigara-boregi-yemekcom.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2014/06/peynirli-borek-yemekcom.jpg",
     category: "Hamur İşleri",
     is_vegetarian: true,
     is_vegan: false,
@@ -1564,7 +1564,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Kıymalı Börek",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2024/01/sigara-boregi-yemekcom.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2014/06/kiyamli-borek-yemekcom.jpg",
     category: "Hamur İşleri",
     is_vegetarian: false,
     is_vegan: false,
@@ -1581,7 +1581,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Ispanaklı Börek",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2024/01/sigara-boregi-yemekcom.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2014/06/ispanakli-borek-yemekcom.jpg",
     category: "Hamur İşleri",
     is_vegetarian: true,
     is_vegan: false,
@@ -1598,7 +1598,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Patatesli Börek",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2024/01/sigara-boregi-yemekcom.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2014/06/patatesli-borek-yemekcom.jpg",
     category: "Hamur İşleri",
     is_vegetarian: true,
     is_vegan: false,
@@ -1616,7 +1616,7 @@ export const COMMON_FOODS: Food[] = [
   // SALATALAR (4 yemek - ID: 392-395)
   {
     name: "Çoban Salatası",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2023/12/tavuk-sis-yemekcom.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2014/06/coban-salatasi-yemekcom.jpg",
     category: "Salatalar",
     is_vegetarian: true,
     is_vegan: true,
@@ -1633,7 +1633,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Gavurdağı Salatası",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2023/12/tavuk-sis-yemekcom.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2020/09/gavurdagi-salatasi-yemekcom.jpg",
     category: "Salatalar",
     is_vegetarian: true,
     is_vegan: true,
@@ -1650,7 +1650,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Mevsim Salatası",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2023/12/tavuk-sis-yemekcom.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2020/09/mevsim-salatasi-yemekcom.jpg",
     category: "Salatalar",
     is_vegetarian: true,
     is_vegan: true,
@@ -1667,7 +1667,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Piyaz",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2023/12/tavuk-sis-yemekcom.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2015/06/piyaz-yemekcom.jpg",
     category: "Salatalar",
     is_vegetarian: true,
     is_vegan: true,
@@ -1754,7 +1754,7 @@ export const COMMON_FOODS: Food[] = [
   // DENİZ ÜRÜNLERİ (4 yemek - ID: 400-403)
   {
     name: "Hamsi Tava",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2024/05/ciger-sis-yemekcom.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2020/03/hamsi-tava-yemekcom.jpg",
     category: "Deniz Ürünleri",
     is_vegetarian: false,
     is_vegan: false,
@@ -1771,7 +1771,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Balık Izgara",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2024/05/ciger-sis-yemekcom.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2020/03/balik-izgara-yemekcom.jpg",
     category: "Deniz Ürünleri",
     is_vegetarian: false,
     is_vegan: false,
@@ -1788,11 +1788,11 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Midye Dolma",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2024/05/ciger-sis-yemekcom.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2020/03/midye-dolma-yemekcom.jpg",
     category: "Deniz Ürünleri",
     is_vegetarian: false,
     is_vegan: false,
-    is_halal: true,
+    is_halal: false,
     priceLevel: 1,
     estimatedPrice: 60,
     nutritionalInfo: {
@@ -1805,11 +1805,11 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Kalamar Tava",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2024/05/ciger-sis-yemekcom.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2020/03/kalamar-tava-yemekcom.jpg",
     category: "Deniz Ürünleri",
     is_vegetarian: false,
     is_vegan: false,
-    is_halal: true,
+    is_halal: false,
     priceLevel: 2,
     estimatedPrice: 140,
     nutritionalInfo: {
@@ -2628,7 +2628,7 @@ export const COMMON_FOODS: Food[] = [
     category: "Deniz Ürünleri",
     is_vegetarian: false,
     is_vegan: false,
-    is_halal: true,
+    is_halal: false,
     priceLevel: 1,
     estimatedPrice: 60,
     nutritionalInfo: { calories: 220, protein: 28, carbs: 5, fat: 8 },
