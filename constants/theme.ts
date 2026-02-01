@@ -70,6 +70,7 @@ export const Fonts = Platform.select({
 // Stitch Design System Border Radius
 export const BorderRadius = {
   default: 8,
+  medium: 12,
   large: 16,
   extraLarge: 24,
   full: 9999,

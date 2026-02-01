@@ -48,9 +48,10 @@ class UniversalStorage {
    */
   async getAllKeys(): Promise<string[]> {
     if (Platform.OS === "web" && typeof localStorage !== "undefined") {
-      return Object.keys(localStorage);
+      return Object.keys(localStorage) as string[];
     }
-    return await AsyncStorage.getAllKeys();
+    const keys = await AsyncStorage.getAllKeys();
+    return [...keys]; // Create a mutable copy
   }
 }
 

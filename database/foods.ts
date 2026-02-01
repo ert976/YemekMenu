@@ -2831,3 +2831,98 @@ export const getAllFoods = async (): Promise<Food[]> => {
   // For now, return the static list
   return COMMON_FOODS;
 };
+
+// Get user preferences (liked and disliked food IDs)
+export const getUserPreferences = async (userId: number): Promise<{ likedIds: number[]; dislikedIds: number[] }> => {
+  try {
+    const userPrefs = appState.preferences[userId] || { likedIds: [], dislikedIds: [] };
+    return userPrefs;
+  } catch (error) {
+    console.error("Error getting user preferences:", error);
+    return { likedIds: [], dislikedIds: [] };
+  }
+};
+
+// Save user preference (like/dislike)
+export const saveUserPreference = async (
+  userId: number,
+  foodId: number,
+  preference: "like" | "dislike"
+): Promise<boolean> => {
+  try {
+    // Initialize user preferences if not exists
+    if (!appState.preferences[userId]) {
+      appState.preferences[userId] = { likedIds: [], dislikedIds: [] };
+    }
+
+    const userPrefs = appState.preferences[userId];
+
+    if (preference === "like") {
+      // Add to likedIds if not already present
+      if (!userPrefs.likedIds.includes(foodId)) {
+        userPrefs.likedIds.push(foodId);
+      }
+      // Remove from dislikedIds if present
+      const dislikeIndex = userPrefs.dislikedIds.indexOf(foodId);
+      if (dislikeIndex >= 0) {
+        userPrefs.dislikedIds.splice(dislikeIndex, 1);
+      }
+    } else {
+      // Add to dislikedIds if not already present
+      if (!userPrefs.dislikedIds.includes(foodId)) {
+        userPrefs.dislikedIds.push(foodId);
+      }
+      // Remove from likedIds if present
+      const likeIndex = userPrefs.likedIds.indexOf(foodId);
+      if (likeIndex >= 0) {
+        userPrefs.likedIds.splice(likeIndex, 1);
+      }
+    }
+
+    await saveState();
+    return true;
+  } catch (error) {
+    console.error("Error saving user preference:", error);
+    return false;
+  }
+};
+
+// Migrate session data to user
+export const migrateSessionToUser = async (
+  sessionId: number,
+  newUserId: number,
+  sessionData: { ratings: { food_id: number; rating: number }[]; preferences: { likedIds: number[]; dislikedIds: number[] } }
+): Promise<boolean> => {
+  try {
+    // Migrate ratings
+    for (const rating of sessionData.ratings) {
+      const existingIndex = appState.user_ratings.findIndex(
+        (r) => r.user_id === newUserId && r.food_id === rating.food_id
+      );
+      if (existingIndex >= 0) {
+        appState.user_ratings[existingIndex].rating = rating.rating;
+      } else {
+        appState.user_ratings.push({
+          id: appState.user_ratings.length + 1,
+          user_id: newUserId,
+          food_id: rating.food_id,
+          rating: rating.rating,
+        });
+      }
+    }
+
+    // Migrate preferences
+    for (const likedId of sessionData.preferences.likedIds) {
+      await saveUserPreference(newUserId, likedId, "like");
+    }
+    for (const dislikedId of sessionData.preferences.dislikedIds) {
+      await saveUserPreference(newUserId, dislikedId, "dislike");
+    }
+
+    await saveState();
+    return true;
+  } catch (error) {
+    console.error("Error migrating session to user:", error);
+    return false;
+  }
+};
