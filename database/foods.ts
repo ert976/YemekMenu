@@ -1751,7 +1751,7 @@ export const COMMON_FOODS: Food[] = [
     },
     id: 399,
   },
-  // DENİZ ÜRÜNLERİ (4 yemek - ID: 400-403)
+  // DENİZ ÜRÜNLERİ (2 yemek - ID: 400-401)
   {
     name: "Hamsi Tava",
     image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2020/03/hamsi-tava-yemekcom.jpg",
@@ -1786,44 +1786,10 @@ export const COMMON_FOODS: Food[] = [
     },
     id: 401,
   },
-  {
-    name: "Midye Dolma",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2020/03/midye-dolma-yemekcom.jpg",
-    category: "Deniz Ürünleri",
-    is_vegetarian: false,
-    is_vegan: false,
-    is_halal: false,
-    priceLevel: 1,
-    estimatedPrice: 60,
-    nutritionalInfo: {
-      calories: 160,
-      protein: 12,
-      carbs: 14,
-      fat: 7,
-    },
-    id: 402,
-  },
-  {
-    name: "Kalamar Tava",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2020/03/kalamar-tava-yemekcom.jpg",
-    category: "Deniz Ürünleri",
-    is_vegetarian: false,
-    is_vegan: false,
-    is_halal: false,
-    priceLevel: 2,
-    estimatedPrice: 140,
-    nutritionalInfo: {
-      calories: 260,
-      protein: 20,
-      carbs: 18,
-      fat: 14,
-    },
-    id: 403,
-  },
   // TATLILAR (2 yemek - ID: 404-405)
   {
     name: "Maraş Dondurması",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2014/10/elmali-strudel-yemekcom.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2014/06/dondurma-yemekcom.jpg",
     category: "Sütlü Tatlılar",
     is_vegetarian: true,
     is_vegan: false,
@@ -1840,7 +1806,7 @@ export const COMMON_FOODS: Food[] = [
   },
   {
     name: "Waffle",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2014/10/elmali-strudel-yemekcom.jpg",
+    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2020/03/waffle-yemekcom.jpg",
     category: "Sütlü Tatlılar",
     is_vegetarian: true,
     is_vegan: false,
@@ -2585,7 +2551,7 @@ export const COMMON_FOODS: Food[] = [
     id: 465,
   },
   // ========== FAZ 7: 20 YENİ YEMEK (ID: 466-485) ==========
-  // SOKAK LEZZETLERİ (5 yemek - ID: 466-470)
+  // SOKAK LEZZETLERİ (4 yemek - ID: 466-469)
   {
     name: "Tantuni",
     image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2020/03/tantuni-yemekcom.jpg",
@@ -2623,18 +2589,6 @@ export const COMMON_FOODS: Food[] = [
     id: 468,
   },
   {
-    name: "Midye Dolma",
-    image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2020/03/midye-dolma-yemekcom.jpg",
-    category: "Deniz Ürünleri",
-    is_vegetarian: false,
-    is_vegan: false,
-    is_halal: false,
-    priceLevel: 1,
-    estimatedPrice: 60,
-    nutritionalInfo: { calories: 220, protein: 28, carbs: 5, fat: 8 },
-    id: 469,
-  },
-  {
     name: "Kumpir",
     image_url: "https://cdn.yemek.com/mncrop/600/315/uploads/2020/03/kumpir-yemekcom.jpg",
     category: "Kahvaltı",
@@ -2644,7 +2598,7 @@ export const COMMON_FOODS: Food[] = [
     priceLevel: 1,
     estimatedPrice: 65,
     nutritionalInfo: { calories: 280, protein: 12, carbs: 22, fat: 16 },
-    id: 470,
+    id: 469,
   },
   // BALIK ÇEŞİTLERİ (4 yemek - ID: 471-474)
   {
