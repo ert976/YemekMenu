@@ -41,7 +41,7 @@ export async function generateBalancedMenu(
     const ratingMap = new Map(ratings.map((r) => [r.food_id, r.rating]));
 
     // 1. Base Filter (Diet, Halal, Dislikes)
-    const validFoods = allFoods.filter((f) => {
+    const validFoods = allFoods.filter((f: Food) => {
       // User Dislikes (Rating 1)
       if (ratingMap.get(f.id) === 1) return false;
       // Halal Check
@@ -91,14 +91,14 @@ export async function generateBalancedMenu(
         isEconomyMode,
       );
 
-      // 5. Generate Dinner (Based on Template)
+          // 5. Generate Dinner (Based on Template)
       const dinnerMain = selectMainDish(
         validFoods,
         template.dinner,
         weeklyState,
         ratingMap,
         isEconomyMode,
-        lunchMain ? [lunchMain.category] : [], // Avoid same category twice in a day
+        lunchMain ? [lunchMain.category] : [],
       );
 
       // 6. Generate Snack
@@ -111,12 +111,15 @@ export async function generateBalancedMenu(
         snack,
       ]);
 
+      const macroScore = calculateMacroScore(dailyStats);
+      const scoreEmoji = macroScore >= 90 ? "🌟" : macroScore >= 75 ? "✅" : macroScore >= 60 ? "⚠️" : "❌";
+
       plan.push({
         breakfast: breakfast, // Returns Food[] array
         lunch: lunchMain,
         dinner: dinnerMain,
         snack: snack,
-        nutritionDescription: `${dailyStats.calories} kcal`,
+        nutritionDescription: `${dailyStats.calories} kcal | P:${Math.round(dailyStats.protein)}g C:${Math.round(dailyStats.carbs)}g F:${Math.round(dailyStats.fat)}g ${scoreEmoji}(${macroScore})`,
       });
     }
 
@@ -233,12 +236,31 @@ function selectMainDish(
     if (cheapCandidates.length > 0) candidates = cheapCandidates;
   }
 
-  // 4. Hard Fallback: If no candidates (e.g. consumed all Red Meat), switch to "VEGETABLES" or "PASTRY"
+  // 4. Smart Fallback Hierarchy
   if (candidates.length === 0) {
-    const fallbackCats = BUSINESS_RULES.MEAL_PLAN.GROUPS.VEGETABLES;
-    candidates = pool.filter(
-      (f) => fallbackCats.includes(f.category) && !state.usedIds.has(f.id),
-    );
+    const fallbackHierarchy: Record<string, string[]> = {
+      "FISH": ["FISH", "CHICKEN", "LEGUMES", "VEGETABLES"],
+      "MEAT_RED": ["MEAT_RED", "CHICKEN", "LEGUMES", "VEGETABLES"],
+      "CHICKEN": ["CHICKEN", "FISH", "LEGUMES", "VEGETABLES"],
+      "LEGUMES": ["LEGUMES", "VEGETABLES", "CHICKEN"],
+      "VEGETABLES": ["VEGETABLES", "LEGUMES", "CHICKEN"],
+      "CARBS_SIDE": ["CARBS_SIDE", "VEGETABLES", "LEGUMES"],
+      "FAST_FOOD": ["FAST_FOOD", "PASTRY", "CARBS_SIDE"],
+      "PASTRY": ["PASTRY", "CARBS_SIDE", "VEGETABLES"],
+      "SOUPS": ["SOUPS", "VEGETABLES", "LEGUMES"],
+    };
+
+    const hierarchy = fallbackHierarchy[targetGroupKey] || ["VEGETABLES"];
+    
+    for (const fallbackGroup of hierarchy) {
+      const fallbackCats = BUSINESS_RULES.MEAL_PLAN.GROUPS[fallbackGroup as keyof typeof BUSINESS_RULES.MEAL_PLAN.GROUPS];
+      if (fallbackCats) {
+        candidates = pool.filter(
+          (f) => fallbackCats.includes(f.category) && !state.usedIds.has(f.id),
+        );
+        if (candidates.length > 0) break;
+      }
+    }
   }
 
   // 5. Select Best (Rating Weighted)
@@ -298,17 +320,68 @@ function assignReason(food: Food, logicKey: string): Food {
   return { ...food, reasonTag: tag, reasonType: "health" };
 }
 
-function calculateStats(foods: (Food | null | Food[])[]): { calories: number } {
-  let total = 0;
+interface NutritionStats {
+  calories: number;
+  protein: number;
+  carbs: number;
+  fat: number;
+}
+
+function calculateStats(foods: (Food | null | Food[])[]): NutritionStats {
+  const stats: NutritionStats = { calories: 0, protein: 0, carbs: 0, fat: 0 };
+  
   foods.forEach((item) => {
     if (!item) return;
     if (Array.isArray(item)) {
-      item.forEach((f) => (total += f.nutritionalInfo?.calories || 0));
+      item.forEach((f) => {
+        stats.calories += f.nutritionalInfo?.calories || 0;
+        stats.protein += f.nutritionalInfo?.protein || 0;
+        stats.carbs += f.nutritionalInfo?.carbs || 0;
+        stats.fat += f.nutritionalInfo?.fat || 0;
+      });
     } else {
-      total += item.nutritionalInfo?.calories || 0;
+      stats.calories += item.nutritionalInfo?.calories || 0;
+      stats.protein += item.nutritionalInfo?.protein || 0;
+      stats.carbs += item.nutritionalInfo?.carbs || 0;
+      stats.fat += item.nutritionalInfo?.fat || 0;
     }
   });
-  return { calories: total };
+  return stats;
+}
+
+// Makro besin hedefleri (2000 kcal için)
+const MACRO_TARGETS = {
+  protein: { min: 50, max: 100, unit: 'g' as const },
+  carbs: { min: 200, max: 300, unit: 'g' as const },
+  fat: { min: 55, max: 75, unit: 'g' as const },
+};
+
+// Makro besin skoru hesapla (0-100)
+function calculateMacroScore(stats: NutritionStats): number {
+  let score = 100;
+  
+  // Protein kontrolü
+  if (stats.protein < MACRO_TARGETS.protein.min) {
+    score -= 20;
+  } else if (stats.protein > MACRO_TARGETS.protein.max) {
+    score -= 10;
+  }
+  
+  // Karbonhidrat kontrolü
+  if (stats.carbs < MACRO_TARGETS.carbs.min) {
+    score -= 15;
+  } else if (stats.carbs > MACRO_TARGETS.carbs.max) {
+    score -= 15;
+  }
+  
+  // Yağ kontrolü
+  if (stats.fat < MACRO_TARGETS.fat.min) {
+    score -= 10;
+  } else if (stats.fat > MACRO_TARGETS.fat.max) {
+    score -= 20;
+  }
+  
+  return Math.max(0, score);
 }
 
 export function filterFoodsByDiet() {

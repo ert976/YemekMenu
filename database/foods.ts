@@ -2824,3 +2824,10 @@ const getNutritionByCategory = (category: string) => {
 };
 
 export { getNutritionByCategory };
+
+// Get all foods from the database
+export const getAllFoods = async (): Promise<Food[]> => {
+  // In a real app, this would fetch from a database
+  // For now, return the static list
+  return COMMON_FOODS;
+};
